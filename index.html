@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wiki de Mecanica Estadistica</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar" aria-label="Navegacion principal">
+        <div class="brand">
+          <div class="brand-mark">S</div>
+          <div>
+            <div class="brand-title">StatMechWiki</div>
+            <div class="brand-subtitle">Mecanica estadistica</div>
+          </div>
+        </div>
+
+        <nav id="nav" class="nav"></nav>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <button id="menuButton" class="icon-button" type="button" aria-label="Abrir navegacion">☰</button>
+          <div class="path" id="pathLabel">Inicio</div>
+        </header>
+
+        <article id="content" class="content" aria-live="polite"></article>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>

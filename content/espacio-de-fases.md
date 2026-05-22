@@ -1,11 +1,81 @@
 # Espacio de fases
 
-El espacio de fases es el espacio de todas las configuraciones microscopicas clasicas posibles de un sistema.
+## Resumen
 
-Para $N$ particulas en tres dimensiones tiene dimension $6N$:
+El **espacio de fases** es el espacio de todos los microestados clasicos posibles de un sistema. Para un sistema de $N$ particulas, cada punto especifica posiciones y momentos.
+
+## Definicion
+
+Para $N$ particulas en tres dimensiones,
 
 $$
-d\Gamma = d^{3N}q\,d^{3N}p.
+\Gamma=(q_1,\ldots,q_N,p_1,\ldots,p_N)
 $$
 
-Los promedios estadisticos clasicos se calculan integrando observables sobre este espacio con una medida apropiada.
+representa un punto del espacio de fases. Su medida elemental se escribe
+
+$$
+d\Gamma=d^{3N}q\,d^{3N}p.
+$$
+
+## Dimension
+
+Si hay $N$ particulas en tres dimensiones, el espacio de configuraciones tiene dimension $3N$ y el espacio de fases tiene dimension $6N$.
+
+## Medida estadistica
+
+En mecanica estadistica clasica, las integrales de espacio de fases suelen incluir el factor
+
+$$
+\frac{1}{h^{3N}N!}.
+$$
+
+El factor $h^{3N}$ hace adimensional el volumen de espacio de fases, mientras que $N!$ corrige la sobrecuenta debida a la indistinguibilidad de particulas identicas.
+
+## Dinamica hamiltoniana
+
+La evolucion temporal de un punto de espacio de fases esta determinada por las ecuaciones de Hamilton:
+
+$$
+\dot q_i=\frac{\partial H}{\partial p_i},
+\qquad
+\dot p_i=-\frac{\partial H}{\partial q_i}.
+$$
+
+El teorema de Liouville afirma que el flujo hamiltoniano conserva volumen en espacio de fases:
+
+$$
+\frac{d\rho}{dt}=0
+$$
+
+para una densidad que evoluciona siguiendo el flujo.
+
+## Uso en ensambles
+
+En el ensamble canonico clasico,
+
+$$
+Z=
+\frac{1}{h^{3N}N!}
+\int d\Gamma\, e^{-\beta H(\Gamma)}.
+$$
+
+En el ensamble microcanonico, se integra sobre una region de energia fija o casi fija:
+
+$$
+E\leq H(\Gamma)\leq E+\Delta E.
+$$
+
+## Errores comunes
+
+- Confundir espacio de fases con espacio de configuraciones.
+- Omitir los factores $h^{3N}$ y $N!$ sin explicar la convencion.
+- Tratar el volumen de espacio de fases como una cantidad absoluta sin especificar la medida.
+- Olvidar que esta pagina se refiere a la descripcion clasica; el caso cuantico requiere espacio de Hilbert.
+
+## Paginas relacionadas
+
+- [Microestado](#/microestado)
+- [Ensamble microcanonico](#/ensamble-microcanonico)
+- [Funcion de particion](#/funcion-de-particion)
+- [Entropia de Boltzmann](#/entropia-de-boltzmann)

@@ -1,0 +1,125 @@
+# Potencial quimico
+
+## Resumen
+
+El **potencial quimico** $\mu$ mide el cambio de energia libre asociado a cambiar el numero de particulas. Es la variable conjugada a $N$ y controla el intercambio de particulas entre sistemas.
+
+## Definiciones termodinamicas
+
+Desde la energia interna,
+
+$$
+dE=T\,dS-P\,dV+\mu\,dN.
+$$
+
+Por tanto,
+
+$$
+\mu
+=
+\left(\frac{\partial E}{\partial N}\right)_{S,V}.
+$$
+
+Desde la energia libre de Helmholtz,
+
+$$
+dF=-S\,dT-P\,dV+\mu\,dN,
+$$
+
+de modo que
+
+$$
+\mu
+=
+\left(\frac{\partial F}{\partial N}\right)_{T,V}.
+$$
+
+## En el microcanonico
+
+Si se usa $S(E,V,N)$ como funcion fundamental,
+
+$$
+-\frac{\mu}{T}
+=
+\left(\frac{\partial S}{\partial N}\right)_{E,V}.
+$$
+
+Esta relacion muestra que $\mu$ tambien puede obtenerse desde la entropia.
+
+## Equilibrio difusivo
+
+Si dos sistemas pueden intercambiar particulas, el equilibrio requiere igualdad de potencial quimico:
+
+$$
+\mu_A=\mu_B.
+$$
+
+Esto es analogo a la igualdad de temperaturas para equilibrio termico.
+
+## En el ensamble gran canonico
+
+El potencial quimico aparece en el peso estadistico
+
+$$
+p_i
+\propto
+e^{-\beta(E_i-\mu N_i)}.
+$$
+
+Al aumentar $\mu$, se favorecen microestados con mayor numero de particulas.
+
+## Fugacidad
+
+La fugacidad se define como
+
+$$
+z=e^{\beta\mu}.
+$$
+
+En el gran canonico,
+
+$$
+\Xi=\sum_{N=0}^{\infty}z^N Z_N.
+$$
+
+La fugacidad es util porque convierte la dependencia en $\mu$ en una expansion de potencias en $z$.
+
+## Interpretacion fisica
+
+El potencial quimico no es simplemente la energia por particula. Incluye efectos entropicos, interacciones y restricciones termodinamicas. En sistemas ideales puede relacionarse con densidad y temperatura; en sistemas interactuantes contiene informacion sobre el costo termodinamico de insertar una particula.
+
+## Ejemplo: gas ideal clasico
+
+Para un gas ideal clasico,
+
+$$
+\mu
+=
+k_B T
+\ln\!\left(n\lambda_T^3\right),
+$$
+
+donde $n=N/V$ es la densidad y
+
+$$
+\lambda_T
+=
+\frac{h}{\sqrt{2\pi m k_B T}}
+$$
+
+es la longitud de onda termica de de Broglie.
+
+## Errores comunes
+
+- Interpretar $\mu$ como energia de una particula aislada.
+- Olvidar que $\mu$ depende de las variables que se mantienen fijas.
+- Confundir potencial quimico con fugacidad.
+- Suponer que $\mu$ debe ser siempre positivo.
+
+## Paginas relacionadas
+
+- [Ensamble gran canonico](#/ensamble-gran-canonico)
+- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
+- [Gas ideal clasico](#/gas-ideal-clasico)
+- [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+

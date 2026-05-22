@@ -18,6 +18,10 @@ La ruta inicial recomendada es:
 8. [Funcion de particion](#/funcion-de-particion)
 9. [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
 10. [Ensamble gran canonico](#/ensamble-gran-canonico)
+11. [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+12. [Fluctuaciones](#/fluctuaciones)
+13. [Gas ideal clasico](#/gas-ideal-clasico)
+14. [Estadisticas cuanticas](#/estadisticas-cuanticas)
 
 ## Idea central
 
@@ -40,6 +44,7 @@ $$
 - Definiciones de conceptos fundamentales.
 - Ensambles estadisticos y sus relaciones termodinamicas.
 - Funciones de particion y potenciales termodinamicos.
+- Modelos canonicos como gas ideal, sistema de dos niveles, oscilador armonico e Ising.
 - Derivaciones cortas de resultados centrales.
 - Errores comunes y supuestos de validez.
 - Bibliografia y rutas de lectura.

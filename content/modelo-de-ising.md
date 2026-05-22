@@ -1,0 +1,109 @@
+# Modelo de Ising
+
+## Resumen
+
+El **modelo de Ising** es un modelo de espines discretos en una red. Es fundamental para estudiar magnetismo, transiciones de fase, ruptura espontanea de simetria y fenomenos criticos.
+
+## Definicion
+
+En cada sitio $i$ de una red hay una variable de espin
+
+$$
+s_i=\pm 1.
+$$
+
+El Hamiltoniano usual es
+
+$$
+H
+=
+-J\sum_{\langle i,j\rangle}s_i s_j
+-h\sum_i s_i,
+$$
+
+donde $J$ es el acoplamiento entre vecinos, $h$ es el campo externo y $\langle i,j\rangle$ indica pares de vecinos cercanos.
+
+## Interpretacion de parametros
+
+- Si $J \gt 0$, el acoplamiento favorece espines alineados: caso ferromagnetico.
+- Si $J \lt 0$, favorece espines opuestos: caso antiferromagnetico.
+- El campo $h$ favorece $s_i=+1$ si $h \gt 0$.
+
+## Funcion de particion
+
+La funcion de particion es
+
+$$
+Z
+=
+\sum_{\{s_i\}}
+e^{-\beta H(\{s_i\})}.
+$$
+
+La suma recorre las $2^N$ configuraciones posibles de espines.
+
+## Magnetizacion
+
+El parametro de orden ferromagnetico es la magnetizacion por sitio:
+
+$$
+m=\frac{1}{N}\sum_i \langle s_i\rangle.
+$$
+
+En ausencia de campo, $m$ distingue la fase ordenada de la desordenada.
+
+## Simetria
+
+Cuando $h=0$, el Hamiltoniano es invariante bajo inversion global de espines:
+
+$$
+s_i\mapsto -s_i.
+$$
+
+En la fase ferromagnetica, esta simetria puede romperse espontaneamente en el limite termodinamico.
+
+## Campo medio
+
+En la aproximacion de campo medio, cada espin siente un campo efectivo proporcional a la magnetizacion:
+
+$$
+h_{\mathrm{eff}}=h+zJm,
+$$
+
+donde $z$ es el numero de vecinos. La ecuacion autoconsistente es
+
+$$
+m=\tanh\!\left[\beta(h+zJm)\right].
+$$
+
+Para $h=0$, la transicion de campo medio ocurre cuando
+
+$$
+k_B T_c=zJ.
+$$
+
+## Dimensionalidad
+
+El modelo de Ising en una dimension no tiene transicion de fase a temperatura finita para $J$ finito. En dos dimensiones, el modelo ferromagnetico sin campo tiene una solucion exacta con transicion continua. En tres dimensiones no se conoce solucion exacta cerrada, pero se estudia con simulaciones, expansiones y renormalizacion.
+
+## Cantidades de interes
+
+- magnetizacion $m$;
+- susceptibilidad magnetica $\chi$;
+- calor especifico $C$;
+- longitud de correlacion $\xi$;
+- energia media $\langle E\rangle$;
+- correlaciones $\langle s_i s_j\rangle$.
+
+## Errores comunes
+
+- Confundir una red finita con el limite termodinamico.
+- Esperar ruptura espontanea exacta en un sistema finito sin campo.
+- Usar campo medio como si fuera exacto en baja dimension.
+- Olvidar especificar la red y condiciones de borde.
+
+## Paginas relacionadas
+
+- [Funcion de particion](#/funcion-de-particion)
+- [Fluctuaciones](#/fluctuaciones)
+- [Ensamble canonico](#/ensamble-canonico)

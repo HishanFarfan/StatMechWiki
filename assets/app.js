@@ -23,6 +23,8 @@ const pages = [
       { title: "Ensamble microcanonico", slug: "ensamble-microcanonico", file: "ensamble-microcanonico.md" },
       { title: "Ensamble canonico", slug: "ensamble-canonico", file: "ensamble-canonico.md" },
       { title: "Ensamble gran canonico", slug: "ensamble-gran-canonico", file: "ensamble-gran-canonico.md" },
+      { title: "Equivalencia de ensambles", slug: "equivalencia-de-ensambles", file: "equivalencia-de-ensambles.md" },
+      { title: "Fluctuaciones", slug: "fluctuaciones", file: "fluctuaciones.md" },
     ],
   },
   {
@@ -30,6 +32,22 @@ const pages = [
     items: [
       { title: "Funcion de particion", slug: "funcion-de-particion", file: "funcion-de-particion.md" },
       { title: "Energia libre de Helmholtz", slug: "energia-libre-de-helmholtz", file: "energia-libre-de-helmholtz.md" },
+      { title: "Potencial quimico", slug: "potencial-quimico", file: "potencial-quimico.md" },
+    ],
+  },
+  {
+    section: "Modelos",
+    items: [
+      { title: "Gas ideal clasico", slug: "gas-ideal-clasico", file: "gas-ideal-clasico.md" },
+      { title: "Sistema de dos niveles", slug: "sistema-de-dos-niveles", file: "sistema-de-dos-niveles.md" },
+      { title: "Oscilador armonico", slug: "oscilador-armonico", file: "oscilador-armonico.md" },
+      { title: "Modelo de Ising", slug: "modelo-de-ising", file: "modelo-de-ising.md" },
+    ],
+  },
+  {
+    section: "Cuantica",
+    items: [
+      { title: "Estadisticas cuanticas", slug: "estadisticas-cuanticas", file: "estadisticas-cuanticas.md" },
     ],
   },
   {

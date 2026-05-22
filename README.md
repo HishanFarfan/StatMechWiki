@@ -2,6 +2,8 @@
 
 Version estatica de la wiki con Markdown y KaTeX.
 
+Estado actual: 108 entradas navegables y desarrolladas, organizadas en fundamentos, ensambles, termodinamica estadistica, modelos, cuantica, transiciones y criticalidad, metodos, no equilibrio y recursos.
+
 ## Uso local
 
 Desde esta carpeta:
@@ -29,3 +31,11 @@ $$
 ## Publicacion
 
 Esta carpeta se puede publicar en GitHub Pages, Netlify, Cloudflare Pages o cualquier hosting estatico. Google Sites puede quedar como portada que enlace a esta wiki.
+
+## Validacion
+
+Antes de publicar cambios, validar que:
+
+- cada archivo enlazado desde `assets/app.js` existe en `content/`;
+- los bloques `$$...$$` pasan por KaTeX;
+- el flujo real `proteger math -> marked -> restaurar math -> KaTeX` no introduce errores.

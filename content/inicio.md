@@ -4,9 +4,11 @@ Esta wiki reune conceptos, resultados, modelos y metodos centrales de la mecanic
 
 > Esta version usa Markdown y KaTeX, por lo que las ecuaciones se escriben en LaTeX y se renderizan correctamente.
 
-## Punto de partida
+## Estado actual
 
-La ruta inicial recomendada es:
+La wiki contiene actualmente **108 entradas desarrolladas**. Cubre fundamentos, ensambles, termodinamica estadistica, modelos, estadistica cuantica, transiciones de fase, metodos y no equilibrio.
+
+## Punto de partida
 
 1. [Microestado](#/microestado)
 2. [Macroestado](#/macroestado)
@@ -18,37 +20,21 @@ La ruta inicial recomendada es:
 8. [Funcion de particion](#/funcion-de-particion)
 9. [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
 10. [Ensamble gran canonico](#/ensamble-gran-canonico)
-11. [Equivalencia de ensambles](#/equivalencia-de-ensambles)
-12. [Fluctuaciones](#/fluctuaciones)
-13. [Gas ideal clasico](#/gas-ideal-clasico)
-14. [Estadisticas cuanticas](#/estadisticas-cuanticas)
 
-## Idea central
+## Ideas centrales
 
-La mecanica estadistica conecta el mundo microscopico con la termodinamica. A partir de probabilidades sobre microestados se obtienen cantidades macroscopicas como energia, entropia, temperatura y presion.
-
-Una de las conexiones fundamentales es
+Una conexion fundamental entre conteo microscopico y termodinamica es
 
 $$
 S(E,V,N)=k_B\ln\Omega(E,V,N).
 $$
 
-Otra es la relacion canonica entre funcion de particion y energia libre:
+Otra conexion central relaciona la funcion de particion canonica con la energia libre:
 
 $$
 F(T,V,N)=-k_B T\ln Z(T,V,N).
 $$
 
-## Que contiene
-
-- Definiciones de conceptos fundamentales.
-- Ensambles estadisticos y sus relaciones termodinamicas.
-- Funciones de particion y potenciales termodinamicos.
-- Modelos canonicos como gas ideal, sistema de dos niveles, oscilador armonico e Ising.
-- Derivaciones cortas de resultados centrales.
-- Errores comunes y supuestos de validez.
-- Bibliografia y rutas de lectura.
-
 ## Como usar esta wiki
 
-Cada pagina busca ser autocontenida en lo esencial, pero enlazada con conceptos relacionados. Las derivaciones largas deben vivir en paginas separadas para que los articulos principales sigan siendo legibles.
+Usa el [mapa de la wiki](#/mapa) para navegar por areas. Cada pagina busca ser autocontenida en lo esencial: definicion, ecuacion clave, interpretacion fisica, limites de validez y enlaces relacionados.

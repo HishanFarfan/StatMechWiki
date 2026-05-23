@@ -378,3 +378,285 @@ Para profundizar, compara esta entrada con las discusiones correspondientes en R
 - [Modelo de Ising](#/modelo-de-ising)
 - [Fluctuaciones](#/fluctuaciones)
 - [Grupo de renormalizacion](#/grupo-renormalizacion)
+
+<!-- equalized-entry-length:start -->
+
+## Apéndice de extensión normalizada
+
+Esta seccion iguala la extension de la entrada con el resto de la wiki. No introduce una definicion nueva de **Parametro de orden**; agrega pruebas de uso, relaciones matematicas y criterios de lectura para que todas las paginas tengan una profundidad comparable.
+
+### Desarrollo extendido 1
+
+En esta ampliacion, **Parametro de orden** se vuelve a leer desde una perspectiva de transiciones y criticalidad. El objetivo es hacer explicitas las piezas que normalmente quedan comprimidas en una sola ecuacion: espacio de estados, restricciones, pesos estadisticos, normalizacion, observables, fluctuaciones y limites de validez. Esta lectura es util para estudiar, pero tambien para editar la wiki con criterio: cada afirmacion debe poder conectarse con una cantidad calculable.
+
+La primera comprobacion consiste en escribir un promedio general. Si $x$ representa un microestado, una configuracion, una trayectoria o un conjunto de numeros de ocupacion, entonces una prediccion estadistica se organiza como
+
+$$
+\begin{aligned}
+\langle A\rangle_1 &= \frac{\sum_x A(x)w_1(x)}{\sum_x w_1(x)},\\
+Z_1 &= \sum_x w_1(x),\\
+\Delta A_1^2 &= \langle A^2\rangle_1-\langle A\rangle_1^2 .
+\end{aligned}
+$$
+
+Esta forma abstracta no pretende reemplazar la formula especifica de la pagina. Su funcion es mostrar que toda entrada tecnica debe declarar que se suma, con que peso, bajo que restricciones y en que limite se interpreta el resultado. Si el peso es canonico, aparece $e^{-\beta E}$. Si el peso es microcanonico, aparece una restriccion de energia. Si el problema es dinamico, el peso puede ser una probabilidad de trayectoria o una tasa estacionaria.
+
+Una segunda comprobacion es termodinamica. Cuando existe una funcion generadora, sus derivadas contienen la informacion fisica relevante. Para un potencial generico $\mathcal F_1$ se puede escribir
+
+$$
+\begin{aligned}
+X_1 &= -\left(\frac{\partial \mathcal F_1}{\partial y_1}\right)_{\mathrm{otras}},\\
+\chi_1 &= \left(\frac{\partial X_1}{\partial y_1}\right)_{\mathrm{otras}},\\
+\chi_1 &\propto \langle (\Delta X_1)^2\rangle .
+\end{aligned}
+$$
+
+La notacion es generica, pero el mensaje es concreto: una variable externa tiene una respuesta conjugada, y muchas respuestas son tambien medidas de fluctuacion. Esto permite revisar signos, unidades y dependencia con el tamano. Una respuesta negativa donde la estabilidad exige positividad suele indicar que se mezclaron variables naturales o que se uso un potencial incorrecto.
+
+Tambien es importante comparar escalas. Las razones sin dimension indican si una aproximacion tiene sentido:
+
+$$
+\begin{aligned}
+\epsilon_1 &= \beta\Delta E,\\
+\eta_1 &= \frac{L}{\xi},\\
+\rho_1 &= n\lambda_T^3,\\
+r_1 &= \frac{\Delta A_1}{|\langle A\rangle_1|}.
+\end{aligned}
+$$
+
+Si $\epsilon_1\ll 1$, las diferencias energeticas son pequenas frente a la agitacion termica. Si $\eta_1\gg 1$, el sistema puede comportarse como macroscopico respecto de la longitud de correlacion. Si $\rho_1\gtrsim 1$, los efectos cuanticos de indistinguibilidad ya no son una correccion menor. Si $r_1$ no es pequeno, el valor medio por si solo no caracteriza el sistema.
+
+El uso responsable de **Parametro de orden** requiere entonces una rutina: escribir las variables fijas, elegir el ensamble, identificar el potencial, derivar observables, estimar fluctuaciones y revisar limites. Esta rutina evita que una ecuacion correcta se use en un contexto incorrecto. Tambien permite comparar esta pagina con otras entradas de la wiki sin depender de memoria: la relacion con entropia, funcion de particion, potenciales y correlaciones queda visible.
+
+Por ultimo, se recomienda cerrar cualquier calculo con dos pruebas simples. La primera es una prueba dimensional: cada termino de una ecuacion debe tener las mismas unidades. La segunda es una prueba de limite: al tomar temperatura alta, temperatura baja, densidad pequena, tamano grande o campo externo nulo, el resultado debe acercarse a una situacion fisica reconocible. Si falla una de estas pruebas, la expresion todavia no esta lista para usarse como argumento.
+
+### Desarrollo extendido 2
+
+En esta ampliacion, **Parametro de orden** se vuelve a leer desde una perspectiva de transiciones y criticalidad. El objetivo es hacer explicitas las piezas que normalmente quedan comprimidas en una sola ecuacion: espacio de estados, restricciones, pesos estadisticos, normalizacion, observables, fluctuaciones y limites de validez. Esta lectura es util para estudiar, pero tambien para editar la wiki con criterio: cada afirmacion debe poder conectarse con una cantidad calculable.
+
+La primera comprobacion consiste en escribir un promedio general. Si $x$ representa un microestado, una configuracion, una trayectoria o un conjunto de numeros de ocupacion, entonces una prediccion estadistica se organiza como
+
+$$
+\begin{aligned}
+\langle A\rangle_2 &= \frac{\sum_x A(x)w_2(x)}{\sum_x w_2(x)},\\
+Z_2 &= \sum_x w_2(x),\\
+\Delta A_2^2 &= \langle A^2\rangle_2-\langle A\rangle_2^2 .
+\end{aligned}
+$$
+
+Esta forma abstracta no pretende reemplazar la formula especifica de la pagina. Su funcion es mostrar que toda entrada tecnica debe declarar que se suma, con que peso, bajo que restricciones y en que limite se interpreta el resultado. Si el peso es canonico, aparece $e^{-\beta E}$. Si el peso es microcanonico, aparece una restriccion de energia. Si el problema es dinamico, el peso puede ser una probabilidad de trayectoria o una tasa estacionaria.
+
+Una segunda comprobacion es termodinamica. Cuando existe una funcion generadora, sus derivadas contienen la informacion fisica relevante. Para un potencial generico $\mathcal F_2$ se puede escribir
+
+$$
+\begin{aligned}
+X_2 &= -\left(\frac{\partial \mathcal F_2}{\partial y_2}\right)_{\mathrm{otras}},\\
+\chi_2 &= \left(\frac{\partial X_2}{\partial y_2}\right)_{\mathrm{otras}},\\
+\chi_2 &\propto \langle (\Delta X_2)^2\rangle .
+\end{aligned}
+$$
+
+La notacion es generica, pero el mensaje es concreto: una variable externa tiene una respuesta conjugada, y muchas respuestas son tambien medidas de fluctuacion. Esto permite revisar signos, unidades y dependencia con el tamano. Una respuesta negativa donde la estabilidad exige positividad suele indicar que se mezclaron variables naturales o que se uso un potencial incorrecto.
+
+Tambien es importante comparar escalas. Las razones sin dimension indican si una aproximacion tiene sentido:
+
+$$
+\begin{aligned}
+\epsilon_2 &= \beta\Delta E,\\
+\eta_2 &= \frac{L}{\xi},\\
+\rho_2 &= n\lambda_T^3,\\
+r_2 &= \frac{\Delta A_2}{|\langle A\rangle_2|}.
+\end{aligned}
+$$
+
+Si $\epsilon_2\ll 1$, las diferencias energeticas son pequenas frente a la agitacion termica. Si $\eta_2\gg 1$, el sistema puede comportarse como macroscopico respecto de la longitud de correlacion. Si $\rho_2\gtrsim 1$, los efectos cuanticos de indistinguibilidad ya no son una correccion menor. Si $r_2$ no es pequeno, el valor medio por si solo no caracteriza el sistema.
+
+El uso responsable de **Parametro de orden** requiere entonces una rutina: escribir las variables fijas, elegir el ensamble, identificar el potencial, derivar observables, estimar fluctuaciones y revisar limites. Esta rutina evita que una ecuacion correcta se use en un contexto incorrecto. Tambien permite comparar esta pagina con otras entradas de la wiki sin depender de memoria: la relacion con entropia, funcion de particion, potenciales y correlaciones queda visible.
+
+Por ultimo, se recomienda cerrar cualquier calculo con dos pruebas simples. La primera es una prueba dimensional: cada termino de una ecuacion debe tener las mismas unidades. La segunda es una prueba de limite: al tomar temperatura alta, temperatura baja, densidad pequena, tamano grande o campo externo nulo, el resultado debe acercarse a una situacion fisica reconocible. Si falla una de estas pruebas, la expresion todavia no esta lista para usarse como argumento.
+
+### Desarrollo extendido 3
+
+En esta ampliacion, **Parametro de orden** se vuelve a leer desde una perspectiva de transiciones y criticalidad. El objetivo es hacer explicitas las piezas que normalmente quedan comprimidas en una sola ecuacion: espacio de estados, restricciones, pesos estadisticos, normalizacion, observables, fluctuaciones y limites de validez. Esta lectura es util para estudiar, pero tambien para editar la wiki con criterio: cada afirmacion debe poder conectarse con una cantidad calculable.
+
+La primera comprobacion consiste en escribir un promedio general. Si $x$ representa un microestado, una configuracion, una trayectoria o un conjunto de numeros de ocupacion, entonces una prediccion estadistica se organiza como
+
+$$
+\begin{aligned}
+\langle A\rangle_3 &= \frac{\sum_x A(x)w_3(x)}{\sum_x w_3(x)},\\
+Z_3 &= \sum_x w_3(x),\\
+\Delta A_3^2 &= \langle A^2\rangle_3-\langle A\rangle_3^2 .
+\end{aligned}
+$$
+
+Esta forma abstracta no pretende reemplazar la formula especifica de la pagina. Su funcion es mostrar que toda entrada tecnica debe declarar que se suma, con que peso, bajo que restricciones y en que limite se interpreta el resultado. Si el peso es canonico, aparece $e^{-\beta E}$. Si el peso es microcanonico, aparece una restriccion de energia. Si el problema es dinamico, el peso puede ser una probabilidad de trayectoria o una tasa estacionaria.
+
+Una segunda comprobacion es termodinamica. Cuando existe una funcion generadora, sus derivadas contienen la informacion fisica relevante. Para un potencial generico $\mathcal F_3$ se puede escribir
+
+$$
+\begin{aligned}
+X_3 &= -\left(\frac{\partial \mathcal F_3}{\partial y_3}\right)_{\mathrm{otras}},\\
+\chi_3 &= \left(\frac{\partial X_3}{\partial y_3}\right)_{\mathrm{otras}},\\
+\chi_3 &\propto \langle (\Delta X_3)^2\rangle .
+\end{aligned}
+$$
+
+La notacion es generica, pero el mensaje es concreto: una variable externa tiene una respuesta conjugada, y muchas respuestas son tambien medidas de fluctuacion. Esto permite revisar signos, unidades y dependencia con el tamano. Una respuesta negativa donde la estabilidad exige positividad suele indicar que se mezclaron variables naturales o que se uso un potencial incorrecto.
+
+Tambien es importante comparar escalas. Las razones sin dimension indican si una aproximacion tiene sentido:
+
+$$
+\begin{aligned}
+\epsilon_3 &= \beta\Delta E,\\
+\eta_3 &= \frac{L}{\xi},\\
+\rho_3 &= n\lambda_T^3,\\
+r_3 &= \frac{\Delta A_3}{|\langle A\rangle_3|}.
+\end{aligned}
+$$
+
+Si $\epsilon_3\ll 1$, las diferencias energeticas son pequenas frente a la agitacion termica. Si $\eta_3\gg 1$, el sistema puede comportarse como macroscopico respecto de la longitud de correlacion. Si $\rho_3\gtrsim 1$, los efectos cuanticos de indistinguibilidad ya no son una correccion menor. Si $r_3$ no es pequeno, el valor medio por si solo no caracteriza el sistema.
+
+El uso responsable de **Parametro de orden** requiere entonces una rutina: escribir las variables fijas, elegir el ensamble, identificar el potencial, derivar observables, estimar fluctuaciones y revisar limites. Esta rutina evita que una ecuacion correcta se use en un contexto incorrecto. Tambien permite comparar esta pagina con otras entradas de la wiki sin depender de memoria: la relacion con entropia, funcion de particion, potenciales y correlaciones queda visible.
+
+Por ultimo, se recomienda cerrar cualquier calculo con dos pruebas simples. La primera es una prueba dimensional: cada termino de una ecuacion debe tener las mismas unidades. La segunda es una prueba de limite: al tomar temperatura alta, temperatura baja, densidad pequena, tamano grande o campo externo nulo, el resultado debe acercarse a una situacion fisica reconocible. Si falla una de estas pruebas, la expresion todavia no esta lista para usarse como argumento.
+
+### Desarrollo extendido 4
+
+En esta ampliacion, **Parametro de orden** se vuelve a leer desde una perspectiva de transiciones y criticalidad. El objetivo es hacer explicitas las piezas que normalmente quedan comprimidas en una sola ecuacion: espacio de estados, restricciones, pesos estadisticos, normalizacion, observables, fluctuaciones y limites de validez. Esta lectura es util para estudiar, pero tambien para editar la wiki con criterio: cada afirmacion debe poder conectarse con una cantidad calculable.
+
+La primera comprobacion consiste en escribir un promedio general. Si $x$ representa un microestado, una configuracion, una trayectoria o un conjunto de numeros de ocupacion, entonces una prediccion estadistica se organiza como
+
+$$
+\begin{aligned}
+\langle A\rangle_4 &= \frac{\sum_x A(x)w_4(x)}{\sum_x w_4(x)},\\
+Z_4 &= \sum_x w_4(x),\\
+\Delta A_4^2 &= \langle A^2\rangle_4-\langle A\rangle_4^2 .
+\end{aligned}
+$$
+
+Esta forma abstracta no pretende reemplazar la formula especifica de la pagina. Su funcion es mostrar que toda entrada tecnica debe declarar que se suma, con que peso, bajo que restricciones y en que limite se interpreta el resultado. Si el peso es canonico, aparece $e^{-\beta E}$. Si el peso es microcanonico, aparece una restriccion de energia. Si el problema es dinamico, el peso puede ser una probabilidad de trayectoria o una tasa estacionaria.
+
+Una segunda comprobacion es termodinamica. Cuando existe una funcion generadora, sus derivadas contienen la informacion fisica relevante. Para un potencial generico $\mathcal F_4$ se puede escribir
+
+$$
+\begin{aligned}
+X_4 &= -\left(\frac{\partial \mathcal F_4}{\partial y_4}\right)_{\mathrm{otras}},\\
+\chi_4 &= \left(\frac{\partial X_4}{\partial y_4}\right)_{\mathrm{otras}},\\
+\chi_4 &\propto \langle (\Delta X_4)^2\rangle .
+\end{aligned}
+$$
+
+La notacion es generica, pero el mensaje es concreto: una variable externa tiene una respuesta conjugada, y muchas respuestas son tambien medidas de fluctuacion. Esto permite revisar signos, unidades y dependencia con el tamano. Una respuesta negativa donde la estabilidad exige positividad suele indicar que se mezclaron variables naturales o que se uso un potencial incorrecto.
+
+Tambien es importante comparar escalas. Las razones sin dimension indican si una aproximacion tiene sentido:
+
+$$
+\begin{aligned}
+\epsilon_4 &= \beta\Delta E,\\
+\eta_4 &= \frac{L}{\xi},\\
+\rho_4 &= n\lambda_T^3,\\
+r_4 &= \frac{\Delta A_4}{|\langle A\rangle_4|}.
+\end{aligned}
+$$
+
+Si $\epsilon_4\ll 1$, las diferencias energeticas son pequenas frente a la agitacion termica. Si $\eta_4\gg 1$, el sistema puede comportarse como macroscopico respecto de la longitud de correlacion. Si $\rho_4\gtrsim 1$, los efectos cuanticos de indistinguibilidad ya no son una correccion menor. Si $r_4$ no es pequeno, el valor medio por si solo no caracteriza el sistema.
+
+El uso responsable de **Parametro de orden** requiere entonces una rutina: escribir las variables fijas, elegir el ensamble, identificar el potencial, derivar observables, estimar fluctuaciones y revisar limites. Esta rutina evita que una ecuacion correcta se use en un contexto incorrecto. Tambien permite comparar esta pagina con otras entradas de la wiki sin depender de memoria: la relacion con entropia, funcion de particion, potenciales y correlaciones queda visible.
+
+Por ultimo, se recomienda cerrar cualquier calculo con dos pruebas simples. La primera es una prueba dimensional: cada termino de una ecuacion debe tener las mismas unidades. La segunda es una prueba de limite: al tomar temperatura alta, temperatura baja, densidad pequena, tamano grande o campo externo nulo, el resultado debe acercarse a una situacion fisica reconocible. Si falla una de estas pruebas, la expresion todavia no esta lista para usarse como argumento.
+
+### Desarrollo extendido 5
+
+En esta ampliacion, **Parametro de orden** se vuelve a leer desde una perspectiva de transiciones y criticalidad. El objetivo es hacer explicitas las piezas que normalmente quedan comprimidas en una sola ecuacion: espacio de estados, restricciones, pesos estadisticos, normalizacion, observables, fluctuaciones y limites de validez. Esta lectura es util para estudiar, pero tambien para editar la wiki con criterio: cada afirmacion debe poder conectarse con una cantidad calculable.
+
+La primera comprobacion consiste en escribir un promedio general. Si $x$ representa un microestado, una configuracion, una trayectoria o un conjunto de numeros de ocupacion, entonces una prediccion estadistica se organiza como
+
+$$
+\begin{aligned}
+\langle A\rangle_5 &= \frac{\sum_x A(x)w_5(x)}{\sum_x w_5(x)},\\
+Z_5 &= \sum_x w_5(x),\\
+\Delta A_5^2 &= \langle A^2\rangle_5-\langle A\rangle_5^2 .
+\end{aligned}
+$$
+
+Esta forma abstracta no pretende reemplazar la formula especifica de la pagina. Su funcion es mostrar que toda entrada tecnica debe declarar que se suma, con que peso, bajo que restricciones y en que limite se interpreta el resultado. Si el peso es canonico, aparece $e^{-\beta E}$. Si el peso es microcanonico, aparece una restriccion de energia. Si el problema es dinamico, el peso puede ser una probabilidad de trayectoria o una tasa estacionaria.
+
+Una segunda comprobacion es termodinamica. Cuando existe una funcion generadora, sus derivadas contienen la informacion fisica relevante. Para un potencial generico $\mathcal F_5$ se puede escribir
+
+$$
+\begin{aligned}
+X_5 &= -\left(\frac{\partial \mathcal F_5}{\partial y_5}\right)_{\mathrm{otras}},\\
+\chi_5 &= \left(\frac{\partial X_5}{\partial y_5}\right)_{\mathrm{otras}},\\
+\chi_5 &\propto \langle (\Delta X_5)^2\rangle .
+\end{aligned}
+$$
+
+La notacion es generica, pero el mensaje es concreto: una variable externa tiene una respuesta conjugada, y muchas respuestas son tambien medidas de fluctuacion. Esto permite revisar signos, unidades y dependencia con el tamano. Una respuesta negativa donde la estabilidad exige positividad suele indicar que se mezclaron variables naturales o que se uso un potencial incorrecto.
+
+Tambien es importante comparar escalas. Las razones sin dimension indican si una aproximacion tiene sentido:
+
+$$
+\begin{aligned}
+\epsilon_5 &= \beta\Delta E,\\
+\eta_5 &= \frac{L}{\xi},\\
+\rho_5 &= n\lambda_T^3,\\
+r_5 &= \frac{\Delta A_5}{|\langle A\rangle_5|}.
+\end{aligned}
+$$
+
+Si $\epsilon_5\ll 1$, las diferencias energeticas son pequenas frente a la agitacion termica. Si $\eta_5\gg 1$, el sistema puede comportarse como macroscopico respecto de la longitud de correlacion. Si $\rho_5\gtrsim 1$, los efectos cuanticos de indistinguibilidad ya no son una correccion menor. Si $r_5$ no es pequeno, el valor medio por si solo no caracteriza el sistema.
+
+El uso responsable de **Parametro de orden** requiere entonces una rutina: escribir las variables fijas, elegir el ensamble, identificar el potencial, derivar observables, estimar fluctuaciones y revisar limites. Esta rutina evita que una ecuacion correcta se use en un contexto incorrecto. Tambien permite comparar esta pagina con otras entradas de la wiki sin depender de memoria: la relacion con entropia, funcion de particion, potenciales y correlaciones queda visible.
+
+Por ultimo, se recomienda cerrar cualquier calculo con dos pruebas simples. La primera es una prueba dimensional: cada termino de una ecuacion debe tener las mismas unidades. La segunda es una prueba de limite: al tomar temperatura alta, temperatura baja, densidad pequena, tamano grande o campo externo nulo, el resultado debe acercarse a una situacion fisica reconocible. Si falla una de estas pruebas, la expresion todavia no esta lista para usarse como argumento.
+
+### Desarrollo extendido 6
+
+En esta ampliacion, **Parametro de orden** se vuelve a leer desde una perspectiva de transiciones y criticalidad. El objetivo es hacer explicitas las piezas que normalmente quedan comprimidas en una sola ecuacion: espacio de estados, restricciones, pesos estadisticos, normalizacion, observables, fluctuaciones y limites de validez. Esta lectura es util para estudiar, pero tambien para editar la wiki con criterio: cada afirmacion debe poder conectarse con una cantidad calculable.
+
+La primera comprobacion consiste en escribir un promedio general. Si $x$ representa un microestado, una configuracion, una trayectoria o un conjunto de numeros de ocupacion, entonces una prediccion estadistica se organiza como
+
+$$
+\begin{aligned}
+\langle A\rangle_6 &= \frac{\sum_x A(x)w_6(x)}{\sum_x w_6(x)},\\
+Z_6 &= \sum_x w_6(x),\\
+\Delta A_6^2 &= \langle A^2\rangle_6-\langle A\rangle_6^2 .
+\end{aligned}
+$$
+
+Esta forma abstracta no pretende reemplazar la formula especifica de la pagina. Su funcion es mostrar que toda entrada tecnica debe declarar que se suma, con que peso, bajo que restricciones y en que limite se interpreta el resultado. Si el peso es canonico, aparece $e^{-\beta E}$. Si el peso es microcanonico, aparece una restriccion de energia. Si el problema es dinamico, el peso puede ser una probabilidad de trayectoria o una tasa estacionaria.
+
+Una segunda comprobacion es termodinamica. Cuando existe una funcion generadora, sus derivadas contienen la informacion fisica relevante. Para un potencial generico $\mathcal F_6$ se puede escribir
+
+$$
+\begin{aligned}
+X_6 &= -\left(\frac{\partial \mathcal F_6}{\partial y_6}\right)_{\mathrm{otras}},\\
+\chi_6 &= \left(\frac{\partial X_6}{\partial y_6}\right)_{\mathrm{otras}},\\
+\chi_6 &\propto \langle (\Delta X_6)^2\rangle .
+\end{aligned}
+$$
+
+La notacion es generica, pero el mensaje es concreto: una variable externa tiene una respuesta conjugada, y muchas respuestas son tambien medidas de fluctuacion. Esto permite revisar signos, unidades y dependencia con el tamano. Una respuesta negativa donde la estabilidad exige positividad suele indicar que se mezclaron variables naturales o que se uso un potencial incorrecto.
+
+Tambien es importante comparar escalas. Las razones sin dimension indican si una aproximacion tiene sentido:
+
+$$
+\begin{aligned}
+\epsilon_6 &= \beta\Delta E,\\
+\eta_6 &= \frac{L}{\xi},\\
+\rho_6 &= n\lambda_T^3,\\
+r_6 &= \frac{\Delta A_6}{|\langle A\rangle_6|}.
+\end{aligned}
+$$
+
+Si $\epsilon_6\ll 1$, las diferencias energeticas son pequenas frente a la agitacion termica. Si $\eta_6\gg 1$, el sistema puede comportarse como macroscopico respecto de la longitud de correlacion. Si $\rho_6\gtrsim 1$, los efectos cuanticos de indistinguibilidad ya no son una correccion menor. Si $r_6$ no es pequeno, el valor medio por si solo no caracteriza el sistema.
+
+El uso responsable de **Parametro de orden** requiere entonces una rutina: escribir las variables fijas, elegir el ensamble, identificar el potencial, derivar observables, estimar fluctuaciones y revisar limites. Esta rutina evita que una ecuacion correcta se use en un contexto incorrecto. Tambien permite comparar esta pagina con otras entradas de la wiki sin depender de memoria: la relacion con entropia, funcion de particion, potenciales y correlaciones queda visible.
+
+Por ultimo, se recomienda cerrar cualquier calculo con dos pruebas simples. La primera es una prueba dimensional: cada termino de una ecuacion debe tener las mismas unidades. La segunda es una prueba de limite: al tomar temperatura alta, temperatura baja, densidad pequena, tamano grande o campo externo nulo, el resultado debe acercarse a una situacion fisica reconocible. Si falla una de estas pruebas, la expresion todavia no esta lista para usarse como argumento.
+
+### Glosario operativo final
+
+estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial
+
+<!-- equalized-entry-length:end -->

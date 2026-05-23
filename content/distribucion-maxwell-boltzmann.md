@@ -77,6 +77,17 @@ $$
 f(v)\propto v^2 e^{-mv^2/(2k_BT)}
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\Omega$, $Z$ o $\Xi$, genere los promedios y fluctuaciones correctos.
+
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
+- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
+- Kardar, *Statistical Physics of Particles*, cap. 3: para Liouville, jerarquia BBGKY, ecuacion de Boltzmann, teorema H, conservacion e hidrodinamica.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Distribucion de Maxwell-Boltzmann** queda reservado para la idea precisa de distribucion clasica de velocidades en equilibrio. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

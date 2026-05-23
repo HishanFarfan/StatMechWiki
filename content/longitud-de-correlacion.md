@@ -76,6 +76,17 @@ $$
 G(r)\sim e^{-r/\xi}
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+La informacion de transporte de Blundell y la teoria cinetica de Kardar sugieren leer esta entrada en terminos de escalas temporales, corrientes y leyes constitutivas. El punto pedagogico es partir de un gradiente pequeno, formular el flujo correspondiente y solo despues discutir fluctuaciones, memoria o desviaciones no lineales.
+
+- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
+- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 9-10 y 33-34: para transporte, difusion, movimiento browniano, fluctuaciones, respuesta lineal y relaciones de Onsager.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Longitud de correlacion** queda reservado para la idea precisa de escala espacial sobre la que fluctuan coherentemente las variables. Su papel local es separar comportamiento regular y singular cerca del limite termodinamico. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

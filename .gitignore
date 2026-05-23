@@ -1,0 +1,6 @@
+# Local source books and extracted working files.
+sources/books/*
+!sources/books/.gitkeep
+sources/extracted/*
+!sources/extracted/.gitkeep
+

@@ -76,6 +76,17 @@ $$
 Z=\left[2\sinh(\beta\hbar\omega/2)\right]^{-3N}
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+
+- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
+- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Solido de Einstein** queda reservado para la idea precisa de modelo de solido como osciladores armonicos independientes con frecuencia comun. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

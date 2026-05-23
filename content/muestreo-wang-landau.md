@@ -76,6 +76,17 @@ $$
 P(E)\propto \frac{1}{g(E)}
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Las fuentes de transiciones de fase enfatizan que el fenomeno aparece al combinar interacciones, limite termodinamico y variables de control. Para esta entrada, la lectura tecnica consiste en seguir como cambia el parametro de orden y que aproximacion, campo medio, virial o escala critica, justifica cada ecuacion.
+
+- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
+- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
+- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Muestreo de Wang-Landau** queda reservado para la idea precisa de metodo para estimar densidades de estados mediante caminata en energia. Su papel local es convertir sumas o dinamicas imposibles de tratar exactamente en estimadores controlados. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

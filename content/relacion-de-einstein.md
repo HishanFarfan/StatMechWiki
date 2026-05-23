@@ -76,6 +76,17 @@ $$
 D=\mu k_BT
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+
+- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 9-10 y 33-34: para transporte, difusion, movimiento browniano, fluctuaciones, respuesta lineal y relaciones de Onsager.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Relacion de Einstein** queda reservado para la idea precisa de conexion entre difusion, movilidad y temperatura en equilibrio. Su papel local es describir evolucion, corrientes, disipacion y fluctuaciones de trayectorias. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

@@ -76,6 +76,17 @@ $$
 \partial_t s+\nabla\cdot\mathbf J_s=\sigma
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Las fuentes disponibles cubren no equilibrio desde transporte, teoria cinetica y respuesta lineal. Para esta entrada, la distincion central es separar estacionariedad de equilibrio: una distribucion constante puede coexistir con corrientes, disipacion y produccion de entropia, por lo que las tasas o flujos deben aparecer junto a las probabilidades.
+
+- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
+- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 9-10 y 33-34: para transporte, difusion, movimiento browniano, fluctuaciones, respuesta lineal y relaciones de Onsager.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Balance local de entropia** queda reservado para la idea precisa de ecuacion que separa cambio local de entropia, flujo de entropia y produccion interna. Su papel local es describir evolucion, corrientes, disipacion y fluctuaciones de trayectorias. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

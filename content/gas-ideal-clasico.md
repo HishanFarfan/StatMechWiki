@@ -164,6 +164,17 @@ $$
 H(p,q)=\sum_{i=1}^{N}\frac{p_i^2}{2m}.
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Los libros usan modelos simples para aislar mecanismos: dos niveles, gas ideal, solido de Einstein, Ising, van der Waals o gases cuanticos. La mejora editorial para esta entrada es hacer explicito que grados de libertad se conservan, que interacciones se descartan y que observable debe cambiar si el mecanismo propuesto es realmente relevante.
+
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
+- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
+- Kardar, *Statistical Physics of Particles*, cap. 3: para Liouville, jerarquia BBGKY, ecuacion de Boltzmann, teorema H, conservacion e hidrodinamica.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Gas ideal clasico** queda reservado para la idea precisa de la nocion de Gas ideal clasico. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

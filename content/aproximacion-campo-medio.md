@@ -76,6 +76,17 @@ $$
 m=\tanh[\beta(h+zJm)]
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Las fuentes de transiciones de fase enfatizan que el fenomeno aparece al combinar interacciones, limite termodinamico y variables de control. Para esta entrada, la lectura tecnica consiste en seguir como cambia el parametro de orden y que aproximacion, campo medio, virial o escala critica, justifica cada ecuacion.
+
+- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
+- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
+- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Aproximacion de campo medio** queda reservado para la idea precisa de sustitucion de interacciones locales por un campo efectivo promedio. Su papel local es convertir sumas o dinamicas imposibles de tratar exactamente en estimadores controlados. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

@@ -52,3 +52,13 @@ Como referencia local, la ecuacion que debe mantenerse consistente con estos cas
 $$
 \langle A\rangle=\sum_x A(x)p(x)
 $$
+
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Las fuentes cumplen aqui una funcion de calibracion: Schroeder fija la intuicion fisica, Blundell ordena el puente entre termodinamica y estadistica, y Kardar da el formalismo compacto. Al usar esta pagina como indice conviene identificar si una duda es de notacion, de calculo, de modelo o de interpretacion fisica.
+
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
+- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
+- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.

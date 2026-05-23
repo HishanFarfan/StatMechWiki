@@ -263,6 +263,207 @@ $$
 `;
 }
 
+const sourceCatalog = {
+  schroederCore:
+    "Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.",
+  schroederFree:
+    "Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.",
+  schroederRates:
+    "Schroeder, *An Introduction to Thermal Physics*, secc. 1.7: para estimar escalas de conduccion, viscosidad y difusion antes de pasar a descripciones fuera de equilibrio.",
+  blundellProbability:
+    "Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.",
+  blundellPartition:
+    "Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.",
+  blundellTransport:
+    "Blundell y Blundell, *Concepts in Thermal Physics*, caps. 9-10 y 33-34: para transporte, difusion, movimiento browniano, fluctuaciones, respuesta lineal y relaciones de Onsager.",
+  blundellQuantum:
+    "Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.",
+  blundellPhase:
+    "Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.",
+  kardarThermo:
+    "Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.",
+  kardarProbability:
+    "Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.",
+  kardarKinetic:
+    "Kardar, *Statistical Physics of Particles*, cap. 3: para Liouville, jerarquia BBGKY, ecuacion de Boltzmann, teorema H, conservacion e hidrodinamica.",
+  kardarClassical:
+    "Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.",
+  kardarInteracting:
+    "Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.",
+  kardarQuantum:
+    "Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.",
+};
+
+function normalizedTopic(page) {
+  return `${page.title} ${page.slug || ""} ${page.section || ""}`
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function hasAny(topic, needles) {
+  return needles.some((needle) => topic.includes(needle));
+}
+
+function dedupeKeepOrder(items) {
+  return [...new Set(items)];
+}
+
+function sourceItemsFor(page) {
+  const topic = normalizedTopic(page);
+  let items = [];
+
+  const bySection = {
+    "Inicio": [
+      sourceCatalog.schroederCore,
+      sourceCatalog.blundellProbability,
+      sourceCatalog.kardarClassical,
+    ],
+    "Recursos": [
+      sourceCatalog.blundellProbability,
+      sourceCatalog.schroederCore,
+      sourceCatalog.kardarProbability,
+    ],
+    "Fundamentos": [
+      sourceCatalog.kardarProbability,
+      sourceCatalog.schroederCore,
+      sourceCatalog.blundellProbability,
+    ],
+    "Ensambles": [
+      sourceCatalog.kardarClassical,
+      sourceCatalog.blundellProbability,
+      sourceCatalog.blundellPartition,
+    ],
+    "Termodinamica estadistica": [
+      sourceCatalog.kardarThermo,
+      sourceCatalog.schroederFree,
+      sourceCatalog.blundellPartition,
+    ],
+    "Modelos": [
+      sourceCatalog.kardarClassical,
+      sourceCatalog.kardarInteracting,
+      sourceCatalog.blundellPhase,
+    ],
+    "Cuantica": [
+      sourceCatalog.kardarQuantum,
+      sourceCatalog.blundellQuantum,
+      sourceCatalog.blundellPartition,
+    ],
+    "Transiciones y criticalidad": [
+      sourceCatalog.kardarInteracting,
+      sourceCatalog.blundellPhase,
+      sourceCatalog.schroederFree,
+    ],
+    "Metodos": [
+      sourceCatalog.kardarProbability,
+      sourceCatalog.kardarClassical,
+      sourceCatalog.blundellPartition,
+    ],
+    "No equilibrio": [
+      sourceCatalog.blundellTransport,
+      sourceCatalog.kardarKinetic,
+      sourceCatalog.schroederRates,
+    ],
+  };
+
+  items.push(...(bySection[page.section] || bySection.Fundamentos));
+
+  if (hasAny(topic, ["difusion", "viscosidad", "conductividad", "transporte", "browniano", "onsager", "respuesta lineal", "ruido", "correlacion", "langevin", "fokker", "hidrodinamica", "irreversibilidad"])) {
+    items.unshift(sourceCatalog.blundellTransport, sourceCatalog.kardarKinetic, sourceCatalog.schroederRates);
+  }
+
+  if (hasAny(topic, ["microcanonico", "canonico", "gran canonico", "gibbs canonico", "particion", "boltzmann", "reservorio", "equivalencia de ensambles"])) {
+    items.unshift(sourceCatalog.kardarClassical, sourceCatalog.blundellPartition, sourceCatalog.blundellProbability);
+  }
+
+  if (hasAny(topic, ["entropia", "informacion", "stirling", "gibbs paradox", "landauer", "maxwell"])) {
+    items.unshift(sourceCatalog.schroederCore, sourceCatalog.kardarProbability, sourceCatalog.blundellProbability);
+  }
+
+  if (hasAny(topic, ["potencial", "helmholtz", "gibbs", "entalpia", "capacidad", "clapeyron", "estabilidad", "compresibilidad", "susceptibilidad", "calor especifico"])) {
+    items.unshift(sourceCatalog.kardarThermo, sourceCatalog.schroederFree, sourceCatalog.blundellPartition);
+  }
+
+  if (hasAny(topic, ["gas ideal", "maxwell", "equiparticion", "libre recorrido", "efusion", "virial", "van der waals", "dieterici", "mayer"])) {
+    items.unshift(sourceCatalog.blundellPartition, sourceCatalog.blundellPhase, sourceCatalog.kardarInteracting, sourceCatalog.kardarKinetic);
+  }
+
+  if (hasAny(topic, ["ising", "fase", "critical", "landau", "campo medio", "orden", "nucleacion", "coexistencia", "renormalizacion", "univers"])) {
+    items.unshift(sourceCatalog.kardarInteracting, sourceCatalog.blundellPhase, sourceCatalog.schroederFree);
+  }
+
+  if (hasAny(topic, ["bose", "fermi", "cuant", "fonon", "foton", "cuerpo negro", "debye", "einstein", "condensacion", "ocupacion"])) {
+    items.unshift(sourceCatalog.kardarQuantum, sourceCatalog.blundellQuantum, sourceCatalog.blundellPartition);
+  }
+
+  if (hasAny(topic, ["monte carlo", "metropolis", "gillespie", "markov", "muestreo", "autocorrelacion", "jackknife", "bootstrap", "histograma", "integrador", "verlet", "simulacion", "error"])) {
+    items.unshift(sourceCatalog.kardarProbability, sourceCatalog.kardarClassical, sourceCatalog.blundellPhase);
+  }
+
+  const unique = dedupeKeepOrder(items);
+  while (unique.length < 3) unique.push(sourceCatalog.kardarClassical);
+  return unique.slice(0, 4);
+}
+
+function sourceSynthesisFor(page) {
+  const topic = normalizedTopic(page);
+  const bySection = {
+    "Inicio":
+      "La ruta que sugieren estas fuentes es construir primero el vocabulario de microestados, restricciones y promedios; despues introducir ensambles como distribuciones de probabilidad controladas; y solo al final comparar equilibrio, respuestas y procesos irreversibles. Esa secuencia evita presentar la mecanica estadistica como una lista de formulas desconectadas.",
+    "Recursos":
+      "Las fuentes cumplen aqui una funcion de calibracion: Schroeder fija la intuicion fisica, Blundell ordena el puente entre termodinamica y estadistica, y Kardar da el formalismo compacto. Al usar esta pagina como indice conviene identificar si una duda es de notacion, de calculo, de modelo o de interpretacion fisica.",
+    "Fundamentos":
+      "La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.",
+    "Ensambles":
+      "Los textos coinciden en que un ensamble no es solo una receta de pesos, sino una declaracion de que variables controla el entorno. Para esta pagina, el enriquecimiento clave es leer la normalizacion como consecuencia de una restriccion fisica y usar las fluctuaciones como criterio para distinguir ensambles que pueden dar promedios parecidos.",
+    "Termodinamica estadistica":
+      "La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.",
+    "Modelos":
+      "Los libros usan modelos simples para aislar mecanismos: dos niveles, gas ideal, solido de Einstein, Ising, van der Waals o gases cuanticos. La mejora editorial para esta entrada es hacer explicito que grados de libertad se conservan, que interacciones se descartan y que observable debe cambiar si el mecanismo propuesto es realmente relevante.",
+    "Cuantica":
+      "Las fuentes cuanticas desplazan el enfasis desde trayectorias clasicas hacia ocupaciones de estados, simetria de intercambio y densidad de niveles. Para esta pagina, el punto tecnico es decidir cuando el limite clasico es suficiente y cuando la indistinguibilidad modifica la distribucion, la energia media o la respuesta macroscopia.",
+    "Transiciones y criticalidad":
+      "La lectura de transiciones en estas fuentes sugiere distinguir coexistencia, metastabilidad, comportamiento critico y aproximaciones de campo medio. En esta entrada conviene no llamar transicion a cualquier cambio brusco en un sistema finito: el criterio debe involucrar limite termodinamico, parametro de orden, susceptibilidad o escala de correlacion.",
+    "Metodos":
+      "Los metodos se enriquecen mejor contrastandolos contra sistemas solubles de los mismos textos. Para esta pagina, el criterio editorial es indicar distribucion objetivo, estimador, sesgo, correlacion entre muestras y una prueba pequena donde el resultado exacto se conozca; asi el metodo queda ligado a reproducibilidad, no solo a implementacion.",
+    "No equilibrio":
+      "Las fuentes disponibles cubren no equilibrio desde transporte, teoria cinetica y respuesta lineal. Para esta entrada, la distincion central es separar estacionariedad de equilibrio: una distribucion constante puede coexistir con corrientes, disipacion y produccion de entropia, por lo que las tasas o flujos deben aparecer junto a las probabilidades.",
+  };
+
+  if (hasAny(topic, ["difusion", "viscosidad", "conductividad", "transporte", "browniano", "onsager", "respuesta lineal", "ruido", "correlacion", "langevin", "fokker", "hidrodinamica", "irreversibilidad"])) {
+    return "La informacion de transporte de Blundell y la teoria cinetica de Kardar sugieren leer esta entrada en terminos de escalas temporales, corrientes y leyes constitutivas. El punto pedagogico es partir de un gradiente pequeno, formular el flujo correspondiente y solo despues discutir fluctuaciones, memoria o desviaciones no lineales.";
+  }
+
+  if (hasAny(topic, ["microcanonico", "canonico", "gran canonico", "gibbs canonico", "particion", "boltzmann", "reservorio", "equivalencia de ensambles"])) {
+    return "Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\\Omega$, $Z$ o $\\Xi$, genere los promedios y fluctuaciones correctos.";
+  }
+
+  if (hasAny(topic, ["bose", "fermi", "cuant", "fonon", "foton", "cuerpo negro", "debye", "einstein", "condensacion", "ocupacion"])) {
+    return "En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.";
+  }
+
+  if (hasAny(topic, ["ising", "fase", "critical", "landau", "campo medio", "orden", "nucleacion", "coexistencia", "renormalizacion", "univers"])) {
+    return "Las fuentes de transiciones de fase enfatizan que el fenomeno aparece al combinar interacciones, limite termodinamico y variables de control. Para esta entrada, la lectura tecnica consiste en seguir como cambia el parametro de orden y que aproximacion, campo medio, virial o escala critica, justifica cada ecuacion.";
+  }
+
+  return bySection[page.section] || bySection.Fundamentos;
+}
+
+function sourceSuggestions(page) {
+  const items = sourceItemsFor(page)
+    .map((item) => `- ${item}`)
+    .join("\n");
+  return `
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+${sourceSynthesisFor(page)}
+
+${items}
+`;
+}
+
 function coherenceNote(page, markdown) {
   if (page.section === "Inicio" || page.section === "Recursos") return "";
   const concept = extractConcept(markdown, page);
@@ -286,7 +487,10 @@ function removeExistingCoherence(markdown) {
   for (const line of lines) {
     const title = headingTitle(line);
     if (title) {
-      skipping = title === "Coherencia dentro de la wiki" || title === "Ejemplos y aplicaciones simples";
+      skipping =
+        title === "Coherencia dentro de la wiki" ||
+        title === "Ejemplos y aplicaciones simples" ||
+        title === "Fuentes para profundizar";
       if (skipping) continue;
     }
     if (!skipping) output.push(line);
@@ -314,6 +518,7 @@ function cleanPage(page) {
 
   markdown = insertBeforeRelated(markdown, [
     simpleExamples(page, markdown),
+    sourceSuggestions(page),
     coherenceNote(page, markdown),
   ]);
   fs.writeFileSync(filePath, `${markdown.trimEnd()}\n`, "utf8");

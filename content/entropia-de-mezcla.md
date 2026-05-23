@@ -76,6 +76,17 @@ $$
 \Delta S_{mix}=-k_BN\sum_i x_i\ln x_i
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.
+
+- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
+- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
+- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Entropia de mezcla** queda reservado para la idea precisa de cambio de entropia asociado a combinar componentes distinguibles. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

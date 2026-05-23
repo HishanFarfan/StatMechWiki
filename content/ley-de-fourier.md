@@ -76,6 +76,16 @@ $$
 \mathbf J_Q=-\kappa\nabla T
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Las fuentes disponibles cubren no equilibrio desde transporte, teoria cinetica y respuesta lineal. Para esta entrada, la distincion central es separar estacionariedad de equilibrio: una distribucion constante puede coexistir con corrientes, disipacion y produccion de entropia, por lo que las tasas o flujos deben aparecer junto a las probabilidades.
+
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 9-10 y 33-34: para transporte, difusion, movimiento browniano, fluctuaciones, respuesta lineal y relaciones de Onsager.
+- Kardar, *Statistical Physics of Particles*, cap. 3: para Liouville, jerarquia BBGKY, ecuacion de Boltzmann, teorema H, conservacion e hidrodinamica.
+- Schroeder, *An Introduction to Thermal Physics*, secc. 1.7: para estimar escalas de conduccion, viscosidad y difusion antes de pasar a descripciones fuera de equilibrio.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Ley de Fourier** queda reservado para la idea precisa de relacion fenomenologica entre corriente de calor y gradiente de temperatura. Su papel local es describir evolucion, corrientes, disipacion y fluctuaciones de trayectorias. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

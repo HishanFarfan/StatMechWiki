@@ -76,6 +76,17 @@ $$
 \rho_A(t)=\frac{\langle A_sA_{s+t}\rangle-\langle A\rangle^2}{\operatorname{Var}(A)}
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+La informacion de transporte de Blundell y la teoria cinetica de Kardar sugieren leer esta entrada en terminos de escalas temporales, corrientes y leyes constitutivas. El punto pedagogico es partir de un gradiente pequeno, formular el flujo correspondiente y solo despues discutir fluctuaciones, memoria o desviaciones no lineales.
+
+- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
+- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 9-10 y 33-34: para transporte, difusion, movimiento browniano, fluctuaciones, respuesta lineal y relaciones de Onsager.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Medicion de autocorrelaciones** queda reservado para la idea precisa de estimacion de tiempos de correlacion en series de simulacion. Su papel local es convertir sumas o dinamicas imposibles de tratar exactamente en estimadores controlados. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

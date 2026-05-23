@@ -77,6 +77,16 @@ $$
 \Delta(T,P,N)=\int dV\, e^{-\beta PV}Z(T,V,N)
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Los textos coinciden en que un ensamble no es solo una receta de pesos, sino una declaracion de que variables controla el entorno. Para esta pagina, el enriquecimiento clave es leer la normalizacion como consecuencia de una restriccion fisica y usar las fluctuaciones como criterio para distinguir ensambles que pueden dar promedios parecidos.
+
+- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Ensamble isotermico-isobarico** queda reservado para la idea precisa de ensamble con temperatura, presion y numero de particulas fijos. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

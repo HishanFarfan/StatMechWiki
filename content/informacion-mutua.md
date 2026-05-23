@@ -76,6 +76,16 @@ $$
 I(X;Y)=\sum_{x,y}p(x,y)\ln\frac{p(x,y)}{p(x)p(y)}
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+
+- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
+- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Informacion mutua** queda reservado para la idea precisa de cantidad de informacion compartida entre variables aleatorias. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

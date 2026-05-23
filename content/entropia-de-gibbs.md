@@ -97,6 +97,17 @@ $$
 S_G=-k_B\sum_i p_i\ln p_i.
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+
+- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
+- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
+- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Entropia de Gibbs** queda reservado para la idea precisa de la nocion de Entropia de Gibbs. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

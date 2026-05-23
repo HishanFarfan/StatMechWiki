@@ -76,6 +76,16 @@ $$
 Z=\mathrm{Tr}\,T^N
 $$
 
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+Los metodos se enriquecen mejor contrastandolos contra sistemas solubles de los mismos textos. Para esta pagina, el criterio editorial es indicar distribucion objetivo, estimador, sesgo, correlacion entre muestras y una prueba pequena donde el resultado exacto se conozca; asi el metodo queda ligado a reproducibilidad, no solo a implementacion.
+
+- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
+- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Matriz de transferencia** queda reservado para la idea precisa de metodo para reescribir funciones de particion como trazas de matrices. Su papel local es convertir sumas o dinamicas imposibles de tratar exactamente en estimadores controlados. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

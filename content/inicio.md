@@ -52,3 +52,13 @@ Como referencia local, la ecuacion que debe mantenerse consistente con estos cas
 $$
 S(E,V,N)=k_B\ln\Omega(E,V,N).
 $$
+
+## Fuentes para profundizar
+
+Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+
+La ruta que sugieren estas fuentes es construir primero el vocabulario de microestados, restricciones y promedios; despues introducir ensambles como distribuciones de probabilidad controladas; y solo al final comparar equilibrio, respuestas y procesos irreversibles. Esa secuencia evita presentar la mecanica estadistica como una lista de formulas desconectadas.
+
+- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
+- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
+- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.

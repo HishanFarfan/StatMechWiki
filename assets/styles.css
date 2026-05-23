@@ -59,19 +59,15 @@ body {
 }
 
 .brand-mark {
-  width: 72px;
-  height: 72px;
-  display: grid;
-  place-items: center;
-  color: #000000;
+  width: 92px;
+  height: 92px;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
   border: 1px solid #c8ccd1;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 50%, #ffffff 0 52%, transparent 53%),
-    linear-gradient(135deg, #eaecf0, #ffffff);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 42px;
-  font-weight: 400;
+  border-radius: 2px;
+  background: #ffffff;
+  image-rendering: pixelated;
 }
 
 .brand-title {

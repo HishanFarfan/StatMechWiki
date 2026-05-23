@@ -877,7 +877,7 @@ function detailFor(section, title, concept) {
 
   const bySection = {
     "Fundamentos": {
-      definition: `Como concepto fundacional, **${title}** fija parte del lenguaje que permite pasar de microestados a macroestados. En este contexto, decir que ${concept} equivale a indicar que informacion microscopica se conserva y cual se resume estadisticamente.`,
+      definition: `Como concepto fundacional, **${title}** fija parte del lenguaje que permite pasar de microestados a macroestados. La descripcion "${concept}" indica que informacion microscopica se conserva, que informacion se resume estadisticamente y que variables son suficientes para formular el problema.`,
       physical: "La imagen fisica es la de una enorme coleccion de posibilidades microscopicas compatibles con pocos datos macroscopicos. La termodinamica emerge cuando el conteo o el promedio de esas posibilidades se vuelve estable frente a detalles irrelevantes.",
       derivation: "El camino tipico consiste en identificar el espacio de estados, definir una medida y construir una entropia o una probabilidad. Si los estados accesibles se cuentan con peso uniforme se obtiene la logica microcanonica; si se impone temperatura aparece la ponderacion de Boltzmann.",
       interpretation: "Estos conceptos son anteriores a cualquier modelo especifico. Funcionan como reglas gramaticales: determinan que significa contar estados, asignar probabilidades, tomar limites y comparar predicciones macroscopicas.",
@@ -891,21 +891,21 @@ function detailFor(section, title, concept) {
       connections: "La conexion central es con la funcion de particion y los potenciales termodinamicos. Cada ensamble tiene una funcion normalizadora propia, y el logaritmo de esa cantidad genera energia libre, potencial gran canonico u otros potenciales.",
     },
     "Termodinamica estadistica": {
-      definition: `En termodinamica estadistica, **${title}** traduce una propiedad macroscopica a lenguaje de promedios, derivadas o potenciales. Decir que ${concept} fija que respuesta o potencial se quiere controlar.`,
+      definition: `En termodinamica estadistica, **${title}** traduce una propiedad macroscopica a lenguaje de promedios, derivadas o potenciales. La descripcion "${concept}" identifica que variable conjugada, respuesta o potencial conviene controlar.`,
       physical: "La imagen fisica es una superficie termodinamica: energia, entropia, volumen, numero de particulas y campos conjugados no son independientes, sino coordenadas relacionadas por ecuaciones de estado.",
       derivation: "El desarrollo parte de un potencial apropiado y de sus diferenciales. Al derivar respecto de la variable conjugada se obtienen observables; al derivar dos veces aparecen respuestas, estabilidad y fluctuaciones.",
       interpretation: "Estas cantidades resumen la informacion microscopica en funciones de estado. Su poder esta en que no dependen del camino seguido para preparar el sistema, siempre que el estado final sea de equilibrio.",
       connections: "Se conecta con transformadas de Legendre, relaciones de Maxwell y estabilidad. Tambien enlaza con ensambles: cada potencial aparece naturalmente cuando se eligen variables controladas distintas.",
     },
     "Modelos": {
-      definition: `Como modelo, **${title}** especifica grados de libertad, energia y parametros de control. La afirmacion de que ${concept} indica que simplificacion microscopica se adopta para producir predicciones calculables.`,
+      definition: `Como modelo, **${title}** especifica grados de libertad, energia y parametros de control. La descripcion "${concept}" senala que simplificacion microscopica se adopta y que mecanismo fisico se quiere aislar.`,
       physical: "La imagen fisica es deliberadamente idealizada. El modelo conserva el mecanismo dominante y descarta detalles que no son esenciales para la pregunta: interacciones, simetrias, dimensionalidad, ocupacion o espectro.",
       derivation: "El desarrollo empieza escribiendo el Hamiltoniano o los niveles de energia. Luego se construye la funcion de particion o la medida de configuraciones y se calculan observables como energia, magnetizacion, presion o correlaciones.",
       interpretation: "Un modelo no es una copia literal del material real. Es una herramienta para aislar mecanismos. Su valor se mide por las relaciones que predice, los limites que reproduce y las fallas que revela.",
       connections: "Los modelos se conectan con ensambles y metodos de calculo. Algunos son solubles exactamente, otros requieren campo medio, matrices de transferencia, Monte Carlo o aproximaciones de baja y alta temperatura.",
     },
     "Cuantica": {
-      definition: `En el regimen cuantico, **${title}** debe formularse en terminos de estados, niveles u ocupaciones. Decir que ${concept} suele implicar indistinguibilidad, cuantizacion y restricciones de simetria.`,
+      definition: `En el regimen cuantico, **${title}** se formula en terminos de estados, niveles u ocupaciones. La descripcion "${concept}" suele implicar indistinguibilidad, cuantizacion y restricciones de simetria.`,
       physical: "La imagen fisica cambia respecto del caso clasico porque las particulas identicas no se etiquetan individualmente. Lo relevante son los modos ocupados y las reglas que permiten o prohiben multiples ocupaciones.",
       derivation: "El desarrollo natural usa el ensamble gran canonico, donde cada modo aporta factores de ocupacion. La estadistica Bose-Einstein o Fermi-Dirac surge de sumar ocupaciones permitidas con peso exponencial.",
       interpretation: "Los efectos cuanticos se vuelven visibles cuando la longitud de onda termica es comparable con la separacion media entre particulas, o cuando la temperatura cae por debajo de una escala de degeneracion.",
@@ -919,14 +919,14 @@ function detailFor(section, title, concept) {
       connections: "Se conecta con parametro de orden, longitud de correlacion, susceptibilidad, teoria de Landau y grupo de renormalizacion. Tambien exige cuidado con tamano finito y condiciones de borde.",
     },
     "Metodos": {
-      definition: `Como metodo, **${title}** es un procedimiento para calcular o aproximar propiedades estadisticas. La afirmacion de que ${concept} indica que problema computacional o analitico intenta resolver.`,
+      definition: `Como metodo, **${title}** es un procedimiento para calcular o aproximar propiedades estadisticas. La descripcion "${concept}" identifica que problema computacional o analitico intenta resolver y que tipo de error debe controlarse.`,
       physical: "La imagen fisica depende del metodo, pero el objetivo comun es convertir un problema de muchos grados de libertad en estimaciones controladas de observables, errores y tendencias con tamano del sistema.",
       derivation: "El desarrollo establece primero la distribucion objetivo o la cantidad asintotica que se quiere estimar. Despues introduce una aproximacion, una dinamica de muestreo o una transformacion que hace viable el calculo.",
       interpretation: "Un metodo siempre trae diagnosticos. No basta obtener un numero: hay que estimar convergencia, autocorrelaciones, sesgo sistematico, sensibilidad a parametros y compatibilidad con resultados exactos en limites conocidos.",
       connections: "Se conecta con modelos porque distintos modelos requieren tecnicas distintas. Tambien se conecta con fluctuaciones y funciones de correlacion, que suelen ser observables sensibles a errores de muestreo.",
     },
     "No equilibrio": {
-      definition: `Fuera del equilibrio, **${title}** describe evolucion, transporte o respuesta cuando no basta una distribucion de Gibbs estatica. Decir que ${concept} indica que variable temporal, corriente o tasa entra en juego.`,
+      definition: `Fuera del equilibrio, **${title}** describe evolucion, transporte o respuesta cuando no basta una distribucion de Gibbs estatica. La descripcion "${concept}" identifica que variable temporal, corriente, tasa o trayectoria debe incorporarse explicitamente.`,
       physical: "La imagen fisica es la de sistemas con gradientes, forzamientos, relajacion o corrientes. El equilibrio puede aparecer como estado estacionario especial, pero la dinamica importa de manera explicita.",
       derivation: "El desarrollo parte de probabilidades dependientes del tiempo, distribuciones de una particula o funciones de correlacion. La linealizacion cerca del equilibrio produce coeficientes de transporte y relaciones de respuesta.",
       interpretation: "La pregunta central no es solo cual estado es mas probable, sino como se llega a el, cuanto tarda la relajacion y que corrientes se mantienen bajo una perturbacion externa.",

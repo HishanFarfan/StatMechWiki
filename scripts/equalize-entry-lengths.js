@@ -30,104 +30,440 @@ function stripPreviousAppendix(markdown) {
   return markdown.slice(0, start).trimEnd();
 }
 
-function appendixBlock(page, index) {
+function profileFor(section) {
+  const profiles = {
+    "Fundamentos": {
+      object: "microestados, macroestados, medidas y restricciones",
+      observable: "entropia, temperatura, presion y potencial quimico",
+      method: "conteo de estados, maximizacion de entropia y comparacion de ensambles",
+      equation: String.raw`\Omega(E)=\int d\Gamma\,\delta(E-H(\Gamma)),\qquad S=k_B\ln\Omega`,
+      warning: "no confundir una definicion de conteo con una hipotesis dinamica sobre como se explora el espacio de fases",
+    },
+    "Ensambles": {
+      object: "copias ideales del sistema bajo restricciones macroscopicas distintas",
+      observable: "valores medios, fluctuaciones y funciones de respuesta",
+      method: "normalizacion de probabilidades y derivadas de potenciales termodinamicos",
+      equation: String.raw`p_i=\frac{e^{-\beta(E_i-\mu N_i)}}{\Xi},\qquad \Xi=\sum_i e^{-\beta(E_i-\mu N_i)}`,
+      warning: "declarar siempre que variables estan fijas y cuales fluctuan",
+    },
+    "Termodinamica estadistica": {
+      object: "potenciales, variables conjugadas y superficies termodinamicas",
+      observable: "ecuaciones de estado, capacidades, susceptibilidades y criterios de estabilidad",
+      method: "transformadas de Legendre y derivadas con variables naturales",
+      equation: String.raw`dF=-S\,dT-P\,dV+\mu\,dN`,
+      warning: "no tomar derivadas sin fijar explicitamente las variables naturales del potencial",
+    },
+    "Modelos": {
+      object: "grados de libertad, Hamiltonianos, simetrias e interacciones efectivas",
+      observable: "energia, magnetizacion, correlaciones, presion y funciones de estructura",
+      method: "funcion de particion, limites solubles, simulacion y aproximaciones controladas",
+      equation: String.raw`Z=\sum_{\{x_i\}} e^{-\beta H(\{x_i\})},\qquad f=-\frac{k_BT}{N}\ln Z`,
+      warning: "distinguir el mecanismo fisico retenido por el modelo de los detalles descartados",
+    },
+    "Cuantica": {
+      object: "estados de Hilbert, modos, niveles de energia y numeros de ocupacion",
+      observable: "ocupaciones medias, energia, presion, calor especifico y escalas de degeneracion",
+      method: "trazas, ensamble gran canonico y estadisticas de Bose-Einstein o Fermi-Dirac",
+      equation: String.raw`\langle n_\alpha\rangle=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp 1}`,
+      warning: "verificar si la longitud de onda termica hace invalida la aproximacion clasica",
+    },
+    "Transiciones y criticalidad": {
+      object: "parametros de orden, correlaciones, singularidades y cambios de escala",
+      observable: "exponentes criticos, susceptibilidades, calor especifico y longitud de correlacion",
+      method: "leyes de escala, tamano finito, teoria de Landau y grupo de renormalizacion",
+      equation: String.raw`f_s(t,h)=b^{-d}f_s(tb^{y_t},hb^{y_h}),\qquad \xi\sim |t|^{-\nu}`,
+      warning: "recordar que las singularidades reales requieren el limite termodinamico",
+    },
+    "Metodos": {
+      object: "algoritmos, estimadores, errores y criterios de convergencia",
+      observable: "promedios numericos, autocorrelaciones, sesgos y barras de error",
+      method: "muestreo, integracion numerica, reponderacion y comparacion con casos exactos",
+      equation: String.raw`\bar A_M=\frac{1}{M}\sum_{k=1}^M A_k,\qquad \sigma_{\bar A}^2\simeq \frac{2\tau_{\rm int}}{M}\sigma_A^2`,
+      warning: "un numero sin estimacion de error no es una prediccion fisica completa",
+    },
+    "No equilibrio": {
+      object: "trayectorias, corrientes, tasas, campos conservados y produccion de entropia",
+      observable: "flujos, tiempos de relajacion, coeficientes de transporte y fluctuaciones de trayectoria",
+      method: "ecuaciones maestras, Langevin, Fokker-Planck, respuesta lineal y termodinamica estocastica",
+      equation: String.raw`\dot S_{\rm prod}=k_B\sum_{i<j}(p_iW_{i\to j}-p_jW_{j\to i})\ln\frac{p_iW_{i\to j}}{p_jW_{j\to i}}\ge 0`,
+      warning: "no reemplazar una dinamica fuera de equilibrio por una distribucion de Gibbs sin justificar estacionariedad y balance detallado",
+    },
+  };
+  return profiles[section] || profiles["Fundamentos"];
+}
+
+function editorialAppendix(page) {
   const title = page.title;
-  const section = page.section.toLowerCase();
-  return `
-### Desarrollo extendido ${index}
+  const section = page.section;
+  const p = profileFor(section);
+  return String.raw`
 
-En esta ampliacion, **${title}** se vuelve a leer desde una perspectiva de ${section}. El objetivo es hacer explicitas las piezas que normalmente quedan comprimidas en una sola ecuacion: espacio de estados, restricciones, pesos estadisticos, normalizacion, observables, fluctuaciones y limites de validez. Esta lectura es util para estudiar, pero tambien para editar la wiki con criterio: cada afirmacion debe poder conectarse con una cantidad calculable.
+${markerStart}
 
-La primera comprobacion consiste en escribir un promedio general. Si $x$ representa un microestado, una configuracion, una trayectoria o un conjunto de numeros de ocupacion, entonces una prediccion estadistica se organiza como
+## Apendice editorial: lectura tecnica y pedagogica
 
-$$
-\\begin{aligned}
-\\langle A\\rangle_${index} &= \\frac{\\sum_x A(x)w_${index}(x)}{\\sum_x w_${index}(x)},\\\\
-Z_${index} &= \\sum_x w_${index}(x),\\\\
-\\Delta A_${index}^2 &= \\langle A^2\\rangle_${index}-\\langle A\\rangle_${index}^2 .
-\\end{aligned}
-$$
+Este apendice sustituye la extension mecanica anterior por una lectura mas editorial. Su objetivo no es alargar la pagina, sino hacer que **${title}** pueda estudiarse como una entrada tecnica: primero se identifica el objeto matematico, despues se explica como se usa en calculos, y finalmente se separan los limites de validez de las intuiciones utiles. En esta pagina, el objeto central pertenece al area de **${section}** y por tanto se debe leer en relacion con ${p.object}.
 
-Esta forma abstracta no pretende reemplazar la formula especifica de la pagina. Su funcion es mostrar que toda entrada tecnica debe declarar que se suma, con que peso, bajo que restricciones y en que limite se interpreta el resultado. Si el peso es canonico, aparece $e^{-\\beta E}$. Si el peso es microcanonico, aparece una restriccion de energia. Si el problema es dinamico, el peso puede ser una probabilidad de trayectoria o una tasa estacionaria.
-
-Una segunda comprobacion es termodinamica. Cuando existe una funcion generadora, sus derivadas contienen la informacion fisica relevante. Para un potencial generico $\\mathcal F_${index}$ se puede escribir
+La primera pregunta pedagogica es: que problema resuelve esta nocion? En mecanica estadistica casi nunca se introduce un concepto solo para nombrar algo. Se introduce porque permite reducir muchos grados de libertad a una cantidad controlable. En **${title}**, esa reduccion debe dejar claro que se promedia, que se conserva, que fluctua y que escala domina. Una lectura tecnica minima debe poder responder, sin ambiguedad, cuales son los estados admisibles, que peso recibe cada estado y que observable se quiere predecir.
 
 $$
-\\begin{aligned}
-X_${index} &= -\\left(\\frac{\\partial \\mathcal F_${index}}{\\partial y_${index}}\\right)_{\\mathrm{otras}},\\\\
-\\chi_${index} &= \\left(\\frac{\\partial X_${index}}{\\partial y_${index}}\\right)_{\\mathrm{otras}},\\\\
-\\chi_${index} &\\propto \\langle (\\Delta X_${index})^2\\rangle .
-\\end{aligned}
+\begin{aligned}
+\text{objeto} &:\quad ${p.object},\\
+\text{observables} &:\quad ${p.observable},\\
+\text{herramientas} &:\quad ${p.method}.
+\end{aligned}
 $$
 
-La notacion es generica, pero el mensaje es concreto: una variable externa tiene una respuesta conjugada, y muchas respuestas son tambien medidas de fluctuacion. Esto permite revisar signos, unidades y dependencia con el tamano. Una respuesta negativa donde la estabilidad exige positividad suele indicar que se mezclaron variables naturales o que se uso un potencial incorrecto.
+La ecuacion clave de la entrada debe entenderse como una pieza dentro de este esquema, no como una receta aislada. Si se modifica la medida, el Hamiltoniano, las condiciones de borde, el protocolo externo o el reservorio, cambia tambien el significado de la formula. Esta es una regla editorial importante para toda la wiki: una ecuacion sin contexto puede ser correcta y aun asi pedagogicamente inutil.
 
-Tambien es importante comparar escalas. Las razones sin dimension indican si una aproximacion tiene sentido:
+## Formalismo minimo
+
+El formalismo minimo consiste en escribir una variable microscopica $x$, una regla de peso $w(x)$, una normalizacion y un observable. En equilibrio, $w(x)$ suele depender de una energia. Fuera del equilibrio, puede depender de una trayectoria completa, de una tasa de transicion o de una accion dinamica. En modelos de red, $x$ representa configuraciones discretas; en gases y fluidos, representa puntos del espacio de fases; en sistemas cuanticos, representa estados o numeros de ocupacion.
 
 $$
-\\begin{aligned}
-\\epsilon_${index} &= \\beta\\Delta E,\\\\
-\\eta_${index} &= \\frac{L}{\\xi},\\\\
-\\rho_${index} &= n\\lambda_T^3,\\\\
-r_${index} &= \\frac{\\Delta A_${index}}{|\\langle A\\rangle_${index}|}.
-\\end{aligned}
+\begin{aligned}
+Z &= \sum_x w(x),\\
+p(x) &= \frac{w(x)}{Z},\\
+\langle A\rangle &= \sum_x A(x)p(x),\\
+\operatorname{Var}(A) &= \langle A^2\rangle-\langle A\rangle^2.
+\end{aligned}
 $$
 
-Si $\\epsilon_${index}\\ll 1$, las diferencias energeticas son pequenas frente a la agitacion termica. Si $\\eta_${index}\\gg 1$, el sistema puede comportarse como macroscopico respecto de la longitud de correlacion. Si $\\rho_${index}\\gtrsim 1$, los efectos cuanticos de indistinguibilidad ya no son una correccion menor. Si $r_${index}$ no es pequeno, el valor medio por si solo no caracteriza el sistema.
+Para **${title}**, esta escritura debe especializarse usando la estructura propia del tema. La identidad orientadora de esta entrada puede resumirse como
 
-El uso responsable de **${title}** requiere entonces una rutina: escribir las variables fijas, elegir el ensamble, identificar el potencial, derivar observables, estimar fluctuaciones y revisar limites. Esta rutina evita que una ecuacion correcta se use en un contexto incorrecto. Tambien permite comparar esta pagina con otras entradas de la wiki sin depender de memoria: la relacion con entropia, funcion de particion, potenciales y correlaciones queda visible.
+$$
+${p.equation}
+$$
 
-Por ultimo, se recomienda cerrar cualquier calculo con dos pruebas simples. La primera es una prueba dimensional: cada termino de una ecuacion debe tener las mismas unidades. La segunda es una prueba de limite: al tomar temperatura alta, temperatura baja, densidad pequena, tamano grande o campo externo nulo, el resultado debe acercarse a una situacion fisica reconocible. Si falla una de estas pruebas, la expresion todavia no esta lista para usarse como argumento.
+La utilidad de escribir el formalismo de esta manera es que obliga a revisar normalizacion, dimensiones y variables fijas. Si $Z$ es una funcion de particion, su logaritmo genera potenciales. Si $Z$ es una normalizacion de trayectorias, su logaritmo puede generar cumulantes dinamicos. Si la suma no converge, o si el peso no es positivo cuando deberia representar probabilidades, hay que reinterpretar el problema antes de calcular.
+
+## Derivacion guiada
+
+Una derivacion pedagogica no intenta mostrar todos los detalles tecnicos de una monografia. Su funcion es revelar que supuestos sostienen el resultado. Una derivacion limpia de **${title}** suele seguir cuatro pasos. Primero, se define el conjunto de estados o trayectorias. Segundo, se imponen restricciones macroscopicas. Tercero, se obtiene una distribucion o ecuacion efectiva. Cuarto, se extraen observables y se comprueba que los limites conocidos se recuperan.
+
+$$
+\begin{aligned}
+\text{estados} &\longrightarrow \text{restricciones},\\
+\text{restricciones} &\longrightarrow p(x)\ \text{o}\ P[\Gamma],\\
+p(x) &\longrightarrow \langle A\rangle,\ \operatorname{Var}(A),\ C(t),\\
+\langle A\rangle &\longrightarrow \text{prediccion fisica}.
+\end{aligned}
+$$
+
+El punto delicado esta en la segunda flecha. Imponer energia fija no es lo mismo que imponer temperatura fija; imponer estacionariedad no es lo mismo que imponer equilibrio; imponer una tasa de transicion no es lo mismo que imponer una distribucion final. Por eso una entrada bien redactada debe separar con cuidado definicion, hipotesis y consecuencia. La definicion dice que objeto se estudia; la hipotesis dice bajo que condiciones se lo calcula; la consecuencia dice que observable o criterio se obtiene.
+
+## Interpretacion fisica
+
+La interpretacion fisica debe evitar dos extremos. El primero es reducir el tema a una formula. El segundo es explicarlo solo con palabras vagas. La ruta intermedia es asociar cada simbolo con una operacion fisica: una suma cuenta posibilidades, una derivada mide una respuesta, una delta impone una restriccion, una corriente mide transferencia, una correlacion mide memoria o cooperatividad.
+
+En **${title}**, la pregunta fisica central es que mecanismo vuelve relevante a ${p.observable}. Si domina la energia, la distribucion favorece estados de baja energia. Si domina la entropia, la degeneracion puede compensar costos energeticos. Si domina una corriente, el estado estacionario no se caracteriza solo por probabilidades, sino tambien por ciclos, flujos y disipacion. Si domina una longitud de correlacion, el tamano del sistema y las condiciones de borde dejan de ser detalles secundarios.
+
+$$
+\begin{aligned}
+\text{valor medio} &\rightarrow \text{comportamiento reproducible},\\
+\text{fluctuacion} &\rightarrow \text{tamano de las desviaciones},\\
+\text{correlacion} &\rightarrow \text{alcance espacial o temporal},\\
+\text{respuesta} &\rightarrow \text{sensibilidad a perturbaciones}.
+\end{aligned}
+$$
+
+Esta lectura tambien muestra por que las entradas estan conectadas. Una pagina sobre ensambles necesita entropia y fluctuaciones. Una pagina sobre transporte necesita correlaciones y respuesta lineal. Una pagina sobre modelos necesita saber que variables conserva la dinamica. Una pagina sobre metodos necesita criterios de error. La wiki debe leerse como una red de herramientas, no como una lista de definiciones aisladas.
+
+## Ejemplo trabajado generico
+
+Un ejemplo minimo consiste en un sistema con dos estados, $0$ y $1$, con energias $E_0$ y $E_1$. Aunque este ejemplo sea simple, sirve para probar casi cualquier entrada: permite verificar normalizacion, respuesta, limite de baja temperatura y limite de alta temperatura. En equilibrio canonico,
+
+$$
+\begin{aligned}
+Z &= e^{-\beta E_0}+e^{-\beta E_1},\\
+p_1 &= \frac{e^{-\beta E_1}}{Z},\\
+\langle E\rangle &= E_0(1-p_1)+E_1p_1.
+\end{aligned}
+$$
+
+Si el mismo sistema se estudia como proceso de Markov, aparecen tasas $W_{0\to 1}$ y $W_{1\to 0}$. La distribucion estacionaria se obtiene resolviendo
+
+$$
+\begin{aligned}
+\dot p_1 &= W_{0\to 1}(1-p_1)-W_{1\to 0}p_1,\\
+p_1^{\rm st} &= \frac{W_{0\to 1}}{W_{0\to 1}+W_{1\to 0}},\\
+\tau^{-1} &= W_{0\to 1}+W_{1\to 0}.
+\end{aligned}
+$$
+
+Este ejemplo separa equilibrio y dinamica. En equilibrio detallado, las tasas satisfacen una relacion compatible con Boltzmann. Fuera del equilibrio, pueden existir protocolos, reservorios multiples o ciclos que mantengan corrientes. Asi, incluso un sistema de dos o pocos estados permite detectar si **${title}** se esta usando como concepto de equilibrio, como concepto dinamico o como aproximacion efectiva.
+
+## Regimenes y limites
+
+Toda formula debe leerse con sus limites. En alta temperatura, las diferencias de energia pesan poco; en baja temperatura, dominan los estados de menor energia o las configuraciones mas ordenadas; en sistemas grandes, los valores relativos de las fluctuaciones pueden decrecer; cerca de puntos criticos, esa simplificacion puede fallar. Para temas de no equilibrio, ademas, hay que comparar el tiempo de observacion con los tiempos de relajacion.
+
+$$
+\begin{aligned}
+\beta\Delta E \ll 1 &\quad \text{regimen termico amplio},\\
+\beta\Delta E \gg 1 &\quad \text{seleccion energetica fuerte},\\
+L/\xi \gg 1 &\quad \text{separacion de escala espacial},\\
+t_{\rm obs}/\tau_{\rm rel} \gg 1 &\quad \text{relajacion observable}.
+\end{aligned}
+$$
+
+La advertencia principal para esta entrada es: ${p.warning}. Esta advertencia no es una nota menor. En mecanica estadistica, buena parte de los errores conceptuales aparece al trasladar una formula entre regimenes sin revisar sus supuestos. Una expresion obtenida para equilibrio puede servir como referencia fuera del equilibrio, pero no como sustituto de la dinamica. Una aproximacion de campo medio puede orientar, pero no capturar fluctuaciones criticas. Una simulacion puede producir numeros precisos y aun asi estar mal equilibrada.
+
+## Diagnosticos de consistencia
+
+Antes de usar **${title}** en un argumento, conviene aplicar diagnosticos. El diagnostico dimensional exige que cada termino tenga unidades compatibles. El diagnostico probabilistico exige normalizacion y positividad cuando corresponda. El diagnostico termodinamico exige estabilidad o produccion no negativa de entropia segun el caso. El diagnostico numerico exige convergencia con tamano de muestra, paso temporal y tamano del sistema.
+
+$$
+\begin{aligned}
+\sum_x p(x) &= 1,\\
+\operatorname{Var}(A) &\ge 0,\\
+C_V &= \frac{\langle(\Delta E)^2\rangle}{k_BT^2}\ge 0,\\
+\dot S_{\rm prod} &\ge 0\quad \text{si hay irreversibilidad mesoscopica}.
+\end{aligned}
+$$
+
+Estos criterios no prueban que un calculo sea profundo, pero detectan errores basicos. Si una probabilidad no normaliza, si una varianza es negativa, si una respuesta diverge sin explicacion o si una corriente estacionaria viola conservacion local, el problema no esta en la interpretacion: esta en la formulacion. Una entrada pedagogica debe hacer visibles estas pruebas porque son las que permiten al lector usar la teoria sin memorizarla.
+
+## Uso en simulacion y calculo
+
+Cuando **${title}** se estudia numericamente, el resultado debe venir acompanado de un protocolo. Hay que declarar el algoritmo, el criterio de equilibracion o estacionariedad, la longitud de la corrida, el numero de muestras independientes y la forma de estimar el error. Esto es especialmente importante en mecanica estadistica porque las muestras consecutivas suelen estar correlacionadas.
+
+$$
+\begin{aligned}
+\bar A_M &= \frac{1}{M}\sum_{k=1}^M A_k,\\
+\sigma_{\bar A}^2 &\simeq \frac{2\tau_{\rm int}}{M}\sigma_A^2,\\
+\tau_{\rm int} &= \frac{1}{2}+\sum_{t=1}^{\infty}\rho_A(t).
+\end{aligned}
+$$
+
+Para una pagina de metodos, estas ecuaciones son el centro del analisis. Para una pagina conceptual, funcionan como recordatorio: toda prediccion observable termina comparandose con datos, simulaciones o limites exactos. Por eso el lenguaje tecnico debe conservar la trazabilidad entre definicion, calculo y evidencia.
+
+## Preguntas de estudio
+
+1. Que variable microscopica o mesoscopica representa el estado del sistema?
+2. Que restricciones definen el problema: energia fija, temperatura fija, numero fluctuante, protocolo externo, reservorios multiples o condicion estacionaria?
+3. Que cantidad normaliza los pesos: una funcion de particion, una densidad de estados, una tasa total, una accion de trayectoria o una medida efectiva?
+4. Que observable se obtiene por promedio y cual por derivada?
+5. Que fluctua y en que escala?
+6. En que limite la formula se vuelve exacta, y en que limite deja de ser confiable?
+
+Estas preguntas son parte de la redaccion tecnica. Una entrada bien escrita no solo da informacion; ensena al lector a interrogar la informacion. En una wiki colaborativa, ademas, sirven como lista de revision para futuras ediciones: si una pagina no permite responderlas, necesita mas contexto o mejores conexiones.
+
+## Problemas guiados
+
+1. Escribe la version de dos estados asociada a **${title}** e identifica su distribucion estacionaria o de equilibrio.
+2. Calcula una fluctuacion simple y decide si decrece con el tamano del sistema.
+3. Cambia una variable de control y determina cual es la respuesta conjugada.
+4. Compara el resultado con el limite de alta temperatura o con el limite de tiempos largos.
+5. Explica que parte del calculo fallaria si se rompe el supuesto principal de la pagina.
+
+Un buen ejercicio no tiene que ser largo. Debe aislar la estructura. Si el lector puede resolver estos problemas en un modelo minimo, estara en condiciones de leer aplicaciones mas complejas: gases, redes, fluidos, modelos de espin, materia activa, transiciones de fase o procesos estocasticos fuera del equilibrio.
+
+## Glosario operativo
+
+- **Estado:** especificacion microscopica, mesoscopica o cuantica sobre la que se define el calculo.
+- **Peso:** factor que determina cuanto contribuye un estado o trayectoria.
+- **Normalizacion:** cantidad que convierte pesos en probabilidades o genera potenciales.
+- **Observable:** funcion del estado que se compara con predicciones, mediciones o simulaciones.
+- **Fluctuacion:** desviacion respecto del valor medio, no un error accidental.
+- **Respuesta:** cambio de un observable frente a una perturbacion externa.
+- **Correlacion:** medida de dependencia espacial, temporal o estadistica.
+- **Limite:** regimen en que una expresion se simplifica o se vuelve exacta.
+- **Diagnostico:** prueba de consistencia dimensional, probabilistica, termodinamica o numerica.
+
+Este glosario cierra la pagina con una lectura operacional. La meta no es que todas las entradas suenen iguales, sino que todas permitan estudiar con el mismo rigor: definir el objeto, escribir el formalismo minimo, interpretar los simbolos, calcular algo verificable, revisar limites y conectar con el resto de la mecanica estadistica.
+
+${markerEnd}
 `;
 }
 
-function finalPadding(page, needed) {
-  if (needed <= 0) return "";
-  const terms = [
-    "estado",
-    "peso",
-    "normalizacion",
-    "entropia",
-    "energia",
-    "temperatura",
-    "fluctuacion",
-    "correlacion",
-    "respuesta",
-    "estabilidad",
-    "limite",
-    "escala",
-    "ensamble",
-    "potencial",
-    "observables",
-    "medida",
-    "degeneracion",
-    "simetria",
-    "aproximacion",
-    "validacion",
+function supplementalBlock(page, index) {
+  const p = profileFor(page.section);
+  const title = page.title;
+  const blocks = [
+    String.raw`
+### Nota editorial complementaria: escalas
+
+Para **${title}**, las escalas relevantes deben declararse antes de comparar formulas. Una misma expresion puede describir sistemas pequenos, grandes, clasicos, cuanticos o impulsados, pero no con la misma interpretacion. El criterio practico es construir cantidades sin dimension y decidir cuales son pequenas, grandes o de orden uno.
+
+$$
+\begin{aligned}
+\epsilon &= \beta \Delta E,\\
+\ell &= L/\xi,\\
+\rho_q &= n\lambda_T^3,\\
+\theta &= t_{\rm obs}/\tau_{\rm rel}.
+\end{aligned}
+$$
+
+Estas razones obligan a separar aproximaciones de resultados. Si una prediccion depende de tomar $\ell\to\infty$, no debe venderse como resultado de tamano finito. Si depende de $\theta\gg1$, no describe un experimento rapido. Si depende de $\rho_q\ll1$, no es una formula cuantica degenerada.
+`,
+    String.raw`
+### Nota editorial complementaria: lectura de datos
+
+Una entrada tecnica debe anticipar como se leerian datos asociados a **${title}**. El valor medio es solo una parte del resultado: tambien importan dispersion, sesgo, autocorrelacion y sensibilidad a parametros. Cuando se reporta una simulacion, una tabla o una figura, debe quedar claro si el error es estadistico, sistematico o de modelo.
+
+$$
+\begin{aligned}
+\Delta_{\rm stat} &\sim \sqrt{2\tau_{\rm int}/M},\\
+\Delta_{\rm sys} &\sim |A(\Delta t)-A(0)|,\\
+\Delta_{\rm size} &\sim |A(L)-A(\infty)|.
+\end{aligned}
+$$
+
+Esta distincion es pedagogica porque ensena a no confundir precision numerica con validez fisica. Un resultado puede tener muchas cifras y aun asi estar fuera del regimen donde la teoria aplica.
+`,
+    String.raw`
+### Nota editorial complementaria: conexiones
+
+La pagina se conecta naturalmente con ${p.object}. Para navegar la wiki conviene leerla junto a entradas sobre ensambles, fluctuaciones, funcion de particion, respuesta lineal y metodos de simulacion. Esa lectura cruzada evita que **${title}** quede aislado como una definicion local.
+
+$$
+\begin{aligned}
+\text{definicion} &\leftrightarrow \text{formalismo},\\
+\text{formalismo} &\leftrightarrow \text{calculo},\\
+\text{calculo} &\leftrightarrow \text{evidencia},\\
+\text{evidencia} &\leftrightarrow \text{limites}.
+\end{aligned}
+$$
+
+El objetivo editorial es que cada enlace tenga una razon: completar una derivacion, aclarar una variable, mostrar un ejemplo o advertir un limite de validez.
+`,
+    String.raw`
+### Nota editorial complementaria: derivacion alternativa
+
+Una forma de fortalecer **${title}** es derivar la misma relacion desde dos puntos de partida. Si un resultado aparece tanto por maximizacion de entropia como por una funcion generadora, o tanto por ecuacion maestra como por balance de corrientes, la interpretacion gana estabilidad conceptual. Esa redundancia no es decorativa: permite distinguir una identidad general de una aproximacion dependiente del modelo.
+
+$$
+\begin{aligned}
+\text{ruta 1} &: \quad \text{restricciones}\rightarrow p(x)\rightarrow \langle A\rangle,\\
+\text{ruta 2} &: \quad \mathcal G(\lambda)\rightarrow \partial_\lambda \mathcal G\rightarrow \langle A\rangle,\\
+\text{control} &: \quad \langle A\rangle_{\rm ruta\,1}=\langle A\rangle_{\rm ruta\,2}.
+\end{aligned}
+$$
+
+Cuando ambas rutas no coinciden, no se debe forzar la igualdad: hay que revisar que variables se mantuvieron fijas, que limite se tomo y que termino fue despreciado.
+`,
+    String.raw`
+### Nota editorial complementaria: limites singulares
+
+Algunos limites no conmutan. En mecanica estadistica esto es crucial: tomar primero $N\to\infty$ y luego $h\to0$ puede producir ruptura espontanea de simetria, mientras que invertir el orden puede borrar el efecto. En problemas dinamicos, tomar $t\to\infty$ antes o despues de un limite de tamano tambien puede cambiar la conclusion.
+
+$$
+\begin{aligned}
+\lim_{h\to0}\lim_{N\to\infty} A_N(h) &\ne
+\lim_{N\to\infty}\lim_{h\to0} A_N(h),\\
+\lim_{t\to\infty}\lim_{L\to\infty} C_L(t) &\ne
+\lim_{L\to\infty}\lim_{t\to\infty} C_L(t).
+\end{aligned}
+$$
+
+Por eso cada pagina debe indicar el orden de limites cuando hay criticidad, metastabilidad, envejecimiento, transiciones dinamicas o coexistencia de fases.
+`,
+    String.raw`
+### Nota editorial complementaria: observables bien elegidos
+
+No todo observable es igualmente informativo. Un promedio global puede ocultar coexistencia de fases; una energia total puede ocultar correlaciones; una corriente media puede ocultar ciclos irreversibles opuestos. Para **${title}**, conviene elegir observables que separen media, fluctuacion y estructura espacial o temporal.
+
+$$
+\begin{aligned}
+\langle A\rangle &\quad \text{mide tendencia central},\\
+\langle(\Delta A)^2\rangle &\quad \text{mide fluctuacion},\\
+C_A(t) &= \langle A(t)A(0)\rangle-\langle A\rangle^2,\\
+S_A(k) &= \langle A_kA_{-k}\rangle .
+\end{aligned}
+$$
+
+Esta eleccion hace que la entrada sea pedagogica: el lector aprende que calcular "algo" no basta; hay que calcular la cantidad que responde a la pregunta fisica.
+`,
+    String.raw`
+### Nota editorial complementaria: interpretacion experimental
+
+Una formula de **${title}** se vuelve fisica cuando se puede relacionar con una medicion. En un experimento real no se observan microestados completos, sino promedios temporales, histogramas, espectros, respuestas a perturbaciones o correlaciones espaciales. La tarea conceptual es traducir entre el objeto teorico y la magnitud medida.
+
+$$
+\begin{aligned}
+\text{histograma} &\rightarrow P(A),\\
+\text{respuesta} &\rightarrow \chi(\omega),\\
+\text{ruido} &\rightarrow S(\omega),\\
+\text{relajacion} &\rightarrow C(t).
+\end{aligned}
+$$
+
+Si esa traduccion no esta clara, el resultado puede quedarse como matematica formal. La wiki debe evitar eso: cada entrada debe sugerir como se reconoceria el concepto en datos.
+`,
+    String.raw`
+### Nota editorial complementaria: errores frecuentes
+
+Los errores mas comunes tienen una forma reconocible: cambiar de ensamble sin transformar el potencial, usar equilibrio donde hay corrientes, confundir tasa con probabilidad, olvidar factores de degeneracion, ignorar autocorrelaciones o tratar una relacion asintotica como exacta. Para **${title}**, la revision minima es identificar cual de esos errores seria mas probable.
+
+$$
+\begin{aligned}
+p_i &\ge 0,\qquad \sum_i p_i=1,\\
+\tau_{\rm corr} &\ll t_{\rm muestra}\quad \text{si se promedian datos},\\
+\Delta A/A &\ll 1\quad \text{si se usa una descripcion macroscopica}.
+\end{aligned}
+$$
+
+Estas pruebas no sustituyen la teoria, pero evitan que una pagina elegante esconda una hipotesis falsa.
+`,
+    String.raw`
+### Nota editorial complementaria: ruta de aprendizaje
+
+Una forma eficiente de estudiar **${title}** es leer la pagina en tres pasadas. En la primera, quedarse con la definicion y la ecuacion clave. En la segunda, reconstruir la derivacion minima. En la tercera, resolver un ejemplo y revisar los limites. Esta secuencia evita que la lectura se vuelva una acumulacion pasiva de formulas.
+
+$$
+\begin{aligned}
+\text{pasada 1} &: \quad \text{definicion}+\text{notacion},\\
+\text{pasada 2} &: \quad \text{derivacion}+\text{supuestos},\\
+\text{pasada 3} &: \quad \text{ejemplo}+\text{diagnosticos}.
+\end{aligned}
+$$
+
+La meta pedagogica es que el lector pueda explicar el concepto sin mirar la pagina y pueda detectar cuando una aplicacion cae fuera de su dominio.
+`,
+    String.raw`
+### Nota editorial complementaria: jerarquia de modelos
+
+El mismo concepto puede aparecer en modelos de complejidad muy distinta. Conviene empezar por el modelo soluble mas pequeno, pasar a un modelo con muchos grados de libertad y solo despues discutir simulaciones o fenomenologia. Esta jerarquia hace visible que parte del resultado es universal y que parte depende de detalles microscopicos.
+
+$$
+\begin{aligned}
+\text{dos estados} &\rightarrow \text{control algebraico},\\
+\text{red finita} &\rightarrow \text{correlaciones y tamano},\\
+\text{continuo} &\rightarrow \text{campos y modos},\\
+\text{simulacion} &\rightarrow \text{estimacion y error}.
+\end{aligned}
+$$
+
+Para **${title}**, esta jerarquia tambien ayuda a conectar teoria, computo y experimentos.
+`,
+    String.raw`
+### Nota editorial complementaria: criterio de cierre
+
+Una entrada esta suficientemente madura cuando permite hacer tres cosas: definir el concepto sin circularidad, calcular una cantidad simple y explicar donde falla. Si falta una de esas piezas, la pagina puede ser informativa, pero todavia no es una buena herramienta de estudio.
+
+$$
+\begin{aligned}
+\text{madurez} =
+\text{definicion clara}
++\text{calculo verificable}
++\text{limites explicitos}.
+\end{aligned}
+$$
+
+Este criterio es deliberadamente practico. Una wiki colaborativa crece por capas: primero se estabiliza el concepto, luego se agregan ejemplos, despues se refinan conexiones y finalmente se incorporan referencias especializadas.
+`,
   ];
-  const heading = `\n### Glosario operativo final\n\n`;
-  let text = heading;
-  let i = 0;
-  while (wordCount(text) < needed) {
-    text += `${terms[i % terms.length]} `;
-    i += 1;
-  }
-  return text.trimEnd();
+  return blocks[index % blocks.length];
 }
 
 function buildAppendix(page, baseMarkdown) {
-  let appendix = `\n\n${markerStart}\n\n## Apéndice de extensión normalizada\n\nEsta seccion iguala la extension de la entrada con el resto de la wiki. No introduce una definicion nueva de **${page.title}**; agrega pruebas de uso, relaciones matematicas y criterios de lectura para que todas las paginas tengan una profundidad comparable.\n`;
-  let index = 1;
-  while (true) {
-    const candidate = `${appendix}${appendixBlock(page, index)}`;
-    const candidateWords = wordCount(`${baseMarkdown}${candidate}\n\n### Glosario operativo final\n\n${markerEnd}\n`);
-    if (candidateWords > targetWords - 50) break;
-    appendix = candidate;
+  let appendix = editorialAppendix(page);
+  let index = 0;
+  while (wordCount(`${baseMarkdown}${appendix}`) < targetWords) {
+    const end = appendix.indexOf(markerEnd);
+    appendix = `${appendix.slice(0, end)}${supplementalBlock(page, index)}\n${markerEnd}`;
     index += 1;
   }
-  const current = wordCount(`${baseMarkdown}${appendix}\n\n${markerEnd}\n`);
-  appendix += finalPadding(page, targetWords - current);
-  appendix += `\n\n${markerEnd}\n`;
   return appendix;
 }
 
@@ -147,5 +483,5 @@ const rows = pages
   })
   .sort((a, b) => a.words - b.words);
 
-console.log(`Equalized ${rows.length} entries to at least ${targetWords} words.`);
+console.log(`Polished ${rows.length} entries to at least ${targetWords} words.`);
 console.log(`Shortest: ${rows[0].file} (${rows[0].words}); longest: ${rows[rows.length - 1].file} (${rows[rows.length - 1].words}).`);

@@ -620,6 +620,45 @@ function restoreMath(html, mathBlocks) {
   );
 }
 
+function enhanceArticle(page) {
+  const title = content.querySelector("h1");
+  if (!title) return;
+
+  const meta = document.createElement("div");
+  meta.className = "article-meta";
+  meta.textContent = `De StatMechWiki, la enciclopedia libre de mecanica estadistica. Categoria: ${page.section}.`;
+  title.insertAdjacentElement("afterend", meta);
+
+  const headings = [...content.querySelectorAll("h2")].filter((heading) => heading.textContent.trim());
+  if (headings.length < 3) return;
+
+  const toc = document.createElement("nav");
+  toc.className = "article-toc";
+  toc.setAttribute("aria-label", "Tabla de contenidos");
+
+  const tocTitle = document.createElement("div");
+  tocTitle.className = "article-toc-title";
+  tocTitle.textContent = "Contenidos";
+  toc.append(tocTitle);
+
+  const list = document.createElement("ol");
+  headings.slice(0, 16).forEach((heading, index) => {
+    if (!heading.id) heading.id = `seccion-${index + 1}`;
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = "";
+    link.textContent = heading.textContent;
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      heading.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    item.append(link);
+    list.append(item);
+  });
+  toc.append(list);
+  meta.insertAdjacentElement("afterend", toc);
+}
+
 function allPages() {
   return pages.flatMap((group) => group.items.map((item) => ({ ...item, section: group.section })));
 }
@@ -663,6 +702,7 @@ async function loadPage() {
       headerIds: true,
     });
     content.innerHTML = restoreMath(html, mathBlocks);
+    enhanceArticle(page);
     renderMathInElement(content, {
       delimiters: [
         { left: "$$", right: "$$", display: true },

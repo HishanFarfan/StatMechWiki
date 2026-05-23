@@ -174,15 +174,32 @@ function toItem([title, slug, file]) {
 function topicPage(topic) {
   const [section, title, slug, concept, equation] = topic;
   const related = relatedFor(section, slug);
+  const detail = detailFor(section, title, concept);
+  const workflow = workflowFor(section, title);
+  const limits = limitsFor(section);
   return `# ${title}
 
 ## Resumen
 
-**${title}** es una entrada troncal de ${section.toLowerCase()} dentro de la mecanica estadistica. Su papel principal es describir ${concept}. Esta pagina resume la definicion operativa, las ecuaciones minimas y las conexiones con otros conceptos de la wiki.
+**${title}** es una entrada troncal de ${section.toLowerCase()} dentro de la mecanica estadistica. Su papel principal se resume asi: ${concept}. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+
+En una lectura rapida, esta pagina responde tres preguntas. Primero, que se esta contando, promediando o aproximando. Segundo, bajo que variables se mantiene controlado el sistema. Tercero, que predicciones fisicas se obtienen cuando el concepto se inserta en un ensamble, un modelo o un limite termodinamico.
+
+## Definicion operativa
+
+En mecanica estadistica conviene definir **${title}** por su uso operativo: ${concept}. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+
+${detail.definition}
+
+Una definicion operativa siempre debe declarar el sistema, las variables fijas y la medida con la que se comparan estados. Si esas piezas no estan especificadas, dos expresiones formalmente parecidas pueden describir problemas fisicamente distintos.
 
 ## Idea fisica
 
-La utilidad de este concepto aparece cuando se quiere pasar de una descripcion microscopica a una afirmacion macroscopica controlada. En la practica, fija que variables se consideran relevantes, que aproximaciones se estan usando y que cantidades pueden compararse entre modelos o experimentos.
+La utilidad de este concepto aparece cuando se quiere pasar de una descripcion microscopica a una afirmacion macroscopica controlada. En la practica, fija que variables se consideran relevantes, que aproximaciones se estan usando y que cantidades pueden compararse entre modelos, simulaciones o experimentos.
+
+${detail.physical}
+
+Una buena prueba de comprension es preguntar que cambia si se modifica la energia, el volumen, la temperatura, el numero de particulas o el campo externo. Si la respuesta no es clara, probablemente falta identificar el ensamble natural o el potencial termodinamico correcto.
 
 ## Ecuacion clave
 
@@ -190,18 +207,51 @@ $$
 ${equation}
 $$
 
-La ecuacion anterior debe leerse como una forma canonica de la entrada, no como la unica formulacion posible. En problemas concretos puede requerir condiciones de borde, factores de degeneracion, una medida de espacio de fases o un limite termodinamico bien definido.
+La ecuacion anterior debe leerse como una forma canonica de la entrada, no como la unica formulacion posible. En problemas concretos puede requerir condiciones de borde, factores de degeneracion, una medida de espacio de fases, una convencion de normalizacion o un limite termodinamico bien definido.
+
+## Notacion y variables
+
+- $k_B$ es la constante de Boltzmann y fija la escala entre entropia y temperatura.
+- $T$ es la temperatura absoluta; se usa tambien $\\beta=1/(k_BT)$.
+- $E$, $V$ y $N$ denotan energia, volumen y numero de particulas cuando el sistema es material.
+- $Z$, $\\Xi$ o funciones analogas representan sumas estadisticas que normalizan probabilidades.
+- Los promedios $\\langle A\\rangle$ se toman sobre el ensamble o proceso estocastico que corresponda.
+
+En esta wiki se intenta mantener explicitas las variables fijas. Esa practica evita confundir, por ejemplo, una derivada a volumen fijo con una derivada a presion fija, o una fluctuacion canonica con una restriccion microcanonica.
+
+## Desarrollo minimo
+
+${detail.derivation}
+
+Un desarrollo completo suele seguir el mismo patron. Se parte de un conjunto de microestados o trayectorias, se asignan pesos compatibles con la informacion disponible, se normaliza la distribucion y luego se obtienen observables por promedios. El contenido fisico aparece en las restricciones y en el limite donde esos promedios se vuelven reproducibles.
+
+## Interpretacion fisica
+
+${detail.interpretation}
+
+La interpretacion correcta separa tres niveles. El nivel microscopico habla de configuraciones, energias, ocupaciones o trayectorias. El nivel estadistico habla de pesos, promedios, fluctuaciones y correlaciones. El nivel termodinamico habla de potenciales, ecuaciones de estado y estabilidad. **${title}** es util precisamente porque permite moverse entre esos niveles sin perder de vista las hipotesis.
 
 ## Uso tipico
 
-- Identificar la escala o variable fisica dominante.
-- Conectar un modelo microscopico con una cantidad termodinamica medible.
-- Decidir que ensamble, potencial o aproximacion es natural.
-- Comparar limites de baja temperatura, alta temperatura, baja densidad o gran tamano.
+${workflow}
+
+## Ejemplo de lectura
+
+Supongamos que se tiene un modelo con Hamiltoniano conocido y se quiere predecir una cantidad observable. La estrategia es identificar primero las restricciones externas: energia fija, temperatura fija, potencial quimico fijo, presion fija o dinamica impuesta. Despues se elige la distribucion estadistica compatible con esas restricciones. En ese marco, **${title}** entra como una herramienta para escribir pesos, estimar escalas o interpretar derivadas.
+
+Si el sistema es pequeno, las fluctuaciones pueden ser comparables al valor medio. Si el sistema es grande y de corto alcance, muchas cantidades se concentran alrededor de su valor termodinamico. Esta diferencia explica por que una misma ecuacion puede funcionar como definicion exacta en un ensamble y como aproximacion macroscopica en otro.
+
+## Conexion con otros conceptos
+
+${detail.connections}
+
+En particular, conviene revisar siempre como esta pagina se relaciona con la funcion de particion, con la entropia y con las fluctuaciones. Esas tres conexiones suelen bastar para ubicar el concepto dentro del mapa general de la mecanica estadistica.
 
 ## Supuestos y limites
 
-La mayoria de las formulas de esta pagina suponen equilibrio o una aproximacion controlada alrededor del equilibrio. Si se usan en sistemas pequenos, cerca de puntos criticos, con interacciones de largo alcance o fuera del equilibrio, conviene revisar si las fluctuaciones y las condiciones de estabilidad siguen siendo despreciables.
+${limits}
+
+La mayoria de las formulas de esta pagina suponen equilibrio o una aproximacion controlada alrededor del equilibrio. Si se usan en sistemas pequenos, cerca de puntos criticos, con interacciones de largo alcance o fuera del equilibrio, conviene revisar si las fluctuaciones, las correlaciones y las condiciones de estabilidad siguen siendo despreciables.
 
 ## Errores comunes
 
@@ -209,11 +259,163 @@ La mayoria de las formulas de esta pagina suponen equilibrio o una aproximacion 
 - Confundir una relacion exacta con una aproximacion de limite termodinamico.
 - Omitir degeneraciones, factores de indistinguibilidad o condiciones de convergencia.
 - Aplicar una expresion de equilibrio a una situacion fuera de equilibrio sin justificacion.
+- Mezclar notacion de distintos ensambles sin transformar el potencial correspondiente.
+- Interpretar un promedio de ensamble como si necesariamente coincidiera con una medicion temporal corta.
+
+## Preguntas guia
+
+1. Que microestados, configuraciones o trayectorias se estan considerando?
+2. Que variables estan fijas y cuales fluctuan?
+3. Cual es la cantidad normalizadora: una densidad de estados, una funcion de particion o una tasa estacionaria?
+4. Que observable se obtiene derivando el potencial o promediando sobre la distribucion?
+5. En que limite se espera que la prediccion sea termodinamicamente reproducible?
+
+## Referencias sugeridas
+
+Para profundizar, compara esta entrada con las discusiones correspondientes en Reif, Pathria y Beale, Kardar, Huang o Chandler. Si el tema involucra simulacion, revisa tambien Frenkel y Smit. Para transiciones de fase y escala, las referencias naturales son Goldenfeld, Cardy y Stanley.
 
 ## Paginas relacionadas
 
 ${related.map((r) => `- [${r.title}](#/${r.slug})`).join("\n")}
 `;
+}
+
+function detailFor(section, title, concept) {
+  const common = {
+    definition: `La cantidad central se introduce de modo que pueda evaluarse a partir de un modelo microscopico. En terminos practicos, esto exige especificar que estados son admisibles, como se pesan y que observable se quiere extraer. Para **${title}**, el punto de partida es reconocer que ${concept}.`,
+    physical: "Fisicamente, el concepto organiza informacion parcial. No se intenta seguir cada grado de libertad con detalle absoluto; se busca una descripcion que conserve lo relevante para energia, entropia, respuesta y estabilidad.",
+    derivation: "La derivacion mas comun parte de una distribucion de probabilidad compatible con las restricciones macroscopicas. Luego se impone normalizacion y se calculan promedios. Cuando aparece una funcion de particion, su logaritmo contiene la informacion termodinamica porque convierte productos microscopicos en potenciales extensivos.",
+    interpretation: "El significado fisico se ve al observar que estados con distinto peso no contribuyen de la misma manera a los observables. Las configuraciones dominantes determinan el comportamiento medio, mientras que las fluctuaciones alrededor de ellas fijan respuestas y correcciones de tamano finito.",
+    connections: "La conexion mas directa es con los ensambles. En equilibrio, cambiar las restricciones cambia la distribucion de probabilidad y, por tanto, la forma natural de calcular observables. En el limite termodinamico muchas descripciones se vuelven equivalentes, pero sus fluctuaciones no tienen por que coincidir.",
+  };
+
+  const bySection = {
+    "Fundamentos": {
+      definition: `Como concepto fundacional, **${title}** fija parte del lenguaje que permite pasar de microestados a macroestados. En este contexto, decir que ${concept} equivale a indicar que informacion microscopica se conserva y cual se resume estadisticamente.`,
+      physical: "La imagen fisica es la de una enorme coleccion de posibilidades microscopicas compatibles con pocos datos macroscopicos. La termodinamica emerge cuando el conteo o el promedio de esas posibilidades se vuelve estable frente a detalles irrelevantes.",
+      derivation: "El camino tipico consiste en identificar el espacio de estados, definir una medida y construir una entropia o una probabilidad. Si los estados accesibles se cuentan con peso uniforme se obtiene la logica microcanonica; si se impone temperatura aparece la ponderacion de Boltzmann.",
+      interpretation: "Estos conceptos son anteriores a cualquier modelo especifico. Funcionan como reglas gramaticales: determinan que significa contar estados, asignar probabilidades, tomar limites y comparar predicciones macroscopicas.",
+      connections: "Se conecta directamente con microestado, macroestado, espacio de fases y entropia. Tambien prepara la lectura de los ensambles, porque todo ensamble presupone una decision sobre que informacion macroscopica se mantiene fija.",
+    },
+    "Ensambles": {
+      definition: `En un ensamble, **${title}** describe como se distribuye la probabilidad entre copias ideales del sistema. Esta descripcion debe leerse junto con las variables que el entorno mantiene fijas: energia, temperatura, volumen, presion, numero de particulas o potencial quimico.`,
+      physical: "La imagen fisica es un sistema pequeno, o una parte de un sistema grande, intercambiando energia, volumen o particulas con reservorios. Lo que fluctua en el sistema queda compensado por el entorno.",
+      derivation: "La derivacion se obtiene al maximizar la entropia con restricciones, o al separar un sistema de un reservorio mucho mayor. Al expandir la entropia del reservorio aparecen multiplicadores intensivos como beta, presion o potencial quimico.",
+      interpretation: "Un ensamble no solo calcula valores medios; tambien predice fluctuaciones. Por eso dos ensambles equivalentes para ecuaciones de estado pueden diferir al estudiar varianzas, susceptibilidades o sistemas finitos.",
+      connections: "La conexion central es con la funcion de particion y los potenciales termodinamicos. Cada ensamble tiene una funcion normalizadora propia, y el logaritmo de esa cantidad genera energia libre, potencial gran canonico u otros potenciales.",
+    },
+    "Termodinamica estadistica": {
+      definition: `En termodinamica estadistica, **${title}** traduce una propiedad macroscopica a lenguaje de promedios, derivadas o potenciales. Decir que ${concept} fija que respuesta o potencial se quiere controlar.`,
+      physical: "La imagen fisica es una superficie termodinamica: energia, entropia, volumen, numero de particulas y campos conjugados no son independientes, sino coordenadas relacionadas por ecuaciones de estado.",
+      derivation: "El desarrollo parte de un potencial apropiado y de sus diferenciales. Al derivar respecto de la variable conjugada se obtienen observables; al derivar dos veces aparecen respuestas, estabilidad y fluctuaciones.",
+      interpretation: "Estas cantidades resumen la informacion microscopica en funciones de estado. Su poder esta en que no dependen del camino seguido para preparar el sistema, siempre que el estado final sea de equilibrio.",
+      connections: "Se conecta con transformadas de Legendre, relaciones de Maxwell y estabilidad. Tambien enlaza con ensambles: cada potencial aparece naturalmente cuando se eligen variables controladas distintas.",
+    },
+    "Modelos": {
+      definition: `Como modelo, **${title}** especifica grados de libertad, energia y parametros de control. La afirmacion de que ${concept} indica que simplificacion microscopica se adopta para producir predicciones calculables.`,
+      physical: "La imagen fisica es deliberadamente idealizada. El modelo conserva el mecanismo dominante y descarta detalles que no son esenciales para la pregunta: interacciones, simetrias, dimensionalidad, ocupacion o espectro.",
+      derivation: "El desarrollo empieza escribiendo el Hamiltoniano o los niveles de energia. Luego se construye la funcion de particion o la medida de configuraciones y se calculan observables como energia, magnetizacion, presion o correlaciones.",
+      interpretation: "Un modelo no es una copia literal del material real. Es una herramienta para aislar mecanismos. Su valor se mide por las relaciones que predice, los limites que reproduce y las fallas que revela.",
+      connections: "Los modelos se conectan con ensambles y metodos de calculo. Algunos son solubles exactamente, otros requieren campo medio, matrices de transferencia, Monte Carlo o aproximaciones de baja y alta temperatura.",
+    },
+    "Cuantica": {
+      definition: `En el regimen cuantico, **${title}** debe formularse en terminos de estados, niveles u ocupaciones. Decir que ${concept} suele implicar indistinguibilidad, cuantizacion y restricciones de simetria.`,
+      physical: "La imagen fisica cambia respecto del caso clasico porque las particulas identicas no se etiquetan individualmente. Lo relevante son los modos ocupados y las reglas que permiten o prohiben multiples ocupaciones.",
+      derivation: "El desarrollo natural usa el ensamble gran canonico, donde cada modo aporta factores de ocupacion. La estadistica Bose-Einstein o Fermi-Dirac surge de sumar ocupaciones permitidas con peso exponencial.",
+      interpretation: "Los efectos cuanticos se vuelven visibles cuando la longitud de onda termica es comparable con la separacion media entre particulas, o cuando la temperatura cae por debajo de una escala de degeneracion.",
+      connections: "Se conecta con potencial quimico, numeros de ocupacion, gas ideal cuantico y funcion de particion. Tambien explica fenomenos macroscopicos como radiacion de cuerpo negro, condensacion y presion de degeneracion.",
+    },
+    "Transiciones y criticalidad": {
+      definition: `En criticalidad, **${title}** describe como cambia el sistema cerca de una singularidad termodinamica. Esta descripcion debe entenderse en el limite termodinamico, donde pueden aparecer no analiticidades reales.`,
+      physical: "La imagen fisica es la de fluctuaciones correlacionadas en muchas escalas. Cerca del punto critico, detalles microscopicos pierden importancia y dominan simetrias, dimensionalidad y alcance de interacciones.",
+      derivation: "El desarrollo suele separar una parte regular y una parte singular de la energia libre. Luego se proponen leyes de escala o transformaciones de renormalizacion para obtener exponentes y relaciones entre respuestas.",
+      interpretation: "La criticalidad muestra que no todo se entiende mirando unidades microscopicas aisladas. Cuando la longitud de correlacion crece, el comportamiento colectivo domina y aparecen clases de universalidad.",
+      connections: "Se conecta con parametro de orden, longitud de correlacion, susceptibilidad, teoria de Landau y grupo de renormalizacion. Tambien exige cuidado con tamano finito y condiciones de borde.",
+    },
+    "Metodos": {
+      definition: `Como metodo, **${title}** es un procedimiento para calcular o aproximar propiedades estadisticas. La afirmacion de que ${concept} indica que problema computacional o analitico intenta resolver.`,
+      physical: "La imagen fisica depende del metodo, pero el objetivo comun es convertir un problema de muchos grados de libertad en estimaciones controladas de observables, errores y tendencias con tamano del sistema.",
+      derivation: "El desarrollo establece primero la distribucion objetivo o la cantidad asintotica que se quiere estimar. Despues introduce una aproximacion, una dinamica de muestreo o una transformacion que hace viable el calculo.",
+      interpretation: "Un metodo siempre trae diagnosticos. No basta obtener un numero: hay que estimar convergencia, autocorrelaciones, sesgo sistematico, sensibilidad a parametros y compatibilidad con resultados exactos en limites conocidos.",
+      connections: "Se conecta con modelos porque distintos modelos requieren tecnicas distintas. Tambien se conecta con fluctuaciones y funciones de correlacion, que suelen ser observables sensibles a errores de muestreo.",
+    },
+    "No equilibrio": {
+      definition: `Fuera del equilibrio, **${title}** describe evolucion, transporte o respuesta cuando no basta una distribucion de Gibbs estatica. Decir que ${concept} indica que variable temporal, corriente o tasa entra en juego.`,
+      physical: "La imagen fisica es la de sistemas con gradientes, forzamientos, relajacion o corrientes. El equilibrio puede aparecer como estado estacionario especial, pero la dinamica importa de manera explicita.",
+      derivation: "El desarrollo parte de probabilidades dependientes del tiempo, distribuciones de una particula o funciones de correlacion. La linealizacion cerca del equilibrio produce coeficientes de transporte y relaciones de respuesta.",
+      interpretation: "La pregunta central no es solo cual estado es mas probable, sino como se llega a el, cuanto tarda la relajacion y que corrientes se mantienen bajo una perturbacion externa.",
+      connections: "Se conecta con fluctuaciones, respuesta lineal, ecuaciones maestras y teoria cinetica. Tambien enlaza con simulacion, porque muchas propiedades de transporte se estiman a partir de trayectorias.",
+    },
+  };
+  return bySection[section] || common;
+}
+
+function workflowFor(section, title) {
+  const workflows = {
+    "Fundamentos": [
+      `1. Identificar el conjunto de microestados relevante para **${title}**.`,
+      "2. Declarar que variables macroscopicas restringen esos estados.",
+      "3. Elegir la medida o conteo correcto, incluyendo degeneraciones e indistinguibilidad.",
+      "4. Conectar el conteo o promedio con entropia, temperatura o probabilidad.",
+    ],
+    "Ensambles": [
+      `1. Decidir que reservorio define **${title}** y que variables fluctuan.`,
+      "2. Escribir el peso estadistico de cada estado.",
+      "3. Normalizar con la funcion de particion correspondiente.",
+      "4. Obtener observables por derivadas del potencial o por promedios directos.",
+    ],
+    "Termodinamica estadistica": [
+      `1. Elegir el potencial natural para **${title}**.`,
+      "2. Mantener explicitas las variables fijas durante cada derivada.",
+      "3. Relacionar primeras derivadas con observables y segundas derivadas con respuestas.",
+      "4. Verificar estabilidad y consistencia dimensional.",
+    ],
+    "Modelos": [
+      `1. Escribir los grados de libertad y parametros de **${title}**.`,
+      "2. Definir el Hamiltoniano, espectro o regla estocastica.",
+      "3. Elegir el ensamble o metodo de muestreo apropiado.",
+      "4. Comparar limites simples antes de interpretar resultados generales.",
+    ],
+    "Cuantica": [
+      `1. Identificar modos, niveles y reglas de ocupacion de **${title}**.`,
+      "2. Usar el potencial quimico para controlar el numero medio de particulas cuando corresponda.",
+      "3. Calcular ocupaciones medias y luego energia, presion o capacidad calorifica.",
+      "4. Revisar los limites clasico, degenerado y de baja temperatura.",
+    ],
+    "Transiciones y criticalidad": [
+      `1. Identificar el parametro de control y el parametro de orden asociado a **${title}**.`,
+      "2. Separar comportamiento regular y singular.",
+      "3. Estudiar correlaciones, susceptibilidades y dependencia con el tamano.",
+      "4. Comparar exponentes y simetrias para ubicar la clase de universalidad.",
+    ],
+    "Metodos": [
+      `1. Definir la distribucion objetivo o integral que **${title}** debe estimar.`,
+      "2. Elegir parametros numericos y criterios de convergencia.",
+      "3. Medir errores estadisticos y sistematicos por separado.",
+      "4. Validar contra casos exactos, limites conocidos o pruebas de consistencia.",
+    ],
+    "No equilibrio": [
+      `1. Definir variables dinamicas, tasas o corrientes relevantes para **${title}**.`,
+      "2. Establecer la ecuacion de evolucion y las condiciones iniciales o de borde.",
+      "3. Buscar estados estacionarios, tiempos de relajacion o coeficientes de transporte.",
+      "4. Revisar si la aproximacion lineal alrededor del equilibrio es suficiente.",
+    ],
+  };
+  return (workflows[section] || workflows["Fundamentos"]).join("\n");
+}
+
+function limitsFor(section) {
+  const limits = {
+    "Fundamentos": "El principal limite esta en usar definiciones fundacionales fuera de su dominio. El conteo de estados depende de la medida, la entropia depende de las restricciones y la equivalencia entre promedios temporales y de ensamble puede fallar si la dinamica no explora el espacio accesible.",
+    "Ensambles": "El limite mas importante es la equivalencia de ensambles. Para sistemas pequenos, interacciones de largo alcance o regiones con coexistencia de fases, distintos ensambles pueden dar fluctuaciones o incluso predicciones macroscopicas diferentes.",
+    "Termodinamica estadistica": "Las identidades termodinamicas suponen estados de equilibrio y funciones suficientemente suaves. Cerca de transiciones de fase, en sistemas finitos o bajo restricciones no convexas, las derivadas deben interpretarse con cuidado.",
+    "Modelos": "Todo modelo sacrifica detalles. Las predicciones son confiables cuando el mecanismo retenido domina la fisica observada. Si cambian dimensionalidad, simetria, rango de interaccion o conservaciones, puede cambiar tambien la conclusion.",
+    "Cuantica": "Las formulas cuanticas requieren cuidado con indistinguibilidad, degeneracion y limite clasico. Usar distribuciones clasicas cuando la longitud de onda termica es grande frente a la distancia media puede producir resultados cualitativamente falsos.",
+    "Transiciones y criticalidad": "Las singularidades reales aparecen solo en el limite termodinamico. En simulaciones y experimentos finitos se observan redondeos, corrimientos del punto critico y dependencia con condiciones de borde.",
+    "Metodos": "Los metodos aproximados tienen sesgos propios. En simulacion, los riesgos tipicos son falta de equilibracion, autocorrelaciones largas, muestreo pobre de regiones raras y errores de tamano finito.",
+    "No equilibrio": "Fuera del equilibrio no existe una unica receta universal comparable al ensamble canonico. Las ecuaciones efectivas pueden depender de separacion de escalas, hipotesis moleculares, linealizacion o ruido idealizado.",
+  };
+  return limits[section] || limits["Fundamentos"];
 }
 
 function relatedFor(section, slug) {
@@ -264,7 +466,16 @@ function relatedFor(section, slug) {
       { title: "Ecuacion maestra", slug: "ecuacion-maestra" },
     ],
   };
-  return (bySection[section] || base).filter((item) => item.slug !== slug).slice(0, 3);
+  const combined = [...(bySection[section] || []), ...base];
+  const seen = new Set();
+  return combined
+    .filter((item) => item.slug !== slug)
+    .filter((item) => {
+      if (seen.has(item.slug)) return false;
+      seen.add(item.slug);
+      return true;
+    })
+    .slice(0, 3);
 }
 
 function groupedPages() {

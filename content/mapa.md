@@ -1,6 +1,6 @@
 # Mapa de la wiki
 
-La wiki contiene actualmente **108 entradas** organizadas por areas.
+La wiki contiene actualmente **208 entradas** organizadas por areas.
 
 ## Ruta troncal recomendada
 
@@ -43,6 +43,11 @@ La wiki contiene actualmente **108 entradas** organizadas por areas.
 - [Paradoja de Gibbs](#/paradoja-de-gibbs)
 - [Matriz densidad](#/matriz-densidad)
 - [Temperatura estadistica](#/temperatura-estadistica)
+- [Entropia relativa](#/entropia-relativa)
+- [Informacion mutua](#/informacion-mutua)
+- [Principio de Landauer](#/principio-de-landauer)
+- [Teorema de Bayes en ensambles](#/teorema-bayes-ensambles)
+- [Principio de maxima entropia de trayectorias](#/principio-maxima-entropia-trayectorias)
 
 ## Ensambles
 
@@ -71,6 +76,11 @@ La wiki contiene actualmente **108 entradas** organizadas por areas.
 - [Estabilidad termodinamica](#/estabilidad-termodinamica)
 - [Transformadas de Legendre](#/transformadas-de-legendre)
 - [Ecuacion de estado](#/ecuacion-de-estado)
+- [Potenciales fuera de equilibrio](#/potenciales-fuera-de-equilibrio)
+- [Exergia](#/exergia)
+- [Entropia de mezcla](#/entropia-de-mezcla)
+- [Principio de minima produccion de entropia](#/principio-minima-produccion-entropia)
+- [Relaciones de Onsager-Casimir](#/relaciones-onsager-casimir)
 
 ## Modelos
 
@@ -96,6 +106,21 @@ La wiki contiene actualmente **108 entradas** organizadas por areas.
 - [Modelo de exclusion simple](#/modelo-de-exclusion-simple)
 - [Percolacion](#/percolacion)
 - [Red de Bethe](#/red-de-bethe)
+- [Proceso de exclusion totalmente asimetrico](#/proceso-exclusion-totalmente-asimetrico)
+- [Proceso de exclusion parcialmente asimetrico](#/proceso-exclusion-parcialmente-asimetrico)
+- [Modelo de contacto](#/modelo-de-contacto)
+- [Modelo de voter](#/modelo-voter)
+- [Dinamica de Glauber](#/dinamica-glauber)
+- [Dinamica de Kawasaki](#/dinamica-kawasaki)
+- [Modelo de Vicsek](#/modelo-vicsek)
+- [Materia activa](#/materia-activa)
+- [Particulas brownianas activas](#/particulas-brownianas-activas)
+- [Run-and-tumble](#/run-and-tumble)
+- [Gases granulares](#/gases-granulares)
+- [Modelo de Kuramoto](#/modelo-kuramoto)
+- [Redes aleatorias](#/redes-aleatorias)
+- [Polimeros fuera de equilibrio](#/polimeros-fuera-de-equilibrio)
+- [Interfaz KPZ](#/interfaz-kpz)
 
 ## Cuantica
 
@@ -140,6 +165,26 @@ La wiki contiene actualmente **108 entradas** organizadas por areas.
 - [Metodo de histogramas](#/metodo-de-histogramas)
 - [Dinamica molecular](#/dinamica-molecular)
 - [Termostato de Langevin](#/termostato-langevin)
+- [Algoritmo de Gillespie](#/algoritmo-gillespie)
+- [Monte Carlo cinetico](#/monte-carlo-cinetico)
+- [Dinamica de eventos raros](#/dinamica-eventos-raros)
+- [Muestreo de trayectorias](#/muestreo-de-trayectorias)
+- [Transition path sampling](#/transition-path-sampling)
+- [Algoritmo de clonacion](#/algoritmo-clonacion)
+- [Umbrella sampling](#/umbrella-sampling)
+- [Metadinamica](#/metadinamica)
+- [Integracion termodinamica](#/integracion-termodinamica)
+- [Dinamica molecular no equilibrada](#/dinamica-molecular-no-equilibrada)
+- [Termostato de Nose-Hoover](#/termostato-nose-hoover)
+- [Termostato de Andersen](#/termostato-andersen)
+- [Integrador de Verlet](#/integrador-verlet)
+- [Integrador de Langevin](#/integrador-langevin)
+- [Estimadores de Green-Kubo](#/estimadores-green-kubo)
+- [Medicion de autocorrelaciones](#/medicion-autocorrelaciones)
+- [Analisis de error estadistico](#/analisis-error-estadistico)
+- [Reponderacion multicanonica](#/reponderacion-multicanonica)
+- [Metodo de Jarzynski numerico](#/metodo-jarzynski-numerico)
+- [Simulacion de procesos de Markov](#/simulacion-procesos-markov)
 
 ## No equilibrio
 
@@ -152,6 +197,61 @@ La wiki contiene actualmente **108 entradas** organizadas por areas.
 - [Teorema H](#/teorema-h)
 - [Difusion](#/difusion)
 - [Proceso de Poisson](#/proceso-de-poisson)
+- [Estado estacionario fuera de equilibrio](#/estado-estacionario-fuera-de-equilibrio)
+- [Corriente estacionaria](#/corriente-estacionaria)
+- [Produccion de entropia](#/produccion-de-entropia)
+- [Balance local de entropia](#/balance-local-de-entropia)
+- [Ecuacion de Fokker-Planck](#/ecuacion-fokker-planck)
+- [Ecuacion de Langevin sobreamortiguada](#/ecuacion-langevin-sobreamortiguada)
+- [Movimiento browniano](#/movimiento-browniano)
+- [Relacion de Einstein](#/relacion-de-einstein)
+- [Movilidad](#/movilidad)
+- [Reciprocidad de Onsager](#/reciprocidad-de-onsager)
+- [Fuerzas termodinamicas](#/fuerzas-termodinamicas)
+- [Afinidad termodinamica](#/afinidad-termodinamica)
+- [Regimen de respuesta no lineal](#/regimen-respuesta-no-lineal)
+- [Teorema integral de fluctuacion](#/teorema-integral-fluctuacion)
+- [Teorema de Crooks](#/teorema-de-crooks)
+- [Igualdad de Jarzynski](#/igualdad-de-jarzynski)
+- [Fluctuaciones de trabajo](#/fluctuaciones-de-trabajo)
+- [Calor estocastico](#/calor-estocastico)
+- [Termodinamica estocastica](#/termodinamica-estocastica)
+- [Trayectorias estocasticas](#/trayectorias-estocasticas)
+- [Grandes desviaciones dinamicas](#/grandes-desviaciones-dinamicas)
+- [Funcion generadora inclinada](#/funcion-generadora-inclinada)
+- [Actividad dinamica](#/actividad-dinamica)
+- [Ensamble de trayectorias](#/ensamble-de-trayectorias)
+- [Tiempo de primer paso](#/tiempo-de-primer-paso)
+- [Ruptura de balance detallado](#/ruptura-balance-detallado)
+- [Ciclos de Markov](#/ciclos-de-markov)
+- [Redes de reacciones quimicas](#/redes-reacciones-quimicas)
+- [Dinamica de poblaciones](#/dinamica-de-poblaciones)
+- [Reaccion-difusion](#/reaccion-difusion)
+- [Ecuacion de difusion con deriva](#/ecuacion-difusion-deriva)
+- [Transporte anomaloso](#/transporte-anomaloso)
+- [Difusion fraccionaria](#/difusion-fraccionaria)
+- [Teoria hidrodinamica fluctuante](#/teoria-hidrodinamica-fluctuante)
+- [Ruido conservativo](#/ruido-conservativo)
+- [Ley de Fourier](#/ley-de-fourier)
+- [Ley de Fick](#/ley-de-fick)
+- [Viscosidad](#/viscosidad)
+- [Conductividad termica](#/conductividad-termica)
+- [Modos hidrodinamicos](#/modos-hidrodinamicos)
+- [Navier-Stokes fluctuante](#/navier-stokes-fluctuante)
+- [Acoplamiento modo-modo](#/acoplamiento-modo-modo)
+- [Envejecimiento](#/envejecimiento)
+- [Relajacion lenta](#/relajacion-lenta)
+- [Dinamica vitrea](#/dinamica-vitrea)
+- [Ruptura de ergodicidad](#/ruptura-de-ergodicidad)
+- [Teorema de Mori-Zwanzig](#/teorema-mori-zwanzig)
+- [Ecuacion generalizada de Langevin](#/ecuacion-generalizada-langevin)
+- [Memoria y friccion](#/memoria-y-friccion)
+- [Ruido coloreado](#/ruido-coloreado)
+- [Sistemas impulsados periodicamente](#/sistemas-impulsados-periodicamente)
+- [Floquet estocastico](#/floquet-estocastico)
+- [Banos termicos multiples](#/banos-termicos-multiples)
+- [Maquinas termicas mesoscopicas](#/maquinas-termicas-mesoscopicas)
+- [Eficiencia estocastica](#/eficiencia-estocastica)
 
 ## Recursos
 
@@ -661,6 +761,6 @@ Por ultimo, se recomienda cerrar cualquier calculo con dos pruebas simples. La p
 
 ### Glosario operativo final
 
-estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado
+estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite escala ensamble potencial observables medida degeneracion simetria aproximacion validacion estado peso normalizacion entropia energia temperatura fluctuacion correlacion respuesta estabilidad limite
 
 <!-- equalized-entry-length:end -->

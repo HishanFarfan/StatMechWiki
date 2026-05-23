@@ -6,7 +6,7 @@ Esta wiki reune conceptos, resultados, modelos y metodos centrales de la mecanic
 
 ## Estado actual
 
-La wiki contiene actualmente **108 entradas desarrolladas**. Cubre fundamentos, ensambles, termodinamica estadistica, modelos, estadistica cuantica, transiciones de fase, metodos y no equilibrio.
+La wiki contiene actualmente **208 entradas desarrolladas**. Cubre fundamentos, ensambles, termodinamica estadistica, modelos, estadistica cuantica, transiciones de fase, metodos y no equilibrio.
 
 ## Punto de partida
 

@@ -154,6 +154,111 @@ const specs = [
   ["No equilibrio", "Proceso de Poisson", "proceso-de-poisson", "modelo de eventos aleatorios independientes en tiempo continuo", "P(N_t=n)=e^{-\\lambda t}\\frac{(\\lambda t)^n}{n!}"],
 ];
 
+const extraSpecs = [
+  ["No equilibrio", "Estado estacionario fuera de equilibrio", "estado-estacionario-fuera-de-equilibrio", "estado con distribucion temporalmente constante pero con corrientes o produccion de entropia no nulas", "\\frac{\\partial p_i}{\\partial t}=0,\\qquad J_{ij}=p_iW_{i\\to j}-p_jW_{j\\to i}"],
+  ["No equilibrio", "Corriente estacionaria", "corriente-estacionaria", "flujo persistente de probabilidad, particulas, energia o carga en un estado estacionario", "\\nabla\\cdot\\mathbf J=0"],
+  ["No equilibrio", "Produccion de entropia", "produccion-de-entropia", "medida de irreversibilidad asociada a corrientes y fuerzas termodinamicas", "\\dot S_{\\mathrm{prod}}=\\sum_a J_aX_a\\ge 0"],
+  ["No equilibrio", "Balance local de entropia", "balance-local-de-entropia", "ecuacion que separa cambio local de entropia, flujo de entropia y produccion interna", "\\partial_t s+\\nabla\\cdot\\mathbf J_s=\\sigma"],
+  ["No equilibrio", "Ecuacion de Fokker-Planck", "ecuacion-fokker-planck", "evolucion de densidades de probabilidad para procesos difusivos continuos", "\\partial_t p=-\\partial_x[A(x)p]+\\frac{1}{2}\\partial_x^2[B(x)p]"],
+  ["No equilibrio", "Ecuacion de Langevin sobreamortiguada", "ecuacion-langevin-sobreamortiguada", "dinamica estocastica con friccion dominante y ruido termico", "\\gamma\\dot x=-\\nabla U(x)+\\sqrt{2\\gamma k_BT}\\,\\eta(t)"],
+  ["No equilibrio", "Movimiento browniano", "movimiento-browniano", "movimiento aleatorio de particulas suspendidas debido a choques microscopicos", "\\langle [x(t)-x(0)]^2\\rangle=2Dt"],
+  ["No equilibrio", "Relacion de Einstein", "relacion-de-einstein", "conexion entre difusion, movilidad y temperatura en equilibrio", "D=\\mu k_BT"],
+  ["No equilibrio", "Movilidad", "movilidad", "coeficiente que relaciona velocidad media con una fuerza externa pequena", "\\langle v\\rangle=\\mu F"],
+  ["No equilibrio", "Reciprocidad de Onsager", "reciprocidad-de-onsager", "simetria de coeficientes de transporte cerca del equilibrio bajo reversibilidad microscopica", "L_{ij}=L_{ji}"],
+  ["No equilibrio", "Fuerzas termodinamicas", "fuerzas-termodinamicas", "gradientes o afinidades que impulsan corrientes irreversibles", "J_i=\\sum_j L_{ij}X_j"],
+  ["No equilibrio", "Afinidad termodinamica", "afinidad-termodinamica", "fuerza generalizada que mide el sesgo neto alrededor de un ciclo o reaccion", "\\mathcal A=\\sum_{(ij)\\in C}\\ln\\frac{W_{i\\to j}}{W_{j\\to i}}"],
+  ["No equilibrio", "Regimen de respuesta no lineal", "regimen-respuesta-no-lineal", "dominio donde las corrientes no son proporcionales linealmente a las fuerzas", "J=LX+MX^2+\\cdots"],
+  ["No equilibrio", "Teorema integral de fluctuacion", "teorema-integral-fluctuacion", "identidad que restringe fluctuaciones de entropia producida en procesos irreversibles", "\\left\\langle e^{-\\Delta S_{\\mathrm{tot}}/k_B}\\right\\rangle=1"],
+  ["No equilibrio", "Teorema de Crooks", "teorema-de-crooks", "relacion entre probabilidades de trayectorias directas e inversas bajo protocolos externos", "\\frac{P_F(W)}{P_R(-W)}=e^{\\beta(W-\\Delta F)}"],
+  ["No equilibrio", "Igualdad de Jarzynski", "igualdad-de-jarzynski", "relacion exacta entre trabajo fuera de equilibrio y diferencia de energia libre", "\\left\\langle e^{-\\beta W}\\right\\rangle=e^{-\\beta\\Delta F}"],
+  ["No equilibrio", "Fluctuaciones de trabajo", "fluctuaciones-de-trabajo", "distribucion de trabajo realizado por o sobre sistemas pequenos durante protocolos externos", "P(W)=\\left\\langle\\delta(W-W[\\Gamma])\\right\\rangle"],
+  ["No equilibrio", "Calor estocastico", "calor-estocastico", "calor intercambiado a nivel de trayectorias en dinamicas mesoscopicas", "\\delta Q=dE-\\delta W"],
+  ["No equilibrio", "Termodinamica estocastica", "termodinamica-estocastica", "formulacion de energia, trabajo, calor y entropia para trayectorias fluctuantes", "\\Delta s_{\\mathrm{tot}}=k_B\\ln\\frac{P[\\Gamma]}{P[\\tilde\\Gamma]}"],
+  ["No equilibrio", "Trayectorias estocasticas", "trayectorias-estocasticas", "realizaciones temporales individuales de un proceso aleatorio", "P[\\Gamma]=p(x_0)\\prod_k W_{x_k\\to x_{k+1}}"],
+  ["No equilibrio", "Grandes desviaciones dinamicas", "grandes-desviaciones-dinamicas", "descripcion exponencial de probabilidades raras de observables temporales", "P(A_t=a)\\asymp e^{-tI(a)}"],
+  ["No equilibrio", "Funcion generadora inclinada", "funcion-generadora-inclinada", "operador o funcion que genera cumulantes de observables de trayectorias", "\\psi(\\lambda)=\\lim_{t\\to\\infty}\\frac{1}{t}\\ln\\left\\langle e^{\\lambda tA_t}\\right\\rangle"],
+  ["No equilibrio", "Actividad dinamica", "actividad-dinamica", "medida del numero o intensidad de transiciones en una trayectoria", "K[\\Gamma]=\\sum_{k}1"],
+  ["No equilibrio", "Ensamble de trayectorias", "ensamble-de-trayectorias", "conjunto estadistico de historias temporales ponderadas por acciones dinamicas", "P_s[\\Gamma]=\\frac{P[\\Gamma]e^{-sK[\\Gamma]}}{Z_s}"],
+  ["No equilibrio", "Tiempo de primer paso", "tiempo-de-primer-paso", "tiempo aleatorio requerido para alcanzar por primera vez un estado o frontera", "T=\\inf\\{t:x(t)\\in B\\}"],
+  ["No equilibrio", "Ruptura de balance detallado", "ruptura-balance-detallado", "condicion en que existen corrientes estacionarias incompatibles con reversibilidad microscopica", "p_iW_{i\\to j}\\ne p_jW_{j\\to i}"],
+  ["No equilibrio", "Ciclos de Markov", "ciclos-de-markov", "caminos cerrados en redes de estados que sostienen corrientes irreversibles", "J_C=\\prod_{(ij)\\in C}W_{i\\to j}-\\prod_{(ij)\\in C}W_{j\\to i}"],
+  ["No equilibrio", "Redes de reacciones quimicas", "redes-reacciones-quimicas", "sistemas de especies conectadas por reacciones con tasas y afinidades", "\\dot c_i=\\sum_r \\nu_{ir}J_r"],
+  ["No equilibrio", "Dinamica de poblaciones", "dinamica-de-poblaciones", "evolucion estocastica o determinista de numeros de individuos o ocupaciones", "\\frac{dn_i}{dt}=\\sum_j W_{j\\to i}n_j-W_{i\\to j}n_i"],
+  ["No equilibrio", "Reaccion-difusion", "reaccion-difusion", "acoplamiento entre transporte difusivo y cinetica local de reacciones", "\\partial_t c=D\\nabla^2 c+R(c)"],
+  ["No equilibrio", "Ecuacion de difusion con deriva", "ecuacion-difusion-deriva", "evolucion de densidades bajo difusion y campo de deriva", "\\partial_t p=-\\nabla\\cdot(\\mathbf v p)+D\\nabla^2p"],
+  ["No equilibrio", "Transporte anomaloso", "transporte-anomaloso", "transporte donde el desplazamiento cuadratico medio no crece linealmente con el tiempo", "\\langle x^2(t)\\rangle\\sim t^\\alpha"],
+  ["No equilibrio", "Difusion fraccionaria", "difusion-fraccionaria", "modelo efectivo de difusion con derivadas fraccionarias temporales o espaciales", "\\partial_t^\\alpha p=D_\\alpha\\nabla^2p"],
+  ["No equilibrio", "Teoria hidrodinamica fluctuante", "teoria-hidrodinamica-fluctuante", "hidrodinamica de campos conservados con ruido consistente con fluctuaciones", "\\partial_t\\rho+\\nabla\\cdot\\mathbf J=0,\\quad \\mathbf J=\\mathbf J_{det}+\\boldsymbol\\eta"],
+  ["No equilibrio", "Ruido conservativo", "ruido-conservativo", "fluctuaciones que respetan leyes de conservacion locales", "\\langle \\eta_i(\\mathbf r,t)\\eta_j(\\mathbf r',t')\\rangle\\propto \\delta_{ij}\\delta(\\mathbf r-\\mathbf r')\\delta(t-t')"],
+  ["No equilibrio", "Ley de Fourier", "ley-de-fourier", "relacion fenomenologica entre corriente de calor y gradiente de temperatura", "\\mathbf J_Q=-\\kappa\\nabla T"],
+  ["No equilibrio", "Ley de Fick", "ley-de-fick", "relacion entre corriente de particulas y gradiente de concentracion", "\\mathbf J=-D\\nabla c"],
+  ["No equilibrio", "Viscosidad", "viscosidad", "coeficiente de transporte que mide disipacion por gradientes de velocidad", "\\sigma_{xy}=\\eta\\,\\partial_y v_x"],
+  ["No equilibrio", "Conductividad termica", "conductividad-termica", "coeficiente que relaciona corriente de calor con gradiente de temperatura", "\\kappa=\\frac{1}{k_BT^2V}\\int_0^\\infty dt\\,\\langle J_Q(t)J_Q(0)\\rangle"],
+  ["No equilibrio", "Modos hidrodinamicos", "modos-hidrodinamicos", "excitaciones lentas asociadas a cantidades conservadas", "\\omega(k)=-iDk^2+\\cdots"],
+  ["No equilibrio", "Navier-Stokes fluctuante", "navier-stokes-fluctuante", "ecuaciones hidrodinamicas con tensores de ruido termico", "\\rho(\\partial_t\\mathbf v+\\mathbf v\\cdot\\nabla\\mathbf v)=-\\nabla P+\\eta\\nabla^2\\mathbf v+\\nabla\\cdot\\boldsymbol\\Sigma"],
+  ["No equilibrio", "Acoplamiento modo-modo", "acoplamiento-modo-modo", "interaccion efectiva entre modos colectivos que modifica relajacion y transporte", "\\partial_t a_i=\\sum_j L_{ij}a_j+\\sum_{jk}M_{ijk}a_ja_k+\\cdots"],
+  ["No equilibrio", "Envejecimiento", "envejecimiento", "dependencia de observables dinamicos con el tiempo de espera desde la preparacion", "C(t,t_w)\\ne C(t-t_w)"],
+  ["No equilibrio", "Relajacion lenta", "relajacion-lenta", "aproximacion al equilibrio con tiempos caracteristicos largos o distribuidos", "C(t)\\sim e^{-(t/\\tau)^\\beta}"],
+  ["No equilibrio", "Dinamica vitrea", "dinamica-vitrea", "dinamica de sistemas desordenados o frustrados con relajacion extremadamente lenta", "\\tau_\\alpha\\sim e^{A/(T-T_0)}"],
+  ["No equilibrio", "Ruptura de ergodicidad", "ruptura-de-ergodicidad", "situacion donde promedios temporales no exploran el conjunto estadistico relevante", "\\overline A\\ne \\langle A\\rangle"],
+  ["No equilibrio", "Teorema de Mori-Zwanzig", "teorema-mori-zwanzig", "proyeccion exacta que produce memoria y ruido en variables lentas", "\\dot A(t)=\\Omega A(t)-\\int_0^t K(s)A(t-s)\\,ds+F(t)"],
+  ["No equilibrio", "Ecuacion generalizada de Langevin", "ecuacion-generalizada-langevin", "dinamica estocastica con kernel de memoria y ruido correlacionado", "m\\ddot x=-\\int_0^t\\Gamma(t-s)\\dot x(s)\\,ds-\\nabla U+\\eta(t)"],
+  ["No equilibrio", "Memoria y friccion", "memoria-y-friccion", "descripcion de disipacion no local en el tiempo mediante kernels de friccion", "F_{fr}(t)=-\\int_0^t\\Gamma(t-s)v(s)\\,ds"],
+  ["No equilibrio", "Ruido coloreado", "ruido-coloreado", "ruido con correlaciones temporales finitas", "\\langle \\eta(t)\\eta(t')\\rangle=C(t-t')"],
+  ["No equilibrio", "Sistemas impulsados periodicamente", "sistemas-impulsados-periodicamente", "sistemas sometidos a protocolos externos periodicos que pueden alcanzar estados periodicos", "H(t+\\tau)=H(t)"],
+  ["No equilibrio", "Floquet estocastico", "floquet-estocastico", "descripcion de procesos de Markov con tasas periodicas en el tiempo", "W(t+\\tau)=W(t)"],
+  ["No equilibrio", "Banos termicos multiples", "banos-termicos-multiples", "contacto simultaneo con reservorios a distintas temperaturas o potenciales", "\\dot S_{prod}=\\sum_\\alpha \\frac{\\dot Q_\\alpha}{T_\\alpha}"],
+  ["No equilibrio", "Maquinas termicas mesoscopicas", "maquinas-termicas-mesoscopicas", "dispositivos pequenos que convierten calor, trabajo o informacion con fluctuaciones importantes", "\\eta=\\frac{\\langle W\\rangle}{\\langle Q_h\\rangle}"],
+  ["No equilibrio", "Eficiencia estocastica", "eficiencia-estocastica", "eficiencia fluctuante definida trayectoria por trayectoria en maquinas pequenas", "\\eta[\\Gamma]=\\frac{W[\\Gamma]}{Q_h[\\Gamma]}"],
+  ["Metodos", "Algoritmo de Gillespie", "algoritmo-gillespie", "metodo exacto para simular procesos de salto con tasas dependientes del estado", "\\Delta t=-\\frac{\\ln u}{\\sum_r a_r(x)}"],
+  ["Metodos", "Monte Carlo cinetico", "monte-carlo-cinetico", "muestreo temporal de eventos discretos con tasas fisicas", "P(r)=\\frac{a_r}{\\sum_s a_s}"],
+  ["Metodos", "Dinamica de eventos raros", "dinamica-eventos-raros", "metodos para estimar transiciones poco probables y colas de distribuciones", "P(A_t=a)\\asymp e^{-tI(a)}"],
+  ["Metodos", "Muestreo de trayectorias", "muestreo-de-trayectorias", "muestreo estadistico de historias temporales completas", "\\langle A\\rangle=\\sum_\\Gamma A[\\Gamma]P[\\Gamma]"],
+  ["Metodos", "Transition path sampling", "transition-path-sampling", "metodo Monte Carlo en el espacio de trayectorias reactivas", "P[\\Gamma|A\\to B]\\propto P[\\Gamma]h_A(x_0)h_B(x_t)"],
+  ["Metodos", "Algoritmo de clonacion", "algoritmo-clonacion", "metodo poblacional para estimar funciones generadoras de grandes desviaciones", "\\psi(s)=\\lim_{t\\to\\infty}\\frac{1}{t}\\ln\\langle e^{-sK_t}\\rangle"],
+  ["Metodos", "Umbrella sampling", "umbrella-sampling", "tecnica para muestrear regiones raras mediante potenciales de sesgo", "P_0(x)\\propto P_b(x)e^{\\beta U_b(x)}"],
+  ["Metodos", "Metadinamica", "metadinamica", "metodo de sesgo adaptativo para explorar superficies de energia libre", "V(s,t)=\\sum_{k<t}w\\exp\\!\\left[-\\frac{(s-s_k)^2}{2\\sigma^2}\\right]"],
+  ["Metodos", "Integracion termodinamica", "integracion-termodinamica", "calculo de diferencias de energia libre integrando derivadas respecto de un parametro", "\\Delta F=\\int_0^1 d\\lambda\\,\\left\\langle \\frac{\\partial H_\\lambda}{\\partial\\lambda}\\right\\rangle_\\lambda"],
+  ["Metodos", "Dinamica molecular no equilibrada", "dinamica-molecular-no-equilibrada", "simulacion molecular con gradientes, campos o flujos impuestos", "\\dot\\gamma=\\frac{\\partial v_x}{\\partial y}"],
+  ["Metodos", "Termostato de Nose-Hoover", "termostato-nose-hoover", "termostato determinista extendido para controlar temperatura", "\\dot p_i=F_i-\\zeta p_i"],
+  ["Metodos", "Termostato de Andersen", "termostato-andersen", "termostato estocastico que reemplaza velocidades mediante colisiones con un bano", "P(\\Delta t)=1-e^{-\\nu\\Delta t}"],
+  ["Metodos", "Integrador de Verlet", "integrador-verlet", "esquema numerico reversible y simplectico para dinamica molecular", "r(t+\\Delta t)=2r(t)-r(t-\\Delta t)+a(t)\\Delta t^2"],
+  ["Metodos", "Integrador de Langevin", "integrador-langevin", "integracion numerica de dinamicas con friccion y ruido termico", "v_{t+\\Delta t}=a v_t+bF_t\\Delta t+\\sigma R_t"],
+  ["Metodos", "Estimadores de Green-Kubo", "estimadores-green-kubo", "estimadores numericos de coeficientes de transporte desde correlaciones temporales", "L=\\int_0^{\\infty}dt\\,C(t)"],
+  ["Metodos", "Medicion de autocorrelaciones", "medicion-autocorrelaciones", "estimacion de tiempos de correlacion en series de simulacion", "\\rho_A(t)=\\frac{\\langle A_sA_{s+t}\\rangle-\\langle A\\rangle^2}{\\operatorname{Var}(A)}"],
+  ["Metodos", "Analisis de error estadistico", "analisis-error-estadistico", "cuantificacion de incertidumbres por muestreo finito y autocorrelacion", "\\sigma_{\\bar A}^2\\simeq \\frac{2\\tau_{int}}{M}\\sigma_A^2"],
+  ["Metodos", "Reponderacion multicanonica", "reponderacion-multicanonica", "metodo que usa pesos artificiales para explorar rangos amplios de energia", "P(E)\\propto g(E)w(E)"],
+  ["Metodos", "Metodo de Jarzynski numerico", "metodo-jarzynski-numerico", "estimacion de diferencias de energia libre con trabajos fuera de equilibrio", "\\Delta F=-k_BT\\ln\\left[\\frac{1}{M}\\sum_{m=1}^M e^{-\\beta W_m}\\right]"],
+  ["Metodos", "Simulacion de procesos de Markov", "simulacion-procesos-markov", "generacion computacional de trayectorias gobernadas por probabilidades de transicion", "p(t+\\Delta t)=p(t)P"],
+  ["Modelos", "Proceso de exclusion totalmente asimetrico", "proceso-exclusion-totalmente-asimetrico", "modelo de transporte dirigido en red con exclusion de volumen", "10\\to 01\\quad \\text{con tasa }p"],
+  ["Modelos", "Proceso de exclusion parcialmente asimetrico", "proceso-exclusion-parcialmente-asimetrico", "modelo de exclusion con saltos sesgados en ambas direcciones", "J=(p-q)\\rho(1-\\rho)"],
+  ["Modelos", "Modelo de contacto", "modelo-de-contacto", "modelo de nacimiento y muerte con transicion a estado absorbente", "1\\to 0,\\qquad 0\\to 1\\ \\text{con tasa }\\lambda n"],
+  ["Modelos", "Modelo de voter", "modelo-voter", "modelo de dinamica de opiniones por copia local", "s_i(t+dt)=s_j(t)"],
+  ["Modelos", "Dinamica de Glauber", "dinamica-glauber", "dinamica de espines con flips individuales que relajan hacia equilibrio", "W(s_i\\to -s_i)=\\frac{1}{2}\\left[1-s_i\\tanh(\\beta h_i)\\right]"],
+  ["Modelos", "Dinamica de Kawasaki", "dinamica-kawasaki", "dinamica conservativa de intercambio de espines u ocupaciones", "s_i+s_j=\\mathrm{constante}"],
+  ["Modelos", "Modelo de Vicsek", "modelo-vicsek", "modelo de particulas autopropulsadas con alineamiento local", "\\theta_i(t+\\Delta t)=\\arg\\sum_{j\\in R_i}e^{i\\theta_j(t)}+\\eta_i"],
+  ["Modelos", "Materia activa", "materia-activa", "sistemas compuestos por unidades que consumen energia para moverse o ejercer fuerzas", "\\dot{\\mathbf r}=v_0\\mathbf n+\\mu\\mathbf F+\\sqrt{2D}\\boldsymbol\\eta"],
+  ["Modelos", "Particulas brownianas activas", "particulas-brownianas-activas", "modelo continuo de particulas autopropulsadas con orientacion difusiva", "\\dot\\theta=\\sqrt{2D_r}\\eta_r(t)"],
+  ["Modelos", "Run-and-tumble", "run-and-tumble", "modelo de movimiento activo alternando carreras persistentes y cambios aleatorios de direccion", "P(\\tau)=\\alpha e^{-\\alpha\\tau}"],
+  ["Modelos", "Gases granulares", "gases-granulares", "colecciones de particulas macroscopicas con colisiones inelasticas y disipacion", "E(t)\\sim (1+t/t_0)^{-2}"],
+  ["Modelos", "Modelo de Kuramoto", "modelo-kuramoto", "modelo de sincronizacion de osciladores acoplados", "\\dot\\theta_i=\\omega_i+\\frac{K}{N}\\sum_j\\sin(\\theta_j-\\theta_i)"],
+  ["Modelos", "Redes aleatorias", "redes-aleatorias", "grafos estocasticos usados para estudiar conectividad, percolacion y dinamicas colectivas", "P(k)=e^{-z}\\frac{z^k}{k!}"],
+  ["Modelos", "Polimeros fuera de equilibrio", "polimeros-fuera-de-equilibrio", "dinamica de cadenas sometidas a flujo, fuerzas o actividad", "\\tau_R\\sim N^2"],
+  ["Modelos", "Interfaz KPZ", "interfaz-kpz", "modelo de crecimiento de interfaces con ruido y no linealidad", "\\partial_t h=\\nu\\nabla^2h+\\frac{\\lambda}{2}(\\nabla h)^2+\\eta"],
+  ["Fundamentos", "Entropia relativa", "entropia-relativa", "medida de distinguibilidad entre dos distribuciones de probabilidad", "D(p\\Vert q)=\\sum_i p_i\\ln\\frac{p_i}{q_i}"],
+  ["Fundamentos", "Informacion mutua", "informacion-mutua", "cantidad de informacion compartida entre variables aleatorias", "I(X;Y)=\\sum_{x,y}p(x,y)\\ln\\frac{p(x,y)}{p(x)p(y)}"],
+  ["Fundamentos", "Principio de Landauer", "principio-de-landauer", "cota termodinamica del calor disipado al borrar informacion", "Q\\ge k_BT\\ln 2"],
+  ["Fundamentos", "Teorema de Bayes en ensambles", "teorema-bayes-ensambles", "uso de inferencia probabilistica para actualizar distribuciones estadisticas", "p(\\theta|D)=\\frac{p(D|\\theta)p(\\theta)}{p(D)}"],
+  ["Fundamentos", "Principio de maxima entropia de trayectorias", "principio-maxima-entropia-trayectorias", "criterio MaxCal para inferir dinamicas desde restricciones sobre caminos", "\\mathcal C=-\\sum_\\Gamma P[\\Gamma]\\ln P[\\Gamma]"],
+  ["Termodinamica estadistica", "Potenciales fuera de equilibrio", "potenciales-fuera-de-equilibrio", "funciones efectivas que generalizan potenciales termodinamicos en estados no equilibrados", "\\mathcal F[p]=\\sum_i p_iE_i+k_BT\\sum_i p_i\\ln p_i"],
+  ["Termodinamica estadistica", "Exergia", "exergia", "trabajo maximo extraible respecto de un entorno de referencia", "\\mathcal E=U-T_0S+P_0V-\\sum_i\\mu_{0i}N_i"],
+  ["Termodinamica estadistica", "Entropia de mezcla", "entropia-de-mezcla", "cambio de entropia asociado a combinar componentes distinguibles", "\\Delta S_{mix}=-k_BN\\sum_i x_i\\ln x_i"],
+  ["Termodinamica estadistica", "Principio de minima produccion de entropia", "principio-minima-produccion-entropia", "resultado lineal para estados estacionarios cercanos al equilibrio bajo restricciones fijas", "\\delta \\dot S_{prod}=0"],
+  ["Termodinamica estadistica", "Relaciones de Onsager-Casimir", "relaciones-onsager-casimir", "generalizacion de reciprocidad para variables con paridad temporal definida", "L_{ij}(\\mathbf B)=\\epsilon_i\\epsilon_jL_{ji}(-\\mathbf B)"],
+];
+
+const allSpecs = [...specs, ...extraSpecs];
+
 const sectionOrder = [
   "Inicio",
   "Fundamentos",
@@ -961,7 +1066,7 @@ function relatedFor(section, slug) {
 
 function groupedPages() {
   const groups = new Map(existingSections.map((group) => [group.section, group.items.map(toItem)]));
-  for (const [section, title, slug] of specs) {
+  for (const [section, title, slug] of allSpecs) {
     if (!groups.has(section)) groups.set(section, []);
     groups.get(section).push({ title, slug, file: `${slug}.md` });
   }
@@ -971,7 +1076,7 @@ function groupedPages() {
 }
 
 function writeTopicFiles() {
-  for (const topic of specs) {
+  for (const topic of allSpecs) {
     const [, , slug] = topic;
     const filePath = path.join(contentDir, `${slug}.md`);
     fs.writeFileSync(filePath, topicPage(topic), "utf8");
@@ -1077,4 +1182,4 @@ writeTopicFiles();
 writeApp(groups);
 writeMap(groups);
 writeHome(groups);
-console.log(`Wrote ${specs.length} new topic pages; total nav entries: ${groups.reduce((sum, group) => sum + group.items.length, 0)}`);
+console.log(`Wrote ${allSpecs.length} generated topic pages; total nav entries: ${groups.reduce((sum, group) => sum + group.items.length, 0)}`);

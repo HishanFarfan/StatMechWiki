@@ -96,6 +96,31 @@ const pages = [
         title: "Temperatura estadistica",
         slug: "temperatura-estadistica",
         file: "temperatura-estadistica.md"
+      },
+      {
+        title: "Entropia relativa",
+        slug: "entropia-relativa",
+        file: "entropia-relativa.md"
+      },
+      {
+        title: "Informacion mutua",
+        slug: "informacion-mutua",
+        file: "informacion-mutua.md"
+      },
+      {
+        title: "Principio de Landauer",
+        slug: "principio-de-landauer",
+        file: "principio-de-landauer.md"
+      },
+      {
+        title: "Teorema de Bayes en ensambles",
+        slug: "teorema-bayes-ensambles",
+        file: "teorema-bayes-ensambles.md"
+      },
+      {
+        title: "Principio de maxima entropia de trayectorias",
+        slug: "principio-maxima-entropia-trayectorias",
+        file: "principio-maxima-entropia-trayectorias.md"
       }
     ]
   },
@@ -216,6 +241,31 @@ const pages = [
         title: "Ecuacion de estado",
         slug: "ecuacion-de-estado",
         file: "ecuacion-de-estado.md"
+      },
+      {
+        title: "Potenciales fuera de equilibrio",
+        slug: "potenciales-fuera-de-equilibrio",
+        file: "potenciales-fuera-de-equilibrio.md"
+      },
+      {
+        title: "Exergia",
+        slug: "exergia",
+        file: "exergia.md"
+      },
+      {
+        title: "Entropia de mezcla",
+        slug: "entropia-de-mezcla",
+        file: "entropia-de-mezcla.md"
+      },
+      {
+        title: "Principio de minima produccion de entropia",
+        slug: "principio-minima-produccion-entropia",
+        file: "principio-minima-produccion-entropia.md"
+      },
+      {
+        title: "Relaciones de Onsager-Casimir",
+        slug: "relaciones-onsager-casimir",
+        file: "relaciones-onsager-casimir.md"
       }
     ]
   },
@@ -331,6 +381,81 @@ const pages = [
         title: "Red de Bethe",
         slug: "red-de-bethe",
         file: "red-de-bethe.md"
+      },
+      {
+        title: "Proceso de exclusion totalmente asimetrico",
+        slug: "proceso-exclusion-totalmente-asimetrico",
+        file: "proceso-exclusion-totalmente-asimetrico.md"
+      },
+      {
+        title: "Proceso de exclusion parcialmente asimetrico",
+        slug: "proceso-exclusion-parcialmente-asimetrico",
+        file: "proceso-exclusion-parcialmente-asimetrico.md"
+      },
+      {
+        title: "Modelo de contacto",
+        slug: "modelo-de-contacto",
+        file: "modelo-de-contacto.md"
+      },
+      {
+        title: "Modelo de voter",
+        slug: "modelo-voter",
+        file: "modelo-voter.md"
+      },
+      {
+        title: "Dinamica de Glauber",
+        slug: "dinamica-glauber",
+        file: "dinamica-glauber.md"
+      },
+      {
+        title: "Dinamica de Kawasaki",
+        slug: "dinamica-kawasaki",
+        file: "dinamica-kawasaki.md"
+      },
+      {
+        title: "Modelo de Vicsek",
+        slug: "modelo-vicsek",
+        file: "modelo-vicsek.md"
+      },
+      {
+        title: "Materia activa",
+        slug: "materia-activa",
+        file: "materia-activa.md"
+      },
+      {
+        title: "Particulas brownianas activas",
+        slug: "particulas-brownianas-activas",
+        file: "particulas-brownianas-activas.md"
+      },
+      {
+        title: "Run-and-tumble",
+        slug: "run-and-tumble",
+        file: "run-and-tumble.md"
+      },
+      {
+        title: "Gases granulares",
+        slug: "gases-granulares",
+        file: "gases-granulares.md"
+      },
+      {
+        title: "Modelo de Kuramoto",
+        slug: "modelo-kuramoto",
+        file: "modelo-kuramoto.md"
+      },
+      {
+        title: "Redes aleatorias",
+        slug: "redes-aleatorias",
+        file: "redes-aleatorias.md"
+      },
+      {
+        title: "Polimeros fuera de equilibrio",
+        slug: "polimeros-fuera-de-equilibrio",
+        file: "polimeros-fuera-de-equilibrio.md"
+      },
+      {
+        title: "Interfaz KPZ",
+        slug: "interfaz-kpz",
+        file: "interfaz-kpz.md"
       }
     ]
   },
@@ -521,6 +646,106 @@ const pages = [
         title: "Termostato de Langevin",
         slug: "termostato-langevin",
         file: "termostato-langevin.md"
+      },
+      {
+        title: "Algoritmo de Gillespie",
+        slug: "algoritmo-gillespie",
+        file: "algoritmo-gillespie.md"
+      },
+      {
+        title: "Monte Carlo cinetico",
+        slug: "monte-carlo-cinetico",
+        file: "monte-carlo-cinetico.md"
+      },
+      {
+        title: "Dinamica de eventos raros",
+        slug: "dinamica-eventos-raros",
+        file: "dinamica-eventos-raros.md"
+      },
+      {
+        title: "Muestreo de trayectorias",
+        slug: "muestreo-de-trayectorias",
+        file: "muestreo-de-trayectorias.md"
+      },
+      {
+        title: "Transition path sampling",
+        slug: "transition-path-sampling",
+        file: "transition-path-sampling.md"
+      },
+      {
+        title: "Algoritmo de clonacion",
+        slug: "algoritmo-clonacion",
+        file: "algoritmo-clonacion.md"
+      },
+      {
+        title: "Umbrella sampling",
+        slug: "umbrella-sampling",
+        file: "umbrella-sampling.md"
+      },
+      {
+        title: "Metadinamica",
+        slug: "metadinamica",
+        file: "metadinamica.md"
+      },
+      {
+        title: "Integracion termodinamica",
+        slug: "integracion-termodinamica",
+        file: "integracion-termodinamica.md"
+      },
+      {
+        title: "Dinamica molecular no equilibrada",
+        slug: "dinamica-molecular-no-equilibrada",
+        file: "dinamica-molecular-no-equilibrada.md"
+      },
+      {
+        title: "Termostato de Nose-Hoover",
+        slug: "termostato-nose-hoover",
+        file: "termostato-nose-hoover.md"
+      },
+      {
+        title: "Termostato de Andersen",
+        slug: "termostato-andersen",
+        file: "termostato-andersen.md"
+      },
+      {
+        title: "Integrador de Verlet",
+        slug: "integrador-verlet",
+        file: "integrador-verlet.md"
+      },
+      {
+        title: "Integrador de Langevin",
+        slug: "integrador-langevin",
+        file: "integrador-langevin.md"
+      },
+      {
+        title: "Estimadores de Green-Kubo",
+        slug: "estimadores-green-kubo",
+        file: "estimadores-green-kubo.md"
+      },
+      {
+        title: "Medicion de autocorrelaciones",
+        slug: "medicion-autocorrelaciones",
+        file: "medicion-autocorrelaciones.md"
+      },
+      {
+        title: "Analisis de error estadistico",
+        slug: "analisis-error-estadistico",
+        file: "analisis-error-estadistico.md"
+      },
+      {
+        title: "Reponderacion multicanonica",
+        slug: "reponderacion-multicanonica",
+        file: "reponderacion-multicanonica.md"
+      },
+      {
+        title: "Metodo de Jarzynski numerico",
+        slug: "metodo-jarzynski-numerico",
+        file: "metodo-jarzynski-numerico.md"
+      },
+      {
+        title: "Simulacion de procesos de Markov",
+        slug: "simulacion-procesos-markov",
+        file: "simulacion-procesos-markov.md"
       }
     ]
   },
@@ -571,6 +796,281 @@ const pages = [
         title: "Proceso de Poisson",
         slug: "proceso-de-poisson",
         file: "proceso-de-poisson.md"
+      },
+      {
+        title: "Estado estacionario fuera de equilibrio",
+        slug: "estado-estacionario-fuera-de-equilibrio",
+        file: "estado-estacionario-fuera-de-equilibrio.md"
+      },
+      {
+        title: "Corriente estacionaria",
+        slug: "corriente-estacionaria",
+        file: "corriente-estacionaria.md"
+      },
+      {
+        title: "Produccion de entropia",
+        slug: "produccion-de-entropia",
+        file: "produccion-de-entropia.md"
+      },
+      {
+        title: "Balance local de entropia",
+        slug: "balance-local-de-entropia",
+        file: "balance-local-de-entropia.md"
+      },
+      {
+        title: "Ecuacion de Fokker-Planck",
+        slug: "ecuacion-fokker-planck",
+        file: "ecuacion-fokker-planck.md"
+      },
+      {
+        title: "Ecuacion de Langevin sobreamortiguada",
+        slug: "ecuacion-langevin-sobreamortiguada",
+        file: "ecuacion-langevin-sobreamortiguada.md"
+      },
+      {
+        title: "Movimiento browniano",
+        slug: "movimiento-browniano",
+        file: "movimiento-browniano.md"
+      },
+      {
+        title: "Relacion de Einstein",
+        slug: "relacion-de-einstein",
+        file: "relacion-de-einstein.md"
+      },
+      {
+        title: "Movilidad",
+        slug: "movilidad",
+        file: "movilidad.md"
+      },
+      {
+        title: "Reciprocidad de Onsager",
+        slug: "reciprocidad-de-onsager",
+        file: "reciprocidad-de-onsager.md"
+      },
+      {
+        title: "Fuerzas termodinamicas",
+        slug: "fuerzas-termodinamicas",
+        file: "fuerzas-termodinamicas.md"
+      },
+      {
+        title: "Afinidad termodinamica",
+        slug: "afinidad-termodinamica",
+        file: "afinidad-termodinamica.md"
+      },
+      {
+        title: "Regimen de respuesta no lineal",
+        slug: "regimen-respuesta-no-lineal",
+        file: "regimen-respuesta-no-lineal.md"
+      },
+      {
+        title: "Teorema integral de fluctuacion",
+        slug: "teorema-integral-fluctuacion",
+        file: "teorema-integral-fluctuacion.md"
+      },
+      {
+        title: "Teorema de Crooks",
+        slug: "teorema-de-crooks",
+        file: "teorema-de-crooks.md"
+      },
+      {
+        title: "Igualdad de Jarzynski",
+        slug: "igualdad-de-jarzynski",
+        file: "igualdad-de-jarzynski.md"
+      },
+      {
+        title: "Fluctuaciones de trabajo",
+        slug: "fluctuaciones-de-trabajo",
+        file: "fluctuaciones-de-trabajo.md"
+      },
+      {
+        title: "Calor estocastico",
+        slug: "calor-estocastico",
+        file: "calor-estocastico.md"
+      },
+      {
+        title: "Termodinamica estocastica",
+        slug: "termodinamica-estocastica",
+        file: "termodinamica-estocastica.md"
+      },
+      {
+        title: "Trayectorias estocasticas",
+        slug: "trayectorias-estocasticas",
+        file: "trayectorias-estocasticas.md"
+      },
+      {
+        title: "Grandes desviaciones dinamicas",
+        slug: "grandes-desviaciones-dinamicas",
+        file: "grandes-desviaciones-dinamicas.md"
+      },
+      {
+        title: "Funcion generadora inclinada",
+        slug: "funcion-generadora-inclinada",
+        file: "funcion-generadora-inclinada.md"
+      },
+      {
+        title: "Actividad dinamica",
+        slug: "actividad-dinamica",
+        file: "actividad-dinamica.md"
+      },
+      {
+        title: "Ensamble de trayectorias",
+        slug: "ensamble-de-trayectorias",
+        file: "ensamble-de-trayectorias.md"
+      },
+      {
+        title: "Tiempo de primer paso",
+        slug: "tiempo-de-primer-paso",
+        file: "tiempo-de-primer-paso.md"
+      },
+      {
+        title: "Ruptura de balance detallado",
+        slug: "ruptura-balance-detallado",
+        file: "ruptura-balance-detallado.md"
+      },
+      {
+        title: "Ciclos de Markov",
+        slug: "ciclos-de-markov",
+        file: "ciclos-de-markov.md"
+      },
+      {
+        title: "Redes de reacciones quimicas",
+        slug: "redes-reacciones-quimicas",
+        file: "redes-reacciones-quimicas.md"
+      },
+      {
+        title: "Dinamica de poblaciones",
+        slug: "dinamica-de-poblaciones",
+        file: "dinamica-de-poblaciones.md"
+      },
+      {
+        title: "Reaccion-difusion",
+        slug: "reaccion-difusion",
+        file: "reaccion-difusion.md"
+      },
+      {
+        title: "Ecuacion de difusion con deriva",
+        slug: "ecuacion-difusion-deriva",
+        file: "ecuacion-difusion-deriva.md"
+      },
+      {
+        title: "Transporte anomaloso",
+        slug: "transporte-anomaloso",
+        file: "transporte-anomaloso.md"
+      },
+      {
+        title: "Difusion fraccionaria",
+        slug: "difusion-fraccionaria",
+        file: "difusion-fraccionaria.md"
+      },
+      {
+        title: "Teoria hidrodinamica fluctuante",
+        slug: "teoria-hidrodinamica-fluctuante",
+        file: "teoria-hidrodinamica-fluctuante.md"
+      },
+      {
+        title: "Ruido conservativo",
+        slug: "ruido-conservativo",
+        file: "ruido-conservativo.md"
+      },
+      {
+        title: "Ley de Fourier",
+        slug: "ley-de-fourier",
+        file: "ley-de-fourier.md"
+      },
+      {
+        title: "Ley de Fick",
+        slug: "ley-de-fick",
+        file: "ley-de-fick.md"
+      },
+      {
+        title: "Viscosidad",
+        slug: "viscosidad",
+        file: "viscosidad.md"
+      },
+      {
+        title: "Conductividad termica",
+        slug: "conductividad-termica",
+        file: "conductividad-termica.md"
+      },
+      {
+        title: "Modos hidrodinamicos",
+        slug: "modos-hidrodinamicos",
+        file: "modos-hidrodinamicos.md"
+      },
+      {
+        title: "Navier-Stokes fluctuante",
+        slug: "navier-stokes-fluctuante",
+        file: "navier-stokes-fluctuante.md"
+      },
+      {
+        title: "Acoplamiento modo-modo",
+        slug: "acoplamiento-modo-modo",
+        file: "acoplamiento-modo-modo.md"
+      },
+      {
+        title: "Envejecimiento",
+        slug: "envejecimiento",
+        file: "envejecimiento.md"
+      },
+      {
+        title: "Relajacion lenta",
+        slug: "relajacion-lenta",
+        file: "relajacion-lenta.md"
+      },
+      {
+        title: "Dinamica vitrea",
+        slug: "dinamica-vitrea",
+        file: "dinamica-vitrea.md"
+      },
+      {
+        title: "Ruptura de ergodicidad",
+        slug: "ruptura-de-ergodicidad",
+        file: "ruptura-de-ergodicidad.md"
+      },
+      {
+        title: "Teorema de Mori-Zwanzig",
+        slug: "teorema-mori-zwanzig",
+        file: "teorema-mori-zwanzig.md"
+      },
+      {
+        title: "Ecuacion generalizada de Langevin",
+        slug: "ecuacion-generalizada-langevin",
+        file: "ecuacion-generalizada-langevin.md"
+      },
+      {
+        title: "Memoria y friccion",
+        slug: "memoria-y-friccion",
+        file: "memoria-y-friccion.md"
+      },
+      {
+        title: "Ruido coloreado",
+        slug: "ruido-coloreado",
+        file: "ruido-coloreado.md"
+      },
+      {
+        title: "Sistemas impulsados periodicamente",
+        slug: "sistemas-impulsados-periodicamente",
+        file: "sistemas-impulsados-periodicamente.md"
+      },
+      {
+        title: "Floquet estocastico",
+        slug: "floquet-estocastico",
+        file: "floquet-estocastico.md"
+      },
+      {
+        title: "Banos termicos multiples",
+        slug: "banos-termicos-multiples",
+        file: "banos-termicos-multiples.md"
+      },
+      {
+        title: "Maquinas termicas mesoscopicas",
+        slug: "maquinas-termicas-mesoscopicas",
+        file: "maquinas-termicas-mesoscopicas.md"
+      },
+      {
+        title: "Eficiencia estocastica",
+        slug: "eficiencia-estocastica",
+        file: "eficiencia-estocastica.md"
       }
     ]
   },

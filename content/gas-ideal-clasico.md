@@ -150,6 +150,20 @@ En el regimen clasico diluido, $n\lambda_T^3\ll 1$, por lo que $\mu$ suele ser n
 - Confundir gas ideal clasico con gas ideal cuantico.
 - Olvidar que no hay energia potencial de interaccion.
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Gas ideal clasico** sin introducir un modelo mas complicado que el necesario.
+
+1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Gas ideal clasico consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
+2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si la nocion de Gas ideal clasico no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
+3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Gas ideal clasico aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+H(p,q)=\sum_{i=1}^{N}\frac{p_i^2}{2m}.
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Gas ideal clasico** queda reservado para la idea precisa de la nocion de Gas ideal clasico. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

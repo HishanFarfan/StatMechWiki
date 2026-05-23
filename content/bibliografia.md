@@ -38,3 +38,17 @@
 ## Como citar en la wiki
 
 En paginas introductorias basta indicar libro y capitulo aproximado. En derivaciones tecnicas conviene agregar seccion o ecuacion cuando sea posible.
+
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Bibliografia** sin introducir un modelo mas complicado que el necesario.
+
+1. **Uso de notacion.** Si una pagina escribe $\beta$, se debe leer siempre como $1/(k_BT)$. En un ejercicio simple con dos niveles, esa convencion evita confundir energia con temperatura.
+2. **Uso bibliografico.** Para una primera lectura de Bibliografia, conviene ubicar si el tema pertenece a ensambles, modelos, metodos o no equilibrio; esa clasificacion determina que texto de referencia consultar primero.
+3. **Control de coherencia.** Al editar una entrada, una prueba simple es verificar que cada ecuacion tenga variables definidas y que las unidades sean compatibles en ambos lados.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+\langle A\rangle=\sum_x A(x)p(x)
+$$

@@ -62,6 +62,20 @@ J_a&=\sum_b L_{ab}X_b
 \end{aligned}
 $$
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Conductividad termica** sin introducir un modelo mas complicado que el necesario.
+
+1. **Cadena de dos estados.** Con tasas $W_{0\to1}$ y $W_{1\to0}$, la probabilidad estacionaria satisface $$p_1^{\rm st}=\frac{W_{0\to1}}{W_{0\to1}+W_{1\to0}}.$$ La aplicacion de Conductividad termica es separar distribucion estacionaria de mecanismo dinamico.
+2. **Corriente en una red.** En un ciclo de tres estados puede haber probabilidades constantes y, aun asi, una corriente neta alrededor del ciclo. Ese ejemplo muestra por que coeficiente que relaciona corriente de calor con gradiente de temperatura no se reduce a escribir $\partial_t p=0$.
+3. **Respuesta a una perturbacion pequena.** Aplica una fuerza debil y mide si la corriente cumple $J\simeq LX$. Si la relacion deja de ser lineal, Conductividad termica debe tratarse como problema fuera del regimen de respuesta lineal.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+\kappa=\frac{1}{k_BT^2V}\int_0^\infty dt\,\langle J_Q(t)J_Q(0)\rangle
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Conductividad termica** queda reservado para la idea precisa de coeficiente que relaciona corriente de calor con gradiente de temperatura. Su papel local es describir evolucion, corrientes, disipacion y fluctuaciones de trayectorias. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

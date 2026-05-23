@@ -111,6 +111,22 @@ El modelo aparece como aproximacion en:
 - Olvidar que el limite de alta temperatura no concentra toda la probabilidad en el nivel excitado.
 - Aplicar el modelo de dos niveles cuando muchos niveles energeticos son accesibles.
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Sistema de dos niveles** sin introducir un modelo mas complicado que el necesario.
+
+1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Sistema de dos niveles consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
+2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si la nocion de Sistema de dos niveles no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
+3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Sistema de dos niveles aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+E_0=0,
+\qquad
+E_1=\epsilon.
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Sistema de dos niveles** queda reservado para la idea precisa de la nocion de Sistema de dos niveles. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

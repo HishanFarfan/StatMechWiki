@@ -62,6 +62,20 @@ $$
 \end{aligned}
 $$
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Metodo de punto de silla** sin introducir un modelo mas complicado que el necesario.
+
+1. **Estimador de promedio.** Dada una serie $A_1,\ldots,A_M$, el estimador basico es $$\bar A=\frac{1}{M}\sum_{k=1}^M A_k.$$ La aplicacion de Metodo de punto de silla es decidir como se generan esas muestras y que sesgo puede introducirse.
+2. **Autocorrelacion.** Si las muestras consecutivas son parecidas, $M$ no equivale al numero de datos independientes. Un caso simple es una cadena de Markov que cambia lentamente entre dos estados; ahi aproximacion asintotica para integrales dominadas por un extremo exige medir tiempo de correlacion.
+3. **Validacion con caso exacto.** Antes de usar el metodo en un sistema grande, se prueba en dos niveles o en una red muy pequena donde la suma exacta se puede hacer a mano. Si falla ahi, el problema es algoritmico, no fisico.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+\int dx\,e^{Nf(x)}\simeq e^{Nf(x_*)}\sqrt{\frac{2\pi}{N|f''(x_*)|}}
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Metodo de punto de silla** queda reservado para la idea precisa de aproximacion asintotica para integrales dominadas por un extremo. Su papel local es convertir sumas o dinamicas imposibles de tratar exactamente en estimadores controlados. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

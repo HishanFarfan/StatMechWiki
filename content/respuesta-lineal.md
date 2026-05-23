@@ -62,6 +62,20 @@ J_a&=\sum_b L_{ab}X_b
 \end{aligned}
 $$
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Respuesta lineal** sin introducir un modelo mas complicado que el necesario.
+
+1. **Cadena de dos estados.** Con tasas $W_{0\to1}$ y $W_{1\to0}$, la probabilidad estacionaria satisface $$p_1^{\rm st}=\frac{W_{0\to1}}{W_{0\to1}+W_{1\to0}}.$$ La aplicacion de Respuesta lineal es separar distribucion estacionaria de mecanismo dinamico.
+2. **Corriente en una red.** En un ciclo de tres estados puede haber probabilidades constantes y, aun asi, una corriente neta alrededor del ciclo. Ese ejemplo muestra por que aproximacion de respuesta proporcional a una perturbacion externa pequena no se reduce a escribir $\partial_t p=0$.
+3. **Respuesta a una perturbacion pequena.** Aplica una fuerza debil y mide si la corriente cumple $J\simeq LX$. Si la relacion deja de ser lineal, Respuesta lineal debe tratarse como problema fuera del regimen de respuesta lineal.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+\delta\langle A(t)\rangle=\int dt'\,\chi_{AB}(t-t')h(t')
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Respuesta lineal** queda reservado para la idea precisa de aproximacion de respuesta proporcional a una perturbacion externa pequena. Su papel local es describir evolucion, corrientes, disipacion y fluctuaciones de trayectorias. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

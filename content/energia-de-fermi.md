@@ -62,6 +62,20 @@ $$
 \end{aligned}
 $$
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Energia de Fermi** sin introducir un modelo mas complicado que el necesario.
+
+1. **Modo de dos ocupaciones.** Para un nivel de energia $\epsilon$, compara ocupacion bosonica y fermionica. La diferencia aparece en $$\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}\mp1},$$ que permite o prohibe acumulacion multiple segun el signo.
+2. **Limite clasico.** Si $e^{\beta(\epsilon-\mu)}\gg1$, Bose-Einstein y Fermi-Dirac se aproximan a Maxwell-Boltzmann. Este caso simple muestra cuando Energia de Fermi puede reemplazarse por una descripcion clasica.
+3. **Escala de degeneracion.** En un gas diluido, $n\lambda_T^3\ll1$ indica comportamiento casi clasico. Cuando esa cantidad se acerca a uno, energia del nivel ocupado mas alto a temperatura cero deja de ser una correccion menor y cambia las ocupaciones observables.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+E_F=\frac{\hbar^2 k_F^2}{2m}
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Energia de Fermi** queda reservado para la idea precisa de energia del nivel ocupado mas alto a temperatura cero. Su papel local es incorporar indistinguibilidad, niveles discretos y ocupaciones de modos. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

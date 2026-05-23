@@ -38,3 +38,17 @@ $$
 ## Como usar esta wiki
 
 Usa el [mapa de la wiki](#/mapa) para navegar por areas. Cada pagina busca ser autocontenida en lo esencial: definicion, ecuacion clave, interpretacion fisica, limites de validez y enlaces relacionados.
+
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Inicio** sin introducir un modelo mas complicado que el necesario.
+
+1. **Ruta de estudio inicial.** Un lector puede partir de microestado, pasar a entropia de Boltzmann y terminar en ensamble canonico. La aplicacion simple es comparar una moneda cargada con muchos lanzamientos: primero se enumeran estados, luego se define una distribucion y finalmente se calcula un promedio.
+2. **Primer calculo.** Para un sistema de dos niveles con energias $0$ y $\epsilon$, la funcion de particion canonica es $$Z=1+e^{-\beta\epsilon}.$$ Esta formula basta para practicar normalizacion, energia media y limite de alta temperatura.
+3. **Conexion con no equilibrio.** Una caminata aleatoria sesgada permite ver por que la wiki no termina en equilibrio: aunque las probabilidades puedan estabilizarse, una corriente persistente revela la dinamica.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+S(E,V,N)=k_B\ln\Omega(E,V,N).
+$$

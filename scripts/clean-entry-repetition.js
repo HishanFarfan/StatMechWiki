@@ -184,6 +184,85 @@ function extractConcept(markdown, page) {
   return `la nocion de ${page.title}`;
 }
 
+function firstDisplayEquation(markdown) {
+  const match = markdown.match(/\$\$\s*([\s\S]*?)\s*\$\$/);
+  if (!match) return String.raw`\langle A\rangle=\sum_x A(x)p(x)`;
+  return match[1].trim();
+}
+
+function simpleExamples(page, markdown) {
+  const concept = extractConcept(markdown, page);
+  const equation = firstDisplayEquation(markdown);
+  const commonIntro = `Estos ejemplos son deliberadamente pequenos: muestran como usar **${page.title}** sin introducir un modelo mas complicado que el necesario.`;
+  const examples = {
+    "Inicio": [
+      `**Ruta de estudio inicial.** Un lector puede partir de microestado, pasar a entropia de Boltzmann y terminar en ensamble canonico. La aplicacion simple es comparar una moneda cargada con muchos lanzamientos: primero se enumeran estados, luego se define una distribucion y finalmente se calcula un promedio.`,
+      `**Primer calculo.** Para un sistema de dos niveles con energias $0$ y $\\epsilon$, la funcion de particion canonica es $$Z=1+e^{-\\beta\\epsilon}.$$ Esta formula basta para practicar normalizacion, energia media y limite de alta temperatura.`,
+      `**Conexion con no equilibrio.** Una caminata aleatoria sesgada permite ver por que la wiki no termina en equilibrio: aunque las probabilidades puedan estabilizarse, una corriente persistente revela la dinamica.`,
+    ],
+    "Recursos": [
+      `**Uso de notacion.** Si una pagina escribe $\\beta$, se debe leer siempre como $1/(k_BT)$. En un ejercicio simple con dos niveles, esa convencion evita confundir energia con temperatura.`,
+      `**Uso bibliografico.** Para una primera lectura de ${page.title}, conviene ubicar si el tema pertenece a ensambles, modelos, metodos o no equilibrio; esa clasificacion determina que texto de referencia consultar primero.`,
+      `**Control de coherencia.** Al editar una entrada, una prueba simple es verificar que cada ecuacion tenga variables definidas y que las unidades sean compatibles en ambos lados.`,
+    ],
+    "Fundamentos": [
+      `**Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por ${concept}. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\\langle A\\rangle=pA_a+(1-p)A_b$.`,
+      `**Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como ${page.title} cambia cuando se impone una restriccion macroscopica.`,
+      `**Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de ${page.title} requiere revisar accesibilidad o ergodicidad.`,
+    ],
+    "Ensambles": [
+      `**Dos niveles en contacto termico.** Para energias $0$ y $\\epsilon$, el peso canonico da $$p_1=\\frac{e^{-\\beta\\epsilon}}{1+e^{-\\beta\\epsilon}}.$$ La entrada se usa al decidir que variable esta fija y que cantidad fluctua.`,
+      `**Intercambio con un reservorio.** Un subsistema pequeno puede ganar o perder energia mientras el conjunto total conserva energia. En ese caso, ${concept} se reconoce observando si el entorno fija $E$, $T$, $P$ o $\\mu$.`,
+      `**Comparacion de fluctuaciones.** En un sistema pequeno, fijar energia no es equivalente a fijar temperatura: el promedio de energia puede parecer similar, pero $\\langle(\\Delta E)^2\\rangle$ cambia. Este es el test minimo para no confundir ensambles.`,
+    ],
+    "Termodinamica estadistica": [
+      `**Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\\left(\\frac{\\partial F}{\\partial T}\\right)_{V,N}.$$ La aplicacion simple de ${page.title} es identificar que variable se mantiene fija antes de derivar.`,
+      `**Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.`,
+      `**Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar ${concept}, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.`,
+    ],
+    "Modelos": [
+      `**Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de ${page.title} consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.`,
+      `**Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\\simeq \\frac{1}{\\Omega}.$$ Si ${concept} no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.`,
+      `**Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de ${page.title} aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.`,
+    ],
+    "Cuantica": [
+      `**Modo de dos ocupaciones.** Para un nivel de energia $\\epsilon$, compara ocupacion bosonica y fermionica. La diferencia aparece en $$\\langle n\\rangle=\\frac{1}{e^{\\beta(\\epsilon-\\mu)}\\mp1},$$ que permite o prohibe acumulacion multiple segun el signo.`,
+      `**Limite clasico.** Si $e^{\\beta(\\epsilon-\\mu)}\\gg1$, Bose-Einstein y Fermi-Dirac se aproximan a Maxwell-Boltzmann. Este caso simple muestra cuando ${page.title} puede reemplazarse por una descripcion clasica.`,
+      `**Escala de degeneracion.** En un gas diluido, $n\\lambda_T^3\\ll1$ indica comportamiento casi clasico. Cuando esa cantidad se acerca a uno, ${concept} deja de ser una correccion menor y cambia las ocupaciones observables.`,
+    ],
+    "Transiciones y criticalidad": [
+      `**Parametro de orden escalar.** En una red pequena de espines, la magnetizacion media $$m=\\frac{1}{N}\\sum_i s_i$$ distingue una fase ordenada de una desordenada. La aplicacion de ${page.title} es decidir si esa cantidad cambia suavemente o anuncia una transicion.`,
+      `**Tamano finito.** Calcula una susceptibilidad para $L=8$ y $L=16$. Si el maximo crece o se desplaza, el ejemplo ilustra que ${concept} debe leerse junto con el limite termodinamico.`,
+      `**Escala de correlacion.** Si una correlacion decae como $G(r)\\sim e^{-r/\\xi}$, aumentar $\\xi$ vuelve relevante la geometria del sistema. Este caso simple explica por que la criticalidad no puede tratarse como una fluctuacion local ordinaria.`,
+    ],
+    "Metodos": [
+      `**Estimador de promedio.** Dada una serie $A_1,\\ldots,A_M$, el estimador basico es $$\\bar A=\\frac{1}{M}\\sum_{k=1}^M A_k.$$ La aplicacion de ${page.title} es decidir como se generan esas muestras y que sesgo puede introducirse.`,
+      `**Autocorrelacion.** Si las muestras consecutivas son parecidas, $M$ no equivale al numero de datos independientes. Un caso simple es una cadena de Markov que cambia lentamente entre dos estados; ahi ${concept} exige medir tiempo de correlacion.`,
+      `**Validacion con caso exacto.** Antes de usar el metodo en un sistema grande, se prueba en dos niveles o en una red muy pequena donde la suma exacta se puede hacer a mano. Si falla ahi, el problema es algoritmico, no fisico.`,
+    ],
+    "No equilibrio": [
+      `**Cadena de dos estados.** Con tasas $W_{0\\to1}$ y $W_{1\\to0}$, la probabilidad estacionaria satisface $$p_1^{\\rm st}=\\frac{W_{0\\to1}}{W_{0\\to1}+W_{1\\to0}}.$$ La aplicacion de ${page.title} es separar distribucion estacionaria de mecanismo dinamico.`,
+      `**Corriente en una red.** En un ciclo de tres estados puede haber probabilidades constantes y, aun asi, una corriente neta alrededor del ciclo. Ese ejemplo muestra por que ${concept} no se reduce a escribir $\\partial_t p=0$.`,
+      `**Respuesta a una perturbacion pequena.** Aplica una fuerza debil y mide si la corriente cumple $J\\simeq LX$. Si la relacion deja de ser lineal, ${page.title} debe tratarse como problema fuera del regimen de respuesta lineal.`,
+    ],
+  };
+  return String.raw`
+## Ejemplos y aplicaciones simples
+
+${commonIntro}
+
+1. ${examples[page.section]?.[0] || `**Caso minimo.** Se toma un sistema con dos estados y se evalua como ${concept} cambia la probabilidad relativa o el observable medio.`}
+2. ${examples[page.section]?.[1] || `**Cambio de parametro.** Se modifica temperatura, energia, tasa o tamano del sistema para ver que parte de **${page.title}** permanece estable y que parte cambia.`}
+3. ${examples[page.section]?.[2] || `**Diagnostico.** Se comprueba normalizacion, dimensiones y limite simple antes de interpretar el resultado.`}
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+${equation}
+$$
+`;
+}
+
 function coherenceNote(page, markdown) {
   if (page.section === "Inicio" || page.section === "Recursos") return "";
   const concept = extractConcept(markdown, page);
@@ -207,7 +286,7 @@ function removeExistingCoherence(markdown) {
   for (const line of lines) {
     const title = headingTitle(line);
     if (title) {
-      skipping = title === "Coherencia dentro de la wiki";
+      skipping = title === "Coherencia dentro de la wiki" || title === "Ejemplos y aplicaciones simples";
       if (skipping) continue;
     }
     if (!skipping) output.push(line);
@@ -215,7 +294,8 @@ function removeExistingCoherence(markdown) {
   return output.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd();
 }
 
-function insertBeforeRelated(markdown, note) {
+function insertBeforeRelated(markdown, additions) {
+  const note = additions.filter(Boolean).map((item) => item.trim()).join("\n\n");
   if (!note) return markdown.trimEnd();
   const cleaned = removeExistingCoherence(markdown);
   const marker = "\n## Paginas relacionadas";
@@ -232,7 +312,10 @@ function cleanPage(page) {
   const generated = isGeneratedTopic(markdown);
   if (generated) markdown = removeRepeatedParagraphs(removeRepeatedSections(markdown));
 
-  markdown = insertBeforeRelated(markdown, coherenceNote(page, markdown));
+  markdown = insertBeforeRelated(markdown, [
+    simpleExamples(page, markdown),
+    coherenceNote(page, markdown),
+  ]);
   fs.writeFileSync(filePath, `${markdown.trimEnd()}\n`, "utf8");
   return {
     file: page.file,

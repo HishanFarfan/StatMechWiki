@@ -83,6 +83,20 @@ La entropia de Gibbs cuantifica cuan extendida esta una distribucion sobre el es
 - Confundir entropia de Gibbs con entropia de mezcla sin discutir indistinguibilidad.
 - Olvidar que $p_i$ depende del ensamble.
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Entropia de Gibbs** sin introducir un modelo mas complicado que el necesario.
+
+1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por la nocion de Entropia de Gibbs. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
+2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Entropia de Gibbs cambia cuando se impone una restriccion macroscopica.
+3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Entropia de Gibbs requiere revisar accesibilidad o ergodicidad.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+S_G=-k_B\sum_i p_i\ln p_i.
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Entropia de Gibbs** queda reservado para la idea precisa de la nocion de Entropia de Gibbs. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

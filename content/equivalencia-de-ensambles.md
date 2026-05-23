@@ -140,6 +140,20 @@ Cuando esto se cumple, el gran canonico puede describir la misma termodinamica p
 - Usar equivalencia cerca de una transicion de primer orden sin revisar estabilidad.
 - Confundir igualdad de promedios con igualdad de distribuciones completas.
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Equivalencia de ensambles** sin introducir un modelo mas complicado que el necesario.
+
+1. **Dos niveles en contacto termico.** Para energias $0$ y $\epsilon$, el peso canonico da $$p_1=\frac{e^{-\beta\epsilon}}{1+e^{-\beta\epsilon}}.$$ La entrada se usa al decidir que variable esta fija y que cantidad fluctua.
+2. **Intercambio con un reservorio.** Un subsistema pequeno puede ganar o perder energia mientras el conjunto total conserva energia. En ese caso, la nocion de Equivalencia de ensambles se reconoce observando si el entorno fija $E$, $T$, $P$ o $\mu$.
+3. **Comparacion de fluctuaciones.** En un sistema pequeno, fijar energia no es equivalente a fijar temperatura: el promedio de energia puede parecer similar, pero $\langle(\Delta E)^2\rangle$ cambia. Este es el test minimo para no confundir ensambles.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+S(E,V,N)=k_B\ln\Omega(E,V,N).
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Equivalencia de ensambles** queda reservado para la idea precisa de la nocion de Equivalencia de ensambles. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

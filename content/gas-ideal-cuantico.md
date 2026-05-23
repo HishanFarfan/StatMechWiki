@@ -62,6 +62,20 @@ $$
 \end{aligned}
 $$
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Gas ideal cuantico** sin introducir un modelo mas complicado que el necesario.
+
+1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Gas ideal cuantico consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
+2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si gas de particulas indistinguibles donde importan ocupaciones cuanticas no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
+3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Gas ideal cuantico aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+\langle n_\alpha\rangle=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp 1}
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Gas ideal cuantico** queda reservado para la idea precisa de gas de particulas indistinguibles donde importan ocupaciones cuanticas. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

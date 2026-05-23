@@ -62,6 +62,20 @@ $$
 \end{aligned}
 $$
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Transicion de primer orden** sin introducir un modelo mas complicado que el necesario.
+
+1. **Parametro de orden escalar.** En una red pequena de espines, la magnetizacion media $$m=\frac{1}{N}\sum_i s_i$$ distingue una fase ordenada de una desordenada. La aplicacion de Transicion de primer orden es decidir si esa cantidad cambia suavemente o anuncia una transicion.
+2. **Tamano finito.** Calcula una susceptibilidad para $L=8$ y $L=16$. Si el maximo crece o se desplaza, el ejemplo ilustra que transicion con discontinuidad en una derivada primera del potencial debe leerse junto con el limite termodinamico.
+3. **Escala de correlacion.** Si una correlacion decae como $G(r)\sim e^{-r/\xi}$, aumentar $\xi$ vuelve relevante la geometria del sistema. Este caso simple explica por que la criticalidad no puede tratarse como una fluctuacion local ordinaria.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+\Delta S\neq 0
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Transicion de primer orden** queda reservado para la idea precisa de transicion con discontinuidad en una derivada primera del potencial. Su papel local es separar comportamiento regular y singular cerca del limite termodinamico. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

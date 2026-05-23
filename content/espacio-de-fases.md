@@ -73,6 +73,20 @@ $$
 - Tratar el volumen de espacio de fases como una cantidad absoluta sin especificar la medida.
 - Olvidar que esta pagina se refiere a la descripcion clasica; el caso cuantico requiere espacio de Hilbert.
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Espacio de fases** sin introducir un modelo mas complicado que el necesario.
+
+1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por la nocion de Espacio de fases. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
+2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Espacio de fases cambia cuando se impone una restriccion macroscopica.
+3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Espacio de fases requiere revisar accesibilidad o ergodicidad.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+\Gamma=(q_1,\ldots,q_N,p_1,\ldots,p_N)
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Espacio de fases** queda reservado para la idea precisa de la nocion de Espacio de fases. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

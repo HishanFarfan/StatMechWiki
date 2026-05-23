@@ -62,6 +62,20 @@ $$
 \end{aligned}
 $$
 
+## Ejemplos y aplicaciones simples
+
+Estos ejemplos son deliberadamente pequenos: muestran como usar **Relaciones de Onsager-Casimir** sin introducir un modelo mas complicado que el necesario.
+
+1. **Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\left(\frac{\partial F}{\partial T}\right)_{V,N}.$$ La aplicacion simple de Relaciones de Onsager-Casimir es identificar que variable se mantiene fija antes de derivar.
+2. **Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.
+3. **Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar generalizacion de reciprocidad para variables con paridad temporal definida, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.
+
+Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+
+$$
+L_{ij}(\mathbf B)=\epsilon_i\epsilon_jL_{ji}(-\mathbf B)
+$$
+
 ## Coherencia dentro de la wiki
 
 Dentro del mapa general, **Relaciones de Onsager-Casimir** queda reservado para la idea precisa de generalizacion de reciprocidad para variables con paridad temporal definida. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.

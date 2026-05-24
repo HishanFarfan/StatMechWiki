@@ -86,43 +86,50 @@ Aqui $G$ es la energia libre de Gibbs y $\Phi$ es el potencial gran canonico.
 - Olvidar que $F=-k_BT\ln Z$ es una relacion canonica.
 - Interpretar minimizacion de $F$ fuera de sus condiciones de validez.
 
-## Ejemplos y aplicaciones simples
+## Ejemplo: gas ideal clásico
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Energia libre de Helmholtz** sin introducir un modelo mas complicado que el necesario.
-
-1. **Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\left(\frac{\partial F}{\partial T}\right)_{V,N}.$$ La aplicacion simple de Energia libre de Helmholtz es identificar que variable se mantiene fija antes de derivar.
-2. **Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.
-3. **Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar la nocion de Energia libre de Helmholtz, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+Para el gas ideal con $Z_N = (V/\lambda_T^3)^N/N!$:
 
 $$
-F=E-TS.
+F = -Nk_BT\left[\ln\!\left(\frac{V}{N\lambda_T^3}\right)+1\right].
 $$
+
+Las derivadas reproducen los resultados conocidos:
+- $P = -(\partial F/\partial V)_{T,N} = Nk_BT/V$ → ecuación de estado.
+- $S = -(\partial F/\partial T)_{V,N} = Nk_B[\ln(V/N\lambda_T^3) + 5/2]$ → entropía de Sackur-Tetrode.
+- $\mu = (\partial F/\partial N)_{T,V} = k_BT\ln(n\lambda_T^3)$ → negativo en régimen clásico diluido.
+
+## Trabajo máximo a temperatura constante
+
+A temperatura fija ($T$ y $N$ constantes), el primer y segundo principio combinados dan
+
+$$
+W \leq -(F_f - F_i) = -\Delta F.
+$$
+
+El trabajo realizado *por* el sistema nunca excede la disminución de $F$. La igualdad se alcanza en procesos reversibles. Por eso $F$ se llama «energía libre»: es la fracción de la energía interna disponible para hacer trabajo a $T$ constante.
+
+## Convexidad y estabilidad
+
+La estabilidad termodinámica impone restricciones sobre la forma de $F$:
+
+- **$F$ cóncava en $T$**: $(\partial^2 F/\partial T^2)_{V,N} = -C_V/T \leq 0$ → $C_V \geq 0$.
+- **$F$ convexa en $V$**: $(\partial^2 F/\partial V^2)_{T,N} = 1/(V\kappa_T) \geq 0$ → $\kappa_T \geq 0$.
+
+Si se violan estas condiciones, el sistema es termodinámicamente inestable y se produce una separación de fases.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Callen, *Thermodynamics and an Introduction to Thermostatistics*, cap. 5: $F$ como función característica del ensamble canónico y criterios de estabilidad.
+- Kardar, *Statistical Physics of Particles*, cap. 2: potenciales termodinámicos, transformadas de Legendre y estabilidad.
+- Schroeder, *An Introduction to Thermal Physics*, cap. 5: energía libre, trabajo disponible y aplicaciones a reacciones químicas.
 
-La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Energia libre de Helmholtz** queda reservado para la idea precisa de la nocion de Energia libre de Helmholtz. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{potencial}\longrightarrow \text{variables naturales}\longrightarrow \text{respuestas}
-$$
-
-Una ampliacion futura deberia partir de la nocion de Energia libre de Helmholtz y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Termodinamica estadistica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Funcion de particion](#/funcion-de-particion)
-- [Ensamble canonico](#/ensamble-canonico)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
+- [Función de partición](#/funcion-de-particion)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Transformadas de Legendre](#/transformadas-de-legendre)
+- [Energía libre de Gibbs](#/energia-libre-de-gibbs)
+- [Potencial gran canónico](#/potencial-gran-canonico)
+- [Estabilidad termodinámica](#/estabilidad-termodinamica)
+- [Entropía de Gibbs](#/entropia-de-gibbs)

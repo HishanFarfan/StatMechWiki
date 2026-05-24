@@ -116,43 +116,48 @@ es la longitud de onda termica de de Broglie.
 - Confundir potencial quimico con fugacidad.
 - Suponer que $\mu$ debe ser siempre positivo.
 
-## Ejemplos y aplicaciones simples
+## Signo de $\mu$ y su interpretación
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Potencial quimico** sin introducir un modelo mas complicado que el necesario.
+En el **gas ideal clásico** ($n\lambda_T^3 \ll 1$):
+$$\mu = k_BT\ln(n\lambda_T^3) < 0,$$
+ya que el argumento del logaritmo es $\ll 1$. Añadir una partícula al gas diluido aumenta la entropía (muchos estados disponibles), de modo que la energía libre disminuye: $\mu < 0$.
 
-1. **Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\left(\frac{\partial F}{\partial T}\right)_{V,N}.$$ La aplicacion simple de Potencial quimico es identificar que variable se mantiene fija antes de derivar.
-2. **Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.
-3. **Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar la nocion de Potencial quimico, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.
+En un **gas de Fermi degenerado** ($T \ll T_F$), $\mu \approx \epsilon_F > 0$: añadir una partícula cuesta energía porque todos los estados de baja energía están ocupados.
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+En **bosones** aproximándose a la condensación de Bose-Einstein, $\mu \to 0^-$; el colapso hacia $\mu < 0$ no ocurre porque en $\mu = 0$ ya diverge la ocupación del estado base.
+
+## Equilibrio en mezclas: condición de coexistencia
+
+Para dos fases $\alpha$ y $\beta$ de la misma especie en equilibrio:
 
 $$
-dE=T\,dS-P\,dV+\mu\,dN.
+T_\alpha = T_\beta, \qquad P_\alpha = P_\beta, \qquad \mu_\alpha(T,P) = \mu_\beta(T,P).
 $$
+
+La última condición define la **curva de coexistencia** en el diagrama $P$-$T$. La ecuación de Clausius-Clapeyron,
+
+$$
+\frac{dP}{dT} = \frac{L}{T\,\Delta v},
+$$
+
+se obtiene diferenciando $\mu_\alpha = \mu_\beta$ a lo largo de la curva, donde $L$ es el calor latente y $\Delta v$ el cambio de volumen molar.
+
+## Presión osmótica
+
+Si una membrana semipermeable separa un disolvente puro (izquierda, $\mu_0$) de una solución diluida (derecha, $\mu_0 + k_BT\ln x_s$ con $x_s < 1$), el equilibrio requiere igualar potenciales. Aumentar la presión $P$ a la derecha compensa la diferencia: la presión osmótica es $\Pi = nk_BT$ (ley de van't Hoff), directamente proporcional a la concentración del soluto.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Callen, *Thermodynamics and an Introduction to Thermostatistics*, cap. 2: el potencial químico como variable intensiva conjugada a $N$, condiciones de equilibrio químico.
+- Kardar, *Statistical Physics of Particles*, cap. 4: $\mu$ del gas ideal clásico, fugacidad, ensamble gran canónico.
+- Kittel & Kroemer, *Thermal Physics*, cap. 5: potencial químico en semiconductores, metales y gases cuánticos.
 
-La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Potencial quimico** queda reservado para la idea precisa de la nocion de Potencial quimico. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{potencial}\longrightarrow \text{variables naturales}\longrightarrow \text{respuestas}
-$$
-
-Una ampliacion futura deberia partir de la nocion de Potencial quimico y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Termodinamica estadistica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
-- [Gas ideal clasico](#/gas-ideal-clasico)
-- [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+- [Ensamble gran canónico](#/ensamble-gran-canonico)
+- [Energía libre de Helmholtz](#/energia-libre-de-helmholtz)
+- [Gas ideal clásico](#/gas-ideal-clasico)
+- [Gas ideal cuántico](#/gas-ideal-cuantico)
+- [Condensación de Bose-Einstein](#/condensacion-bose-einstein)
+- [Gas de Fermi](#/gas-de-fermi)
+- [Transformadas de Legendre](#/transformadas-de-legendre)

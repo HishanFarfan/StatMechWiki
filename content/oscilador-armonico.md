@@ -108,44 +108,71 @@ $$
 - Confundir frecuencia angular $\omega$ con frecuencia ordinaria $\nu$.
 - Omitir que un solido real tiene muchos modos con distintas frecuencias.
 
-## Ejemplos y aplicaciones simples
+## Fluctuaciones y desplazamiento cuadrático medio
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Oscilador armonico** sin introducir un modelo mas complicado que el necesario.
-
-1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Oscilador armonico consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
-2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si la nocion de Oscilador armonico no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
-3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Oscilador armonico aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+En el estado cuántico térmico, el desplazamiento cuadrático medio es
 
 $$
-E_n=\hbar\omega\left(n+\frac{1}{2}\right),
-\qquad
-n=0,1,2,\ldots
+\langle x^2\rangle
+=
+\frac{\hbar}{2m\omega}\coth\!\left(\frac{\beta\hbar\omega}{2}\right).
 $$
+
+En el límite clásico ($k_BT \gg \hbar\omega$), $\coth(x)\to 1/x$ y $\langle x^2\rangle \to k_BT/m\omega^2$, consistente con el teorema de equipartición. En el límite de baja temperatura, $\langle x^2\rangle \to \hbar/2m\omega$: fluctuaciones cuánticas irreducibles, independientes de $T$.
+
+## Energía del punto cero
+
+La energía de punto cero $E_0 = \hbar\omega/2$ es un efecto puramente cuántico sin análogo clásico. Sus consecuencias físicas incluyen:
+
+- **Estabilidad de la materia**: el principio de incertidumbre impide que electrones y núcleos colapsen.
+- **Corrección de Casimir**: las fluctuaciones del vacío entre dos placas conductoras generan una fuerza atractiva medible $\sim \hbar c / d^4$.
+- **Divergencia en teoría de campos**: en el campo electromagnético, la energía de punto cero suma sobre infinitos modos y requiere renormalización.
+- **Helio líquido**: el $^4$He permanece líquido a presión atmosférica hasta $T = 0$ porque la energía de punto cero supera la energía de cristalización.
+
+## Función de partición clásica explícita
+
+Para el oscilador clásico con $H = p^2/2m + m\omega^2 q^2/2$:
+
+$$
+Z_{\mathrm{cl}}
+=
+\frac{1}{h}
+\int_{-\infty}^{\infty}\!\!dp
+\int_{-\infty}^{\infty}\!\!dq\;
+e^{-\beta(p^2/2m + m\omega^2 q^2/2)}
+=
+\frac{1}{h}
+\sqrt{\frac{2\pi m}{\beta}}
+\sqrt{\frac{2\pi}{\beta m\omega^2}}
+=
+\frac{k_BT}{\hbar\omega}.
+$$
+
+Por tanto $\langle E\rangle_\mathrm{cl} = -\partial\ln Z_\mathrm{cl}/\partial\beta = k_BT$, confirmando la equipartición (dos grados cuadráticos).
+
+## Realizaciones físicas
+
+| Sistema | $\omega$ típica | $T_{\text{cruce}}\ (\hbar\omega/k_B)$ | Régimen a 300 K |
+|---|---|---|---|
+| Modo acústico en Cu | $10^{12}\ \text{rad/s}$ | 8 K | clásico |
+| Vibración O–H | $5\times10^{14}\ \text{rad/s}$ | 3800 K | cuántico |
+| Modo de torsión en etano | $10^{13}\ \text{rad/s}$ | 80 K | parcialmente cuántico |
+| Campo EM en microondas ($\nu=10\ \text{GHz}$) | $6\times10^{10}\ \text{Hz}$ | 0.5 K | clásico |
+
+**Osciladores en la física cuántica de la información**: los modos del campo electromagnético en una cavidad son osciladores cuánticos; los estados coherentes $|\alpha\rangle$ minimizan la incertidumbre y reproducen el comportamiento clásico, mientras que los estados de Fock $|n\rangle$ tienen fluctuaciones de fase ilimitadas.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Sakurai & Napolitano, *Modern Quantum Mechanics*, cap. 2: oscilador armónico cuántico con operadores escalera, estados coherentes y representación de Fock.
+- Kardar, *Statistical Physics of Particles*, cap. 4: función de partición del oscilador y conexión con el sólido de Einstein y la distribución de Planck.
+- Kittel & Kroemer, *Thermal Physics*, cap. 4: oscilador clásico y cuántico, equipartición y límite cuántico.
+- Pathria & Beale, *Statistical Mechanics*, cap. 3: fluctuaciones cuánticas y termalización de modos.
 
-Los libros usan modelos simples para aislar mecanismos: dos niveles, gas ideal, solido de Einstein, Ising, van der Waals o gases cuanticos. La mejora editorial para esta entrada es hacer explicito que grados de libertad se conservan, que interacciones se descartan y que observable debe cambiar si el mecanismo propuesto es realmente relevante.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Oscilador armonico** queda reservado para la idea precisa de la nocion de Oscilador armonico. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{grados de libertad}\longrightarrow H\ \text{o}\ W\longrightarrow \text{observables}
-$$
-
-Una ampliacion futura deberia partir de la nocion de Oscilador armonico y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Modelos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Ensamble canonico](#/ensamble-canonico)
-- [Funcion de particion](#/funcion-de-particion)
+- [Sólido de Einstein](#/solido-de-einstein)
+- [Sólido de Debye](#/solido-de-debye)
+- [Teorema de equipartición](#/teorema-de-equiparticion)
+- [Función de partición](#/funcion-de-particion)
+- [Densidad de estados](#/densidad-de-estados)
 - [Sistema de dos niveles](#/sistema-de-dos-niveles)

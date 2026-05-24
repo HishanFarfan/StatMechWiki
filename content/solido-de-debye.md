@@ -1,104 +1,130 @@
-# Solido de Debye
+# Sólido de Debye
 
 ## Resumen
 
-**Solido de Debye** es una entrada troncal de modelos dentro de la mecanica estadistica. Su papel principal se resume asi: modelo de fonones con espectro continuo hasta una frecuencia de corte. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+El **sólido de Debye** (1912) modela un sólido cristalino como un medio elástico continuo con $3N$ modos normales de vibración (fonones) con densidad de estados $g(\omega)\propto\omega^2$, truncada en una frecuencia de corte $\omega_D$. Reproduce correctamente la ley $C\propto T^3$ a bajas temperaturas, en contraste con el sólido de Einstein que predice un decaimiento exponencial.
 
-## Definicion operativa
+## Motivación: el fracaso de Einstein a bajas temperaturas
 
-En mecanica estadistica conviene definir **Solido de Debye** por su uso operativo: modelo de fonones con espectro continuo hasta una frecuencia de corte. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+El sólido de Einstein predice $C_V \propto (T_E/T)^2 e^{-T_E/T}$, que decae exponencialmente a bajas temperaturas. Los experimentos muestran $C_V \propto T^3$. La discrepancia se debe a que los modos acústicos de larga longitud de onda tienen frecuencias arbitrariamente bajas ($\omega \to 0$ cuando $k \to 0$) y no están capturados por una frecuencia única $\omega_E$.
 
-## Ecuacion clave
+## Modelo: densidad de estados de Debye
 
-$$
-g(\omega)\propto \omega^2
-$$
-
-## Estructura matematica
+Debye aproxima el sólido como un medio elástico continuo isotrópico con velocidad del sonido $v$. El número de modos entre $\omega$ y $\omega + d\omega$ es
 
 $$
-\begin{aligned}
-H(\{x_i\})&=H_0+H_{int}+H_{ext},\\
-Z&=\sum_{\{x_i\}}e^{-\beta H(\{x_i\})},\\
-f&=-\frac{k_BT}{N}\ln Z
-\end{aligned}
+g(\omega) = \frac{9N}{\omega_D^3}\,\omega^2, \qquad 0 \leq \omega \leq \omega_D,
 $$
 
-$$
-\begin{aligned}
-p(\{x_i\})&=\frac{e^{-\beta H(\{x_i\})}}{Z},\\
-\sum_{\{x_i\}}p(\{x_i\})&=1,\\
-\langle A\rangle&=\sum_{\{x_i\}}A(\{x_i\})p(\{x_i\})
-\end{aligned}
-$$
+normalizada para que $\int_0^{\omega_D} g(\omega)\,d\omega = 3N$ (hay $3N$ modos en total: 2 transversales + 1 longitudinal).
 
-## Diccionario de derivadas
+La **frecuencia de Debye** $\omega_D$ se fija por la condición de normalización. En términos de la densidad numérica $n = N/V$:
 
 $$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
+\omega_D = v_s\left(6\pi^2 n\right)^{1/3},
 $$
 
-## Escalas y cantidades sin dimension
+donde $v_s$ es una velocidad media efectiva combinando modos longitudinales y transversales. La **temperatura de Debye** es
 
 $$
-\begin{aligned}
-K&=\beta J,\\
-u&=\beta h,\\
-\ell&\sim \xi/a
-\end{aligned}
+T_D = \frac{\hbar\omega_D}{k_B}.
 $$
 
-## Donde suele fallar
+## Energía interna
+
+Cada modo de frecuencia $\omega$ es un oscilador cuántico con energía media $\hbar\omega(\langle n\rangle + \frac{1}{2})$. La energía total es
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+\langle E\rangle
+=
+\int_0^{\omega_D} g(\omega)\,\hbar\omega\left(\frac{1}{e^{\hbar\omega/k_BT}-1}+\frac{1}{2}\right)d\omega.
 $$
 
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Solido de Debye** sin introducir un modelo mas complicado que el necesario.
-
-1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Solido de Debye consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
-2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si modelo de fonones con espectro continuo hasta una frecuencia de corte no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
-3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Solido de Debye aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+Ignorando la energía de punto cero (constante) y usando el cambio de variable $x = \hbar\omega/k_BT$:
 
 $$
-g(\omega)\propto \omega^2
+\langle E\rangle
+=
+9Nk_BT\left(\frac{T}{T_D}\right)^3
+\int_0^{T_D/T}\frac{x^3}{e^x-1}\,dx.
 $$
+
+## Capacidad calorífica
+
+$$
+C_V
+=
+9Nk_B\left(\frac{T}{T_D}\right)^3
+\int_0^{T_D/T}\frac{x^4 e^x}{(e^x-1)^2}\,dx.
+$$
+
+Esta es la **función de Debye** $D(T_D/T)$.
+
+### Límite de alta temperatura ($T \gg T_D$)
+
+Para $x \ll 1$, el integrando se aproxima por $x^2$:
+
+$$
+C_V \to 3Nk_B \qquad \text{(ley de Dulong-Petit)}.
+$$
+
+### Límite de baja temperatura ($T \ll T_D$)
+
+El límite superior $T_D/T \to \infty$; la integral converge a $\int_0^\infty x^3/(e^x-1)\,dx = \pi^4/15$:
+
+$$
+\langle E\rangle \approx \frac{3\pi^4}{5}Nk_BT\left(\frac{T}{T_D}\right)^3,
+\qquad
+C_V = \frac{12\pi^4}{5}Nk_B\left(\frac{T}{T_D}\right)^3.
+$$
+
+La ley $C_V\propto T^3$ reproduce exactamente los datos experimentales a bajas temperaturas.
+
+## Temperaturas de Debye de algunos sólidos
+
+| Sólido | $T_D$ (K) | Comportamiento a 300 K |
+|---|---|---|
+| Diamante | 2230 | $T < T_D$: régimen cuántico, $C \ll 3Nk_B$ |
+| Silicio | 645 | cerca del cruce |
+| Aluminio | 428 | $T \sim T_D$: transición |
+| Cobre | 343 | $T \sim T_D$ |
+| Plata | 225 | $T > T_D$: Dulong-Petit |
+| Plomo | 105 | $T \gg T_D$: completamente clásico |
+
+En los metales, hay además la contribución electrónica $C_e \propto T$ (gas de Fermi degenerado), que domina a temperaturas muy bajas ($T \ll 1\ \text{K}$) donde $T^3$ ya es despreciable.
+
+## Entropía a baja temperatura
+
+$$
+S = \frac{4\pi^4}{5}Nk_B\left(\frac{T}{T_D}\right)^3 \to 0 \quad (T \to 0),
+$$
+
+en acuerdo con el tercer principio de la termodinámica.
+
+## Limitaciones del modelo de Debye
+
+1. **Dispersión no lineal**: en cristales reales $\omega(k)$ no es lineal para $k$ cercano al borde de la zona de Brillouin. La aproximación $\omega = v_s k$ solo es válida para $k \ll \pi/a$.
+
+2. **Anisotropía**: Debye asume un medio isótropo con velocidad única. Cristales no cúbicos tienen velocidades diferentes en distintas direcciones.
+
+3. **Contribución electrónica**: en metales, los electrones de conducción contribuyen $C_e = \gamma T$ con $\gamma = \pi^2 k_B^2 g(\epsilon_F)/3$. A bajas $T$, $C_V = \gamma T + AT^3$.
+
+4. **Fonones ópticos**: en sólidos con base (≥2 átomos por celda unidad), hay ramas ópticas con frecuencias altas. El modelo de Debye solo captura las ramas acústicas.
+
+5. **Efectos anharmónicos**: a temperaturas altas, las vibraciones no son perfectamente armónicas. Esto causa expansión térmica y conductividad térmica finita, fenómenos ausentes en el modelo de Debye.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Debye, "Zur Theorie der spezifischen Wärmen", *Annalen der Physik* 39, 789 (1912): el artículo original.
+- Kittel, *Introduction to Solid State Physics*, cap. 5: modelos de Einstein y Debye, densidad de fonones, comparación con datos.
+- Kardar, *Statistical Physics of Particles*, cap. 6: derivación del modelo de Debye en el contexto de gases cuánticos y fonones.
+- Ashcroft & Mermin, *Solid State Physics*, cap. 23: fonones en sólidos reales, dispersión de fonones y correcciones al modelo de Debye.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Solido de Debye** queda reservado para la idea precisa de modelo de fonones con espectro continuo hasta una frecuencia de corte. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{grados de libertad}\longrightarrow H\ \text{o}\ W\longrightarrow \text{observables}
-$$
-
-Una ampliacion futura deberia partir de modelo de fonones con espectro continuo hasta una frecuencia de corte y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Modelos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Gas ideal clasico](#/gas-ideal-clasico)
-- [Modelo de Ising](#/modelo-de-ising)
-- [Sistema de dos niveles](#/sistema-de-dos-niveles)
+- [Sólido de Einstein](#/solido-de-einstein)
+- [Densidad de estados](#/densidad-de-estados)
+- [Fonones](#/fonones)
+- [Oscilador armónico](#/oscilador-armonico)
+- [Gas de Fermi](#/gas-de-fermi)
+- [Ley de Planck](#/ley-de-planck)

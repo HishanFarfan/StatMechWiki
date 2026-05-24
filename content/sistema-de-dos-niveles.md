@@ -111,44 +111,67 @@ El modelo aparece como aproximacion en:
 - Olvidar que el limite de alta temperatura no concentra toda la probabilidad en el nivel excitado.
 - Aplicar el modelo de dos niveles cuando muchos niveles energeticos son accesibles.
 
-## Ejemplos y aplicaciones simples
+## Pico de Schottky
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Sistema de dos niveles** sin introducir un modelo mas complicado que el necesario.
-
-1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Sistema de dos niveles consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
-2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si la nocion de Sistema de dos niveles no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
-3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Sistema de dos niveles aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+La anomalía de Schottky es el máximo de $C(T)$ que aparece cuando la energía térmica $k_BT$ es comparable con la separación entre niveles $\epsilon$. El pico ocurre en
 
 $$
-E_0=0,
-\qquad
-E_1=\epsilon.
+k_BT^* \approx 0.42\,\epsilon \qquad \Longleftrightarrow \qquad \beta^*\epsilon \approx 2.40.
 $$
+
+El valor máximo es
+
+$$
+C_{\max} \approx 0.439\,k_B.
+$$
+
+A temperaturas bajas, $C \propto e^{-\epsilon/k_BT} \to 0$ porque el nivel excitado está desocupado. A temperaturas altas, $C \propto T^{-2} \to 0$ porque ambos niveles tienen la misma ocupación y ya no hay transferencia neta de energía. El pico es la firma experimental de que el sistema tiene solo dos niveles accesibles.
+
+Ejemplos donde se observa:
+- Sales paramagnéticas en campo magnético bajo ($\epsilon = 2\mu_B B$).
+- Centros de color en diamante.
+- Grupos OH en sólidos con dos posiciones de equilibrio.
+- Núcleos atómicos con espín $I=1/2$ en resonancia magnética nuclear (RMN).
+
+## Espín $\frac{1}{2}$ en campo magnético
+
+El ejemplo canónico del sistema de dos niveles es un espín $\frac{1}{2}$ con momento magnético $\mu_B$ en un campo $B$. Los dos niveles son $E_\pm = \mp\mu_B B$, de modo que $\epsilon = 2\mu_B B$. La función de partición es
+
+$$
+Z = e^{\beta\mu_B B} + e^{-\beta\mu_B B} = 2\cosh(\beta\mu_B B).
+$$
+
+La magnetización de $N$ espines es
+
+$$
+M = N\mu_B \tanh(\beta\mu_B B),
+$$
+
+y la capacidad calorífica muestra el pico de Schottky a $k_BT^* \approx 0.83\,\mu_B B$.
+
+Para $B = 1\ \text{T}$: $T^* \approx 0.55\ \text{K}$, lo que confirma que a temperatura ambiente el sistema está completamente en el régimen lineal (ley de Curie).
+
+## Temperatura negativa
+
+El sistema de dos niveles permite entender la temperatura negativa. Si se invierten las poblaciones —más ocupación en $E_1$ que en $E_0$— la temperatura es negativa:
+
+$$
+\frac{p_1}{p_0} = e^{-\beta\epsilon} > 1 \implies \beta < 0 \implies T < 0.
+$$
+
+Esto no viola la termodinámica; solo ocurre en sistemas con espectro acotado (energía máxima finita). Una inversión de población se consigue, por ejemplo, en láseres o en gases ultrafríos de átomos de rubidio en redes ópticas. En contacto térmico con un sistema ordinario, un sistema a $T < 0$ cede calor espontáneamente: los sistemas de temperatura negativa están "más calientes" que cualquier sistema a $T > 0$.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Schroeder, *An Introduction to Thermal Physics*, cap. 3: sistema de dos niveles con derivación explícita de la anomalía de Schottky y múltiples realizaciones físicas.
+- Kardar, *Statistical Physics of Particles*, cap. 4: sistema de dos niveles como introducción al ensamble canónico, con el espín-1/2 como ejemplo principal.
+- Ramsey, "Thermodynamics and Statistical Mechanics at Negative Absolute Temperatures", *Phys. Rev.* 103, 20 (1956): el artículo que establece la termodinámica de temperatura negativa.
 
-Los libros usan modelos simples para aislar mecanismos: dos niveles, gas ideal, solido de Einstein, Ising, van der Waals o gases cuanticos. La mejora editorial para esta entrada es hacer explicito que grados de libertad se conservan, que interacciones se descartan y que observable debe cambiar si el mecanismo propuesto es realmente relevante.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Sistema de dos niveles** queda reservado para la idea precisa de la nocion de Sistema de dos niveles. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{grados de libertad}\longrightarrow H\ \text{o}\ W\longrightarrow \text{observables}
-$$
-
-Una ampliacion futura deberia partir de la nocion de Sistema de dos niveles y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Modelos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Ensamble canonico](#/ensamble-canonico)
-- [Funcion de particion](#/funcion-de-particion)
+- [Paramagnetismo](#/paramagnetismo)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Función de partición](#/funcion-de-particion)
+- [Distribución de Boltzmann](#/distribucion-de-boltzmann)
+- [Temperatura estadística](#/temperatura-estadistica)
 - [Fluctuaciones](#/fluctuaciones)

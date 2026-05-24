@@ -1,104 +1,124 @@
-# Gas ideal cuantico
+# Gas ideal cuántico
 
 ## Resumen
 
-**Gas ideal cuantico** es una entrada troncal de modelos dentro de la mecanica estadistica. Su papel principal se resume asi: gas de particulas indistinguibles donde importan ocupaciones cuanticas. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+Un **gas ideal cuántico** es un conjunto de $N$ partículas idénticas no interactuantes donde la indistinguibilidad cuántica altera radicalmente la termodinámica. Dependiendo del espín, se distinguen dos casos:
 
-## Definicion operativa
+- **Bosones** (espín entero): cualquier número de partículas puede ocupar el mismo estado → distribución de Bose-Einstein.
+- **Fermiones** (espín semientero): a lo sumo una partícula por estado (principio de exclusión de Pauli) → distribución de Fermi-Dirac.
 
-En mecanica estadistica conviene definir **Gas ideal cuantico** por su uso operativo: gas de particulas indistinguibles donde importan ocupaciones cuanticas. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+El límite clásico $n\lambda_T^3 \ll 1$ recupera la distribución de Maxwell-Boltzmann; los efectos cuánticos aparecen cuando la longitud de onda térmica $\lambda_T$ es comparable con la separación entre partículas.
 
-## Ecuacion clave
+## Microestados y ensamble gran canónico
 
-$$
-\langle n_\alpha\rangle=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp 1}
-$$
-
-## Estructura matematica
+Para partículas idénticas, el microestado se especifica por el conjunto de números de ocupación $\{n_\alpha\}$ de cada estado de una partícula $\alpha$ (con energía $\epsilon_\alpha$), en vez de por las posiciones de cada partícula. La energía total y el número de partículas son
 
 $$
-\begin{aligned}
-H(\{x_i\})&=H_0+H_{int}+H_{ext},\\
-Z&=\sum_{\{x_i\}}e^{-\beta H(\{x_i\})},\\
-f&=-\frac{k_BT}{N}\ln Z
-\end{aligned}
+E = \sum_\alpha n_\alpha \epsilon_\alpha, \qquad N = \sum_\alpha n_\alpha.
 $$
 
-$$
-\begin{aligned}
-p(\{x_i\})&=\frac{e^{-\beta H(\{x_i\})}}{Z},\\
-\sum_{\{x_i\}}p(\{x_i\})&=1,\\
-\langle A\rangle&=\sum_{\{x_i\}}A(\{x_i\})p(\{x_i\})
-\end{aligned}
-$$
-
-## Diccionario de derivadas
+El ensamble gran canónico con potencial químico $\mu$ factoriza sobre los modos:
 
 $$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
+\ln\Xi = \mp\sum_\alpha \ln\!\left(1 \mp e^{-\beta(\epsilon_\alpha - \mu)}\right),
 $$
 
-## Escalas y cantidades sin dimension
+donde el signo superior es para bosones y el inferior para fermiones.
+
+## Número de ocupación medio
+
+El número medio de partículas en el estado $\alpha$ es
 
 $$
-\begin{aligned}
-K&=\beta J,\\
-u&=\beta h,\\
-\ell&\sim \xi/a
-\end{aligned}
+\langle n_\alpha \rangle = -\frac{1}{\beta}\frac{\partial\ln\Xi}{\partial\epsilon_\alpha}
+= \frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp 1}.
 $$
 
-## Donde suele fallar
+- **Bose-Einstein** ($-$): $\langle n_\alpha\rangle \geq 0$, sin límite superior.
+- **Fermi-Dirac** ($+$): $\langle n_\alpha\rangle \in [0,1]$ (exclusión de Pauli).
+
+## Condición que fija $\mu$
+
+El potencial químico se determina imponiendo el número de partículas:
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+N = \sum_\alpha \langle n_\alpha\rangle = \int_0^\infty g(\epsilon)\,\langle n(\epsilon)\rangle\,d\epsilon,
 $$
 
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Gas ideal cuantico** sin introducir un modelo mas complicado que el necesario.
-
-1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Gas ideal cuantico consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
-2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si gas de particulas indistinguibles donde importan ocupaciones cuanticas no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
-3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Gas ideal cuantico aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+donde $g(\epsilon)$ es la densidad de estados. Para un gas libre en 3D:
 
 $$
-\langle n_\alpha\rangle=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp 1}
+g(\epsilon) = \frac{4\pi(2m)^{3/2}}{h^3}V\,\epsilon^{1/2} \cdot g_s,
 $$
+
+con $g_s = 2s+1$ la degeneración de espín.
+
+## Límite clásico y expansión virial
+
+Cuando $e^{\beta(\epsilon-\mu)} \gg 1$ (equivalente a $n\lambda_T^3 \ll 1$), ambas distribuciones coinciden:
+
+$$
+\langle n_\alpha\rangle \approx e^{-\beta(\epsilon_\alpha-\mu)} \qquad \text{(Maxwell-Boltzmann)}.
+$$
+
+La primera corrección cuántica al gas ideal da la ecuación de estado:
+
+$$
+\frac{PV}{Nk_BT} = 1 \pm \frac{1}{4\sqrt{2}}\,n\lambda_T^3 + \ldots,
+$$
+
+donde $+$ es para fermiones (presión mayor que la clásica, por exclusión) y $-$ para bosones (presión menor, por bunching estadístico).
+
+## Criterio de degeneración cuántica
+
+| Condición | Régimen | Consecuencia |
+|---|---|---|
+| $n\lambda_T^3 \ll 1$ | clásico | Maxwell-Boltzmann |
+| $n\lambda_T^3 \sim 1$ | transición | correcciones cuánticas |
+| $n\lambda_T^3 \gg 1$ (bosones) | condensación | BEC, $\mu \to 0^-$ |
+| $k_BT \ll \epsilon_F$ (fermiones) | degenerado | Gas de Fermi, $\mu \approx \epsilon_F$ |
+
+Temperatura de degeneración para los electrones en cobre:
+
+$$
+T_F = \frac{\epsilon_F}{k_B} \approx 8\times10^4\ \text{K} \gg 300\ \text{K}
+\implies \text{gas completamente degenerado a temperatura ambiente}.
+$$
+
+## Presión y potencial gran canónico
+
+La presión se obtiene directamente de $\ln\Xi$:
+
+$$
+PV = k_BT\ln\Xi = \mp k_BT\sum_\alpha \ln\!\left(1\mp e^{-\beta(\epsilon_\alpha-\mu)}\right).
+$$
+
+A $T=0$, los fermiones tienen energía cinética finita (energía de Fermi $\epsilon_F$) y presión de degeneración $P_0 = \frac{2}{5}n\epsilon_F$, que sostiene las estrellas de neutrones contra el colapso gravitacional.
+
+## Casos especiales con $\mu = 0$
+
+Los **fonones** y **fotones** no se conservan (se crean y destruyen libremente), por lo que su potencial químico es $\mu = 0$. Sus distribuciones son Bose-Einstein con $\mu=0$:
+
+$$
+\langle n_\alpha\rangle = \frac{1}{e^{\beta\epsilon_\alpha} - 1}.
+$$
+
+Para fotones en una cavidad, esto lleva a la distribución de Planck y a la ley de Stefan-Boltzmann $u\propto T^4$.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, caps. 6-7: derivación sistemática de los gases de Bose y Fermi desde el ensamble gran canónico.
+- Pathria & Beale, *Statistical Mechanics*, caps. 6-8: tratamiento riguroso de la condensación de Bose-Einstein y el gas de Fermi degenerado.
+- Kittel, *Introduction to Solid State Physics*, caps. 6-7: gas de Fermi libre para electrones, energía de Fermi, calor específico electrónico.
+- Blundell & Blundell, *Concepts in Thermal Physics*, caps. 26-29: gas de Bose, fotones, fonones y condensación.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Gas ideal cuantico** queda reservado para la idea precisa de gas de particulas indistinguibles donde importan ocupaciones cuanticas. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{grados de libertad}\longrightarrow H\ \text{o}\ W\longrightarrow \text{observables}
-$$
-
-Una ampliacion futura deberia partir de gas de particulas indistinguibles donde importan ocupaciones cuanticas y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Modelos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Gas ideal clasico](#/gas-ideal-clasico)
-- [Modelo de Ising](#/modelo-de-ising)
-- [Sistema de dos niveles](#/sistema-de-dos-niveles)
+- [Gas ideal clásico](#/gas-ideal-clasico)
+- [Distribución de Bose-Einstein](#/distribucion-bose-einstein)
+- [Distribución de Fermi-Dirac](#/distribucion-fermi-dirac)
+- [Condensación de Bose-Einstein](#/condensacion-bose-einstein)
+- [Gas de Fermi](#/gas-de-fermi)
+- [Ley de Planck](#/ley-de-planck)
+- [Indistinguibilidad](#/indistinguibilidad)
+- [Ensamble gran canónico](#/ensamble-gran-canonico)

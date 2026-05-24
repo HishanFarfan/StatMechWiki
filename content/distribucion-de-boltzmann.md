@@ -1,104 +1,109 @@
-# Distribucion de Boltzmann
+# Distribución de Boltzmann
 
 ## Resumen
 
-**Distribucion de Boltzmann** es una entrada troncal de ensambles dentro de la mecanica estadistica. Su papel principal se resume asi: peso exponencial que favorece estados de menor energia. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **distribución de Boltzmann** asigna a cada microestado $i$ con energía $E_i$ una probabilidad proporcional al factor de Boltzmann $e^{-\beta E_i}$:
 
-## Definicion operativa
+$$p_i = \frac{e^{-\beta E_i}}{Z}, \qquad Z = \sum_j e^{-\beta E_j}, \qquad \beta = \frac{1}{k_BT}$$
 
-En mecanica estadistica conviene definir **Distribucion de Boltzmann** por su uso operativo: peso exponencial que favorece estados de menor energia. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+Es la distribución de equilibrio para un sistema en contacto con un reservorio térmico a temperatura $T$. Estados de baja energía son exponencialmente más probables que estados de alta energía; la "temperatura" controla cuán pronunciado es este sesgo.
 
-## Ecuacion clave
+## Origen: el reservorio térmico
 
-$$
-p_i=\frac{e^{-\beta E_i}}{Z}
-$$
+La distribución de Boltzmann no es un postulado: se deriva del hecho de que el sistema de interés $S$ está acoplado a un reservorio $R$ con energía total $E_\text{tot}$ conservada. La probabilidad de que $S$ esté en el microestado $i$ es proporcional al número de microestados del reservorio con energía $E_\text{tot} - E_i$:
 
-## Estructura matematica
+$$p_i \propto \Omega_R(E_\text{tot} - E_i) = e^{S_R(E_\text{tot}-E_i)/k_B} \approx e^{-E_i/k_BT_R}$$
 
-$$
-\begin{aligned}
-p_i&=\frac{1}{\mathcal Z}\exp[-\beta(E_i+PX_i-\mu N_i)],\\
-\mathcal Z&=\sum_i \exp[-\beta(E_i+PX_i-\mu N_i)],\\
-\langle A\rangle&=\sum_i A_i p_i
-\end{aligned}
-$$
+El paso clave es la expansión lineal $S_R(E_\text{tot} - E_i) \approx S_R(E_\text{tot}) - E_i(\partial S_R/\partial E)_{N,V} = S_R(E_\text{tot}) - E_i/T_R$, válida cuando $E_i \ll E_\text{tot}$.
 
-$$
-\begin{aligned}
-Z&=\sum_i e^{-\beta E_i},\\
-\Xi&=\sum_{N=0}^{\infty}e^{\beta\mu N}Z_N,\\
-\Delta&=\int_0^\infty dV\,e^{-\beta PV}Z_N(T,V)
-\end{aligned}
-$$
+## La función de partición como generatriz
 
-## Diccionario de derivadas
+$Z$ no es solo una constante de normalización: **genera todas las propiedades termodinámicas por diferenciación**:
 
-$$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\Phi&=-k_BT\ln\Xi,\\
-G&=-k_BT\ln\Delta,\\
-\langle N\rangle&=\frac{1}{\beta}\frac{\partial\ln\Xi}{\partial\mu}
-\end{aligned}
-$$
+$$\langle E\rangle = -\frac{\partial\ln Z}{\partial\beta}, \qquad \langle(\Delta E)^2\rangle = \frac{\partial^2\ln Z}{\partial\beta^2}$$
 
-## Escalas y cantidades sin dimension
+$$F = -k_BT\ln Z, \qquad S = -\frac{\partial F}{\partial T} = k_B\ln Z + k_B\beta\langle E\rangle$$
 
-$$
-\begin{aligned}
-\beta E&=\frac{E}{k_BT},\\
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-\frac{\delta A}{\langle A\rangle}&\sim N^{-1/2}
-\end{aligned}
-$$
+$$C_V = \frac{\partial\langle E\rangle}{\partial T} = k_B\beta^2\langle(\Delta E)^2\rangle$$
 
-## Donde suele fallar
+Esta última relación dice que la capacidad calorífica mide las fluctuaciones de energía. Un sistema con gran varianza de energía tiene gran capacidad calorífica.
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+## Interpretación física
 
-## Ejemplos y aplicaciones simples
+El factor $e^{-\beta E_i}$ puede leerse de dos maneras:
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Distribucion de Boltzmann** sin introducir un modelo mas complicado que el necesario.
+**Competencia energía-entropía.** El estado $i$ tiene probabilidad proporcional a $e^{-E_i/k_BT}$. A temperatura baja ($k_BT \ll \Delta E$, la separación entre niveles), solo los estados de mínima energía son apreciablemente ocupados. A temperatura alta ($k_BT \gg \Delta E$), todos los estados son igualmente probables.
 
-1. **Dos niveles en contacto termico.** Para energias $0$ y $\epsilon$, el peso canonico da $$p_1=\frac{e^{-\beta\epsilon}}{1+e^{-\beta\epsilon}}.$$ La entrada se usa al decidir que variable esta fija y que cantidad fluctua.
-2. **Intercambio con un reservorio.** Un subsistema pequeno puede ganar o perder energia mientras el conjunto total conserva energia. En ese caso, peso exponencial que favorece estados de menor energia se reconoce observando si el entorno fija $E$, $T$, $P$ o $\mu$.
-3. **Comparacion de fluctuaciones.** En un sistema pequeno, fijar energia no es equivalente a fijar temperatura: el promedio de energia puede parecer similar, pero $\langle(\Delta E)^2\rangle$ cambia. Este es el test minimo para no confundir ensambles.
+**Transformada de Laplace de la DOS.** Si $g(E)$ es la densidad de estados, $Z = \int g(E)e^{-\beta E}dE$: la función de partición es la transformada de Laplace de la DOS. Los pesos de Boltzmann son la "frecuencia de muestreo" con que el sistema visita distintos rangos de energía.
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+## Ejemplos
 
-$$
-p_i=\frac{e^{-\beta E_i}}{Z}
-$$
+### Sistema de dos niveles
+
+Niveles $E_0 = 0$ y $E_1 = \varepsilon$:
+
+$$Z = 1 + e^{-\beta\varepsilon}, \qquad p_1 = \frac{e^{-\beta\varepsilon}}{1+e^{-\beta\varepsilon}} = \frac{1}{e^{\beta\varepsilon}+1}$$
+
+$$\langle E\rangle = \frac{\varepsilon}{e^{\beta\varepsilon}+1}, \qquad C = k_B\left(\frac{\varepsilon}{2k_BT}\right)^2\!\text{sech}^2\!\left(\frac{\varepsilon}{2k_BT}\right)$$
+
+El pico de $C(T)$ a $k_BT \approx 0.42\,\varepsilon$ (pico de Schottky) es una señal característica de un sistema de dos niveles: la capacidad calorífica crece al activarse el estado excitado y luego cae cuando ambos estados quedan igualmente ocupados.
+
+### Gas ideal monoatómico (un átomo)
+
+Estados etiquetados por $\mathbf{p}$, con $E = p^2/2m$:
+
+$$Z_1 = \frac{V}{h^3}\int d^3p\, e^{-\beta p^2/2m} = V\left(\frac{2\pi m k_BT}{h^2}\right)^{3/2} = \frac{V}{\lambda_T^3}$$
+
+donde $\lambda_T = h/\sqrt{2\pi mk_BT}$ es la longitud de onda de de Broglie térmica. Para $N$ partículas indistinguibles: $Z_N = Z_1^N/N!$ (en el límite clásico). La energía libre de Helmholtz es la fórmula de Sackur-Tetrode.
+
+### Distribución de velocidades de Maxwell
+
+La probabilidad de que una molécula tenga velocidad $\mathbf{v}$ es $p(\mathbf{v}) \propto e^{-mv^2/2k_BT}$. La distribución de la rapidez $v = |\mathbf{v}|$ es
+
+$$f(v) = 4\pi\left(\frac{m}{2\pi k_BT}\right)^{3/2}v^2 e^{-mv^2/2k_BT}$$
+
+con velocidad más probable $v_p = \sqrt{2k_BT/m}$, velocidad media $\langle v\rangle = \sqrt{8k_BT/\pi m}$ y velocidad cuadrática media $v_\text{rms} = \sqrt{3k_BT/m}$.
+
+## Regla de razones de Boltzmann
+
+Para dos estados $i$ y $j$, la razón de probabilidades es independiente de $Z$:
+
+$$\frac{p_i}{p_j} = e^{-\beta(E_i - E_j)} = e^{-(E_i-E_j)/k_BT}$$
+
+Esto es útil en espectroscopía: la razón de intensidades de dos líneas de emisión da directamente la diferencia de energía de los niveles si se conoce $T$. También aparece en química: la constante de equilibrio de una reacción $A \rightleftharpoons B$ es $K = e^{-\beta\Delta G}$ donde $\Delta G = G_B - G_A$.
+
+## La distribución de Boltzmann como MaxEnt
+
+La distribución $p_i \propto e^{-\beta E_i}$ es la única distribución que maximiza la entropía de Gibbs $S_G = -k_B\sum_i p_i\ln p_i$ sujeta a la restricción de que $\sum_i p_i E_i = \langle E\rangle$ es fijo. El parámetro $\beta$ es el multiplicador de Lagrange asociado a esta restricción. Este resultado conecta la distribución de Boltzmann con el principio de máxima entropía de Jaynes.
+
+## Extensión: distribución generalizada de Gibbs
+
+Si el sistema tiene varias cargas conservadas $\{Q_k\}$ con valores medios $\{\langle Q_k\rangle\}$, la generalización es
+
+$$p_i \propto \exp\!\left(-\sum_k\lambda_k Q_k^{(i)}\right)$$
+
+donde $\lambda_k$ son los multiplicadores asociados. Para el ensamble gran canónico: $Q_1 = E$, $Q_2 = N$, $\lambda_1 = \beta$, $\lambda_2 = -\beta\mu$.
+
+## Límites y correcciones
+
+**Efectos cuánticos.** La distribución de Boltzmann es clásica ($n\lambda_T^3 \ll 1$). Para fermiones y bosones a alta densidad o baja temperatura, hay que usar las distribuciones de Fermi-Dirac y Bose-Einstein respectivamente.
+
+**Interacciones.** Para sistemas con interacciones, $Z$ no factoriza y el cálculo exacto de la función de partición es difícil. Las expansiones en serie (expansión del virial, grupo de renormalización) son las herramientas para tratarlo.
+
+**No equilibrio.** La distribución de Boltzmann describe el equilibrio. Si el sistema evoluciona lejos del equilibrio, la distribución real puede diferir significativamente.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Boltzmann, *Vorlesungen über Gastheorie* (1896-1898): la formulación original en términos de la distribución de velocidades.
+- Reif, *Fundamentals of Statistical and Thermal Physics*, cap. 6: derivación completa desde el reservorio térmico.
+- Kardar, *Statistical Physics of Particles*, cap. 4: función de partición, energía libre, y conexión con termodinámica.
+- Kittel & Kroemer, *Thermal Physics*, cap. 1-3: exposición didáctica con énfasis en aplicaciones.
 
-Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\Omega$, $Z$ o $\Xi$, genere los promedios y fluctuaciones correctos.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Distribucion de Boltzmann** queda reservado para la idea precisa de peso exponencial que favorece estados de menor energia. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{restricciones}\longrightarrow p_i\longrightarrow Z\ \text{o}\ \Omega\longrightarrow \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de peso exponencial que favorece estados de menor energia y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Ensambles**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Ensamble microcanonico](#/ensamble-microcanonico)
-- [Ensamble canonico](#/ensamble-canonico)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Función de partición](#/funcion-de-particion)
+- [Reservorio térmico](#/reservorio-termico)
+- [Temperatura estadística](#/temperatura-estadistica)
+- [Principio de máxima entropía](#/principio-de-maxima-entropia)
+- [Distribución de Maxwell-Boltzmann](#/distribucion-maxwell-boltzmann)

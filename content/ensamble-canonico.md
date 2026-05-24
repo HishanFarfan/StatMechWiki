@@ -223,51 +223,28 @@ Este ejemplo muestra directamente como la temperatura controla la ocupacion de e
 - Usar el ensamble canonico para sistemas donde tambien fluctua el numero de particulas.
 - Ignorar que las fluctuaciones de energia son parte de la definicion del ensamble.
 
-## Ejemplos y aplicaciones simples
+## Ejemplo adicional: oscilador armónico cuántico
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Ensamble canonico** sin introducir un modelo mas complicado que el necesario.
+Para un oscilador 1D con $E_n = \hbar\omega(n+\tfrac{1}{2})$:
 
-1. **Dos niveles en contacto termico.** Para energias $0$ y $\epsilon$, el peso canonico da $$p_1=\frac{e^{-\beta\epsilon}}{1+e^{-\beta\epsilon}}.$$ La entrada se usa al decidir que variable esta fija y que cantidad fluctua.
-2. **Intercambio con un reservorio.** Un subsistema pequeno puede ganar o perder energia mientras el conjunto total conserva energia. En ese caso, la nocion de Ensamble canonico se reconoce observando si el entorno fija $E$, $T$, $P$ o $\mu$.
-3. **Comparacion de fluctuaciones.** En un sistema pequeno, fijar energia no es equivalente a fijar temperatura: el promedio de energia puede parecer similar, pero $\langle(\Delta E)^2\rangle$ cambia. Este es el test minimo para no confundir ensambles.
+$$Z_1 = \sum_{n=0}^\infty e^{-\beta\hbar\omega(n+1/2)} = \frac{e^{-\beta\hbar\omega/2}}{1 - e^{-\beta\hbar\omega}}$$
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+$$\langle E\rangle = \hbar\omega\left(\frac{1}{e^{\beta\hbar\omega}-1} + \frac{1}{2}\right) = \hbar\omega\left(\langle n\rangle + \frac{1}{2}\right)$$
 
-$$
-\boxed{T,\;V,\;N\ \text{fijos}} .
-$$
+donde $\langle n\rangle = 1/(e^{\beta\hbar\omega}-1)$ es el número de ocupación de Planck. A alta temperatura ($k_BT \gg \hbar\omega$): $\langle E\rangle \to k_BT$ (equipartición). A baja temperatura: $\langle E\rangle \to \frac{1}{2}\hbar\omega$ (energía del punto cero).
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 4: derivación desde el reservorio, $Z$ para gas ideal y osciladores.
+- Reif, *Fundamentals of Statistical and Thermal Physics*, cap. 6: ensamble canónico con énfasis en la física del reservorio.
+- Callen, *Thermodynamics and an Introduction to Thermostatistics*, cap. 16: la energía libre de Helmholtz como función característica del ensamble canónico.
+- Pathria & Beale, *Statistical Mechanics*, cap. 3: tratamiento riguroso incluyendo la conexión con el ensamble microcanónico.
 
-Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\Omega$, $Z$ o $\Xi$, genere los promedios y fluctuaciones correctos.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Ensamble canonico** queda reservado para la idea precisa de la nocion de Ensamble canonico. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{restricciones}\longrightarrow p_i\longrightarrow Z\ \text{o}\ \Omega\longrightarrow \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de la nocion de Ensamble canonico y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Ensambles**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Ensamble microcanonico](#/ensamble-microcanonico)
-- [Funcion de particion](#/funcion-de-particion)
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-
-## Referencias recomendadas
-
-- Pathria y Beale, *Statistical Mechanics*, capitulos sobre ensamble canonico.
-- Huang, *Statistical Mechanics*, derivacion desde el reservorio.
-- Kardar, *Statistical Physics of Particles*, tratamiento por maxima entropia y funcion de particion.
-- Callen, *Thermodynamics and an Introduction to Thermostatistics*, para la energia libre de Helmholtz.
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Función de partición](#/funcion-de-particion)
+- [Energía libre de Helmholtz](#/energia-libre-de-helmholtz)
+- [Distribución de Boltzmann](#/distribucion-de-boltzmann)
+- [Reservorio térmico](#/reservorio-termico)
+- [Ensamble gran canónico](#/ensamble-gran-canonico)

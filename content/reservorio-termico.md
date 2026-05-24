@@ -1,104 +1,95 @@
-# Reservorio termico
+# Reservorio térmico
 
 ## Resumen
 
-**Reservorio termico** es una entrada troncal de ensambles dentro de la mecanica estadistica. Su papel principal se resume asi: sistema grande que fija la temperatura de un sistema pequeno. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+Un **reservorio térmico** (o baño térmico) es un sistema tan grande que puede absorber o ceder cantidades arbitrarias de energía sin que su temperatura cambie apreciablemente. Su función en mecánica estadística es fijar la temperatura del sistema de interés y justificar el ensamble canónico.
 
-## Definicion operativa
+$$T_R = \text{cte} \quad \text{aunque } \Delta E_R \text{ sea finito}$$
 
-En mecanica estadistica conviene definir **Reservorio termico** por su uso operativo: sistema grande que fija la temperatura de un sistema pequeno. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+## Definición y condición formal
 
-## Ecuacion clave
+Un sistema $R$ funciona como reservorio térmico para un sistema $S$ si:
 
-$$
-p_i\propto \Omega_R(E_{\mathrm{tot}}-E_i)
-$$
+1. $N_R \gg N_S$ (el reservorio es macroscópicamente más grande)
+2. $C_V^{(R)} \to \infty$ en el límite $N_R \to \infty$: el calor específico diverge, de modo que
+$$\Delta T_R = \frac{\Delta E}{C_V^{(R)}} \to 0$$
+3. El acoplamiento entre $R$ y $S$ es débil: la energía de interacción es despreciable frente a las energías internas.
 
-## Estructura matematica
+Bajo estas condiciones, $R$ fija $T$ de manera que $S$ puede ser descrito por el ensamble canónico.
 
-$$
-\begin{aligned}
-p_i&=\frac{1}{\mathcal Z}\exp[-\beta(E_i+PX_i-\mu N_i)],\\
-\mathcal Z&=\sum_i \exp[-\beta(E_i+PX_i-\mu N_i)],\\
-\langle A\rangle&=\sum_i A_i p_i
-\end{aligned}
-$$
+## Cómo el reservorio produce la distribución de Boltzmann
 
-$$
-\begin{aligned}
-Z&=\sum_i e^{-\beta E_i},\\
-\Xi&=\sum_{N=0}^{\infty}e^{\beta\mu N}Z_N,\\
-\Delta&=\int_0^\infty dV\,e^{-\beta PV}Z_N(T,V)
-\end{aligned}
-$$
+Considera el sistema total $S + R$ aislado con energía total $E_\text{tot}$. La probabilidad de un microestado $i$ de $S$ con energía $E_i$ es proporcional al número de microestados del reservorio con energía $E_R = E_\text{tot} - E_i$:
 
-## Diccionario de derivadas
+$$p_i \propto \Omega_R(E_\text{tot} - E_i)$$
 
-$$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\Phi&=-k_BT\ln\Xi,\\
-G&=-k_BT\ln\Delta,\\
-\langle N\rangle&=\frac{1}{\beta}\frac{\partial\ln\Xi}{\partial\mu}
-\end{aligned}
-$$
+Expandiendo en serie $\ln\Omega_R$ alrededor de $E_\text{tot}$ (válido porque $E_i \ll E_\text{tot}$):
 
-## Escalas y cantidades sin dimension
+$$\ln\Omega_R(E_\text{tot} - E_i) \approx \ln\Omega_R(E_\text{tot}) - \frac{E_i}{k_BT_R} + \mathcal{O}\!\left(\frac{E_i^2}{C_V^{(R)}T^2}\right)$$
 
-$$
-\begin{aligned}
-\beta E&=\frac{E}{k_BT},\\
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-\frac{\delta A}{\langle A\rangle}&\sim N^{-1/2}
-\end{aligned}
-$$
+El término cuadrático es de orden $N_S/N_R$ y se desprecia en el límite de reservorio grande. Exponenciando:
 
-## Donde suele fallar
+$$p_i \propto e^{-E_i/(k_BT_R)} = e^{-\beta E_i}$$
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+**Este es el resultado central:** la distribución de Boltzmann no se postula, sino que se *deriva* de la mecánica estadística del sistema completo, usando únicamente que el reservorio es grande.
 
-## Ejemplos y aplicaciones simples
+## Tipos de reservorios
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Reservorio termico** sin introducir un modelo mas complicado que el necesario.
+Un reservorio puede fijar distintas variables intensivas según qué intercambia con el sistema:
 
-1. **Dos niveles en contacto termico.** Para energias $0$ y $\epsilon$, el peso canonico da $$p_1=\frac{e^{-\beta\epsilon}}{1+e^{-\beta\epsilon}}.$$ La entrada se usa al decidir que variable esta fija y que cantidad fluctua.
-2. **Intercambio con un reservorio.** Un subsistema pequeno puede ganar o perder energia mientras el conjunto total conserva energia. En ese caso, sistema grande que fija la temperatura de un sistema pequeno se reconoce observando si el entorno fija $E$, $T$, $P$ o $\mu$.
-3. **Comparacion de fluctuaciones.** En un sistema pequeno, fijar energia no es equivalente a fijar temperatura: el promedio de energia puede parecer similar, pero $\langle(\Delta E)^2\rangle$ cambia. Este es el test minimo para no confundir ensambles.
+| Tipo | Intercambia | Variable fijada | Ensamble resultante |
+|---|---|---|---|
+| Reservorio térmico | Energía | Temperatura $T$ | Canónico |
+| Reservorio de partículas | Energía + partículas | $T$ y $\mu$ | Gran canónico |
+| Reservorio de presión (pistón) | Energía + volumen | $T$ y $P$ | Isotérmico-isobárico |
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+En todos los casos la lógica es la misma: expandir $\ln\Omega_R$ en la variable intercambiada, identificar el multiplicador de Lagrange con la variable intensiva del reservorio.
 
-$$
-p_i\propto \Omega_R(E_{\mathrm{tot}}-E_i)
-$$
+## El reservorio como límite termodinámico del entorno
+
+Un reservorio ideal es el límite $N_R \to \infty$ de un sistema real. En la práctica, cualquier sistema con $N_R \gg N_S$ actúa como buen reservorio. Ejemplos:
+
+- **Baño de agua** para una molécula individual: el agua tiene $\sim 10^{25}$ moléculas; la molécula tiene $\sim 1$. La temperatura del baño no cambia detectablemente.
+- **Termostato en una simulación de MD**: el algoritmo de Nosé-Hoover o de velocidades de rescalado implementa numéricamente un reservorio térmico para el sistema simulado.
+- **Universo** para un sistema macroscópico: a escala cosmológica, el fondo de microondas a 2.73 K actúa como reservorio térmico universal.
+- **Baño de fotones** (radiación de cuerpo negro): los fotones del entorno actúan como reservorio de radiación que fija la temperatura de los objetos con los que interactúan.
+
+## Tiempo de equilibración
+
+Un reservorio fija la temperatura *en equilibrio*, pero el proceso de equilibración requiere un tiempo finito $\tau_\text{eq}$ que depende del acoplamiento entre $S$ y $R$. Si la observación se realiza en un tiempo $\tau_\text{obs} \ll \tau_\text{eq}$, el sistema no está en equilibrio con el reservorio y el ensamble canónico no aplica.
+
+Esta es la razón por la que:
+- Las moléculas en una explosión no están en equilibrio térmico con el entorno.
+- Los vidrios tienen temperaturas "de configuración" distintas a la temperatura del baño.
+- Las moléculas proteicas recién sintetizadas pueden quedar atrapadas en estados metaestables.
+
+## Reservorios en física cuántica
+
+En sistemas cuánticos abiertos, el reservorio (baño) produce **decoherencia** además de termalización. La interacción con los grados de libertad del baño destruye las coherencias cuánticas del sistema $S$. La descripción formal usa la ecuación de Lindblad:
+
+$$\frac{d\hat\rho}{dt} = -\frac{i}{\hbar}[\hat H_S, \hat\rho] + \mathcal{L}[\hat\rho]$$
+
+donde el superoperador de Lindblad $\mathcal{L}$ captura los efectos del baño. En el límite de acoplamiento débil y temperatura alta, $\mathcal{L}$ lleva al estado de Gibbs $\hat\rho_\text{eq} = e^{-\beta\hat H}/Z$.
+
+## El reservorio y los teoremas de fluctuación
+
+Los teoremas modernos de fluctuación (Jarzynski, Crooks) relacionan el trabajo realizado sobre un sistema con las fluctuaciones alrededor del equilibrio con el reservorio. La identidad de Jarzynski:
+
+$$\langle e^{-\beta W}\rangle = e^{-\beta\Delta F}$$
+
+dice que el promedio del factor de Boltzmann del trabajo $W$ da exactamente $e^{-\beta\Delta F}$, independientemente de qué tan lejos del equilibrio esté el proceso. Esta identidad se basa en que el reservorio siempre está en equilibrio (a temperatura $T$) antes y después de cada realización.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Reif, *Fundamentals of Statistical and Thermal Physics*, cap. 6: derivación de la distribución canónica desde el reservorio.
+- Kardar, *Statistical Physics of Particles*, cap. 4: el reservorio como origen del ensamble canónico y gran canónico.
+- Breuer & Petruccione, *The Theory of Open Quantum Systems*, cap. 2: reservorios cuánticos y la ecuación de Lindblad.
+- Jarzynski, "Nonequilibrium equality for free energy differences", *PRL* 78, 2690 (1997): el teorema de fluctuación con reservorio.
 
-Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\Omega$, $Z$ o $\Xi$, genere los promedios y fluctuaciones correctos.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Reservorio termico** queda reservado para la idea precisa de sistema grande que fija la temperatura de un sistema pequeno. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{restricciones}\longrightarrow p_i\longrightarrow Z\ \text{o}\ \Omega\longrightarrow \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de sistema grande que fija la temperatura de un sistema pequeno y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Ensambles**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Ensamble microcanonico](#/ensamble-microcanonico)
-- [Ensamble canonico](#/ensamble-canonico)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Ensamble gran canónico](#/ensamble-gran-canonico)
+- [Distribución de Boltzmann](#/distribucion-de-boltzmann)
+- [Temperatura estadística](#/temperatura-estadistica)
+- [Fluctuaciones](#/fluctuaciones)

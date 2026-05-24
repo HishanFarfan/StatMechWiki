@@ -140,44 +140,31 @@ Cuando esto se cumple, el gran canonico puede describir la misma termodinamica p
 - Usar equivalencia cerca de una transicion de primer orden sin revisar estabilidad.
 - Confundir igualdad de promedios con igualdad de distribuciones completas.
 
-## Ejemplos y aplicaciones simples
+## Resumen de cuándo usar cada ensamble
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Equivalencia de ensambles** sin introducir un modelo mas complicado que el necesario.
+La elección del ensamble es **física**, no matemática: depende de qué variables controla el experimento:
 
-1. **Dos niveles en contacto termico.** Para energias $0$ y $\epsilon$, el peso canonico da $$p_1=\frac{e^{-\beta\epsilon}}{1+e^{-\beta\epsilon}}.$$ La entrada se usa al decidir que variable esta fija y que cantidad fluctua.
-2. **Intercambio con un reservorio.** Un subsistema pequeno puede ganar o perder energia mientras el conjunto total conserva energia. En ese caso, la nocion de Equivalencia de ensambles se reconoce observando si el entorno fija $E$, $T$, $P$ o $\mu$.
-3. **Comparacion de fluctuaciones.** En un sistema pequeno, fijar energia no es equivalente a fijar temperatura: el promedio de energia puede parecer similar, pero $\langle(\Delta E)^2\rangle$ cambia. Este es el test minimo para no confundir ensambles.
+| Situación experimental | Ensamble correcto |
+|---|---|
+| Sistema perfectamente aislado | Microcanónico |
+| Sistema en contacto con baño térmico | Canónico |
+| Sistema en contacto con baño térmico + partículas | Gran canónico |
+| Gas en pistón con presión constante | Isotérmico-isobárico |
+| Sistema muy pequeño (molécula individual) | Depende del experimento concreto |
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
-
-$$
-S(E,V,N)=k_B\ln\Omega(E,V,N).
-$$
+En el límite termodinámico todos dan la misma termodinámica promedio. Solo difieren en las fluctuaciones y en cómo manejan las transiciones de fase.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 4: equivalencia mediante el punto de silla y la transformada de Legendre.
+- Gross, *Microcanonical Thermodynamics* (2001): la equivalencia falla para sistemas pequeños y auto-gravitantes; tratamiento riguroso.
+- Touchette, "Equivalence and nonequivalence of ensembles", *J. Stat. Phys.* (2015): análisis moderno de cuándo y cómo falla la equivalencia.
 
-Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\Omega$, $Z$ o $\Xi$, genere los promedios y fluctuaciones correctos.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Equivalencia de ensambles** queda reservado para la idea precisa de la nocion de Equivalencia de ensambles. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{restricciones}\longrightarrow p_i\longrightarrow Z\ \text{o}\ \Omega\longrightarrow \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de la nocion de Equivalencia de ensambles y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Ensambles**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Ensamble microcanonico](#/ensamble-microcanonico)
-- [Ensamble canonico](#/ensamble-canonico)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Ensamble gran canónico](#/ensamble-gran-canonico)
 - [Fluctuaciones](#/fluctuaciones)
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
+- [Límite termodinámico](#/limite-termodinamico)
+- [Energía libre de Helmholtz](#/energia-libre-de-helmholtz)

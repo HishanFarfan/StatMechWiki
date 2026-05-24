@@ -214,50 +214,33 @@ donde el signo $-$ en el denominador corresponde a bosones y el signo $+$ a ferm
 - Olvidar que $\mu$ controla el numero medio de particulas, no el numero exacto.
 - Aplicar formulas gran canonicas sin revisar condiciones de convergencia.
 
-## Ejemplos y aplicaciones simples
+## Relación con compresibilidad
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Ensamble gran canonico** sin introducir un modelo mas complicado que el necesario.
+Las fluctuaciones de densidad están ligadas a la compresibilidad isotérmica $\kappa_T = -V^{-1}(\partial V/\partial P)_{T,N}$:
 
-1. **Dos niveles en contacto termico.** Para energias $0$ y $\epsilon$, el peso canonico da $$p_1=\frac{e^{-\beta\epsilon}}{1+e^{-\beta\epsilon}}.$$ La entrada se usa al decidir que variable esta fija y que cantidad fluctua.
-2. **Intercambio con un reservorio.** Un subsistema pequeno puede ganar o perder energia mientras el conjunto total conserva energia. En ese caso, la nocion de Ensamble gran canonico se reconoce observando si el entorno fija $E$, $T$, $P$ o $\mu$.
-3. **Comparacion de fluctuaciones.** En un sistema pequeno, fijar energia no es equivalente a fijar temperatura: el promedio de energia puede parecer similar, pero $\langle(\Delta E)^2\rangle$ cambia. Este es el test minimo para no confundir ensambles.
+$$\langle(\Delta N)^2\rangle = \frac{N k_B T \kappa_T}{v}$$
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+donde $v = V/N$ es el volumen por partícula. Cerca de un punto crítico, $\kappa_T \to \infty$: las fluctuaciones de densidad divergen y la materia se vuelve opalescente (opalescencia crítica).
 
-$$
-\boxed{T,\;V,\;\mu\ \text{fijos}} .
-$$
+## Errores frecuentes
+
+- **Confundir $N$ fijo con $\langle N\rangle$ fijo**: en el gran canónico, $N$ fluctúa; solo el promedio está controlado por $\mu$.
+- **Mezclar $Z$ y $\Xi$**: $Z$ es para $N$ fijo; $\Xi = \sum_N z^N Z_N$ es la gran partición.
+- **$\Phi$ vs $\Omega$**: muchos textos usan $\Omega = -PV = -k_BT\ln\Xi$ para el gran potencial; otros usan $\Phi$. Esta wiki usa $\Phi$.
+- **Convergencia de $\Xi$**: para bosones con $\mu \geq 0$ (mínimo de energía de una partícula), $\Xi$ diverge. La condensación de Bose-Einstein ocurre justo cuando la fugacidad alcanza este límite.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 4: derivación completa del ensamble gran canónico, fugacidad, y gas cuántico.
+- Pathria & Beale, *Statistical Mechanics*, cap. 4: tratamiento riguroso con aplicaciones a gases de Fermi y Bose.
+- Landau & Lifshitz, *Statistical Physics*, §35: estructura termodinámica del gran canónico.
+- Huang, *Statistical Mechanics*, cap. 8: relación con gases cuánticos y condensación.
 
-Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\Omega$, $Z$ o $\Xi$, genere los promedios y fluctuaciones correctos.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Ensamble gran canonico** queda reservado para la idea precisa de la nocion de Ensamble gran canonico. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{restricciones}\longrightarrow p_i\longrightarrow Z\ \text{o}\ \Omega\longrightarrow \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de la nocion de Ensamble gran canonico y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Ensambles**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Ensamble canonico](#/ensamble-canonico)
-- [Funcion de particion](#/funcion-de-particion)
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
-
-## Referencias recomendadas
-
-- Pathria y Beale, *Statistical Mechanics*, tratamiento del ensamble gran canonico.
-- Huang, *Statistical Mechanics*, relacion con gases cuanticos.
-- Kardar, *Statistical Physics of Particles*, formulacion con fugacidad.
-- Landau y Lifshitz, *Statistical Physics*, estructura termodinamica.
+- [Ensamble canónico](#/ensamble-canonico)
+- [Función de partición](#/funcion-de-particion)
+- [Distribución de Boltzmann](#/distribucion-de-boltzmann)
+- [Potencial gran canónico](#/potencial-gran-canonico)
+- [Fluctuaciones](#/fluctuaciones)
+- [Gas ideal cuántico](#/gas-ideal-cuantico)

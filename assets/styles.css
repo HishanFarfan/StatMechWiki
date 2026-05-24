@@ -350,12 +350,12 @@ body {
 }
 
 .content .katex {
-  font-size: 1.02em;
+  font-size: 1.12em;
 }
 
 .content .katex-display .katex {
-  font-size: 1.08em;
-  line-height: 1.35;
+  font-size: 1.3em;
+  line-height: 1.4;
 }
 
 .content .katex-error {

@@ -2,96 +2,93 @@
 
 ## Resumen
 
-Un **microestado** es una especificacion microscopica completa de un sistema, dentro del marco teorico elegido. La mecanica estadistica asigna probabilidades a microestados y calcula propiedades macroscopicas como promedios sobre ellos.
+Un **microestado** es la especificación microscópica más completa posible de un sistema físico dentro de un marco teórico dado. Conocer el microestado equivale a conocer toda la información dinámica disponible: posiciones y momenta de todas las partículas en mecánica clásica, o el vector de estado en mecánica cuántica.
 
-## Definicion clasica
+La mecánica estadística surge precisamente porque no podemos conocer ni necesitamos conocer el microestado exacto: en cambio, asignamos probabilidades a los microestados compatibles con la información macroscópica disponible.
 
-En mecanica clasica, un microestado de $N$ particulas se representa por un punto del espacio de fases:
+## Microestado clásico
 
-$$
-\Gamma=(q_1,\ldots,q_N,p_1,\ldots,p_N).
-$$
+En mecánica clásica, el microestado de un sistema de $N$ partículas es un punto en el **espacio de fases** $\mathcal{M}$:
 
-Si las particulas viven en tres dimensiones, cada $q_i$ y $p_i$ tiene tres componentes, de modo que el espacio de fases tiene dimension $6N$.
+$$\Gamma = (q_1, \ldots, q_N,\, p_1, \ldots, p_N) \in \mathbb{R}^{6N}$$
 
-## Definicion cuantica
+donde $q_i \in \mathbb{R}^3$ son las posiciones y $p_i \in \mathbb{R}^3$ son los momenta de la partícula $i$. El espacio de fases tiene dimensión $6N$.
 
-En mecanica cuantica, un microestado puede ser un estado puro $|\psi\rangle$ o, de manera mas general, una matriz densidad $\rho$. Para un sistema con Hamiltoniano $\hat H$, los estados estacionarios de energia satisfacen
+Bajo las ecuaciones de Hamilton,
 
-$$
-\hat H |n\rangle = E_n |n\rangle.
-$$
+$$\dot{q}_i = \frac{\partial H}{\partial p_i}, \qquad \dot{p}_i = -\frac{\partial H}{\partial q_i}$$
 
-En muchos problemas de equilibrio se suman probabilidades sobre estados de energia $|n\rangle$.
+el microestado evoluciona de forma determinista y continua. La trayectoria $\Gamma(t)$ está unívocamente determinada por $\Gamma(0)$.
 
-## Observables y promedios
+**Ejemplo.** Un gas de argón con $N = 10^{23}$ átomos tiene un microestado en $\mathbb{R}^{6\times10^{23}}$. Especificar ese punto con la precisión de un Ångström en posición requeriría más información que la que cabe en todos los discos duros del mundo. Ni siquiera en principio es accesible.
 
-En una descripcion discreta, el promedio de un observable $A$ es
+## Microestado cuántico
 
-$$
-\langle A\rangle = \sum_i p_i A_i.
-$$
+En mecánica cuántica, el microestado es un **estado puro** $|\psi\rangle$ en el espacio de Hilbert $\mathcal{H}$, o más generalmente una **matriz densidad** $\hat{\rho}$. Para sistemas en equilibrio se trabaja típicamente con estados propios del Hamiltoniano:
 
-En una descripcion clasica continua,
+$$\hat{H}|n\rangle = E_n|n\rangle$$
 
-$$
-\langle A\rangle
-=
-\int d\Gamma\, \rho(\Gamma) A(\Gamma),
-$$
+El microestado es entonces uno de los $|n\rangle$. En este contexto, el "conteo de microestados" es literalmente un conteo de autovalores: $\Omega(E)$ es la degeneración del nivel $E$ o, en sistemas con espectro continuo, el número de autovalores en un intervalo $[E, E+\Delta E]$.
 
-donde $\rho(\Gamma)$ es una densidad de probabilidad sobre el espacio de fases.
+**Ejemplo.** Para $N$ espines-$\frac{1}{2}$ independientes, el espacio de Hilbert tiene dimensión $2^N$. Los microestados son vectores $|\sigma_1, \sigma_2, \ldots, \sigma_N\rangle$ con $\sigma_i \in \{\uparrow, \downarrow\}$. Con energía fija $E = (n_\uparrow - n_\downarrow)\varepsilon/2$, el número de microestados es $\binom{N}{n_\uparrow}$.
 
-## Microestado versus macroestado
+## El problema del conteo: $h^{3N}$ y el factor $N!$
 
-Un microestado contiene mucha mas informacion que un macroestado. Por ejemplo, un gas puede tener energia, volumen y numero de particulas fijos, pero aun asi puede realizarse mediante una cantidad enorme de configuraciones microscopicas distintas.
+En mecánica clásica, el espacio de fases es continuo y la noción de "número de microestados" requiere una medida:
 
-La mecanica estadistica conecta ambos niveles mediante conteos y promedios. El macroestado impone restricciones; los microestados son las realizaciones compatibles con esas restricciones.
+$$d\mu = \frac{d^{3N}q\,d^{3N}p}{h^{3N}\,N!}$$
 
-## Errores comunes
+Los dos factores tienen justificaciones distintas:
 
-- Confundir microestado con macroestado.
-- Suponer que todos los microestados tienen la misma probabilidad en cualquier ensamble.
-- Olvidar que la nocion de microestado depende del marco clasico o cuantico.
-- Contar como distintos microestados que solo difieren por permutar particulas indistinguibles.
+**$h^{3N}$**: en mecánica cuántica, el principio de incertidumbre $\Delta q_i \Delta p_i \geq \hbar$ establece que no se pueden localizar partículas en una celda de espacio de fases más pequeña que $\sim h^3$ por partícula. En el límite clásico, esto regulariza la medida: el "número de microestados clásicos" en un volumen $\Delta\Gamma$ es $\Delta\Gamma / h^{3N}$. Sin esta normalización, $S = k_B\ln\Omega$ tendría una constante aditiva arbitraria y dependiente de las unidades.
 
-## Ejemplos y aplicaciones simples
+**$N!$**: en mecánica clásica, permutar dos partículas idénticas produce técnicamente un punto diferente del espacio de fases, pero físicamente el mismo estado (las partículas no tienen etiquetas observables). Dividir por $N!$ corrige esta sobrecontabilización. Sin este factor, la entropía del gas ideal no es extensiva (paradoja de Gibbs). En mecánica cuántica, la indistinguibilidad está incorporada en la simetría del estado: los bosones usan estados simétricos y los fermiones estados antisimétricos, y el factor $N!$ emerge automáticamente del conteo correcto.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Microestado** sin introducir un modelo mas complicado que el necesario.
+## Cuántos microestados hay: estimaciones de magnitud
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por la nocion de Microestado. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Microestado cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Microestado requiere revisar accesibilidad o ergodicidad.
+La cantidad de microestados en sistemas macroscópicos es astronómica. Para $N$ espines:
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+$$\Omega \leq 2^N \sim 10^{3\times10^{22}} \quad (N=10^{23})$$
 
-$$
-\Gamma=(q_1,\ldots,q_N,p_1,\ldots,p_N).
-$$
+Para el gas ideal monoatómico:
+
+$$\Omega(E,V,N) \propto V^N E^{3N/2}$$
+
+Ambas expresiones son funciones de $N$ que crecen incomparablemente más rápido que cualquier potencia. Esta proliferación de microestados tiene dos consecuencias importantes:
+
+1. **La entropía es extensiva**: $S = k_B\ln\Omega \propto N$.
+2. **Las fluctuaciones son pequeñas**: la distribución de probabilidad sobre microestados está tan concentrada alrededor del macroestado de equilibrio que la desviación típica de cualquier observable intensivo escala como $1/\sqrt{N}$.
+
+## Microestado vs. macroestado
+
+La relación entre los dos niveles es muchos-a-uno: cada macroestado (especificado por unas pocas variables como $E$, $V$, $N$, $M$) corresponde a un número enorme de microestados. La mecánica estadística postula que, en equilibrio, todos los microestados compatibles con el macroestado dado son igualmente probables.
+
+| Nivel | Descripción | Número de variables | Ejemplo |
+|---|---|---|---|
+| Microestado | Posiciones y momenta de todas las partículas | $6N \sim 10^{24}$ | $\Gamma = (q_1,p_1,\ldots,q_N,p_N)$ |
+| Macroestado | Variables termodinámicas | 2–5 | $(E, V, N)$ o $(T, P, N)$ |
+
+Un gas de nitrógeno a temperatura ambiente en 1 litro tiene $N \approx 2.7\times10^{22}$ moléculas y un número de microestados del orden de $10^{10^{22}}$. Toda esa información se resume en dos números: $T = 293\ \text{K}$ y $P = 101\ \text{kPa}$.
+
+## Accesibilidad y restricciones
+
+No todos los microestados son relevantes: el **ensamble** elige qué microestados son "accesibles" según las restricciones físicas impuestas.
+
+- **Ensamble microcanónico** $(E, V, N)$ fijos: solo los microestados con energía en $[E, E+\Delta E]$.
+- **Ensamble canónico** $(T, V, N)$ fijos: todos los microestados, con peso $e^{-\beta E_i}/Z$.
+- **Gran canónico** $(T, V, \mu)$ fijos: microestados con cualquier $N$, con peso $e^{-\beta(E_i - \mu N_i)}/\Xi$.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Reif, *Fundamentals of Statistical and Thermal Physics*, cap. 2: introducción al espacio de fases y microestados con ejemplos de espines y gas ideal.
+- Kardar, *Statistical Physics of Particles*, cap. 1: definición rigurosa del espacio de fases, medida de Liouville y conteo de estados.
+- Landau & Lifshitz, *Statistical Physics*, §1-4: perspectiva más concisa y formal sobre el espacio de fases y la función de distribución estadística.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
-
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Microestado** queda reservado para la idea precisa de la nocion de Microestado. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de la nocion de Microestado y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
+## Páginas relacionadas
 
 - [Macroestado](#/macroestado)
 - [Espacio de fases](#/espacio-de-fases)
-- [Ensamble microcanonico](#/ensamble-microcanonico)
-- [Entropia de Boltzmann](#/entropia-de-boltzmann)
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Entropía de Boltzmann](#/entropia-de-boltzmann)
+- [Densidad de estados](#/densidad-de-estados)
+- [Paradoja de Gibbs](#/paradoja-de-gibbs)

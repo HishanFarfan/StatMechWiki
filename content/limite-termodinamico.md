@@ -1,103 +1,84 @@
-# Limite termodinamico
+# Límite termodinámico
 
 ## Resumen
 
-**Limite termodinamico** es una entrada troncal de fundamentos dentro de la mecanica estadistica. Su papel principal se resume asi: limite en que N y V crecen manteniendo fija la densidad. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+El **límite termodinámico** es el régimen $N \to \infty$, $V \to \infty$ con densidad $n = N/V$ fija. En este límite, la mecánica estadística reproduce la termodinámica: las cantidades intensivas (temperatura, presión, densidad) se vuelven determinísticas, las fluctuaciones desaparecen y los ensambles microcanónico, canónico y gran canónico dan resultados equivalentes.
 
-## Definicion operativa
+$$N \to \infty, \quad V \to \infty, \quad n = \frac{N}{V} = \text{cte}$$
 
-En mecanica estadistica conviene definir **Limite termodinamico** por su uso operativo: limite en que N y V crecen manteniendo fija la densidad. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+Sin el límite termodinámico, gran parte de lo que se llama "termodinámica" —incluidas las transiciones de fase— no tiene sentido matemático riguroso.
 
-## Ecuacion clave
+## Por qué es necesario
 
-$$
-N\to\infty,\quad V\to\infty,\quad n=N/V\ \text{fijo}
-$$
+La termodinámica funciona con funciones suaves de variables macroscópicas. Pero para un sistema finito, la función de partición es una suma o integral finita —siempre analítica en $\beta$ y otras variables externas. Las singularidades (discontinuidades, divergencias) que caracterizan las transiciones de fase solo aparecen en el límite $N \to \infty$.
 
-## Estructura matematica
+**Ejemplo.** La función de partición del modelo de Ising en 1D es $Z = 2\left(2\cosh\beta J\right)^N$. Para $N$ finito, $Z$ es una función analítica de $\beta J$ y no hay transición de fase. Solo en $N \to \infty$ puede aparecer una singularidad (aunque en 1D la transición ocurre solo en $T = 0$).
 
-$$
-\begin{aligned}
-\Omega(E,V,N)&=\int d\Gamma\,\delta(E-H),\\
-S(E,V,N)&=k_B\ln\Omega(E,V,N),\\
-\frac{1}{T}&=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-\end{aligned}
-$$
+## Extensividad y propiedades intensivas
 
-$$
-\begin{aligned}
-d\Gamma&=\frac{1}{h^{3N}N!}\prod_{i=1}^N d^3q_i\,d^3p_i,\\
-\int d\Gamma\,\rho(\Gamma)&=1,\\
-\langle A\rangle&=\int d\Gamma\,A(\Gamma)\rho(\Gamma)
-\end{aligned}
-$$
+En el límite termodinámico, la energía libre de Helmholtz satisface
 
-## Diccionario de derivadas
+$$F(T,V,N) = N\,f(T,n), \quad n = N/V$$
 
-$$
-\begin{aligned}
-dS&=\frac{1}{T}dE+\frac{P}{T}dV-\frac{\mu}{T}dN,\\
-P&=T\left(\frac{\partial S}{\partial V}\right)_{E,N},\\
-\mu&=-T\left(\frac{\partial S}{\partial N}\right)_{E,V}
-\end{aligned}
-$$
+donde $f$ es la densidad de energía libre *por partícula*, que depende solo de las variables intensivas $T$ y $n$. Lo mismo ocurre con $E$, $S$, $G$, etc. Esto se llama **extensividad**:
 
-## Escalas y cantidades sin dimension
+$$F(\lambda N, \lambda V, T) = \lambda\, F(N, V, T) \quad \forall\lambda > 0$$
 
-$$
-\begin{aligned}
-N&\gg 1,\\
-\frac{\Delta E}{E}&\sim N^{-1/2},\\
-n\lambda_T^3&\ll 1\quad \text{regimen clasico}
-\end{aligned}
-$$
+La extensividad no es gratuita: requiere que las interacciones sean de corto alcance (o que se suavicen adecuadamente para interacciones de largo alcance). Para la gravedad, la extensividad falla: la energía gravitacional de $N$ partículas escala como $N^2/R \propto N^{5/3}$, no como $N$.
 
-## Donde suele fallar
+## Fluctuaciones y la ley de grandes números
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+Para un observable extensivo $A$ (con $\langle A\rangle \propto N$), la varianza típica es
 
-## Ejemplos y aplicaciones simples
+$$\frac{\sqrt{\text{Var}(A)}}{\langle A\rangle} \sim \frac{1}{\sqrt{N}}$$
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Limite termodinamico** sin introducir un modelo mas complicado que el necesario.
+En el límite termodinámico, las fluctuaciones relativas tienden a cero: las variables termodinámicas se vuelven "sharp". Esto justifica describir el estado macroscópico por un único valor de $E$, $V$, etc., en lugar de una distribución.
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por limite en que N y V crecen manteniendo fija la densidad. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Limite termodinamico cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Limite termodinamico requiere revisar accesibilidad o ergodicidad.
+Para $N = 10^{23}$, $1/\sqrt{N} \sim 10^{-12}$: las fluctuaciones son absolutamente inapreciables en cualquier medición macroscópica.
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+## Equivalencia de ensambles
 
-$$
-N\to\infty,\quad V\to\infty,\quad n=N/V\ \text{fijo}
-$$
+En el límite termodinámico, los tres ensambles principales dan las mismas predicciones para cantidades intensivas:
+
+| Ensamble | Variables naturales | Función generatriz |
+|---|---|---|
+| Microcanónico | $E$, $V$, $N$ | $S(E,V,N) = k_B\ln\Omega$ |
+| Canónico | $T$, $V$, $N$ | $F(T,V,N) = -k_BT\ln Z$ |
+| Gran canónico | $T$, $V$, $\mu$ | $\Omega(T,V,\mu) = -k_BT\ln\Xi$ |
+
+Fuera del límite termodinámico, los ensambles pueden diferir. En sistemas pequeños (nanopartículas, proteínas, moléculas individuales), el ensamble correcto depende del experimento concreto: microfluídica, trampa óptica, y espectroscopia de molécula individual usan "ensembles" distintos con resultados distintos.
+
+## Equivalencia de ensambles y transiciones de fase
+
+Cerca de una transición de fase de primer orden, la equivalencia de ensambles falla incluso en el límite $N \to \infty$. En el ensamble canónico, la densidad puede tomar cualquier valor en el intervalo de coexistencia (promedio de dos fases), mientras que en el gran canónico las dos fases coexisten con densidades discretas. Esta diferencia es real y observable.
+
+## La teoría de Yang y Lee
+
+Lee y Yang (1952) demostraron que las transiciones de fase del ensamble gran canónico corresponden a **ceros de la función gran partición** $\Xi(z)$ en el plano complejo de la fugacidad $z = e^{\beta\mu}$. Para $N$ finito, $\Xi$ es un polinomio en $z$ y sus raíces son complejas. En el límite $N \to \infty$, los ceros se acercan al eje real y "pinchan" la línea de valores reales, produciendo una singularidad: la transición de fase.
+
+Este teorema conecta el límite termodinámico directamente con la estructura analítica de la función de partición.
+
+## Cuando falla el límite termodinámico
+
+**Sistemas con interacciones de largo alcance.** La gravedad y las interacciones coulombianas sin apantallamiento no son extensivas. Para sistemas auto-gravitantes (estrellas, galaxias), la entropía puede ser no extensiva y los ensambles pueden dar predicciones radicalmente distintas. Esto se manifiesta en la **gravothermal catastrophe** y en la "entropía de Bekenstein-Hawking" de agujeros negros.
+
+**Sistemas finitos.** Nanopartículas, moléculas biológicas individuales, y sistemas cuánticos pequeños (pocos qubits) están gobernados por termodinámica de tamaño finito. Las correcciones a la extensividad son de orden $N^{-1/3}$ (efectos de superficie), $\ln N$ (correlaciones), etc.
+
+**Puntos críticos.** En el punto crítico, la longitud de correlación $\xi \to \infty$ y los efectos de tamaño finito son importantes incluso para sistemas de $N \sim 10^6$. El **escalado de tamaño finito** (finite-size scaling) cuantifica cómo se redondean las singularidades en sistemas finitos.
+
+**Sistemas con quenched disorder.** En vidrios, materiales amorfos y sistemas frustrados, el límite termodinámico puede existir pero ser no ergódico: hay muchos estados metaestables separados por barreras de energía libre que crecen con $N$.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Ruelle, *Statistical Mechanics: Rigorous Results* (1969): la demostración rigurosa de que existe el límite termodinámico para interacciones de corto alcance estables.
+- Yang & Lee, "Statistical Theory of Equations of State and Phase Transitions", *Phys. Rev.* 87, 404 (1952): el artículo original sobre ceros de la función de partición.
+- Kardar, *Statistical Physics of Particles*, cap. 4: equivalencia de ensambles en el límite termodinámico.
+- Gross, *Microcanonical Thermodynamics* (2001): termodinámica sin el límite termodinámico, aplicada a sistemas pequeños y auto-gravitantes.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Limite termodinamico** queda reservado para la idea precisa de limite en que N y V crecen manteniendo fija la densidad. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de limite en que N y V crecen manteniendo fija la densidad y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Microestado](#/microestado)
-- [Macroestado](#/macroestado)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+- [Fluctuaciones](#/fluctuaciones)
+- [Transiciones de fase](#/transiciones-de-fase)
+- [Entropía de Boltzmann](#/entropia-de-boltzmann)

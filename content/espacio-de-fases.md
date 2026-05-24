@@ -2,115 +2,111 @@
 
 ## Resumen
 
-El **espacio de fases** es el espacio de todos los microestados clasicos posibles de un sistema. Para un sistema de $N$ particulas, cada punto especifica posiciones y momentos.
+El **espacio de fases** $\mathcal{M}$ de un sistema mecánico clásico es el espacio de todos sus microestados posibles: cada punto representa el estado dinámico completo del sistema en un instante dado. Para $N$ partículas en tres dimensiones, es una variedad de dimensión $6N$ con coordenadas $(q_1,\ldots,q_N, p_1,\ldots,p_N)$.
 
-## Definicion
+La evolución temporal del sistema es una curva en $\mathcal{M}$ determinada por las ecuaciones de Hamilton. La mecánica estadística describe la **distribución** de probabilidad sobre $\mathcal{M}$, en lugar de una trayectoria individual.
 
-Para $N$ particulas en tres dimensiones,
+## Definición y estructura
 
-$$
-\Gamma=(q_1,\ldots,q_N,p_1,\ldots,p_N)
-$$
+Para $N$ partículas con posiciones $q_i \in \mathbb{R}^3$ y momenta $p_i \in \mathbb{R}^3$:
 
-representa un punto del espacio de fases. Su medida elemental se escribe
+$$\mathcal{M} = \mathbb{R}^{6N}, \qquad \Gamma = (q_1,\ldots,q_N,\,p_1,\ldots,p_N)$$
 
-$$
-d\Gamma=d^{3N}q\,d^{3N}p.
-$$
+El elemento de volumen natural es
 
-## Dimension
+$$d\Gamma = d^{3N}q\,d^{3N}p$$
 
-Si hay $N$ particulas en tres dimensiones, el espacio de configuraciones tiene dimension $3N$ y el espacio de fases tiene dimension $6N$.
+En mecánica clásica, $\mathcal{M}$ tiene estructura **simpléctica**: existe una forma bilineal antisimétrica no degenerada $\omega = \sum_i dq_i \wedge dp_i$ que se conserva bajo el flujo hamiltoniano. Esta estructura es la que hace que la dinámica conserve el volumen (teorema de Liouville).
 
-## Medida estadistica
+## Dinámica hamiltoniana
 
-En mecanica estadistica clasica, las integrales de espacio de fases suelen incluir el factor
+El Hamiltoniano $H: \mathcal{M} \to \mathbb{R}$ genera el flujo:
 
-$$
-\frac{1}{h^{3N}N!}.
-$$
+$$\dot{q}_i = \frac{\partial H}{\partial p_i}, \qquad \dot{p}_i = -\frac{\partial H}{\partial q_i}$$
 
-El factor $h^{3N}$ hace adimensional el volumen de espacio de fases, mientras que $N!$ corrige la sobrecuenta debida a la indistinguibilidad de particulas identicas.
+Esto define un campo vectorial $X_H$ en $\mathcal{M}$ cuyas líneas integrales son las trayectorias del sistema. La energía se conserva: $H(\Gamma(t)) = E$ para todo $t$, de modo que la trayectoria está confinada a la hipersuperficie de energía
 
-## Dinamica hamiltoniana
+$$\Sigma_E = \{\Gamma \in \mathcal{M} : H(\Gamma) = E\}$$
 
-La evolucion temporal de un punto de espacio de fases esta determinada por las ecuaciones de Hamilton:
+de dimensión $6N-1$.
 
-$$
-\dot q_i=\frac{\partial H}{\partial p_i},
-\qquad
-\dot p_i=-\frac{\partial H}{\partial q_i}.
-$$
+## Paréntesis de Poisson
 
-El teorema de Liouville afirma que el flujo hamiltoniano conserva volumen en espacio de fases:
+Para dos observables $A(\Gamma)$ y $B(\Gamma)$, el paréntesis de Poisson es
 
-$$
-\frac{d\rho}{dt}=0
-$$
+$$\{A, B\} = \sum_i \left(\frac{\partial A}{\partial q_i}\frac{\partial B}{\partial p_i} - \frac{\partial A}{\partial p_i}\frac{\partial B}{\partial q_i}\right)$$
 
-para una densidad que evoluciona siguiendo el flujo.
+Las ecuaciones de Hamilton se escriben $\dot{A} = \{A, H\}$. Una cantidad $A$ se conserva si y solo si $\{A, H\} = 0$.
 
-## Uso en ensambles
+## Medida de Liouville y factor de normalización
 
-En el ensamble canonico clasico,
+El teorema de Liouville dice que el flujo hamiltoniano preserva el volumen en $\mathcal{M}$: si $\mathcal{R}(0)$ es cualquier región del espacio de fases, el volumen de $\mathcal{R}(t) = \Phi^t(\mathcal{R}(0))$ es el mismo para todo $t$.
 
-$$
-Z=
-\frac{1}{h^{3N}N!}
-\int d\Gamma\, e^{-\beta H(\Gamma)}.
-$$
+Para definir una **medida de probabilidad** adimensional y comparar con resultados cuánticos, se divide por $h^{3N}N!$:
 
-En el ensamble microcanonico, se integra sobre una region de energia fija o casi fija:
+$$d\mu = \frac{d^{3N}q\,d^{3N}p}{h^{3N}\,N!}$$
 
-$$
-E\leq H(\Gamma)\leq E+\Delta E.
-$$
+- **$h^{3N}$**: el volumen mínimo de celda de espacio de fases es $h^3$ por partícula (principio de incertidumbre). Sin este factor, el "número de microestados" tiene unidades y la entropía $S = k_B\ln\Omega$ es indefinida salvo una constante arbitraria.
+- **$N!$**: partículas idénticas no son distinguibles físicamente. La configuración $(q_1,p_1,q_2,p_2,\ldots)$ y $(q_2,p_2,q_1,p_1,\ldots)$ corresponden al mismo estado físico. Dividir por $N!$ evita contarla $N!$ veces.
+
+## Visualización: el oscilador armónico
+
+Para una única partícula en 1D con $H = p^2/2m + m\omega^2 q^2/2$, el espacio de fases es el plano $(q, p)$. Las trayectorias son **elipses** de energía constante:
+
+$$\frac{p^2}{2mE} + \frac{m\omega^2 q^2}{2E} = 1$$
+
+El semieje en $q$ es $\sqrt{2E/m\omega^2}$ y en $p$ es $\sqrt{2mE}$. El área encerrada es $\pi \cdot\sqrt{2mE}\cdot\sqrt{2E/m\omega^2} = 2\pi E/\omega$. Por cuantización de Bohr-Sommerfeld, esta área debe ser $nh$ para el $n$-ésimo nivel de energía, lo que reproduce $E_n = n\hbar\omega$.
+
+Para un sistema no integrable (por ejemplo, el péndulo doble), las trayectorias en el espacio de fases pueden ser caóticas: sensibles a las condiciones iniciales y densa en regiones del espacio.
+
+## Ensamble estadístico como distribución en $\mathcal{M}$
+
+Una distribución estadística es una función densidad de probabilidad $\rho(\Gamma, t) \geq 0$ con
+
+$$\int \rho(\Gamma, t)\,d\mu = 1$$
+
+La evolución de $\rho$ está dada por la **ecuación de Liouville**:
+
+$$\frac{\partial\rho}{\partial t} = \{\rho, H\} = -\sum_i\left(\frac{\partial\rho}{\partial q_i}\dot{q}_i + \frac{\partial\rho}{\partial p_i}\dot{p}_i\right)$$
+
+que es equivalente a $d\rho/dt = 0$ (la densidad es constante a lo largo de las trayectorias). El equilibrio estadístico corresponde a $\partial\rho/\partial t = 0$, es decir, $\{\rho, H\} = 0$: cualquier función de $H$ es una distribución de equilibrio. Los ensambles estándar son:
+
+| Ensamble | $\rho(\Gamma)$ | Condición |
+|---|---|---|
+| Microcanónico | $\delta(H-E)/\Omega$ | $E$, $V$, $N$ fijos |
+| Canónico | $e^{-\beta H}/Z$ | $T$, $V$, $N$ fijos |
+| Gran canónico | $e^{-\beta(H-\mu N)}/\Xi$ | $T$, $V$, $\mu$ fijos |
+
+## Recurrencia de Poincaré
+
+Para sistemas con espacio de fases de volumen finito (por ejemplo, partículas en una caja), el **teorema de Poincaré** garantiza que casi toda trayectoria vuelve arbitrariamente cerca de su punto inicial después de algún tiempo. Esto parece contradecir la irreversibilidad termodinámica, pero el **tiempo de recurrencia** escala como $\sim e^N$: para $N = 10^{23}$, es incomparablemente mayor que la edad del universo. La segunda ley opera en escalas de tiempo físicamente accesibles.
+
+## Espacio de fases cuántico: la distribución de Wigner
+
+La generalización cuántica del espacio de fases usa la **función de Wigner**:
+
+$$W(q,p) = \frac{1}{\pi\hbar}\int_{-\infty}^{\infty} \langle q-x|\hat\rho|q+x\rangle\, e^{2ipx/\hbar}\,dx$$
+
+$W(q,p)$ es una cuasidistribución de probabilidad: está normalizada y sus marginales en $q$ y $p$ son las distribuciones de posición y momento correctas, pero puede tomar valores negativos. Las regiones de negatividad son una firma de no-clasicidad cuántica.
 
 ## Errores comunes
 
-- Confundir espacio de fases con espacio de configuraciones.
-- Omitir los factores $h^{3N}$ y $N!$ sin explicar la convencion.
-- Tratar el volumen de espacio de fases como una cantidad absoluta sin especificar la medida.
-- Olvidar que esta pagina se refiere a la descripcion clasica; el caso cuantico requiere espacio de Hilbert.
-
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Espacio de fases** sin introducir un modelo mas complicado que el necesario.
-
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por la nocion de Espacio de fases. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Espacio de fases cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Espacio de fases requiere revisar accesibilidad o ergodicidad.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
-
-$$
-\Gamma=(q_1,\ldots,q_N,p_1,\ldots,p_N)
-$$
+- **Confundir espacio de fases con espacio de configuraciones**: el espacio de configuraciones es solo la mitad ($q_1,\ldots,q_N$); el espacio de fases incluye también los momenta.
+- **Omitir $h^{3N}$ y $N!$**: sin ellos, $\ln\Omega$ tiene una constante aditiva ambigua y la entropía no es extensiva.
+- **Pensar que Liouville implica ergodicidad**: Liouville dice que el volumen se conserva; ergodicidad es una propiedad mucho más específica sobre qué regiones visita la trayectoria.
+- **Tratar $d\Gamma$ como si fuera invariante sin verificar**: en coordenadas generalizadas, la medida puede cambiar de forma (aunque la forma simpléctica $\omega^{\wedge N}$ es invariante).
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Goldstein, *Classical Mechanics*, cap. 9: transformaciones canónicas, paréntesis de Poisson y estructura simpléctica.
+- Kardar, *Statistical Physics of Particles*, cap. 3: espacio de fases, medida de Liouville, distribuciones de equilibrio.
+- Arnold, *Mathematical Methods of Classical Mechanics*: la perspectiva geométrica moderna del espacio de fases como variedad simpléctica.
+- Tabor, *Chaos and Integrability in Nonlinear Dynamics*: espacio de fases en sistemas integrables y caóticos, toros KAM.
 
-Las fuentes de transiciones de fase enfatizan que el fenomeno aparece al combinar interacciones, limite termodinamico y variables de control. Para esta entrada, la lectura tecnica consiste en seguir como cambia el parametro de orden y que aproximacion, campo medio, virial o escala critica, justifica cada ecuacion.
-
-- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Espacio de fases** queda reservado para la idea precisa de la nocion de Espacio de fases. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de la nocion de Espacio de fases y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
+## Páginas relacionadas
 
 - [Microestado](#/microestado)
-- [Ensamble microcanonico](#/ensamble-microcanonico)
-- [Funcion de particion](#/funcion-de-particion)
-- [Entropia de Boltzmann](#/entropia-de-boltzmann)
+- [Teorema de Liouville](#/teorema-de-liouville)
+- [Hipótesis ergódica](#/hipotesis-ergodica)
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Función de partición](#/funcion-de-particion)

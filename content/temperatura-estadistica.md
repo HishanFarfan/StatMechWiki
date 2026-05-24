@@ -1,103 +1,117 @@
-# Temperatura estadistica
+# Temperatura estadística
 
 ## Resumen
 
-**Temperatura estadistica** es una entrada troncal de fundamentos dentro de la mecanica estadistica. Su papel principal se resume asi: definicion de temperatura a partir de la entropia. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **temperatura estadística** se define a partir de la entropía de un sistema aislado:
 
-## Definicion operativa
+$$\frac{1}{T} = \left(\frac{\partial S}{\partial E}\right)_{V,N}$$
 
-En mecanica estadistica conviene definir **Temperatura estadistica** por su uso operativo: definicion de temperatura a partir de la entropia. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+Esta definición no es un postulado: se deriva del principio de maximización de la entropía al poner dos sistemas en contacto térmico. Conecta la descripción microscópica (conteo de microestados) con la propiedad macroscópica que gobierna el flujo de calor.
 
-## Ecuacion clave
+## Derivación desde el contacto térmico
 
-$$
-\frac{1}{T}=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-$$
+Considera dos sistemas $A$ y $B$ que pueden intercambiar energía pero tienen volúmenes y números de partículas fijos. La energía total es $E = E_A + E_B = \text{cte}$. El número total de microestados del sistema combinado es
 
-## Estructura matematica
+$$\Omega(E_A) = \Omega_A(E_A)\,\Omega_B(E - E_A)$$
 
-$$
-\begin{aligned}
-\Omega(E,V,N)&=\int d\Gamma\,\delta(E-H),\\
-S(E,V,N)&=k_B\ln\Omega(E,V,N),\\
-\frac{1}{T}&=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-\end{aligned}
-$$
+El equilibrio térmico corresponde al valor de $E_A$ que maximiza $\Omega$ (o equivalentemente $S = S_A + S_B$). La condición de máximo es
 
-$$
-\begin{aligned}
-d\Gamma&=\frac{1}{h^{3N}N!}\prod_{i=1}^N d^3q_i\,d^3p_i,\\
-\int d\Gamma\,\rho(\Gamma)&=1,\\
-\langle A\rangle&=\int d\Gamma\,A(\Gamma)\rho(\Gamma)
-\end{aligned}
-$$
+$$\frac{\partial \ln\Omega_A}{\partial E_A} = \frac{\partial \ln\Omega_B}{\partial E_B}$$
 
-## Diccionario de derivadas
+$$\frac{1}{k_B}\frac{\partial S_A}{\partial E_A} = \frac{1}{k_B}\frac{\partial S_B}{\partial E_B}$$
 
-$$
-\begin{aligned}
-dS&=\frac{1}{T}dE+\frac{P}{T}dV-\frac{\mu}{T}dN,\\
-P&=T\left(\frac{\partial S}{\partial V}\right)_{E,N},\\
-\mu&=-T\left(\frac{\partial S}{\partial N}\right)_{E,V}
-\end{aligned}
-$$
+Definiendo $1/T \equiv (\partial S/\partial E)_{V,N}$, la condición de equilibrio es $T_A = T_B$. Si $T_A \neq T_B$ inicialmente, la entropía crece cuando fluye energía desde el sistema caliente hacia el frío, hasta que los dos lleguen al mismo $T$.
 
-## Escalas y cantidades sin dimension
+## El parámetro $\beta$
 
-$$
-\begin{aligned}
-N&\gg 1,\\
-\frac{\Delta E}{E}&\sim N^{-1/2},\\
-n\lambda_T^3&\ll 1\quad \text{regimen clasico}
-\end{aligned}
-$$
+En la práctica es más común trabajar con
 
-## Donde suele fallar
+$$\beta = \frac{1}{k_BT}$$
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+que aparece naturalmente en los pesos de Boltzmann $e^{-\beta E}$, en el ensamble canónico y en la función de partición. El parámetro $\beta$ tiene unidades de inverso de energía y puede interpretarse como la "pendiente" de $\ln\Omega$ frente a $E$:
 
-## Ejemplos y aplicaciones simples
+$$\beta = \frac{\partial \ln\Omega}{\partial E} = \frac{1}{k_B}\frac{\partial S}{\partial E}$$
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Temperatura estadistica** sin introducir un modelo mas complicado que el necesario.
+Para la mayoría de sistemas clásicos con $N$ grande, $\Omega \propto E^{\alpha N}$ con $\alpha$ de orden 1, de modo que $\beta \sim \alpha N/E$ y $T \sim E/(\alpha Nk_B)$: la temperatura es proporcional a la energía por partícula. Esto es la base del teorema de equipartición.
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por definicion de temperatura a partir de la entropia. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Temperatura estadistica cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Temperatura estadistica requiere revisar accesibilidad o ergodicidad.
+## Ejemplos de cálculo
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+### Gas ideal monoatómico
 
-$$
-\frac{1}{T}=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-$$
+$$S = Nk_B\left[\frac{3}{2}\ln E + \ldots\right] \implies \frac{1}{T} = \frac{\partial S}{\partial E} = \frac{3Nk_B}{2E}$$
+
+$$\implies E = \frac{3}{2}Nk_BT$$
+
+Resultado: cada grado de libertad traslacional contribuye $\frac{1}{2}k_BT$ a la energía.
+
+### Sistema de $N$ espines de dos niveles
+
+Con $n$ espines en el estado de energía $+\varepsilon$ y $N-n$ en $-\varepsilon$:
+
+$$S = k_B\ln\binom{N}{n} \approx -Nk_B\left[x\ln x + (1-x)\ln(1-x)\right], \quad x = n/N$$
+
+La energía es $E = (2n-N)\varepsilon$, de modo que $x = (1 + E/N\varepsilon)/2$ y
+
+$$\frac{1}{T} = \frac{\partial S}{\partial E} = \frac{\partial S}{\partial x}\frac{\partial x}{\partial E} = \frac{k_B}{2\varepsilon}\ln\frac{1-x}{x}$$
+
+Invirtiendo:
+
+$$T = \frac{2\varepsilon}{k_B\ln[(N-n)/n]}$$
+
+Para $n < N/2$ (mayoría en el estado de baja energía), $T > 0$. Para $n > N/2$, $T < 0$. Véase [Temperatura negativa](#/ensamble-microcanonico) en la entrada del ensamble microcanónico.
+
+### Oscilador armónico cuántico unidimensional
+
+Con $N$ osciladores y $q$ cuantos de energía distribuidos:
+
+$$S \approx Nk_B\left[(1+u)\ln(1+u) - u\ln u\right], \quad u = q/N$$
+
+donde la energía es $E = q\hbar\omega$. Derivando:
+
+$$T = \frac{\hbar\omega}{k_B\ln(1 + N/q)} = \frac{\hbar\omega/k_B}{\ln(1 + \hbar\omega N/E)}$$
+
+En el límite $E \gg N\hbar\omega$ (alta temperatura): $T \approx E/(Nk_B)$, recuperando el límite clásico.
+
+## Ley cero de la termodinámica
+
+La definición $1/T = (\partial S/\partial E)_{V,N}$ reproduce automáticamente la ley cero: si $A$ está en equilibrio con $B$ y $B$ está en equilibrio con $C$, entonces $T_A = T_B$ y $T_B = T_C$ implica $T_A = T_C$. La temperatura así definida es transitiva porque es una propiedad de $S(E)$, no del par de sistemas.
+
+## Escala de temperatura: Kelvin vs. energía
+
+La escala Kelvin fija $k_B = 1.380\times10^{-23}\ \text{J/K}$. En física teórica y computacional es frecuente medir temperatura directamente en unidades de energía usando $\beta$ o trabajar con $T/T_c$ donde $T_c$ es una temperatura característica del sistema.
+
+| Sistema | Temperatura característica | Valor |
+|---|---|---|
+| Gas ideal de He a STP | $k_BT$ | $\approx 25\ \text{meV}$ |
+| Gas de electrones en Cu | Temperatura de Fermi $T_F$ | $\approx 80{,}000\ \text{K}$ |
+| Modelo de Ising 2D | $T_c = 2J/(k_B\ln(1+\sqrt{2}))$ | (unidades de $J/k_B$) |
+| Fotones del fondo cósmico | $T_{\text{CMB}}$ | $2.73\ \text{K}$ |
+
+## Temperatura negativa
+
+En sistemas con espectro de energía **acotado superiormente** (como los espines de dos niveles), es posible tener $\partial S/\partial E < 0$, lo que corresponde a $T < 0$. Esto no viola ningún principio: simplemente significa que al añadir energía al sistema, el número de microestados accesibles *disminuye*. Los sistemas con $T < 0$ están más "calientes" que cualquier sistema con $T > 0$: si se ponen en contacto, la energía fluye del sistema $T < 0$ al sistema $T > 0$.
+
+El debate sobre si $T < 0$ es "real" o un artefacto de la convención de Boltzmann vs. Gibbs es activo en la literatura moderna (véase Dunkel & Hilbert, 2014, y la respuesta de Frenkel & Warren).
+
+## Conexión con la teoría cinética
+
+En la teoría cinética de gases (Maxwell, Boltzmann, 1860-1870), la temperatura se relaciona con la energía cinética media:
+
+$$\frac{3}{2}k_BT = \left\langle\frac{p^2}{2m}\right\rangle$$
+
+Esta relación es una consecuencia del teorema de equipartición, que a su vez se deriva de la definición estadística de $T$. Históricamente, la relación kinética se postuló primero; la definición estadística es la más fundamental.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Schroeder, *An Introduction to Thermal Physics*, cap. 3: temperatura estadística, flujo de calor, equilibrio.
+- Reif, *Fundamentals of Statistical and Thermal Physics*, cap. 3: derivación desde el contacto térmico.
+- Ramsey, N. F., "Thermodynamics and Statistical Mechanics at Negative Absolute Temperatures", *Phys. Rev.* 103, 20 (1956): el artículo original sobre temperatura negativa.
+- Dunkel, J. & Hilbert, S., "Consistent thermostatistics forbids negative absolute temperatures", *Nature Physics* 10, 67 (2014): el debate moderno.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Temperatura estadistica** queda reservado para la idea precisa de definicion de temperatura a partir de la entropia. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de definicion de temperatura a partir de la entropia y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Microestado](#/microestado)
-- [Macroestado](#/macroestado)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
+- [Entropía de Boltzmann](#/entropia-de-boltzmann)
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Distribución de Boltzmann](#/distribucion-de-boltzmann)
+- [Teorema de equipartición](#/teorema-de-equiparticion)

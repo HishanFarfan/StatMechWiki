@@ -2,102 +2,120 @@
 
 ## Resumen
 
-**Densidad de estados** es una entrada troncal de fundamentos dentro de la mecanica estadistica. Su papel principal se resume asi: numero de estados disponibles por intervalo de energia. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **densidad de estados** $g(E)$ cuantifica cuántos estados cuánticos (o cuánto volumen de espacio de fases clásico) existen por unidad de intervalo de energía alrededor de $E$. Es el puente entre el espectro microscópico discreto de un sistema y las funciones termodinámicas suaves que lo describen macroscópicamente.
 
-## Definicion operativa
+$$g(E) = \frac{d\Omega}{dE}$$
 
-En mecanica estadistica conviene definir **Densidad de estados** por su uso operativo: numero de estados disponibles por intervalo de energia. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+donde $\Omega(E)$ es el número total de estados con energía menor o igual a $E$. En el caso discreto,
 
-## Ecuacion clave
+$$g(E) = \sum_i \delta(E - E_i)$$
 
-$$
-g(E)=\sum_i \delta(E-E_i)
-$$
+Casi todo cálculo en mecánica estadística involucra una integral sobre $g(E)$.
 
-## Estructura matematica
+## Definición y variantes
 
-$$
-\begin{aligned}
-\Omega(E,V,N)&=\int d\Gamma\,\delta(E-H),\\
-S(E,V,N)&=k_B\ln\Omega(E,V,N),\\
-\frac{1}{T}&=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-\end{aligned}
-$$
+**Suma de estados acumulada.** El número de microestados con energía en $[0,E]$ es
 
-$$
-\begin{aligned}
-d\Gamma&=\frac{1}{h^{3N}N!}\prod_{i=1}^N d^3q_i\,d^3p_i,\\
-\int d\Gamma\,\rho(\Gamma)&=1,\\
-\langle A\rangle&=\int d\Gamma\,A(\Gamma)\rho(\Gamma)
-\end{aligned}
-$$
+$$\Omega(E) = \int_0^E g(E')\,dE'$$
 
-## Diccionario de derivadas
+**Promedio microcanónico.** El valor esperado de un observable en el ensamble microcanónico puede escribirse como
 
-$$
-\begin{aligned}
-dS&=\frac{1}{T}dE+\frac{P}{T}dV-\frac{\mu}{T}dN,\\
-P&=T\left(\frac{\partial S}{\partial V}\right)_{E,N},\\
-\mu&=-T\left(\frac{\partial S}{\partial N}\right)_{E,V}
-\end{aligned}
-$$
+$$\langle A \rangle = \frac{1}{g(E)\delta E}\sum_{E_i \in [E,E+\delta E]} A_i = \frac{\int_E^{E+\delta E} A(E')\,g(E')\,dE'}{g(E)\,\delta E}$$
 
-## Escalas y cantidades sin dimension
+**Función de partición canónica.** En el ensamble canónico, en lugar de sumar sobre microestados individuales se puede integrar sobre la DOS:
 
-$$
-\begin{aligned}
-N&\gg 1,\\
-\frac{\Delta E}{E}&\sim N^{-1/2},\\
-n\lambda_T^3&\ll 1\quad \text{regimen clasico}
-\end{aligned}
-$$
+$$Z(\beta) = \int_0^\infty g(E)\,e^{-\beta E}\,dE$$
 
-## Donde suele fallar
+Esto es particularmente útil cuando $g(E)$ tiene una forma analítica conocida.
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+**Densidad de estados por unidad de volumen.** En física del estado sólido y sistemas extendidos se trabaja con la DOS **intensiva**:
 
-## Ejemplos y aplicaciones simples
+$$\rho(\varepsilon) = \frac{g(\varepsilon)}{V}$$
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Densidad de estados** sin introducir un modelo mas complicado que el necesario.
+con unidades de $[\text{energía}^{-1}\text{volumen}^{-1}]$.
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por numero de estados disponibles por intervalo de energia. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Densidad de estados cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Densidad de estados requiere revisar accesibilidad o ergodicidad.
+## Ejemplos fundamentales
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+### Gas ideal monoatómico ($N$ partículas, 3D)
 
-$$
-g(E)=\sum_i \delta(E-E_i)
-$$
+El espacio de fases de $N$ partículas en 3D tiene $6N$ dimensiones. El volumen de la esfera de energía $H \leq E$ en el espacio de momentos es proporcional a $E^{3N/2}$, de modo que
+
+$$\Omega(E,V,N) = C_{N,V}\,E^{3N/2}$$
+
+$$g(E,V,N) = C_{N,V}\,\frac{3N}{2}\,E^{3N/2-1} \propto E^{3N/2-1}$$
+
+Para $N = 10^{23}$, esta función crece tan rápido con $E$ que está esencialmente concentrada en una región exponencialmente estrecha cerca del valor de equilibrio. Este crecimiento vertiginoso es la razón por la que la entropía $S = k_B \ln g \approx k_B \ln \Omega$ es una función creciente de $E$ en la mayoría de sistemas clásicos.
+
+### Gas de Fermi libre en 3D (por unidad de volumen)
+
+Los estados de una partícula libre en un cubo de lado $L$ son $\mathbf{k} = \frac{2\pi}{L}\mathbf{n}$, con degeneración de espín $g_s = 2$. Contando estados en el espacio $\mathbf{k}$:
+
+$$\rho(\varepsilon) = \frac{(2m)^{3/2}}{2\pi^2\hbar^3}\,\sqrt{\varepsilon}$$
+
+Este resultado es central en la teoría de metales: la DOS proporcional a $\sqrt{\varepsilon}$ explica la capacidad calorífica lineal en temperatura $C \propto T$ para electrones y la dependencia de la resistividad con la energía de Fermi.
+
+### Oscilador armónico unidimensional
+
+Los niveles de energía son $E_n = \hbar\omega(n + 1/2)$, igualmente espaciados. La DOS es
+
+$$g(E) = \sum_{n=0}^\infty \delta(E - \hbar\omega(n+1/2)) = \frac{1}{\hbar\omega}\quad \text{(en el límite semiclásico)}$$
+
+uniforme en energía. Este resultado justifica la regla de cuantización de Bohr–Sommerfeld: el espacio de fases entre dos niveles consecutivos vale exactamente $h$.
+
+### Gas de electrones bidimensional (2DEG)
+
+En 2D, el volumen de espacio $\mathbf{k}$ con $|\mathbf{k}| \leq k$ es proporcional a $k^2 \propto \varepsilon$, de modo que
+
+$$\rho_{2D}(\varepsilon) = \frac{m}{\pi\hbar^2}\quad \text{(constante)}$$
+
+Esta DOS plana es la que produce el efecto Hall cuántico: los niveles de Landau son deltas de Dirac enormemente degeneradas que emergen de una DOS de fondo plana cuando se aplica un campo magnético.
+
+### Sólido de Einstein
+
+$N$ osciladores independientes con frecuencia $\omega_0$. Los niveles de energía del sistema completo son $E_n = n\hbar\omega_0$ con degeneración $g_n = \binom{n+N-1}{N-1}$ (número de formas de distribuir $n$ cuantos entre $N$ osciladores). Para $N$ grande:
+
+$$g(E) \approx \frac{1}{(N-1)!}\left(\frac{E}{\hbar\omega_0}\right)^{N-1} \cdot \frac{1}{\hbar\omega_0}$$
+
+Esta es la DOS que, al tomar logaritmo, da la entropía del sólido de Einstein y reproduce la ley de Dulong-Petit a alta temperatura.
+
+## Crecimiento exponencial y concentración
+
+Para sistemas macroscópicos, $g(E)$ crece de forma extraordinariamente rápida con $E$. En el caso del gas ideal:
+
+$$g(E) \propto E^{3N/2-1} \approx e^{\frac{3N}{2}\ln E}$$
+
+Para $N = 10^{23}$, esto significa que si se duplica la energía, $g$ se multiplica por un factor del orden de $e^{10^{23}}$. Como consecuencia:
+
+- El ensamble microcanónico tiene casi todo su peso en la capa de energía más alta accesible.
+- La entropía $S = k_B \ln g$ es extensiva porque $\ln(E^{3N/2}) = \frac{3N}{2}\ln E \propto N$.
+- La "anchura efectiva" de la distribución de energía en el ensamble canónico es $\delta E/\langle E\rangle \sim N^{-1/2}$: aunque el peso de $g(E)e^{-\beta E}$ parece una integral, está en realidad dominada por un entorno exponencialmente estrecho del valor medio.
+
+## Singularidades de Van Hove
+
+En sistemas con estructura de bandas (fonones, electrones en cristales), la DOS de una sola partícula es
+
+$$g(\varepsilon) = \frac{V}{(2\pi)^d}\int_{BZ} \delta\!\left(\varepsilon - \varepsilon(\mathbf{k})\right)d^d k$$
+
+Cerca de los puntos $\mathbf{k}_0$ donde $\nabla_{\mathbf{k}}\varepsilon(\mathbf{k}_0) = 0$ (extremos de banda, puntos silla), la DOS tiene **singularidades de Van Hove**: divergencias logarítmicas en 2D, discontinuidades de pendiente en 3D. Estas singularidades son observables en espectros de infrarrojo, Raman, y en la estructura fina de la conductividad eléctrica.
+
+## DOS y la función de partición
+
+La relación $Z(\beta) = \int g(E)e^{-\beta E}dE$ es una transformada de Laplace de la DOS. Esto tiene dos consecuencias prácticas:
+
+1. **Cálculo de $Z$**: si se conoce $g(E)$ analíticamente (gas ideal, oscilador), la integral es directa.
+2. **Inversión**: dado $Z(\beta)$ como función analítica, $g(E)$ se recupera mediante la transformada inversa de Laplace. Este es el fundamento del método de la colina de paso (saddle-point) para la conexión microcanónico–canónico.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Pathria & Beale, *Statistical Mechanics*, cap. 1-2: cálculo detallado de $\Omega(E)$ y $g(E)$ para el gas ideal y el oscilador.
+- Ashcroft & Mermin, *Solid State Physics*, caps. 2 y 8: DOS de Fermi libre y singularidades de Van Hove.
+- Kittel, *Introduction to Solid State Physics*, cap. 5: DOS para fonones y electrones con ejemplos numéricos.
+- Kardar, *Statistical Physics of Particles*, cap. 4: derivación general y aplicaciones al gas cuántico.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Densidad de estados** queda reservado para la idea precisa de numero de estados disponibles por intervalo de energia. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de numero de estados disponibles por intervalo de energia y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Microestado](#/microestado)
-- [Macroestado](#/macroestado)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Entropía de Boltzmann](#/entropia-de-boltzmann)
+- [Función de partición](#/funcion-de-particion)
+- [Sólido de Einstein](#/solido-de-einstein)
+- [Gas ideal cuántico](#/gas-ideal-cuantico)

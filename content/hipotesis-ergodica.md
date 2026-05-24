@@ -1,103 +1,101 @@
-# Hipotesis ergodica
+# Hipótesis ergódica
 
 ## Resumen
 
-**Hipotesis ergodica** es una entrada troncal de fundamentos dentro de la mecanica estadistica. Su papel principal se resume asi: supuesto que conecta promedios temporales con promedios de ensamble. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **hipótesis ergódica** responde una pregunta que está en el corazón de la mecánica estadística: ¿por qué podemos usar un promedio sobre un ensamble —una colección imaginaria de réplicas— para predecir el resultado de una única medición sobre un sistema que evoluciona en el tiempo?
 
-## Definicion operativa
+La respuesta operativa es que, bajo ciertas condiciones, el **promedio temporal** de un observable $A$ a lo largo de una trayectoria muy larga coincide con el **promedio de ensamble** sobre la superficie de energía constante:
 
-En mecanica estadistica conviene definir **Hipotesis ergodica** por su uso operativo: supuesto que conecta promedios temporales con promedios de ensamble. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+$$\bar{A} = \lim_{\tau\to\infty}\frac{1}{\tau}\int_0^\tau A\bigl(\Gamma(t)\bigr)\,dt = \langle A \rangle_{\text{mic}}$$
 
-## Ecuacion clave
+Esto justifica reemplazar la dinámica real —imposible de seguir para $N \sim 10^{23}$— por un cálculo estático de probabilidades uniformes sobre microestados accesibles.
 
-$$
-\overline A=\lim_{\tau\to\infty}\frac{1}{\tau}\int_0^\tau A(t)\,dt
-$$
+## Formulación original de Boltzmann
 
-## Estructura matematica
+Boltzmann (1871) imaginó que una trayectoria con energía fija $E$ recorre **todos** los puntos de la hipersuperficie $H(\Gamma)=E$ antes de repetirse. Si esto fuera cierto, la fracción de tiempo que el sistema pasa cerca de una región $d\Gamma$ sería proporcional al volumen de $d\Gamma$, lo que reproduce la medida microcanónica uniforme.
 
-$$
-\begin{aligned}
-\Omega(E,V,N)&=\int d\Gamma\,\delta(E-H),\\
-S(E,V,N)&=k_B\ln\Omega(E,V,N),\\
-\frac{1}{T}&=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-\end{aligned}
-$$
+Este enunciado literal —que una sola trayectoria cubre toda la superficie— es matemáticamente imposible para sistemas continuos (una curva unidimensional no puede llenar una superficie de dimensión $\geq 2$). Plancherel y Rozental demostraron esto en 1913. La hipótesis en su forma original es falsa.
 
-$$
-\begin{aligned}
-d\Gamma&=\frac{1}{h^{3N}N!}\prod_{i=1}^N d^3q_i\,d^3p_i,\\
-\int d\Gamma\,\rho(\Gamma)&=1,\\
-\langle A\rangle&=\int d\Gamma\,A(\Gamma)\rho(\Gamma)
-\end{aligned}
-$$
+La versión moderna, debida a Birkhoff (1931), debilita el enunciado de forma precisa.
 
-## Diccionario de derivadas
+## Teorema ergódico de Birkhoff
 
-$$
-\begin{aligned}
-dS&=\frac{1}{T}dE+\frac{P}{T}dV-\frac{\mu}{T}dN,\\
-P&=T\left(\frac{\partial S}{\partial V}\right)_{E,N},\\
-\mu&=-T\left(\frac{\partial S}{\partial N}\right)_{E,V}
-\end{aligned}
-$$
+Sea $(\mathcal{M}, \mu, \Phi^t)$ un espacio de medida invariante bajo el flujo hamiltoniano $\Phi^t$. El **teorema ergódico de Birkhoff** afirma que el límite
 
-## Escalas y cantidades sin dimension
+$$\bar{A}(\Gamma_0) = \lim_{\tau\to\infty}\frac{1}{\tau}\int_0^\tau A\!\left(\Phi^t(\Gamma_0)\right)dt$$
 
-$$
-\begin{aligned}
-N&\gg 1,\\
-\frac{\Delta E}{E}&\sim N^{-1/2},\\
-n\lambda_T^3&\ll 1\quad \text{regimen clasico}
-\end{aligned}
-$$
+existe y es finito para $\mu$-casi todo punto inicial $\Gamma_0$. Además, $\bar{A}$ es invariante bajo el flujo.
 
-## Donde suele fallar
+Si el sistema es **ergódico** —es decir, si los únicos conjuntos invariantes tienen medida 0 o 1— entonces $\bar{A}$ es constante $\mu$-c.t.p. y por lo tanto igual a la media de ensamble:
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+$$\bar{A} = \int A\,d\mu = \langle A \rangle$$
 
-## Ejemplos y aplicaciones simples
+La condición de ergodicidad dice en términos físicos que la hipersuperficie de energía **no puede descomponerse** en dos partes invariantes de medida positiva. El sistema visita cualquier región de medida positiva con la frecuencia correcta, aunque no visite cada punto.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Hipotesis ergodica** sin introducir un modelo mas complicado que el necesario.
+## Cuando la hipótesis se cumple
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por supuesto que conecta promedios temporales con promedios de ensamble. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Hipotesis ergodica cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Hipotesis ergodica requiere revisar accesibilidad o ergodicidad.
+La ergodicidad es difícil de probar en general. Los resultados positivos más sólidos son:
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+**Gas de esferas duras.** Sinai (1970) y Bunimovich–Sinai (1980) probaron que un sistema de $N \geq 2$ esferas duras en una caja es ergódico. La clave es que las colisiones elásticas son de tipo hiperbólico (localmente expansivas), lo que impide la existencia de toros invariantes.
 
-$$
-\overline A=\lim_{\tau\to\infty}\frac{1}{\tau}\int_0^\tau A(t)\,dt
-$$
+**Sistemas caóticos.** En general, sistemas con exponentes de Lyapunov positivos y mezclantes son ergódicos. El caos no es suficiente por sí solo, pero la combinación de hiperbolicidad y ausencia de simetrías adicionales usualmente garantiza ergodicidad.
+
+**Gases diluidos.** En el límite de densidad baja, los tiempos de relajación son cortos y la hipótesis funciona muy bien en la práctica, aunque la prueba rigurosa completa aún no existe para $N$ arbitrario.
+
+## Cuando falla
+
+La hipótesis ergódica falla en clases importantes de sistemas:
+
+**Sistemas integrables.** Un sistema hamiltoniano con $N$ grados de libertad es **integrable** si tiene $N$ integrales de movimiento independientes en involución (constantes del movimiento). Por el teorema de Arnold–Liouville, el espacio de fases se folía en toros $N$-dimensionales invariantes. Una trayectoria queda confinada a su toro y nunca llega a todo el espacio de energía.
+
+**Toros KAM.** El **teorema KAM** (Kolmogorov 1954, Arnold 1963, Moser 1962) dice que al perturbar un sistema integrable la mayoría de los toros invariantes no se destruyen, sino que se deforman. Para perturbaciones pequeñas, el espacio de fases es un entramado de toros supervivientes separados por capas caóticas delgadas. El sistema no es ergódico globalmente.
+
+**Paradoja de Fermi–Pasta–Ulam (1955).** Una cadena de osciladores no lineales acoplados debería termalizar (ergodicidad) pero en cambio muestra recurrencias quasi-periódicas. La energía vuelve repetidamente al modo inicial en lugar de distribuirse uniformemente. Este resultado fue sorprendente y motivó décadas de investigación sobre ergodicidad y solitones.
+
+**Vidrios y sistemas de relajación lenta.** En un vidrio, $\tau_{\text{rel}} \gg \tau_{\text{obs}}$: el sistema nunca tiene tiempo de explorar el espacio de fases accesible en la escala de la observación. La ergodicidad se rompe de forma efectiva aunque no matemáticamente.
+
+**Condensados de Bose–Einstein y sistemas integrables cuánticos.** Sistemas cuánticos con muchos modos conservados (p.ej. el gas de Bose 1D) no termalizan en el sentido habitual. En cambio alcanzan estados descritos por un **ensamble de Gibbs generalizado** que incorpora todas las cargas conservadas.
+
+## Ergodicidad vs. mezcla
+
+La ergodicidad garantiza que los promedios temporales convergean al promedio de ensamble, pero no dice nada sobre la **velocidad** de convergencia. La propiedad más fuerte es la **mezcla** (mixing):
+
+$$\lim_{t\to\infty} \mu\!\left(\Phi^t(A) \cap B\right) = \mu(A)\,\mu(B)$$
+
+Un sistema mezclante es ergódico, pero no al revés. La mezcla implica que las funciones de correlación decaen:
+
+$$\lim_{t\to\infty}\langle A(0)\,B(t)\rangle = \langle A\rangle\langle B\rangle$$
+
+Esta condición es la que realmente garantiza que un sistema **termalice**: que las correlaciones entre el estado inicial y el estado tardío se pierdan. Para fines prácticos de mecánica estadística, mezcla es la condición relevante.
+
+## ¿Es la ergodicidad necesaria para la mecánica estadística?
+
+No. Este punto es sutil y frecuentemente mal entendido.
+
+La mecánica estadística funciona incluso para sistemas que **no** son ergódicos. La razón es el argumento de **tipicidad**: para $N \gg 1$, la inmensa mayoría del volumen de la hipersuperficie de energía corresponde a estados que dan los mismos valores de observables macroscópicos. No importa qué microestado específico tenga el sistema: si fue elegido "al azar" (en el sentido de la medida microcanónica), casi con certeza exhibirá las propiedades termodinámicas predichas.
+
+La ergodicidad es una condición *suficiente* para justificar los promedios de ensamble. La tipicidad es la condición *real* (más débil y más general) que subyace al fundamento de la mecánica estadística.
+
+En palabras de Lebowitz: no necesitamos que la dinámica sea ergódica, sino que los estados típicos (la aplastante mayoría) sean indistinguibles macroscópicamente. Un sistema puede pasar toda su existencia en una región de medida microscópica de la hipersuperficie y aun así comportarse termodinámicamente de manera correcta, siempre que esa región sea macroscópicamente representativa.
+
+## Recurrencia de Poincaré
+
+Un resultado clásico de Poincaré (1890) afirma que cualquier sistema hamiltoniano con espacio de fases de volumen finito regresa, con probabilidad 1, arbitrariamente cerca de su estado inicial, después de un tiempo suficientemente largo (**tiempo de recurrencia de Poincaré**).
+
+Este resultado parece contradecir el crecimiento irreversible de la entropía. La resolución es de escala: el tiempo de recurrencia para $N \sim 10^{23}$ partículas es astronomicamente mayor que la edad del universo ($t_{\text{rec}} \sim e^N$). La termodinámica describe lo que ocurre en tiempos físicamente accesibles, no en el límite matemático de $t\to\infty$.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Khinchin, *Mathematical Foundations of Statistical Mechanics* (1949): demostración rigurosa del teorema ergódico y sus implicaciones para mecánica estadística, nivel matemático avanzado.
+- Gallavotti, *Statistical Mechanics: A Short Treatise* (1999): perspectiva moderna sobre ergodicidad, mezcla y fundamentos.
+- Sinai, *Ergodic Theory* (1976): la referencia técnica para el teorema de ergodicidad del gas de esferas duras.
+- Bricmont, "Science of Chaos or Chaos in Science?" (1995): ensayo accesible sobre el problema de la irreversibilidad y el papel real de la ergodicidad.
+- Goldstein & Lebowitz, "On the (Boltzmann) Entropy of Non-Equilibrium Systems", *Physica D* 193 (2004): argumento de tipicidad explicado con precisión.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Hipotesis ergodica** queda reservado para la idea precisa de supuesto que conecta promedios temporales con promedios de ensamble. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de supuesto que conecta promedios temporales con promedios de ensamble y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
+- [Ensamble microcanónico](#/ensamble-microcanonico)
 - [Microestado](#/microestado)
-- [Macroestado](#/macroestado)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
+- [Espacio de fases](#/espacio-de-fases)
+- [Entropía de Boltzmann](#/entropia-de-boltzmann)
+- [Teorema de Liouville](#/teorema-de-liouville)

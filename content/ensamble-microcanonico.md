@@ -1,249 +1,223 @@
 # Ensamble microcanonico
 
+<!-- curated-entry -->
+
 ## Resumen
 
-El **ensamble microcanonico** describe un sistema aislado en equilibrio. Sus variables macroscopicas fijas son la energia $E$, el volumen $V$ y el numero de particulas $N$. La idea central es que, si no hay informacion adicional que distinga unos microestados de otros, todos los microestados accesibles compatibles con $E,V,N$ se consideran igualmente probables.
+El **ensamble microcanonico** describe un sistema aislado en equilibrio, con energia $E$, volumen $V$ y numero de particulas $N$ fijos. Es el ensamble natural cuando el sistema total no intercambia energia, particulas ni volumen con el exterior. Su postulado operativo es que todos los microestados accesibles compatibles con las restricciones macroscopicas tienen la misma probabilidad.
+
+La ecuacion central es la entropia de Boltzmann,
+
+$$
+S(E,V,N)=k_B\ln\Omega(E,V,N),
+$$
+
+donde $\Omega(E,V,N)$ cuenta los microestados accesibles. Desde esta funcion se recuperan temperatura, presion y potencial quimico como derivadas entropicas. Por eso el microcanonico es una entrada troncal: conecta conteo microscopico, equilibrio termico y termodinamica sin introducir todavia un reservorio de temperatura fija.
 
 ## Definicion
 
-Un sistema pertenece al ensamble microcanonico cuando no intercambia energia ni particulas con el exterior. El macroestado queda especificado por
+Un sistema esta en el ensamble microcanonico si el macroestado queda fijado por
 
 $$
-\boxed{E, V, N\ \text{fijos}}
+\boxed{E,\;V,\;N\ \text{fijos}} .
 $$
 
-En una descripcion discreta, si hay $\Omega(E,V,N)$ microestados compatibles con esas restricciones, la probabilidad de cada microestado accesible $i$ es
+En una descripcion discreta, sea $\Gamma(E,V,N)$ el conjunto de microestados compatibles con esas restricciones y sea $\Omega(E,V,N)=|\Gamma(E,V,N)|$. La distribucion microcanonica es
 
 $$
 p_i =
-  \begin{cases}
-    \Omega(E,V,N)^{-1}, & i \in \Gamma(E,V,N),\\
-    0, & i \notin \Gamma(E,V,N).
-  \end{cases}
+\begin{cases}
+\Omega(E,V,N)^{-1}, & i\in\Gamma(E,V,N),\\
+0, & i\notin\Gamma(E,V,N).
+\end{cases}
 $$
 
-Aqui $\Gamma(E,V,N)$ denota el conjunto de microestados compatibles con el macroestado especificado.
+La equiprobabilidad no afirma que todos los estados imaginables del sistema sean igualmente probables. Afirma algo mas preciso: son equiprobables los estados **accesibles** que satisfacen las mismas restricciones macroscopicas.
 
-## Conteo clasico de estados
+## Notacion
 
-En una descripcion clasica, el conteo de estados se reemplaza por un volumen de espacio de fases. De forma esquematica,
+- $E$: energia total fijada del sistema aislado.
+- $V$: volumen fijo o parametro externo fijo.
+- $N$: numero fijo de particulas.
+- $\Gamma(E,V,N)$: region accesible del espacio de estados.
+- $\Omega(E,V,N)$: numero de microestados accesibles o volumen adimensional de espacio de fases.
+- $g(E)$: densidad de estados; no siempre coincide con $\Omega$.
+- $k_B$: constante de Boltzmann.
+- $\Delta E$: ventana energetica usada cuando la energia exacta define una superficie demasiado fina.
+
+En sistemas clasicos, el conteo debe hacerse adimensional. Una convencion usual es
 
 $$
 \Omega(E,V,N)=
 \frac{1}{h^{3N}N!}
-\int_{\substack{E \leq H(q,p) \leq E+\Delta E}}
-d\Gamma .
+\int_{E\le H(q,p)\le E+\Delta E} d\Gamma .
 $$
 
-donde $H(q,p)$ es el Hamiltoniano, $d\Gamma$ es la medida de espacio de fases, $h^{3N}$ hace adimensional el volumen y $N!$ corrige la sobrecuenta de particulas indistinguibles.
+El factor $h^{3N}$ fija la celda de espacio de fases y $N!$ evita sobrecontar particulas indistinguibles.
 
-La ventana $\Delta E$ debe ser macroscopicamente pequena, pero suficientemente grande para contener muchos microestados.
+## Idea fisica
 
-## Contexto fisico
+El microcanonico responde una pregunta concreta: si solo se conoce que el sistema esta aislado y tiene $E,V,N$ fijos, que distribucion de microestados representa mejor ese conocimiento? La respuesta es asignar igual peso a todas las realizaciones microscopicas compatibles.
 
-El ensamble microcanonico es el punto de partida natural para la mecanica estadistica de equilibrio porque representa un sistema aislado. En termodinamica, un sistema aislado alcanza equilibrio maximizando la entropia bajo las restricciones conservadas. En mecanica estadistica, esa entropia se obtiene contando los microestados compatibles con el macroestado.
+La razon fisica no es que el sistema visite necesariamente todos los microestados en tiempos cortos. La razon estadistica es que, sin informacion adicional que distinga dos estados accesibles, no hay base para ponderar uno mas que otro. La dinamica real entra despues, al preguntar si el sistema explora efectivamente la region accesible; esa pregunta se conecta con ergodicidad, tiempos de mezcla y ruptura de ergodicidad.
 
-La conexion central es la entropia de Boltzmann:
+## Formulacion matematica
 
-$$
-S(E,V,N) = k_B \ln \Omega(E,V,N).
-$$
-
-Esta expresion dice que la entropia mide cuantas realizaciones microscopicas corresponden al mismo estado macroscopico. Un macroestado con mayor $\Omega$ es mas probable porque puede realizarse de mas maneras.
-
-## Ecuaciones principales
-
-En el ensamble microcanonico, la entropia $S(E,V,N)$ es la funcion termodinamica fundamental:
+La entropia fundamental es
 
 $$
 S(E,V,N)=k_B\ln \Omega(E,V,N).
 $$
 
-Las variables intensivas se obtienen como derivadas de la entropia:
+Las variables intensivas se obtienen derivando $S$ respecto de sus variables extensivas:
 
 $$
 \begin{aligned}
 \frac{1}{T}
-  &= \left(\frac{\partial S}{\partial E}\right)_{V,N},\\[4pt]
+  &=\left(\frac{\partial S}{\partial E}\right)_{V,N},\\[4pt]
 \frac{P}{T}
-  &= \left(\frac{\partial S}{\partial V}\right)_{E,N},\\[4pt]
+  &=\left(\frac{\partial S}{\partial V}\right)_{E,N},\\[4pt]
 -\frac{\mu}{T}
-  &= \left(\frac{\partial S}{\partial N}\right)_{E,V}.
+  &=\left(\frac{\partial S}{\partial N}\right)_{E,V}.
 \end{aligned}
 $$
 
-La temperatura, la presion y el potencial quimico no se imponen desde fuera: se calculan a partir de $S(E,V,N)$.
-
-## Derivacion minima de la temperatura
-
-Considere dos sistemas aislados $A$ y $B$ que pueden intercambiar energia entre si, pero cuyo sistema total permanece aislado:
+Para un observable $A_i$ definido en los microestados accesibles, el promedio microcanonico es
 
 $$
-E_{\text{tot}} = E_A + E_B.
+\langle A\rangle_E
+=
+\frac{1}{\Omega(E,V,N)}
+\sum_{i\in\Gamma(E,V,N)} A_i .
 $$
 
-El numero total de microestados compatibles con una particion de energia $E_A$ es proporcional a
+En forma clasica, la suma se reemplaza por una integral restringida a la capa de energia:
 
 $$
-\Omega_{\mathrm{tot}}(E_A)=
-\Omega_A(E_A)\,
-\Omega_B(E_{\mathrm{tot}}-E_A).
+\langle A\rangle_E
+=
+\frac{
+\int d\Gamma\,A(q,p)\,\delta(E-H(q,p))
+}{
+\int d\Gamma\,\delta(E-H(q,p))
+}.
 $$
 
-El equilibrio corresponde al maximo de $\Omega_{\mathrm{tot}}$, o equivalentemente al maximo de la entropia total:
+## Derivacion o motivacion
+
+Considere dos sistemas $A$ y $B$ que pueden intercambiar energia entre si, mientras el sistema total permanece aislado:
 
 $$
-S_{\mathrm{tot}}=
-S_A(E_A)
-+
-S_B(E_{\mathrm{tot}}-E_A).
+E_{\rm tot}=E_A+E_B.
+$$
+
+El numero de microestados compatibles con que $A$ tenga energia $E_A$ es
+
+$$
+\Omega_{\rm tot}(E_A)
+=
+\Omega_A(E_A)\Omega_B(E_{\rm tot}-E_A).
+$$
+
+El equilibrio corresponde al valor de $E_A$ que maximiza $\Omega_{\rm tot}$, o equivalentemente
+
+$$
+S_{\rm tot}(E_A)
+=
+S_A(E_A)+S_B(E_{\rm tot}-E_A).
 $$
 
 La condicion de maximo es
 
 $$
-\frac{\partial S_{\mathrm{tot}}}{\partial E_A}=0.
+\frac{\partial S_{\rm tot}}{\partial E_A}=0,
 $$
 
-Como $E_B=E_{\mathrm{tot}}-E_A$, se obtiene
+lo que implica
 
 $$
-\left(\frac{\partial S_A}{\partial E_A}\right)_{V_A,N_A}=
+\left(\frac{\partial S_A}{\partial E_A}\right)_{V_A,N_A}
+=
 \left(\frac{\partial S_B}{\partial E_B}\right)_{V_B,N_B}.
 $$
 
-Esto motiva la definicion
+Esta igualdad motiva la definicion microcanonica de temperatura:
 
 $$
-\frac{1}{T}=
+\frac{1}{T}
+=
 \left(\frac{\partial S}{\partial E}\right)_{V,N}.
 $$
 
-En equilibrio termico, dos sistemas tienen la misma temperatura porque sus derivadas entropicas respecto de la energia son iguales.
+La temperatura no se impone desde fuera; aparece como la condicion de equilibrio entre sistemas que comparten una energia total fija.
 
-## Ventana de energia
+## Convenciones sobre la energia
 
-En sistemas clasicos o con espectro discreto denso, el ensamble microcanonico suele definirse usando una pequena ventana de energia:
-
-$$
-E \leq H(q,p) \leq E+\Delta E .
-$$
-
-La ventana $\Delta E$ debe cumplir dos condiciones practicas:
-
-- ser pequena en la escala macroscopica de la energia total;
-- ser suficientemente grande para contener muchos microestados.
-
-En el limite termodinamico, los resultados termodinamicos no deberian depender sensiblemente de la eleccion precisa de $\Delta E$.
-
-## Superficie versus volumen de energia
-
-Algunos textos definen $\Omega$ como el volumen de espacio de fases con energia menor o igual a $E$:
+Hay dos convenciones frecuentes. La primera cuenta estados dentro de una ventana,
 
 $$
-\Omega_{\leq}(E)=
-\frac{1}{h^{3N}N!}
-\int_{H(q,p)\leq E} d\Gamma .
+E\le H(q,p)\le E+\Delta E.
 $$
 
-Otros usan una densidad de estados sobre la superficie de energia:
+La segunda usa la densidad de estados sobre la superficie de energia,
 
 $$
 g(E)=
 \frac{1}{h^{3N}N!}
-\int d\Gamma\,
-\delta\!\left(E-H(q,p)\right) .
+\int d\Gamma\,\delta(E-H(q,p)).
 $$
 
-Ambas convenciones pueden llevar a la misma termodinamica en sistemas grandes, pero no son identicas en sistemas finitos. Por eso una pagina tecnica debe declarar que convencion esta usando.
+En el limite termodinamico suelen producir la misma termodinamica intensiva para sistemas ordinarios. En sistemas finitos, o en modelos con espectros muy discretos, la diferencia puede ser visible. Por eso una entrada o calculo debe declarar que objeto usa: $\Omega(E)$, $\Omega_{\le E}$ o $g(E)$.
 
-## Relacion con otros ensambles
-
-El ensamble microcanonico fija $E$. El ensamble canonico fija $T$ y permite fluctuaciones de energia. Para sistemas grandes con interacciones de corto alcance, ambos ensambles suelen ser equivalentes para cantidades termodinamicas promedio.
-
-La equivalencia puede fallar, o requerir cuidado, en:
-
-- sistemas pequenos;
-- sistemas con interacciones de largo alcance;
-- regiones de transicion de fase;
-- problemas donde las fluctuaciones son observables centrales.
-
-## Ejemplo conceptual: gas aislado
-
-Un gas ideal en una caja rigida y aislada tiene $N$ y $V$ fijos. Si ademas la energia total $E$ esta fija, el estado macroscopico corresponde al ensamble microcanonico. La pregunta estadistica central es cuantos microestados microscopicos de posiciones y momentos son compatibles con esa energia total.
-
-A partir de ese conteo se obtiene $S(E,V,N)$, y desde $S$ se recuperan $T$, $P$ y otras variables termodinamicas.
-
-## Supuestos importantes
+## Supuestos y regimen de validez
 
 - El sistema total esta aislado.
-- Las cantidades $E,V,N$ se mantienen fijas.
-- Los microestados accesibles compatibles con las restricciones son equiprobables.
-- Se ha definido una medida adecuada para contar microestados.
-- El sistema tiene una dinamica o mecanismo fisico que permite explorar la region accesible relevante del espacio de fases.
+- Las restricciones macroscopicas relevantes son $E,V,N$.
+- La medida de conteo de microestados esta definida.
+- Los microestados accesibles no se distinguen mediante informacion adicional.
+- El equilibrio puede describirse mediante promedios sobre la region accesible.
+- El limite termodinamico permite reemplazar detalles finitos por funciones suaves.
+
+La equivalencia con el ensamble canonico requiere cuidado. Suele funcionar para sistemas grandes con interacciones de corto alcance, pero puede fallar en sistemas pequenos, sistemas con interacciones de largo alcance, regiones de coexistencia de fases o problemas donde las fluctuaciones son el observable principal.
+
+## Ejemplos
+
+1. **Tres espines aislados con energia fija.** Suponga tres espines no interactuantes en campo, con energia proporcional al numero de espines excitados. Si la energia fija exige exactamente un espin excitado, hay tres microestados accesibles: $100$, $010$ y $001$. Entonces $\Omega=3$ y cada configuracion tiene probabilidad $1/3$. Esta es una aplicacion microcanonica: se fija energia, no temperatura.
+
+2. **Gas ideal aislado.** Un gas en una caja rigida y aislada tiene $N$ y $V$ fijos. Si la energia total $E$ tambien esta fijada, el problema estadistico es calcular el volumen de espacio de fases compatible con esa energia. A partir de $\Omega(E,V,N)$ se obtiene $S(E,V,N)$ y luego la ecuacion de estado mediante derivadas como $P/T=(\partial S/\partial V)_{E,N}$.
+
+3. **Dos solidos de Einstein en contacto.** Dos solidos aislados en conjunto comparten un numero total fijo de cuantos de energia. Si un solido tiene $q_A$ cuantos y el otro $q_{\rm tot}-q_A$, el peso de esa particion es $\Omega_A(q_A)\Omega_B(q_{\rm tot}-q_A)$. El equilibrio aparece en la particion que maximiza ese producto, no porque una temperatura externa haya sido impuesta.
 
 ## Errores comunes
 
-- Confundir energia fija con temperatura fija. En el microcanonico se fija $E$, no $T$.
-- Suponer que todos los microestados son igualmente probables en cualquier ensamble.
-- Ignorar la ventana de energia $\Delta E$.
-- Usar formulas canonicas sin justificar equivalencia de ensambles.
-- Confundir $\Omega$ como numero de microestados con otros usos de la letra $\Omega$, como el potencial gran canonico en algunos textos.
+- Confundir energia fija con temperatura fija. El microcanonico fija $E$; el canonico fija $T$.
+- Usar pesos de Boltzmann $e^{-\beta E_i}$ dentro de una definicion microcanonica.
+- Olvidar que la equiprobabilidad vale solo dentro de la region accesible.
+- No declarar si $\Omega$ significa numero de estados en una ventana, volumen acumulado o densidad de estados.
+- Suponer equivalencia de ensambles en sistemas finitos sin revisar fluctuaciones.
+- Ignorar el factor $N!$ cuando se cuenta un gas clasico de particulas indistinguibles.
 
-## Preguntas guia
+## Relacion con otras entradas
 
-- Que significa que un sistema este aislado?
-- Como se cuentan microestados en un sistema clasico?
-- Por que la entropia es logaritmica en $\Omega$?
-- Como aparece la temperatura si no se impone desde fuera?
-- Cuando se puede reemplazar el microcanonico por el canonico?
+El ensamble microcanonico depende de [microestado](#/microestado), [macroestado](#/macroestado), [espacio de fases](#/espacio-de-fases), [densidad de estados](#/densidad-de-estados) y [entropia de Boltzmann](#/entropia-de-boltzmann). Se compara directamente con [ensamble canonico](#/ensamble-canonico), [ensamble gran canonico](#/ensamble-gran-canonico) y [equivalencia de ensambles](#/equivalencia-de-ensambles).
 
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Ensamble microcanonico** sin introducir un modelo mas complicado que el necesario.
-
-1. **Dos niveles en contacto termico.** Para energias $0$ y $\epsilon$, el peso canonico da $$p_1=\frac{e^{-\beta\epsilon}}{1+e^{-\beta\epsilon}}.$$ La entrada se usa al decidir que variable esta fija y que cantidad fluctua.
-2. **Intercambio con un reservorio.** Un subsistema pequeno puede ganar o perder energia mientras el conjunto total conserva energia. En ese caso, la nocion de Ensamble microcanonico se reconoce observando si el entorno fija $E$, $T$, $P$ o $\mu$.
-3. **Comparacion de fluctuaciones.** En un sistema pequeno, fijar energia no es equivalente a fijar temperatura: el promedio de energia puede parecer similar, pero $\langle(\Delta E)^2\rangle$ cambia. Este es el test minimo para no confundir ensambles.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
-
-$$
-\boxed{E, V, N\ \text{fijos}}
-$$
+Tambien es el punto de partida para discutir [temperatura estadistica](#/temperatura-estadistica), [hipotesis ergodica](#/hipotesis-ergodica), [limite termodinamico](#/limite-termodinamico) y [fluctuaciones](#/fluctuaciones).
 
 ## Fuentes para profundizar
 
 Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
 
-Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\Omega$, $Z$ o $\Xi$, genere los promedios y fluctuaciones correctos.
-
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Ensamble microcanonico** queda reservado para la idea precisa de la nocion de Ensamble microcanonico. Su papel local es mostrar que variables se fijan, cuales fluctuan y que normalizacion gobierna los promedios. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{restricciones}\longrightarrow p_i\longrightarrow Z\ \text{o}\ \Omega\longrightarrow \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de la nocion de Ensamble microcanonico y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Ensambles**, conviene moverlo a una pagina troncal.
+- Kardar, *Statistical Physics of Particles*, cap. 4: derivacion formal de los ensambles clasicos, sistemas de dos niveles, gas ideal y conexion con el canonico.
+- Schroeder, *An Introduction to Thermal Physics*, caps. 2-3: conteo de microestados, solido de Einstein, entropia y definicion estadistica de temperatura.
+- Blundell y Blundell, *Concepts in Thermal Physics*, cap. 4 y caps. 19-21: microestados, macroestados, ensambles, funcion de particion y gas ideal.
+- Pathria y Beale, *Statistical Mechanics*: tratamiento avanzado del ensamble microcanonico y condiciones de equivalencia.
 
 ## Paginas relacionadas
 
 - [Microestado](#/microestado)
 - [Macroestado](#/macroestado)
 - [Espacio de fases](#/espacio-de-fases)
+- [Densidad de estados](#/densidad-de-estados)
 - [Entropia de Boltzmann](#/entropia-de-boltzmann)
 - [Ensamble canonico](#/ensamble-canonico)
-- [Funcion de particion](#/funcion-de-particion)
-
-## Referencias recomendadas
-
-- Pathria y Beale, *Statistical Mechanics*, capitulos iniciales sobre ensambles.
-- Huang, *Statistical Mechanics*, tratamiento de microcanonico y conexion termodinamica.
-- Kardar, *Statistical Physics of Particles*, introduccion a ensambles y conteo de estados.
-- Callen, *Thermodynamics and an Introduction to Thermostatistics*, para la estructura termodinamica de $S(E,V,N)$.
+- [Equivalencia de ensambles](#/equivalencia-de-ensambles)

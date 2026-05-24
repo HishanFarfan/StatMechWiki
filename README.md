@@ -2,7 +2,7 @@
 
 Version estatica de la wiki con Markdown y KaTeX.
 
-Estado actual: 108 entradas navegables y desarrolladas, organizadas en fundamentos, ensambles, termodinamica estadistica, modelos, cuantica, transiciones y criticalidad, metodos, no equilibrio y recursos.
+Estado actual: 208 entradas navegables, organizadas en fundamentos, ensambles, termodinamica estadistica, modelos, cuantica, transiciones y criticalidad, metodos, no equilibrio y recursos.
 
 ## Uso local
 
@@ -27,6 +27,14 @@ $$
 S(E,V,N)=k_B \ln \Omega(E,V,N)
 $$
 ```
+
+El estandar editorial de cada entrada esta en `docs/entry-standard.md`. Para evitar que las mejoras globales degraden las paginas, usar el auditor antes de reescribir en masa:
+
+```powershell
+node scripts/audit-entry-quality.js
+```
+
+La regla de trabajo recomendada es mejorar primero una entrada piloto, revisar el resultado y solo despues aplicar el patron a un grupo pequeno de paginas relacionadas.
 
 ## Publicacion
 

@@ -15,6 +15,8 @@ const generatedSignature = [
   "## Diccionario de derivadas",
 ];
 
+const curatedMarker = "<!-- curated-entry -->";
+
 const repeatedGeneratedSections = new Set([
   "Idea fisica",
   "Notacion y variables",
@@ -511,6 +513,15 @@ function insertBeforeRelated(markdown, additions) {
 function cleanPage(page) {
   const filePath = path.join(contentDir, page.file);
   let markdown = fs.readFileSync(filePath, "utf8");
+  if (markdown.includes(curatedMarker)) {
+    return {
+      file: page.file,
+      generated: false,
+      curated: true,
+      words: wordCount(markdown),
+      displayMath: (markdown.match(/\$\$[\s\S]*?\$\$/g) || []).length,
+    };
+  }
   markdown = stripEqualizedAppendix(markdown);
 
   const generated = isGeneratedTopic(markdown);
@@ -533,9 +544,11 @@ function cleanPage(page) {
 const pages = pagesFromApp();
 const rows = pages.map(cleanPage);
 const generatedCount = rows.filter((row) => row.generated).length;
+const curatedCount = rows.filter((row) => row.curated).length;
 const sortedByWords = [...rows].sort((a, b) => a.words - b.words);
 const sortedByMath = [...rows].sort((a, b) => a.displayMath - b.displayMath);
 
 console.log(`Cleaned ${rows.length} entries; ${generatedCount} generated topics had repeated sections trimmed.`);
+console.log(`Skipped ${curatedCount} curated entries.`);
 console.log(`Word range: ${sortedByWords[0].words}-${sortedByWords[sortedByWords.length - 1].words}.`);
 console.log(`Display math range: ${sortedByMath[0].displayMath}-${sortedByMath[sortedByMath.length - 1].displayMath}.`);

@@ -2,102 +2,90 @@
 
 ## Resumen
 
-**Teorema de Liouville** es una entrada troncal de fundamentos dentro de la mecanica estadistica. Su papel principal se resume asi: conservacion de volumen de espacio de fases bajo dinamica hamiltoniana. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+El **teorema de Liouville** establece que el flujo hamiltoniano conserva el volumen en el espacio de fases: una región del espacio de fases que evoluciona bajo las ecuaciones de Hamilton no cambia de volumen, aunque sí puede deformarse. En términos de la densidad de probabilidad $\rho(\Gamma, t)$:
 
-## Definicion operativa
+$$\frac{d\rho}{dt} = \frac{\partial\rho}{\partial t} + \{\rho, H\} = 0$$
 
-En mecanica estadistica conviene definir **Teorema de Liouville** por su uso operativo: conservacion de volumen de espacio de fases bajo dinamica hamiltoniana. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+La densidad es constante a lo largo de las trayectorias hamiltoniales. Este resultado es el fundamento de la mecánica estadística de equilibrio: garantiza que la medida uniforme sobre la hipersuperficie de energía es invariante bajo la dinámica.
 
-## Ecuacion clave
+## Enunciado y demostración
 
-$$
-\frac{d\rho}{dt}=\frac{\partial\rho}{\partial t}+\{\rho,H\}=0
-$$
+**Enunciado.** Sea $\rho(\Gamma, t)$ la densidad de probabilidad en el espacio de fases $\Gamma = (q_1,\ldots,q_N,p_1,\ldots,p_N)$, que evoluciona con el sistema bajo el Hamiltoniano $H$. Entonces
 
-## Estructura matematica
+$$\frac{\partial\rho}{\partial t} = -\{\rho, H\} = -\sum_{i=1}^{3N}\left(\frac{\partial\rho}{\partial q_i}\dot{q}_i + \frac{\partial\rho}{\partial p_i}\dot{p}_i\right)$$
 
-$$
-\begin{aligned}
-\Omega(E,V,N)&=\int d\Gamma\,\delta(E-H),\\
-S(E,V,N)&=k_B\ln\Omega(E,V,N),\\
-\frac{1}{T}&=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-\end{aligned}
-$$
+**Demostración (por continuidad).** La densidad satisface la ecuación de continuidad en el espacio de fases:
 
-$$
-\begin{aligned}
-d\Gamma&=\frac{1}{h^{3N}N!}\prod_{i=1}^N d^3q_i\,d^3p_i,\\
-\int d\Gamma\,\rho(\Gamma)&=1,\\
-\langle A\rangle&=\int d\Gamma\,A(\Gamma)\rho(\Gamma)
-\end{aligned}
-$$
+$$\frac{\partial\rho}{\partial t} + \nabla_\Gamma\cdot(\rho\,\dot\Gamma) = 0$$
 
-## Diccionario de derivadas
+El término de divergencia se expande como:
 
-$$
-\begin{aligned}
-dS&=\frac{1}{T}dE+\frac{P}{T}dV-\frac{\mu}{T}dN,\\
-P&=T\left(\frac{\partial S}{\partial V}\right)_{E,N},\\
-\mu&=-T\left(\frac{\partial S}{\partial N}\right)_{E,V}
-\end{aligned}
-$$
+$$\nabla_\Gamma\cdot(\rho\,\dot\Gamma) = \sum_i\left(\frac{\partial(\rho\dot{q}_i)}{\partial q_i} + \frac{\partial(\rho\dot{p}_i)}{\partial p_i}\right) = \sum_i\left(\dot{q}_i\frac{\partial\rho}{\partial q_i} + \dot{p}_i\frac{\partial\rho}{\partial p_i}\right) + \rho\underbrace{\sum_i\left(\frac{\partial\dot{q}_i}{\partial q_i} + \frac{\partial\dot{p}_i}{\partial p_i}\right)}_{=0}$$
 
-## Escalas y cantidades sin dimension
+El último término se anula por las ecuaciones de Hamilton:
 
-$$
-\begin{aligned}
-N&\gg 1,\\
-\frac{\Delta E}{E}&\sim N^{-1/2},\\
-n\lambda_T^3&\ll 1\quad \text{regimen clasico}
-\end{aligned}
-$$
+$$\frac{\partial\dot{q}_i}{\partial q_i} + \frac{\partial\dot{p}_i}{\partial p_i} = \frac{\partial^2 H}{\partial q_i\partial p_i} - \frac{\partial^2 H}{\partial p_i\partial q_i} = 0$$
 
-## Donde suele fallar
+Por tanto $\partial\rho/\partial t = -\sum_i(\dot{q}_i\partial\rho/\partial q_i + \dot{p}_i\partial\rho/\partial p_i) = \{\rho,H\}$... el resultado. 
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+**Interpretación alternativa (volumen).** El jacobiano del flujo $\Phi^t: \Gamma_0 \mapsto \Gamma(t)$ es exactamente 1. Esto significa que para cualquier región $\mathcal{R}(0)$:
 
-## Ejemplos y aplicaciones simples
+$$\text{Vol}(\mathcal{R}(t)) = \int_{\mathcal{R}(0)} \left|\frac{\partial\Gamma(t)}{\partial\Gamma(0)}\right| d\Gamma = \int_{\mathcal{R}(0)} d\Gamma = \text{Vol}(\mathcal{R}(0))$$
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Teorema de Liouville** sin introducir un modelo mas complicado que el necesario.
+## Consecuencias para la mecánica estadística
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por conservacion de volumen de espacio de fases bajo dinamica hamiltoniana. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Teorema de Liouville cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Teorema de Liouville requiere revisar accesibilidad o ergodicidad.
+### Invariancia de la medida microcanónica
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+La medida uniforme en la hipersuperficie de energía $\Sigma_E = \{H(\Gamma) = E\}$ es invariante bajo el flujo hamiltoniano. Esto valida el postulado de igual probabilidad a priori: si se asigna probabilidad uniforme a los microestados de $\Sigma_E$ en $t=0$, esta asignación es consistente con la dinámica para todo $t$.
 
-$$
-\frac{d\rho}{dt}=\frac{\partial\rho}{\partial t}+\{\rho,H\}=0
-$$
+### Los ensambles de equilibrio son correctos
+
+Cualquier función $\rho = f(H)$ satisface $\{f(H), H\} = 0$ y por tanto $\partial\rho/\partial t = 0$: es una distribución estacionaria. Los ensambles canónico $\rho \propto e^{-\beta H}$ y microcanónico $\rho \propto \delta(H-E)$ son distribuciones de equilibrio exactas.
+
+### La entropía de Gibbs no crece bajo dinámica hamiltoniana
+
+La entropía de Gibbs $S_G = -k_B\int\rho\ln\rho\,d\Gamma$ es constante bajo la ecuación de Liouville:
+
+$$\frac{dS_G}{dt} = 0$$
+
+Esto no contradice la segunda ley: $S_G$ es la entropía del ensamble completo (función de distribución exacta), no la entropía termodinámica de grano grueso. El crecimiento de la entropía termodinámica ocurre cuando se "olvida" información microscópica (grano grueso de $\rho$), operación que no está capturada por la ecuación de Liouville.
+
+## La paradoja de la irreversibilidad
+
+El teorema de Liouville parece contradecir la segunda ley: si $d\rho/dt = 0$ y $S_G = \text{cte}$, ¿cómo crece la entropía?
+
+La respuesta es el **grano grueso** (coarse-graining): la entropía termodinámica $S_{\text{macro}}$ se define con una resolución macroscópica finita. Bajo la dinámica hamiltoniana, $\rho$ se vuelve cada vez más "filamentada" en el espacio de fases: concentrada en estructuras intrincadas de escala microscópica (como un colorante que se mezcla en agua). El volumen total no cambia (Liouville), pero el volumen de la envolvente macroscópica de la distribución sí aumenta. La entropía de grano grueso $S_{\text{macro}}$ es la entropía de esa envolvente, y esta sí crece.
+
+## Analogía con fluidos incompresibles
+
+El flujo hamiltoniano en el espacio de fases es análogo al flujo de un **fluido incompresible** en el espacio de configuraciones: $\nabla\cdot\mathbf{v} = 0$ en fluidos se convierte en $\sum_i(\partial\dot{q}_i/\partial q_i + \partial\dot{p}_i/\partial p_i) = 0$ en el espacio de fases. Las trayectorias son líneas de flujo de un fluido sin compresión, y el volumen de cualquier "gota" de fluido se conserva.
+
+## Versión cuántica: ecuación de von Neumann
+
+El análogo cuántico de la ecuación de Liouville es la **ecuación de von Neumann** para el operador densidad $\hat\rho$:
+
+$$i\hbar\frac{\partial\hat\rho}{\partial t} = [\hat H, \hat\rho]$$
+
+Para el equilibrio, $[\hat H, \hat\rho] = 0$: cualquier función de $\hat H$ es un estado estacionario. La entropía de von Neumann $S = -k_B\operatorname{Tr}(\hat\rho\ln\hat\rho)$ tampoco crece bajo esta evolución unitaria, por las mismas razones que $S_G$ en el caso clásico.
+
+## Extensiones: sistemas no hamiltonianos
+
+El teorema de Liouville no se aplica a sistemas disipados o con fuerzas no conservativas. Para un sistema amortiguado con $\dot{q} = p/m$, $\dot{p} = -\gamma p - \nabla V$:
+
+$$\sum_i\left(\frac{\partial\dot{q}_i}{\partial q_i} + \frac{\partial\dot{p}_i}{\partial p_i}\right) = -\gamma N < 0$$
+
+El volumen del espacio de fases se **contrae** exponencialmente. Los sistemas disipativos tienen **atractores** (conjuntos de dimensión fractal inferior a $6N$) en los que colapsan las trayectorias. Esto es la base de la teoría del caos disipativo y los atractores extraños.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 3: demostración del teorema de Liouville y la ecuación de continuidad en espacio de fases.
+- Goldstein, *Classical Mechanics*, cap. 9: estructura simpléctica y la demostración geométrica de conservación del volumen.
+- Zwanzig, *Nonequilibrium Statistical Mechanics* (2001): extensiones del formalismo de Liouville a sistemas disipativos y proyección de Mori-Zwanzig.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Teorema de Liouville** queda reservado para la idea precisa de conservacion de volumen de espacio de fases bajo dinamica hamiltoniana. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de conservacion de volumen de espacio de fases bajo dinamica hamiltoniana y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Microestado](#/microestado)
-- [Macroestado](#/macroestado)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
+- [Espacio de fases](#/espacio-de-fases)
+- [Hipótesis ergódica](#/hipotesis-ergodica)
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Matriz densidad](#/matriz-densidad)
+- [Entropía de Gibbs](#/entropia-de-gibbs)

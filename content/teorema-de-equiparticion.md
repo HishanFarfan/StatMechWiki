@@ -1,104 +1,100 @@
-# Teorema de equiparticion
+# Teorema de equipartición
 
 ## Resumen
 
-**Teorema de equiparticion** es una entrada troncal de fundamentos dentro de la mecanica estadistica. Su papel principal se resume asi: aporte energetico medio de terminos cuadraticos clasicos. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+El **teorema de equipartición** dice que, en equilibrio térmico clásico, cada grado de libertad que aparece **cuadráticamente** en el Hamiltoniano contribuye en promedio $\frac{1}{2}k_BT$ a la energía:
 
-## Definicion operativa
+$$\left\langle x_i \frac{\partial H}{\partial x_i}\right\rangle = k_BT$$
 
-En mecanica estadistica conviene definir **Teorema de equiparticion** por su uso operativo: aporte energetico medio de terminos cuadraticos clasicos. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+En particular, si $H$ contiene un término $\alpha x_i^2$, su contribución promedio es $\frac{1}{2}k_BT$. Para $N$ partículas en 3D con solo energía cinética, la energía total promedio es $\frac{3}{2}Nk_BT$.
 
-## Ecuacion clave
+## Derivación
 
-$$
-\langle E_{\mathrm{cuad}}\rangle=\frac{1}{2}k_B T
-$$
+En el ensamble canónico clásico, el promedio de $x_i\partial H/\partial x_i$ es
 
-## Estructura matematica
+$$\left\langle x_i\frac{\partial H}{\partial x_i}\right\rangle = \frac{\int \cdots\int x_i\frac{\partial H}{\partial x_i} e^{-\beta H}\,dx_1\cdots dx_n}{\int\cdots\int e^{-\beta H}\,dx_1\cdots dx_n}$$
 
-$$
-\begin{aligned}
-\Omega(E,V,N)&=\int d\Gamma\,\delta(E-H),\\
-S(E,V,N)&=k_B\ln\Omega(E,V,N),\\
-\frac{1}{T}&=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-\end{aligned}
-$$
+Integrando el numerador por partes en la variable $x_i$ (con condiciones de frontera nulas o convergencia exponencial):
 
-$$
-\begin{aligned}
-d\Gamma&=\frac{1}{h^{3N}N!}\prod_{i=1}^N d^3q_i\,d^3p_i,\\
-\int d\Gamma\,\rho(\Gamma)&=1,\\
-\langle A\rangle&=\int d\Gamma\,A(\Gamma)\rho(\Gamma)
-\end{aligned}
-$$
+$$\int_{-\infty}^{\infty} x_i\frac{\partial H}{\partial x_i}e^{-\beta H}\,dx_i = \left[x_i\cdot\left(-\frac{1}{\beta}\right)e^{-\beta H}\right]_{-\infty}^{\infty} + \frac{1}{\beta}\int_{-\infty}^{\infty}e^{-\beta H}\,dx_i = \frac{1}{\beta}\int_{-\infty}^{\infty}e^{-\beta H}\,dx_i$$
 
-## Diccionario de derivadas
+donde el término de frontera se anula. Dividiendo por el denominador:
 
-$$
-\begin{aligned}
-dS&=\frac{1}{T}dE+\frac{P}{T}dV-\frac{\mu}{T}dN,\\
-P&=T\left(\frac{\partial S}{\partial V}\right)_{E,N},\\
-\mu&=-T\left(\frac{\partial S}{\partial N}\right)_{E,V}
-\end{aligned}
-$$
+$$\left\langle x_i\frac{\partial H}{\partial x_i}\right\rangle = \frac{1}{\beta} = k_BT$$
 
-## Escalas y cantidades sin dimension
+Esta derivación es completamente general: no asume una forma específica de $H$, solo que el Hamiltoniano permite la integración por partes (que es válido para potenciales que crecen suficientemente rápido en $|x_i|\to\infty$).
 
-$$
-\begin{aligned}
-N&\gg 1,\\
-\frac{\Delta E}{E}&\sim N^{-1/2},\\
-n\lambda_T^3&\ll 1\quad \text{regimen clasico}
-\end{aligned}
-$$
+## Casos especiales
 
-## Donde suele fallar
+**Partícula libre en 3D.** $H = (p_x^2 + p_y^2 + p_z^2)/(2m)$. Tres grados de libertad cuadráticos:
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+$$\langle E_{\text{cin}}\rangle = \frac{3}{2}k_BT$$
 
-## Ejemplos y aplicaciones simples
+**Oscilador armónico.** $H = p^2/(2m) + m\omega^2 q^2/2$. Dos grados de libertad cuadráticos:
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Teorema de equiparticion** sin introducir un modelo mas complicado que el necesario.
+$$\langle H\rangle = \frac{1}{2}k_BT + \frac{1}{2}k_BT = k_BT$$
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por aporte energetico medio de terminos cuadraticos clasicos. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Teorema de equiparticion cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Teorema de equiparticion requiere revisar accesibilidad o ergodicidad.
+**Gas ideal monoatómico de $N$ partículas.** $3N$ grados cuadráticos en momenta:
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+$$\langle E\rangle = \frac{3}{2}Nk_BT, \quad C_V = \frac{3}{2}Nk_B$$
 
-$$
-\langle E_{\mathrm{cuad}}\rangle=\frac{1}{2}k_B T
-$$
+**Gas diatómico rígido** ($T$ no muy alta). Traslación (3) + rotación (2) = 5 grados cuadráticos:
+
+$$\langle E\rangle = \frac{5}{2}Nk_BT, \quad C_V = \frac{5}{2}Nk_B$$
+
+**Gas diatómico con vibración clásica** (traslación + rotación + vibración armónica). Vibración añade 2 grados cuadráticos ($p_{\text{vib}}^2$ y $q_{\text{vib}}^2$):
+
+$$\langle E\rangle = \frac{7}{2}Nk_BT, \quad C_V = \frac{7}{2}Nk_B$$
+
+**Sólido clásico de Einstein.** $N$ osciladores, cada uno con 2 grados cuadráticos:
+
+$$\langle E\rangle = 3Nk_BT, \quad C_V = 3Nk_B \quad \text{(ley de Dulong-Petit)}$$
+
+## La ley de Dulong-Petit y el acuerdo experimental
+
+Dulong y Petit observaron en 1819 que la capacidad calorífica molar de sólidos elementales es aproximadamente $C_V \approx 3R = 24.9\ \text{J mol}^{-1}\text{K}^{-1}$ a temperatura ambiente. La equipartición explica esto naturalmente: cada átomo tiene 3 grados de oscilación, cada uno con energía cinética $\frac{1}{2}k_BT$ y potencial $\frac{1}{2}k_BT$, dando $3k_BT$ por átomo.
+
+La predicción falla a bajas temperaturas: el calor específico del diamante era anómalosamente bajo ya desde los experimentos de Weber (1875). Einstein (1907) resolvió esto con su modelo cuántico de osciladores, mostrando que la equipartición clásica falla cuando $k_BT \ll \hbar\omega$.
+
+## Cuándo falla el teorema
+
+**Cuantización.** El teorema es clásico. Si la energía de un modo cuántico $\hbar\omega \gg k_BT$, el modo está "congelado" (en el estado fundamental) y no contribuye $\frac{1}{2}k_BT$. Esto es el **congelamiento de grados de libertad**:
+
+- Vibración molecular: $\hbar\omega_{\text{vib}}/k_B \sim 3000\ \text{K}$ → congelada a temperatura ambiente
+- Rotación nuclear: $\hbar^2/(2Ik_B) \sim 3\ \text{K}$ para H₂ → no congelada a $T > 50\ \text{K}$
+
+El criterio exacto es: el grado de libertad contribuye $\frac{1}{2}k_BT$ si $k_BT \gg \Delta E$ (separación de niveles), y contribuye 0 si $k_BT \ll \Delta E$.
+
+**Potenciales no cuadráticos.** Si $H$ incluye términos de orden superior ($q^4$, $q^3$, etc.), la derivación no aplica directamente. Sin embargo, existe una generalización: $\langle x_i\partial H/\partial x_i\rangle = k_BT$ para cualquier variable $x_i$, incluso si $H$ no es cuadrático en ella.
+
+**Divergencias infrarojas.** En sistemas con potenciales de largo alcance sin saturación (gravedad), la integración por partes no se puede realizar y el teorema no se aplica.
+
+## Aplicaciones en la práctica
+
+**Teoría cinética.** La velocidad cuadrática media de las moléculas de un gas:
+
+$$v_{\text{rms}} = \sqrt{\langle v^2\rangle} = \sqrt{\frac{3k_BT}{m}}$$
+
+Para N₂ a 300 K: $v_{\text{rms}} \approx 515\ \text{m/s}$.
+
+**Ruido de Johnson-Nyquist.** En un resistor $R$ en equilibrio térmico, cada modo electromagnético contribuye $\frac{1}{2}k_BT$, dando una densidad espectral de ruido de tensión
+
+$$S_V(f) = 4k_BTR$$
+
+Esta es una consecuencia directa de la equipartición y del teorema de fluctuación-disipación.
+
+**Brownianas.** La partícula browniana en suspensión tiene $\frac{1}{2}k_BT$ por cada grado traslacional. Para una partícula de radio $r$: $\langle v^2\rangle = 3k_BT/m$, aunque sus desplazamientos difusivos son mucho más lentos por la viscosidad.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 4: derivación del teorema de equipartición y sus aplicaciones.
+- Reif, *Fundamentals of Statistical and Thermal Physics*, cap. 7: teorema de equipartición con discusión de congelamiento cuántico.
+- Einstein, "Die Plancksche Theorie der Strahlung und die Theorie der spezifischen Wärme", *Annalen der Physik* 22, 180 (1907): el modelo cuántico que explica el fallo de la equipartición.
 
-Kardar y Blundell permiten reforzar esta entrada como un problema de restricciones: energia fija, temperatura fija, potencial quimico fijo o combinaciones de ellas. La lectura util es derivar los pesos desde el entorno y verificar que el objeto de normalizacion, ya sea $\Omega$, $Z$ o $\Xi$, genere los promedios y fluctuaciones correctos.
+## Páginas relacionadas
 
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
-- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
-- Kardar, *Statistical Physics of Particles*, cap. 3: para Liouville, jerarquia BBGKY, ecuacion de Boltzmann, teorema H, conservacion e hidrodinamica.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Teorema de equiparticion** queda reservado para la idea precisa de aporte energetico medio de terminos cuadraticos clasicos. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de aporte energetico medio de terminos cuadraticos clasicos y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Microestado](#/microestado)
-- [Macroestado](#/macroestado)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Temperatura estadística](#/temperatura-estadistica)
+- [Sólido de Einstein](#/solido-de-einstein)
+- [Distribución de Maxwell-Boltzmann](#/distribucion-maxwell-boltzmann)
+- [Capacidad calorífica](#/capacidad-calorifica)

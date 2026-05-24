@@ -2,102 +2,122 @@
 
 ## Resumen
 
-**Matriz densidad** es una entrada troncal de fundamentos dentro de la mecanica estadistica. Su papel principal se resume asi: descripcion probabilistica general de estados cuanticos. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **matriz densidad** (u operador densidad) $\hat\rho$ es la herramienta cuántica más general para describir el estado de un sistema, incluyendo tanto el conocimiento incompleto de su estado cuántico (mezcla estadística) como el entrelazamiento con sistemas externos. Es la generalización cuántica de la distribución de probabilidad clásica sobre microestados.
 
-## Definicion operativa
+$$\hat\rho = \sum_i p_i |i\rangle\langle i|$$
 
-En mecanica estadistica conviene definir **Matriz densidad** por su uso operativo: descripcion probabilistica general de estados cuanticos. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+donde $\{|i\rangle\}$ es un conjunto de estados y $p_i \geq 0$ con $\sum_i p_i = 1$.
 
-## Ecuacion clave
+## Motivación: estados mixtos
 
-$$
-\rho=\sum_i p_i |i\rangle\langle i|
-$$
+En mecánica cuántica, un **estado puro** $|\psi\rangle$ contiene toda la información cuántica posible: especifica las amplitudes de probabilidad de todos los resultados. Sin embargo, en la práctica:
 
-## Estructura matematica
+1. **Fuente estadística:** un láser puede emitir fotones en estados distintos con diferentes probabilidades. El estado del fotón saliente es una mezcla de estados puros.
 
-$$
-\begin{aligned}
-\Omega(E,V,N)&=\int d\Gamma\,\delta(E-H),\\
-S(E,V,N)&=k_B\ln\Omega(E,V,N),\\
-\frac{1}{T}&=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-\end{aligned}
-$$
+2. **Entrelazamiento:** si sistema $A$ está entrelazado con sistema $B$, el estado de $A$ solo no puede describirse con un estado puro $|\psi_A\rangle$, sino con la **matriz densidad reducida** $\hat\rho_A = \text{Tr}_B(|\Psi_{AB}\rangle\langle\Psi_{AB}|)$.
 
-$$
-\begin{aligned}
-d\Gamma&=\frac{1}{h^{3N}N!}\prod_{i=1}^N d^3q_i\,d^3p_i,\\
-\int d\Gamma\,\rho(\Gamma)&=1,\\
-\langle A\rangle&=\int d\Gamma\,A(\Gamma)\rho(\Gamma)
-\end{aligned}
-$$
+3. **Ignorancia termal:** a temperatura $T$, el sistema está en el estado de energía $|n\rangle$ con probabilidad $e^{-\beta E_n}/Z$. El estado del sistema es la mezcla $\hat\rho = \sum_n p_n|n\rangle\langle n|$.
 
-## Diccionario de derivadas
+## Definición formal
 
-$$
-\begin{aligned}
-dS&=\frac{1}{T}dE+\frac{P}{T}dV-\frac{\mu}{T}dN,\\
-P&=T\left(\frac{\partial S}{\partial V}\right)_{E,N},\\
-\mu&=-T\left(\frac{\partial S}{\partial N}\right)_{E,V}
-\end{aligned}
-$$
+El operador densidad $\hat\rho: \mathcal{H}\to\mathcal{H}$ es un operador lineal que satisface:
+- **Hermítico:** $\hat\rho^\dagger = \hat\rho$
+- **Traza unidad:** $\text{Tr}(\hat\rho) = 1$
+- **Semidefinido positivo:** $\langle\psi|\hat\rho|\psi\rangle \geq 0$ para todo $|\psi\rangle$
 
-## Escalas y cantidades sin dimension
+**Estado puro vs. estado mixto:** $\hat\rho$ describe un estado puro si y solo si $\hat\rho^2 = \hat\rho$, equivalentemente $\text{Tr}(\hat\rho^2) = 1$. Para estados mixtos, $\text{Tr}(\hat\rho^2) < 1$.
 
-$$
-\begin{aligned}
-N&\gg 1,\\
-\frac{\Delta E}{E}&\sim N^{-1/2},\\
-n\lambda_T^3&\ll 1\quad \text{regimen clasico}
-\end{aligned}
-$$
+## Observables y promedios
 
-## Donde suele fallar
+El valor esperado de un observable $\hat A$ en el estado descrito por $\hat\rho$ es
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+$$\langle A\rangle = \text{Tr}(\hat\rho\,\hat A) = \sum_{n,m}\rho_{nm}A_{mn}$$
 
-## Ejemplos y aplicaciones simples
+donde $\rho_{nm} = \langle n|\hat\rho|m\rangle$ y $A_{mn} = \langle m|\hat A|n\rangle$ en alguna base $\{|n\rangle\}$.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Matriz densidad** sin introducir un modelo mas complicado que el necesario.
+Los elementos diagonales $\rho_{nn}$ son las **poblaciones** (probabilidades de encontrar el sistema en el estado $|n\rangle$). Los elementos fuera de la diagonal $\rho_{nm}$ $(n\neq m)$ son las **coherencias** (correlaciones cuánticas entre estados distintos).
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por descripcion probabilistica general de estados cuanticos. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Matriz densidad cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Matriz densidad requiere revisar accesibilidad o ergodicidad.
+## Evolución temporal
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+Para un sistema cerrado con Hamiltoniano $\hat H$, la evolución de $\hat\rho$ está dada por la **ecuación de von Neumann**:
 
-$$
-\rho=\sum_i p_i |i\rangle\langle i|
-$$
+$$i\hbar\frac{\partial\hat\rho}{\partial t} = [\hat H, \hat\rho]$$
+
+Solución formal: $\hat\rho(t) = \hat U(t)\hat\rho(0)\hat U^\dagger(t)$ donde $\hat U(t) = e^{-i\hat Ht/\hbar}$ es el operador de evolución. El movimiento es unitario: $\text{Tr}(\hat\rho^2)$ se conserva, y en particular un estado puro permanece puro.
+
+Para sistemas abiertos en contacto con un baño, la ecuación de von Neumann se reemplaza por la **ecuación de Lindblad**:
+
+$$\frac{d\hat\rho}{dt} = -\frac{i}{\hbar}[\hat H, \hat\rho] + \sum_k\left(\hat L_k\hat\rho\hat L_k^\dagger - \frac{1}{2}\hat L_k^\dagger\hat L_k\hat\rho - \frac{1}{2}\hat\rho\hat L_k^\dagger\hat L_k\right)$$
+
+donde $\hat L_k$ son los operadores de salto (Lindblad) que describen la disipación y la decoherencia.
+
+## Los ensambles cuánticos como matrices densidad
+
+**Ensamble microcanónico:**
+$$\hat\rho_{\text{mic}} = \frac{1}{\Omega}\sum_{E_n \in [E,E+\Delta E]}|n\rangle\langle n|$$
+
+proyector uniforme sobre los estados de energía en el intervalo dado.
+
+**Ensamble canónico (distribución de Gibbs):**
+$$\hat\rho_{\text{can}} = \frac{e^{-\beta\hat H}}{Z}, \quad Z = \text{Tr}(e^{-\beta\hat H})$$
+
+Aquí $e^{-\beta\hat H}$ es la exponencial del operador, definida por la serie de Taylor o por sus valores propios.
+
+**Ensamble gran canónico:**
+$$\hat\rho_{\text{gc}} = \frac{e^{-\beta(\hat H - \mu\hat N)}}{\Xi}, \quad \Xi = \text{Tr}(e^{-\beta(\hat H - \mu\hat N)})$$
+
+## Función de partición como traza
+
+Una de las relaciones más importantes: la función de partición es la traza de la exponencial del Hamiltoniano:
+
+$$Z = \text{Tr}(e^{-\beta\hat H}) = \sum_n e^{-\beta E_n}$$
+
+Esto es exacto en mecánica cuántica. En mecánica clásica, la función de partición es la integral del espacio de fases. La traza cuántica generaliza esta integral al caso discreto.
+
+## Entropía de von Neumann
+
+$$S = -k_B\text{Tr}(\hat\rho\ln\hat\rho) = -k_B\sum_n\lambda_n\ln\lambda_n$$
+
+donde $\lambda_n$ son los valores propios de $\hat\rho$. Propiedades:
+- $S = 0$ para estados puros (toda la información cuántica disponible)
+- $S = k_B\ln\Omega$ para el microcanónico con $\Omega$ estados equiprobables (máxima ignorancia con restricción de energía)
+- $S_{\text{can}} = \langle E\rangle/T + k_B\ln Z = -\partial F/\partial T$ para el ensamble canónico
+
+## Decoherencia y el problema de la medición
+
+La diferencia fundamental entre una mezcla estadística y una superposición cuántica es la presencia de coherencias $\rho_{nm}$. Un sistema cuántico en superposición $|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$ tiene
+
+$$\hat\rho_{\text{puro}} = \begin{pmatrix}|\alpha|^2 & \alpha\beta^* \\ \alpha^*\beta & |\beta|^2\end{pmatrix}$$
+
+mientras que una mezcla estadística de $|0\rangle$ (probabilidad $|\alpha|^2$) y $|1\rangle$ (probabilidad $|\beta|^2$) tiene
+
+$$\hat\rho_{\text{mixto}} = \begin{pmatrix}|\alpha|^2 & 0 \\ 0 & |\beta|^2\end{pmatrix}$$
+
+La diferencia está en los elementos fuera de la diagonal. La interacción con el ambiente (baño térmico, fotones de fondo, fonones) destruye las coherencias cuánticas: **decoherencia**. Para sistemas macroscópicos, este proceso es tan rápido (tiempos $\sim 10^{-30}\ \text{s}$ para monedas) que el comportamiento clásico emerge.
+
+## Ejemplo: espín-$\frac{1}{2}$ en equilibrio térmico
+
+Para un espín-$\frac{1}{2}$ con $\hat H = -\gamma B\hat S_z$ (campo magnético $B$), los niveles son $E_\pm = \mp\gamma B\hbar/2$. La matriz densidad canónica en la base $\{|\!\uparrow\rangle, |\!\downarrow\rangle\}$ es
+
+$$\hat\rho = \frac{1}{Z}\begin{pmatrix}e^{+\beta\gamma B\hbar/2} & 0 \\ 0 & e^{-\beta\gamma B\hbar/2}\end{pmatrix}, \quad Z = 2\cosh\!\left(\frac{\beta\gamma B\hbar}{2}\right)$$
+
+La magnetización promedio es
+
+$$\langle S_z\rangle = \text{Tr}(\hat\rho\,\hat S_z) = \frac{\hbar}{2}\tanh\!\left(\frac{\beta\gamma B\hbar}{2}\right)$$
+
+resultado que reproduce la solución del sistema de dos niveles.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Sakurai, *Modern Quantum Mechanics*, cap. 3: matrices densidad, estados mixtos, operador densidad reducido.
+- Feynman, *Statistical Mechanics*, cap. 1: matrices densidad para la mecánica estadística cuántica.
+- Breuer & Petruccione, *The Theory of Open Quantum Systems*: dinámica de Lindblad y decoherencia.
+- Nielsen & Chuang, *Quantum Computation and Quantum Information*, cap. 2: entropía de von Neumann, información cuántica.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Matriz densidad** queda reservado para la idea precisa de descripcion probabilistica general de estados cuanticos. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de descripcion probabilistica general de estados cuanticos y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
+- [Entropía de Gibbs](#/entropia-de-gibbs)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Estadísticas cuánticas](#/estadisticas-cuanticas)
 - [Microestado](#/microestado)
-- [Macroestado](#/macroestado)
-- [Entropia de Gibbs](#/entropia-de-gibbs)
+- [Función de partición](#/funcion-de-particion)

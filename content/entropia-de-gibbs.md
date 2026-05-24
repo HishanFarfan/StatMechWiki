@@ -1,126 +1,115 @@
-# Entropia de Gibbs
+# Entropía de Gibbs
 
 ## Resumen
 
-La **entropia de Gibbs** mide la incertidumbre asociada a una distribucion de probabilidad sobre microestados. Es especialmente natural para ensambles donde los microestados no son igualmente probables.
+La **entropía de Gibbs** (o entropía de Shannon en física) es una medida de la incertidumbre asociada a una distribución de probabilidad $\{p_i\}$ sobre microestados:
 
-## Definicion discreta
+$$S_G = -k_B\sum_i p_i\ln p_i$$
 
-Para probabilidades $p_i$ sobre microestados $i$,
+A diferencia de la entropía de Boltzmann, que solo aplica cuando todos los microestados son igualmente probables, la entropía de Gibbs es válida para cualquier distribución. Es la entropía natural de los ensambles canónico y gran canónico.
 
-$$
-S_G=-k_B\sum_i p_i\ln p_i.
-$$
+## Definición y propiedades
 
-La suma se restringe a estados con $p_i \gt 0$, usando la convencion
+**Discreta:**
 
-$$
-\lim_{p\to 0^+} p\ln p=0.
-$$
+$$S_G = -k_B\sum_i p_i\ln p_i$$
 
-## Relacion con Boltzmann
+con la convención $0\ln 0 = 0$ (verificada por $\lim_{p\to 0^+}p\ln p = 0$).
 
-Si hay $\Omega$ microestados equiprobables,
+**Continua:** para una densidad de probabilidad $\rho(\Gamma)$ en el espacio de fases:
 
-$$
-p_i=\frac{1}{\Omega},
-$$
+$$S_G = -k_B\int \rho(\Gamma)\ln[\rho(\Gamma)\cdot\Delta\Gamma]\,d\Gamma$$
 
-entonces
+donde $\Delta\Gamma$ es el volumen de celda de referencia (típicamente $h^{3N}N!$) para hacer el argumento del logaritmo adimensional.
 
-$$
-S_G
-=
--k_B\sum_{i=1}^{\Omega}\frac{1}{\Omega}\ln\frac{1}{\Omega}
-=
-k_B\ln\Omega.
-$$
+**Propiedades principales:**
+- $S_G \geq 0$, con igualdad si y solo si $p_j = 1$ para algún $j$ (estado puro, certeza completa).
+- $S_G$ es máxima para la distribución uniforme: $S_G^{\max} = k_B\ln M$ donde $M$ es el número de microestados accesibles.
+- $S_G$ es cóncava: $S_G(\lambda p + (1-\lambda)q) \geq \lambda S_G(p) + (1-\lambda)S_G(q)$.
+- $S_G$ es extensiva para sistemas independientes: $S_G(p_{AB}) = S_G(p_A) + S_G(p_B)$ si $A$ y $B$ son estadísticamente independientes.
 
-Asi, la entropia de Boltzmann aparece como caso particular de la entropia de Gibbs.
+## Relación con la entropía de Boltzmann
 
-## Caso canonico
+Si hay $\Omega$ microestados con probabilidades iguales $p_i = 1/\Omega$:
 
-En el ensamble canonico,
+$$S_G = -k_B\sum_{i=1}^\Omega\frac{1}{\Omega}\ln\frac{1}{\Omega} = k_B\ln\Omega = S_B$$
 
-$$
-p_i=\frac{e^{-\beta E_i}}{Z}.
-$$
+La entropía de Boltzmann es el caso particular de la entropía de Gibbs cuando todos los estados accesibles son equiprobables.
 
-Sustituyendo en la entropia de Gibbs,
+Para distribuciones no uniformes, $S_G < k_B\ln\Omega$ (la certeza parcial siempre reduce la entropía).
 
-$$
-S_G
-=
-k_B\ln Z
-+
-k_B\beta\langle E\rangle.
-$$
+## Entropía de Gibbs en el ensamble canónico
 
-Como $F=-k_B T\ln Z$, esto equivale a
+En el ensamble canónico, $p_i = e^{-\beta E_i}/Z$. Sustituyendo:
 
-$$
-F=\langle E\rangle - T S.
-$$
+$$S_G = -k_B\sum_i p_i(-\beta E_i - \ln Z) = k_B\beta\langle E\rangle + k_B\ln Z$$
 
-## Version continua
+Como $F = -k_BT\ln Z = \langle E\rangle - TS_G$, esto es consistente con la relación termodinámica $F = E - TS$.
 
-Para una densidad continua $\rho(\Gamma)$, una expresion formal es
+Derivando:
 
-$$
-S_G=-k_B\int d\Gamma\, \rho(\Gamma)\ln\rho(\Gamma).
-$$
+$$S_G = -\left(\frac{\partial F}{\partial T}\right)_{V,N}$$
 
-Esta formula requiere cuidado: $\rho$ tiene dimensiones si $d\Gamma$ no es adimensional. En mecanica estadistica clasica se introduce una medida de referencia, frecuentemente relacionada con $h^{3N}N!$.
+La entropía de Gibbs coincide exactamente con la entropía termodinámica en el ensamble canónico.
 
-## Interpretacion
+## Entropía de Gibbs en el ensamble gran canónico
 
-La entropia de Gibbs cuantifica cuan extendida esta una distribucion sobre el espacio de microestados. Una distribucion concentrada tiene menor entropia que una distribucion extendida.
+Con $p_i = e^{-\beta(E_i-\mu N_i)}/\Xi$:
 
-## Errores comunes
+$$S_G = k_B\beta(\langle E\rangle - \mu\langle N\rangle) + k_B\ln\Xi$$
 
-- Usar la formula continua sin especificar la medida.
-- Pensar que $S_G$ y $S_B$ son siempre identicas.
-- Confundir entropia de Gibbs con entropia de mezcla sin discutir indistinguibilidad.
-- Olvidar que $p_i$ depende del ensamble.
+Lo que coincide con $S = -(\partial\Omega/\partial T)_{V,\mu}$ donde $\Omega = -k_BT\ln\Xi$ es el gran potencial termodinámico.
 
-## Ejemplos y aplicaciones simples
+## Entropía de Gibbs en evolución temporal
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Entropia de Gibbs** sin introducir un modelo mas complicado que el necesario.
+Un resultado fundamental (demostrado en la entrada del [Teorema de Liouville](#/teorema-de-liouville)) es que bajo la dinámica hamiltoniana, $S_G$ es **constante**:
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por la nocion de Entropia de Gibbs. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Entropia de Gibbs cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Entropia de Gibbs requiere revisar accesibilidad o ergodicidad.
+$$\frac{dS_G}{dt} = 0$$
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+Esto parece contradecir la segunda ley. La resolución es que $S_G$ es la entropía de la distribución exacta de microstados, no la entropía termodinámica. La segunda ley opera sobre entropías "de grano grueso" (coarse-grained), que sí crecen porque el grano grueso proyecta la distribución exacta (que se vuelve más intrincada) sobre una descripción más simple.
 
-$$
-S_G=-k_B\sum_i p_i\ln p_i.
-$$
+## Entropía relativa (Kullback-Leibler)
+
+La **divergencia de Kullback-Leibler** de $p$ respecto a $q$ es
+
+$$D_{KL}(p\|q) = \sum_i p_i\ln\frac{p_i}{q_i} \geq 0$$
+
+con igualdad si y solo si $p = q$. Se interpreta como la "información extra" ganada al descubrir que la distribución real es $p$ en lugar de $q$. La desigualdad $D_{KL} \geq 0$ es equivalente a la desigualdad de Jensen aplicada a $\ln$.
+
+La entropía de Gibbs puede expresarse como:
+
+$$S_G(p) = S_G^{\max} - k_B D_{KL}(p \| \text{uniforme})$$
+
+donde $S_G^{\max} = k_B\ln M$. La entropía es máxima cuando la distribución es uniforme, y cualquier información adicional reduce la entropía.
+
+## Entropía de von Neumann
+
+El análogo cuántico de la entropía de Gibbs es la **entropía de von Neumann**:
+
+$$S = -k_B\operatorname{Tr}(\hat\rho\ln\hat\rho) = -k_B\sum_n \lambda_n\ln\lambda_n$$
+
+donde $\lambda_n$ son los valores propios del operador densidad $\hat\rho$. Se reduce a la entropía de Gibbs cuando $\hat\rho$ es diagonal en la base de energía. Para un estado puro $\hat\rho = |\psi\rangle\langle\psi|$, $S = 0$ (máxima información cuántica).
+
+## Diferencias operativas con la entropía de Boltzmann
+
+| Aspecto | Entropía de Boltzmann $S_B = k_B\ln\Omega$ | Entropía de Gibbs $S_G = -k_B\sum p_i\ln p_i$ |
+|---|---|---|
+| Se aplica a | Macroestados (sistemas aislados) | Cualquier distribución de probabilidad |
+| Ensamble natural | Microcanónico | Canónico, gran canónico, o cualquier |
+| En equilibrio | $S_B = S_G$ (si los microestados son equiprobables) | $S_G$ coincide con $S$ termodinámico |
+| Fuera del equilibrio | Definida por el macroestado actual | Requiere especificar la distribución |
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Jaynes, "Information Theory and Statistical Mechanics", *Phys. Rev.* 106, 620 (1957): entropía de Gibbs como entropía de Shannon, base de MaxEnt.
+- Cover & Thomas, *Elements of Information Theory*, caps. 2, 9: propiedades matemáticas de la entropía de Shannon, divergencia KL.
+- Wehrl, "General Properties of Entropy", *Rev. Mod. Phys.* 50, 221 (1978): revisión completa de entropía de von Neumann y sus propiedades.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Entropia de Gibbs** queda reservado para la idea precisa de la nocion de Entropia de Gibbs. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de la nocion de Entropia de Gibbs y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Entropia de Boltzmann](#/entropia-de-boltzmann)
-- [Ensamble canonico](#/ensamble-canonico)
-- [Funcion de particion](#/funcion-de-particion)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
+- [Entropía de Boltzmann](#/entropia-de-boltzmann)
+- [Principio de máxima entropía](#/principio-de-maxima-entropia)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Teorema de Liouville](#/teorema-de-liouville)
+- [Matriz densidad](#/matriz-densidad)
+- [Entropía relativa](#/entropia-relativa)

@@ -2,103 +2,88 @@
 
 ## Resumen
 
-**Paradoja de Gibbs** es una entrada troncal de fundamentos dentro de la mecanica estadistica. Su papel principal se resume asi: problema de entropia de mezcla resuelto por indistinguibilidad. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **paradoja de Gibbs** es la aparente contradicción que surge al calcular la entropía de mezcla de dos gases ideales idénticos usando la fórmula clásica sin corrección por indistinguibilidad. La fórmula predice un aumento de entropía al mezclar dos porciones del mismo gas —lo que viola la extensividad y el sentido físico. La resolución es que partículas idénticas son indistinguibles: hay que dividir por $N!$.
 
-## Definicion operativa
+## El experimento pensado
 
-En mecanica estadistica conviene definir **Paradoja de Gibbs** por su uso operativo: problema de entropia de mezcla resuelto por indistinguibilidad. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+Considera una caja con una partición en el medio. A la izquierda hay $N$ moléculas de gas A a temperatura $T$ y densidad $n$; a la derecha hay $N$ moléculas de gas A **idéntico** a la misma $T$ y $n$. Se retira la partición.
 
-## Ecuacion clave
+**Resultado experimental:** nada observable ocurre. La presión, temperatura y densidad son las mismas en ambos lados antes y después. La entropía termodinámica no cambia: $\Delta S = 0$.
 
-$$
-S=Nk_B\left[\ln\!\left(\frac{V}{N\lambda_T^3}\right)+\frac{5}{2}\right]
-$$
+## La paradoja
 
-## Estructura matematica
+La entropía de un gas ideal clásico *sin* la corrección de Gibbs es
 
-$$
-\begin{aligned}
-\Omega(E,V,N)&=\int d\Gamma\,\delta(E-H),\\
-S(E,V,N)&=k_B\ln\Omega(E,V,N),\\
-\frac{1}{T}&=\left(\frac{\partial S}{\partial E}\right)_{V,N}
-\end{aligned}
-$$
+$$S_{\text{incorrecto}}(E,V,N) = Nk_B\left[\frac{3}{2}\ln E + \ln V + \text{cte}\right]$$
 
-$$
-\begin{aligned}
-d\Gamma&=\frac{1}{h^{3N}N!}\prod_{i=1}^N d^3q_i\,d^3p_i,\\
-\int d\Gamma\,\rho(\Gamma)&=1,\\
-\langle A\rangle&=\int d\Gamma\,A(\Gamma)\rho(\Gamma)
-\end{aligned}
-$$
+donde la constante no depende de $N$. Al mezclar los dos gases:
 
-## Diccionario de derivadas
+$$S_{\text{mezcla}} = 2\cdot S_{\text{incorrecto}}\!\left(\tfrac{E_{\text{tot}}}{2}, \tfrac{V_{\text{tot}}}{2}, N\right) = 2Nk_B\left[\frac{3}{2}\ln\frac{E_{\text{tot}}}{2} + \ln\frac{V_{\text{tot}}}{2} + \text{cte}\right]$$
 
-$$
-\begin{aligned}
-dS&=\frac{1}{T}dE+\frac{P}{T}dV-\frac{\mu}{T}dN,\\
-P&=T\left(\frac{\partial S}{\partial V}\right)_{E,N},\\
-\mu&=-T\left(\frac{\partial S}{\partial N}\right)_{E,V}
-\end{aligned}
-$$
+$$S_{\text{inicial}} = S_{\text{izq}} + S_{\text{der}} = 2Nk_B\left[\frac{3}{2}\ln\frac{E_{\text{tot}}}{2} + \ln\frac{V_{\text{tot}}}{2} + \text{cte}\right] = S_{\text{mezcla}}$$
 
-## Escalas y cantidades sin dimension
+Hasta aquí parece que $\Delta S = 0$. Sin embargo, el cálculo real de $\Omega$ para el sistema combinado *sin* $N!$ da
 
-$$
-\begin{aligned}
-N&\gg 1,\\
-\frac{\Delta E}{E}&\sim N^{-1/2},\\
-n\lambda_T^3&\ll 1\quad \text{regimen clasico}
-\end{aligned}
-$$
+$$S_{\text{total, incorrecto}} = 2Nk_B\left[\frac{3}{2}\ln E + \ln V + \text{cte}\right]$$
 
-## Donde suele fallar
+$$S_{\text{inicial}} = 2Nk_B\left[\frac{3}{2}\ln\frac{E_{\text{tot}}}{2} + \ln\frac{V_{\text{tot}}}{2} + \text{cte}\right]$$
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+$$\Delta S = S_{\text{total}} - S_{\text{inicial}} = 2Nk_B\ln\frac{V_{\text{tot}}}{V_{\text{tot}}/2} = 2Nk_B\ln 2 > 0$$
 
-## Ejemplos y aplicaciones simples
+Hay un "aumento de entropía" de $2Nk_B\ln 2$ al mezclar dos porciones del mismo gas, que contradice el resultado experimental.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Paradoja de Gibbs** sin introducir un modelo mas complicado que el necesario.
+## La entropía de mezcla de gases distintos
 
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por problema de entropia de mezcla resuelto por indistinguibilidad. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Paradoja de Gibbs cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Paradoja de Gibbs requiere revisar accesibilidad o ergodicidad.
+Cuando los dos gases son **distinguibles** (A ≠ B), el aumento de entropía al mezclar es real y medible:
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+$$\Delta S_{\text{mezcla}} = -Nk_B\sum_\alpha x_\alpha\ln x_\alpha$$
 
-$$
-S=Nk_B\left[\ln\!\left(\frac{V}{N\lambda_T^3}\right)+\frac{5}{2}\right]
-$$
+donde $x_\alpha = N_\alpha/N_{\text{total}}$ es la fracción molar del componente $\alpha$. Para dos gases con $N_A = N_B = N$:
+
+$$\Delta S_{\text{mezcla}} = 2Nk_B\ln 2$$
+
+Esta entropía de mezcla es correcta y tiene consecuencias físicas: diferencia de presión osmótica, reducción del punto de congelación, aumento del punto de ebullición.
+
+## La resolución: corrección de Gibbs
+
+Al dividir $\Omega$ por $N!$ (para cada especie), la entropía se convierte en
+
+$$S_{\text{correcto}}(E,V,N) = Nk_B\left[\frac{3}{2}\ln\frac{E}{N} + \ln\frac{V}{N} + \text{cte}\right]$$
+
+Ahora $S$ es **extensiva**: $S(2E,2V,2N) = 2S(E,V,N)$ y la entropía de mezcla de dos gases idénticos es exactamente cero.
+
+Esta es la **fórmula de Sackur-Tetrode** (1911-1912):
+
+$$S = Nk_B\left[\ln\!\left(\frac{V}{N}\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}\right) + \frac{5}{2}\right]$$
+
+## La naturaleza de la resolución
+
+Gibbs introdujo el factor $N!$ como una corrección pragmática para restaurar la extensividad. Pero la justificación fundamental llegó con la mecánica cuántica: las partículas idénticas son intrínsecamente indistinguibles porque no existen "etiquetas" que las distingan. El estado físico de $N$ partículas idénticas no cambia al permutarlas.
+
+El debate sobre el significado preciso de la paradoja y su resolución continúa en la literatura moderna:
+
+- **Vista epistémica (Jaynes):** la paradoja es un problema de conteo incorrecto. La entropía no es una propiedad del gas sino de nuestra descripción de él. Gases "idénticos" deberían siempre dar $\Delta S = 0$ porque no podemos detectar la mezcla.
+
+- **Vista ontológica (van Kampen):** la indistinguibilidad es un hecho físico sobre partículas cuánticas. El factor $N!$ refleja la realidad de que las permutaciones no son observables.
+
+Ambas vistas dan el mismo resultado operativo.
+
+## El caso intermedio: gases casi idénticos
+
+¿Qué pasa cuando los dos gases son "casi" iguales pero no idénticos (por ejemplo, isótopos de la misma especie)? La entropía de mezcla tiene que dar $\Delta S = 2Nk_B\ln 2$ para gases distinguibles y $\Delta S = 0$ para gases idénticos. ¿Hay una transición continua?
+
+La respuesta es no: la entropía de mezcla da un salto discontinuo (de $2Nk_B\ln 2$ a 0) en el límite en que los gases pasan de "distinguibles" a "indistinguibles". Este es el **paradox of indistinguishability**: en mecánica cuántica, la identidad de las partículas es binaria, no gradual.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Jaynes, "The Gibbs Paradox", en *Maximum Entropy and Bayesian Methods* (1992): la perspectiva epistémica, con análisis detallado del conteo.
+- van Kampen, "The Gibbs Paradox", en *Essays in Theoretical Physics* (1984): la perspectiva ontológica.
+- Kardar, *Statistical Physics of Particles*, cap. 4: el cálculo de Ω con y sin factor $N!$.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Paradoja de Gibbs** queda reservado para la idea precisa de problema de entropia de mezcla resuelto por indistinguibilidad. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de problema de entropia de mezcla resuelto por indistinguibilidad y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
+- [Indistinguibilidad](#/indistinguibilidad)
+- [Entropía de Boltzmann](#/entropia-de-boltzmann)
+- [Entropía de mezcla](#/entropia-de-mezcla)
+- [Gas ideal clásico](#/gas-ideal-clasico)
 - [Microestado](#/microestado)
-- [Macroestado](#/macroestado)
-- [Entropia de Gibbs](#/entropia-de-gibbs)

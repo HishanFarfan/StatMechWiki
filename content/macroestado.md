@@ -2,102 +2,94 @@
 
 ## Resumen
 
-Un **macroestado** es una descripcion del sistema mediante variables macroscopicas, como energia, volumen, numero de particulas, temperatura o presion. Muchos microestados distintos pueden corresponder al mismo macroestado.
+Un **macroestado** es la descripción de un sistema físico mediante un pequeño número de variables macroscópicas observables o controlables —como energía, volumen, número de partículas, temperatura, o presión— sin especificar la configuración microscópica exacta. A un macroestado le corresponde un número enorme de microestados compatibles.
 
-## Definicion
+La mecánica estadística explica por qué los sistemas siempre evolucionan hacia los macroestados más probables: aquellos compatibles con el mayor número de microestados.
 
-Un macroestado queda definido por la informacion disponible o controlada experimentalmente. Por ejemplo:
+## Definición
 
-$$
-(E,V,N)
-$$
+El macroestado de un sistema queda definido por las variables que el observador controla o mide. Por ejemplo:
 
-define un macroestado natural para un sistema aislado, mientras que
+- $(E, V, N)$: sistema aislado (ensamble microcanónico)
+- $(T, V, N)$: sistema en contacto con un reservorio térmico (ensamble canónico)
+- $(T, V, \mu)$: sistema que intercambia energía y partículas (ensamble gran canónico)
 
-$$
-(T,V,N)
-$$
+Si $\Gamma_M$ es el conjunto de microestados compatibles con el macroestado $M$, el número de realizaciones es $\Omega(M) = |\Gamma_M|$ y la entropía de Boltzmann es
 
-define un macroestado natural para un sistema en contacto con un reservorio termico.
+$$S(M) = k_B\ln\Omega(M)$$
 
-## Relacion con microestados
+## Variables naturales de cada ensamble
 
-Si $\Gamma_M$ es el conjunto de microestados compatibles con un macroestado $M$, el numero de realizaciones microscopicas puede escribirse como
+| Ensamble | Variables fijas | Variables fluctuantes | Función característica |
+|---|---|---|---|
+| Microcanónico | $E$, $V$, $N$ | — | $S(E,V,N)$ |
+| Canónico | $T$, $V$, $N$ | $E$ | $F(T,V,N) = -k_BT\ln Z$ |
+| Gran canónico | $T$, $V$, $\mu$ | $E$, $N$ | $\Omega(T,V,\mu) = -k_BT\ln\Xi$ |
+| Isotérmico-isobárico | $T$, $P$, $N$ | $E$, $V$ | $G(T,P,N) = -k_BT\ln Y$ |
 
-$$
-\Omega(M)=|\Gamma_M|.
-$$
+La elección del macroestado determina cuál ensamble usar. No es una elección libre: depende del experimento.
 
-La entropia de Boltzmann asocia a ese macroestado la cantidad
+## Cuántos microestados representa un macroestado
 
-$$
-S(M)=k_B\ln\Omega(M).
-$$
+El número de microestados $\Omega(M)$ compatible con un macroestado puede ser astronómico. Algunos ejemplos:
 
-## Contexto fisico
+**Gas ideal.** Para $N = 10^{23}$ moléculas de N₂ a temperatura ambiente:
+$$\Omega \sim e^{10^{23}}$$
 
-La termodinamica trabaja con macroestados. La mecanica estadistica explica por que ciertos macroestados son mas probables que otros: son aquellos que admiten mas realizaciones microscopicas.
+**Sistema de $N$ espines.** Con $N$ espines y $n$ en estado ↑:
+$$\Omega = \binom{N}{n} \xrightarrow{\text{Stirling}} \exp\!\left[Nk_B H_2(n/N)/k_B\right]$$
 
-En equilibrio, para un sistema aislado, el macroestado observado es el que maximiza la entropia bajo las restricciones conservadas.
+donde $H_2(x) = -x\ln x - (1-x)\ln(1-x)$ es la entropía binaria. Para $n = N/2$ (macroestado de máxima entropía): $\Omega = 2^N$.
 
-## Variables naturales
+**Sólido de Einstein.** $N$ osciladores con energía total $q$ cuantos:
+$$\Omega = \binom{q+N-1}{N-1}$$
 
-Cada ensamble usa un conjunto distinto de variables macroscopicas:
+En todos los casos, la diferencia de $\ln\Omega$ entre macroestados distintos es de orden $N$, lo que significa que las diferencias de probabilidad son de orden $e^N$: abrumadoras.
 
-$$
-\begin{array}{c|c}
-\text{Ensamble} & \text{Variables naturales}\\
-\hline
-\text{Microcanonico} & E,V,N\\
-\text{Canonico} & T,V,N\\
-\text{Gran canonico} & T,V,\mu
-\end{array}
-$$
+## Por qué los macroestados de mayor $\Omega$ son inevitables
+
+Si todos los microestados son igualmente probables (postulado de igual probabilidad a priori), la probabilidad de encontrar el sistema en el macroestado $M$ es
+
+$$P(M) = \frac{\Omega(M)}{\Omega_{\text{total}}}$$
+
+Para un gas ideal encerrado en la mitad izquierda de una caja con pared eliminada: el macroestado "todo el gas en la mitad izquierda" tiene $\Omega_{\text{izq}}$ microestados; el macroestado "distribuido uniformemente" tiene $\Omega_{\text{unif}} = 2^N\,\Omega_{\text{izq}}$. La razón de probabilidades es
+
+$$\frac{P(\text{izq})}{P(\text{unif})} = 2^{-N} \approx 10^{-3\times10^{22}}$$
+
+El gas que se contrae espontáneamente a la mitad de la caja es físicamente posible pero tan improbable que nunca se observa.
+
+## Macroestado y observables termodinámicos
+
+El macroestado de equilibrio maximiza $S = k_B\ln\Omega$ bajo las restricciones impuestas. De esta maximización se obtienen los potenciales termodinámicos:
+
+$$\left(\frac{\partial S}{\partial E}\right)_{V,N} = \frac{1}{T}, \quad \left(\frac{\partial S}{\partial V}\right)_{E,N} = \frac{P}{T}, \quad \left(\frac{\partial S}{\partial N}\right)_{E,V} = -\frac{\mu}{T}$$
+
+Todas las relaciones termodinámicas se derivan de estas identidades.
+
+## Macroestado en sistemas cuánticos
+
+En mecánica cuántica, el macroestado no se especifica con $(E, V, N)$ en el sentido de un punto sino de un operador densidad $\hat\rho$. El macroestado de equilibrio canónico es:
+
+$$\hat\rho = \frac{e^{-\beta\hat H}}{Z}, \quad Z = \operatorname{Tr}(e^{-\beta\hat H})$$
+
+El operador densidad contiene toda la información del macroestado probabilístico: valores esperados, fluctuaciones, y entropía von Neumann $S = -k_B\operatorname{Tr}(\hat\rho\ln\hat\rho)$.
 
 ## Errores comunes
 
-- Pensar que un macroestado determina un unico microestado.
-- Mezclar variables naturales de ensambles distintos sin justificarlo.
-- Tratar la temperatura como variable independiente en el microcanonico.
-- No especificar que restricciones definen el macroestado.
-
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Macroestado** sin introducir un modelo mas complicado que el necesario.
-
-1. **Sistema de dos microestados.** Considera dos estados $a$ y $b$ con probabilidades $p$ y $1-p$. La entrada se aplica al preguntar que informacion microscopica queda resumida por la nocion de Macroestado. En este caso, la normalizacion es $$p_a+p_b=1,$$ y cualquier observable se calcula como $\langle A\rangle=pA_a+(1-p)A_b$.
-2. **Conteo con restriccion.** Tres espines independientes tienen $2^3=8$ configuraciones. Si se fija magnetizacion total $M=1$, solo algunas configuraciones quedan accesibles. Este ejemplo muestra como Macroestado cambia cuando se impone una restriccion macroscopica.
-3. **Promedio temporal contra promedio de ensamble.** En una caminata que visita estados con frecuencias estables, el promedio temporal de $A$ puede compararse con $\sum_x A(x)p(x)$. Si no coinciden, la aplicacion de Macroestado requiere revisar accesibilidad o ergodicidad.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
-
-$$
-(E,V,N)
-$$
+- **"Un macroestado determina un único microestado"**: falso; hay $\Omega \sim 10^{10^{23}}$ microestados compatibles.
+- **"La temperatura siempre está bien definida"**: solo en el ensamble canónico (o gran canónico). En el microcanónico, $T$ se define como $(\partial S/\partial E)^{-1}$, que puede ser negativa.
+- **"Mezclar variables de ensambles distintos"**: $E$ fluctúa en el canónico y no puede fijarse simultáneamente junto a $T$ en el microcanónico.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Schroeder, *An Introduction to Thermal Physics*, caps. 2-3: macroestados y microestados con ejemplos concretos.
+- Reif, *Fundamentals of Statistical and Thermal Physics*, cap. 2: definición sistemática de macro y microestados.
+- Landau & Lifshitz, *Statistical Physics*, §1: la relación entre la distribución estadística y los macroestados.
 
-La lectura combinada recomienda separar tres niveles: conteo de estados, asignacion de probabilidades y extraccion de observables. Para esta entrada eso significa no adelantar el formalismo completo de un ensamble, sino precisar que objeto microscopico o probabilistico se esta definiendo y que restricciones lo vuelven fisicamente util.
-
-- Kardar, *Statistical Physics of Particles*, cap. 2: para probabilidad, limite central, grandes numeros, informacion y entropia desde una base matematica mas tecnica.
-- Schroeder, *An Introduction to Thermal Physics*, caps. 1-3: para pasar de energia, conteo y entropia a temperatura, reservorios y equilibrio termico con modelos pequenos.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 3-4: para fijar probabilidad, microestados, macroestados, temperatura estadistica, ensambles y pesos de Boltzmann.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Macroestado** queda reservado para la idea precisa de la nocion de Macroestado. Su papel local es fijar vocabulario, medidas y restricciones antes de elegir un ensamble. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{microestado}\longrightarrow \text{macroestado}\longrightarrow S,\ p,\ \langle A\rangle
-$$
-
-Una ampliacion futura deberia partir de la nocion de Macroestado y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Fundamentos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
+## Páginas relacionadas
 
 - [Microestado](#/microestado)
-- [Entropia de Boltzmann](#/entropia-de-boltzmann)
-- [Ensamble microcanonico](#/ensamble-microcanonico)
-- [Ensamble canonico](#/ensamble-canonico)
+- [Entropía de Boltzmann](#/entropia-de-boltzmann)
+- [Ensamble microcanónico](#/ensamble-microcanonico)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Principio de máxima entropía](#/principio-de-maxima-entropia)

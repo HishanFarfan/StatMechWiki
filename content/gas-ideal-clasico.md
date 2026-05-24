@@ -143,51 +143,48 @@ $$
 
 En el regimen clasico diluido, $n\lambda_T^3\ll 1$, por lo que $\mu$ suele ser negativo.
 
+## Distribución de velocidades de Maxwell
+
+La distribución de Boltzmann para el momento de una partícula da la distribución de Maxwell para la rapidez $v = |\mathbf{v}|$:
+
+$$f(v) = 4\pi\left(\frac{m}{2\pi k_BT}\right)^{3/2}v^2\,e^{-mv^2/2k_BT}$$
+
+Velocidades características:
+- **Velocidad más probable**: $v_p = \sqrt{2k_BT/m}$
+- **Velocidad media**: $\langle v\rangle = \sqrt{8k_BT/\pi m}$
+- **Velocidad cuadrática media**: $v_\text{rms} = \sqrt{3k_BT/m}$
+
+Para N₂ a 300 K: $v_p \approx 422\ \text{m/s}$, $v_\text{rms} \approx 515\ \text{m/s}$.
+
+## Régimen de validez
+
+El gas ideal clásico es válido cuando:
+- $n\lambda_T^3 \ll 1$: los paquetes de onda no se superponen (límite clásico).
+- Las interacciones son despreciables: $\langle|V_{ij}|\rangle \ll k_BT$.
+
+| Gas | $T$ (K) | $n$ (m$^{-3}$) | $n\lambda_T^3$ |
+|---|---|---|---|
+| He a STP | 300 | $2.7\times10^{25}$ | $3\times10^{-6}$ → clásico |
+| e⁻ en Cu | 300 | $8.5\times10^{28}$ | $10^3$ → cuántico |
+
 ## Errores comunes
 
-- Omitir el factor $1/N!$ y obtener la paradoja de Gibbs.
-- Aplicar el resultado clasico cuando $n\lambda_T^3$ no es pequeno.
-- Confundir gas ideal clasico con gas ideal cuantico.
-- Olvidar que no hay energia potencial de interaccion.
-
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Gas ideal clasico** sin introducir un modelo mas complicado que el necesario.
-
-1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Gas ideal clasico consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
-2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si la nocion de Gas ideal clasico no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
-3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Gas ideal clasico aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
-
-$$
-H(p,q)=\sum_{i=1}^{N}\frac{p_i^2}{2m}.
-$$
+- **Omitir $1/N!$**: sin él, la entropía no es extensiva (paradoja de Gibbs).
+- **Usar cuando $n\lambda_T^3 \gtrsim 1$**: hay que usar gas de Bose o Fermi.
+- **Confundir con gas real**: el gas de van der Waals incluye volumen excluido y atracción. El gas ideal es el límite $a \to 0$, $b \to 0$.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 4: derivación completa de $Z_N$, entropía de Sackur-Tetrode y potencial químico.
+- Reif, *Fundamentals of Statistical and Thermal Physics*, cap. 7: gas ideal clásico con énfasis en la distribución de Maxwell y la presión cinética.
+- Callen, *Thermodynamics and an Introduction to Thermostatistics*: relaciones termodinámicas del gas ideal desde la energía libre.
 
-Los libros usan modelos simples para aislar mecanismos: dos niveles, gas ideal, solido de Einstein, Ising, van der Waals o gases cuanticos. La mejora editorial para esta entrada es hacer explicito que grados de libertad se conservan, que interacciones se descartan y que observable debe cambiar si el mecanismo propuesto es realmente relevante.
+## Páginas relacionadas
 
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 26-28: para gases reales, expansion virial, van der Waals, regla de fases, Ising y clasificacion de transiciones.
-- Kardar, *Statistical Physics of Particles*, cap. 5: para cumulantes, expansion de clusters, virial, van der Waals, campo medio y comportamiento critico.
-- Kardar, *Statistical Physics of Particles*, cap. 3: para Liouville, jerarquia BBGKY, ecuacion de Boltzmann, teorema H, conservacion e hidrodinamica.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Gas ideal clasico** queda reservado para la idea precisa de la nocion de Gas ideal clasico. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{grados de libertad}\longrightarrow H\ \text{o}\ W\longrightarrow \text{observables}
-$$
-
-Una ampliacion futura deberia partir de la nocion de Gas ideal clasico y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Modelos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Funcion de particion](#/funcion-de-particion)
-- [Ensamble canonico](#/ensamble-canonico)
-- [Potencial quimico](#/potencial-quimico)
-- [Espacio de fases](#/espacio-de-fases)
+- [Función de partición](#/funcion-de-particion)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Densidad de estados](#/densidad-de-estados)
+- [Potencial químico](#/potencial-quimico)
+- [Gas ideal cuántico](#/gas-ideal-cuantico)
+- [Distribución de Maxwell-Boltzmann](#/distribucion-maxwell-boltzmann)
+- [Paradoja de Gibbs](#/paradoja-de-gibbs)

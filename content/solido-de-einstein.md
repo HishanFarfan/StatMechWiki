@@ -1,104 +1,90 @@
-# Solido de Einstein
+# Sólido de Einstein
 
 ## Resumen
 
-**Solido de Einstein** es una entrada troncal de modelos dentro de la mecanica estadistica. Su papel principal se resume asi: modelo de solido como osciladores armonicos independientes con frecuencia comun. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+El **sólido de Einstein** (1907) modela un sólido cristalino como $N$ osciladores armónicos cuánticos independientes, todos con la misma frecuencia $\omega$. Fue el primer modelo cuántico de un sólido y resolvió el misterio de por qué el calor específico del diamante caía a bajas temperaturas, en contradicción con la ley de Dulong-Petit clásica.
 
-## Definicion operativa
+## Hamiltoniano y función de partición
 
-En mecanica estadistica conviene definir **Solido de Einstein** por su uso operativo: modelo de solido como osciladores armonicos independientes con frecuencia comun. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+Cada átomo oscila en tres dimensiones. Con $3N$ osciladores de frecuencia $\omega_E$, la función de partición total es
 
-## Ecuacion clave
+$$Z = Z_1^{3N}, \qquad Z_1 = \sum_{n=0}^\infty e^{-\beta\hbar\omega_E(n+1/2)} = \frac{e^{-\beta\hbar\omega_E/2}}{1-e^{-\beta\hbar\omega_E}}$$
 
-$$
-Z=\left[2\sinh(\beta\hbar\omega/2)\right]^{-3N}
-$$
+Usando $x = \beta\hbar\omega_E = T_E/T$ donde $T_E = \hbar\omega_E/k_B$ es la **temperatura de Einstein**:
 
-## Estructura matematica
+$$Z_1 = \frac{e^{-x/2}}{1-e^{-x}}, \qquad \ln Z_1 = -\frac{x}{2} - \ln(1-e^{-x})$$
 
-$$
-\begin{aligned}
-H(\{x_i\})&=H_0+H_{int}+H_{ext},\\
-Z&=\sum_{\{x_i\}}e^{-\beta H(\{x_i\})},\\
-f&=-\frac{k_BT}{N}\ln Z
-\end{aligned}
-$$
+$$Z = Z_1^{3N} \implies \ln Z = 3N\left[-\frac{x}{2} - \ln(1-e^{-x})\right]$$
 
-$$
-\begin{aligned}
-p(\{x_i\})&=\frac{e^{-\beta H(\{x_i\})}}{Z},\\
-\sum_{\{x_i\}}p(\{x_i\})&=1,\\
-\langle A\rangle&=\sum_{\{x_i\}}A(\{x_i\})p(\{x_i\})
-\end{aligned}
-$$
+## Energía interna
 
-## Diccionario de derivadas
+$$\langle E\rangle = -\frac{\partial\ln Z}{\partial\beta} = 3N\hbar\omega_E\left(\langle n\rangle + \frac{1}{2}\right), \quad \langle n\rangle = \frac{1}{e^x - 1}$$
 
-$$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
-$$
+El número de ocupación de Planck $\langle n\rangle = 1/(e^{\hbar\omega_E/k_BT}-1)$ es el resultado que comparte con la distribución de Bose-Einstein (los cuantos de vibración son bosones).
 
-## Escalas y cantidades sin dimension
+**Límite de alta temperatura** ($T \gg T_E$, es decir $x \ll 1$):
+$$\langle n\rangle \approx \frac{k_BT}{\hbar\omega_E}, \qquad \langle E\rangle \approx 3Nk_BT$$
+→ ley de Dulong-Petit clásica.
 
-$$
-\begin{aligned}
-K&=\beta J,\\
-u&=\beta h,\\
-\ell&\sim \xi/a
-\end{aligned}
-$$
+**Límite de baja temperatura** ($T \ll T_E$, $x \gg 1$):
+$$\langle E\rangle \approx \frac{3}{2}N\hbar\omega_E + 3N\hbar\omega_E\,e^{-T_E/T}$$
+El término constante es la energía del punto cero; el segundo decae exponencialmente.
 
-## Donde suele fallar
+## Capacidad calorífica
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+$$C_V = \frac{\partial\langle E\rangle}{\partial T} = 3Nk_B\left(\frac{T_E}{T}\right)^2\frac{e^{T_E/T}}{(e^{T_E/T}-1)^2}$$
 
-## Ejemplos y aplicaciones simples
+Esta es la **función de Einstein**. Sus propiedades:
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Solido de Einstein** sin introducir un modelo mas complicado que el necesario.
+- **Alta temperatura**: $C_V \to 3Nk_B$ (Dulong-Petit). Para $T \gg T_E$, todos los modos vibracionales están activos.
+- **Baja temperatura**: $C_V \propto (T_E/T)^2 e^{-T_E/T} \to 0$ más rápido que cualquier potencia.
+- **Máximo a temperatura finita**: no hay máximo (función monotónicamente creciente hacia la saturación $3Nk_B$).
 
-1. **Modelo minimo.** Toma dos sitios o dos espines y asigna una energia a cada configuracion. La aplicacion de Solido de Einstein consiste en decidir que mecanismo retiene el modelo: interaccion, exclusion, alineamiento, actividad o conectividad.
-2. **Limite soluble.** Anula la interaccion o toma temperatura alta. En ese limite, muchos modelos recuperan pesos casi uniformes, $$p(x)\simeq \frac{1}{\Omega}.$$ Si modelo de solido como osciladores armonicos independientes con frecuencia comun no reproduce ese comportamiento cuando corresponde, la formulacion necesita revision.
-3. **Observable concreto.** Calcula energia media, ocupacion, magnetizacion o desplazamiento cuadratico medio en una red pequena. La utilidad de Solido de Einstein aparece cuando ese observable distingue dos mecanismos que parecerian iguales solo mirando la definicion.
+## Temperatura de Einstein para algunos sólidos
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+| Sólido | $T_E$ (K) | $C_V(300\text{ K})$ / $3Nk_B$ |
+|---|---|---|
+| Diamante | 1320 | 0.43 |
+| Silicio | 625 | 0.93 |
+| Cobre | 244 | ≈ 1.00 |
+| Plomo | 88 | ≈ 1.00 |
 
-$$
-Z=\left[2\sinh(\beta\hbar\omega/2)\right]^{-3N}
-$$
+Einstein ajustó su modelo al calor específico del diamante con $T_E = 1325\ \text{K}$ (1907), obteniendo el primer acuerdo entre mecánica cuántica y datos termodinámicos.
+
+## Entropía y energía libre
+
+$$F = -k_BT\ln Z = 3N\left[\frac{\hbar\omega_E}{2} + k_BT\ln(1-e^{-x})\right]$$
+
+$$S = -\frac{\partial F}{\partial T} = 3Nk_B\left[\frac{x}{e^x-1} - \ln(1-e^{-x})\right]$$
+
+**A $T=0$**: $S \to 0$ (tercer principio de la termodinámica). El sólido de Einstein satisface automáticamente la ley cero de Nernst: la entropía se anula en el cero absoluto porque el estado fundamental no está degenerado.
+
+## Limitación: la ley de Debye $C \propto T^3$
+
+El sólido de Einstein predice $C_V \propto e^{-T_E/T}$ a bajas temperaturas, un decaimiento exponencial. Los experimentos muestran $C_V \propto T^3$. La discrepancia se debe a que Einstein asignó la misma frecuencia a todos los modos. En realidad, los modos acústicos de larga longitud de onda tienen frecuencias bajas ($\omega \propto k$) y contribuyen significativamente a bajas temperaturas.
+
+El [sólido de Debye](#/solido-de-debye) corrige esto usando una distribución de frecuencias $g(\omega) \propto \omega^2$ hasta una frecuencia máxima de corte $\omega_D$, y reproduce la ley $C \propto T^3$.
+
+## Conexión con el ensamble microcanónico
+
+El sólido de Einstein fue el modelo con el que Boltzmann y Einstein conectaron el ensamble microcanónico con la cuantización. El número de microestados de $N$ osciladores con $q$ cuantos de energía total es:
+
+$$\Omega(q,N) = \binom{q+N-1}{N-1}$$
+
+Esto es exactamente el número de maneras de distribuir $q$ objetos idénticos en $N$ cajas. La entropía microcanónica $S = k_B\ln\Omega$ reproduce los mismos resultados que el cálculo canónico en el límite termodinámico.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Einstein, "Die Plancksche Theorie der Strahlung und die Theorie der spezifischen Wärme", *Annalen der Physik* 22, 180 (1907): el artículo original.
+- Schroeder, *An Introduction to Thermal Physics*, cap. 3: sólido de Einstein tratado desde el ensamble microcanónico, muy didáctico.
+- Kardar, *Statistical Physics of Particles*, cap. 6: sólido de Einstein y Debye en el contexto de gases cuánticos y fonones.
+- Kittel, *Introduction to Solid State Physics*, cap. 5: modelos de fonones, Einstein vs. Debye, comparación con datos.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-- Kardar, *Statistical Physics of Particles*, cap. 4: para ensambles microcanonico, canonico, Gibbs y gran canonico, incluyendo sistemas de dos niveles y gas ideal.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Solido de Einstein** queda reservado para la idea precisa de modelo de solido como osciladores armonicos independientes con frecuencia comun. Su papel local es aislar un mecanismo fisico mediante grados de libertad, Hamiltonianos o reglas dinamicas controladas. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{grados de libertad}\longrightarrow H\ \text{o}\ W\longrightarrow \text{observables}
-$$
-
-Una ampliacion futura deberia partir de modelo de solido como osciladores armonicos independientes con frecuencia comun y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Modelos**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Gas ideal clasico](#/gas-ideal-clasico)
-- [Modelo de Ising](#/modelo-de-ising)
 - [Sistema de dos niveles](#/sistema-de-dos-niveles)
+- [Sólido de Debye](#/solido-de-debye)
+- [Distribución de Boltzmann](#/distribucion-de-boltzmann)
+- [Función de partición](#/funcion-de-particion)
+- [Densidad de estados](#/densidad-de-estados)
+- [Fonones](#/fonones)

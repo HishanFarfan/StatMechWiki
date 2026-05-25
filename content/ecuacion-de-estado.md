@@ -1,103 +1,83 @@
-# Ecuacion de estado
+# Ecuación de estado
 
 ## Resumen
 
-**Ecuacion de estado** es una entrada troncal de termodinamica estadistica dentro de la mecanica estadistica. Su papel principal se resume asi: relacion macroscopica entre variables termodinamicas. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+Una **ecuación de estado** es una relación entre las variables de estado macroscópicas de un sistema en equilibrio: presión $P$, volumen $V$, temperatura $T$ y número de partículas $N$. En mecánica estadística, las ecuaciones de estado se derivan de los potenciales termodinámicos a partir de modelos microscópicos.
 
-## Definicion operativa
+## Gas ideal
 
-En mecanica estadistica conviene definir **Ecuacion de estado** por su uso operativo: relacion macroscopica entre variables termodinamicas. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+La ecuación de estado más simple se obtiene del gas ideal clásico:
 
 $$
-PV=Nk_BT
+PV = Nk_BT \quad \Longleftrightarrow \quad P = nk_BT, \quad n = N/V.
 $$
 
-## Estructura matematica
+Se deriva de la energía libre $F = -Nk_BT[\ln(V/N\lambda_T^3)+1]$ tomando $P = -(\partial F/\partial V)_{T,N} = Nk_BT/V$.
+
+## Van der Waals
+
+El gas de van der Waals incluye volumen excluido $b$ por partícula y atracción entre pares con intensidad $a$:
 
 $$
-\begin{aligned}
-E(S,V,N)&\longleftrightarrow F(T,V,N),\\
-G(T,P,N)&=F+PV,\\
-\Phi(T,V,\mu)&=F-\mu N
-\end{aligned}
+\left(P + \frac{aN^2}{V^2}\right)(V - Nb) = Nk_BT.
 $$
 
-$$
-\begin{aligned}
-Z&=e^{-\beta F},\\
-\Xi&=e^{-\beta\Phi},\\
-\Delta&=e^{-\beta G}
-\end{aligned}
-$$
+- El término $-aN^2/V^2$ reduce la presión (atracción intermolecular).
+- El término $Nb$ reduce el volumen disponible (repulsión de corto alcance).
 
-## Diccionario de derivadas
+La ecuación de van der Waals predice una **transición líquido-gas** con punto crítico en:
 
 $$
-\begin{aligned}
-dF&=-S\,dT-P\,dV+\mu\,dN,\\
-dG&=-S\,dT+V\,dP+\mu\,dN,\\
-d\Phi&=-S\,dT-P\,dV-N\,d\mu
-\end{aligned}
+T_c = \frac{8a}{27k_Bb}, \quad P_c = \frac{a}{27b^2}, \quad V_c = 3Nb.
 $$
 
-## Escalas y cantidades sin dimension
+## Expansión virial
+
+Para gases densos, la ecuación de estado se expande en potencias de la densidad:
 
 $$
-\begin{aligned}
-\beta E&=\frac{E}{k_BT},\\
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-\frac{\delta A}{\langle A\rangle}&\sim N^{-1/2}
-\end{aligned}
+\frac{PV}{Nk_BT} = 1 + B_2(T)\,\frac{N}{V} + B_3(T)\left(\frac{N}{V}\right)^2 + \ldots
 $$
 
-## Donde suele fallar
+Los **coeficientes viriales** $B_n(T)$ se calculan a partir de integrales de clusters del potencial de interacción:
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+B_2(T) = -\frac{1}{2}\int\!\left(e^{-\beta u(r)} - 1\right)d^3r.
 $$
 
-## Ejemplos y aplicaciones simples
+Para el gas de van der Waals: $B_2 = b - a/k_BT$. Para el gas ideal: todos los $B_n = 0$.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Ecuacion de estado** sin introducir un modelo mas complicado que el necesario.
+## Gases cuánticos
 
-1. **Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\left(\frac{\partial F}{\partial T}\right)_{V,N}.$$ La aplicacion simple de Ecuacion de estado es identificar que variable se mantiene fija antes de derivar.
-2. **Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.
-3. **Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar relacion macroscopica entre variables termodinamicas, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+Los efectos cuánticos modifican la ecuación de estado incluso sin interacciones. La primera corrección cuántica para bosones ($-$) y fermiones ($+$) es:
 
 $$
-PV=Nk_BT
+\frac{PV}{Nk_BT} = 1 \pm \frac{n\lambda_T^3}{4\sqrt{2}} + \ldots
 $$
+
+Para fermiones (e.g., electrones en metales con $n\lambda_T^3 \sim 10^3$), la presión es muchísimo mayor que la clásica: es la **presión de degeneración** que sostiene las estrellas de neutrones.
+
+## Desde la mecánica estadística
+
+En el ensamble gran canónico, la ecuación de estado se obtiene de $\Phi = -PV$:
+
+$$
+P = \frac{k_BT}{V}\ln\Xi(T,V,\mu).
+$$
+
+Para el gas ideal clásico: $\ln\Xi = e^{\beta\mu}\,V/\lambda_T^3 = N$, y $P = Nk_BT/V$.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 5: expansión virial, coeficientes viriales y van der Waals desde mecánica estadística.
+- Callen, *Thermodynamics and an Introduction to Thermostatistics*, cap. 2: ecuación de estado como relación constitutiva.
+- Pathria & Beale, *Statistical Mechanics*, cap. 9: gas imperfecto, clusters y expansión virial.
 
-La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Ecuacion de estado** queda reservado para la idea precisa de relacion macroscopica entre variables termodinamicas. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{potencial}\longrightarrow \text{variables naturales}\longrightarrow \text{respuestas}
-$$
-
-Una ampliacion futura deberia partir de relacion macroscopica entre variables termodinamicas y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Termodinamica estadistica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
-- [Potencial quimico](#/potencial-quimico)
-- [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+- [Gas ideal clásico](#/gas-ideal-clasico)
+- [Gas ideal cuántico](#/gas-ideal-cuantico)
+- [Potencial gran canónico](#/potencial-gran-canonico)
+- [Energía libre de Helmholtz](#/energia-libre-de-helmholtz)
+- [Estabilidad termodinámica](#/estabilidad-termodinamica)
+- [Compresibilidad](#/compresibilidad)

@@ -1,103 +1,91 @@
-# Capacidad calorifica
+# Capacidad calorífica
 
 ## Resumen
 
-**Capacidad calorifica** es una entrada troncal de termodinamica estadistica dentro de la mecanica estadistica. Su papel principal se resume asi: respuesta de la energia ante cambios de temperatura. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **capacidad calorífica** mide cuánta energía se necesita para elevar la temperatura de un sistema en una unidad. Es una respuesta lineal directamente observable y conecta la termodinámica macroscópica con las fluctuaciones de energía microscópicas.
 
-## Definicion operativa
+## Definiciones
 
-En mecanica estadistica conviene definir **Capacidad calorifica** por su uso operativo: respuesta de la energia ante cambios de temperatura. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+A volumen constante:
 
 $$
-C_V=\left(\frac{\partial \langle E\rangle}{\partial T}\right)_{V,N}
+C_V = \left(\frac{\partial\langle E\rangle}{\partial T}\right)_{V,N} = \frac{\langle(\Delta E)^2\rangle}{k_BT^2} = k_B\beta^2\frac{\partial^2\ln Z}{\partial\beta^2}.
 $$
 
-## Estructura matematica
+A presión constante:
 
 $$
-\begin{aligned}
-E(S,V,N)&\longleftrightarrow F(T,V,N),\\
-G(T,P,N)&=F+PV,\\
-\Phi(T,V,\mu)&=F-\mu N
-\end{aligned}
+C_P = \left(\frac{\partial H}{\partial T}\right)_{P,N}.
 $$
 
-$$
-\begin{aligned}
-Z&=e^{-\beta F},\\
-\Xi&=e^{-\beta\Phi},\\
-\Delta&=e^{-\beta G}
-\end{aligned}
-$$
-
-## Diccionario de derivadas
+La diferencia entre ambas:
 
 $$
-\begin{aligned}
-dF&=-S\,dT-P\,dV+\mu\,dN,\\
-dG&=-S\,dT+V\,dP+\mu\,dN,\\
-d\Phi&=-S\,dT-P\,dV-N\,d\mu
-\end{aligned}
+C_P - C_V = \frac{TV\alpha^2}{\kappa_T} \geq 0,
 $$
 
-## Escalas y cantidades sin dimension
+donde $\alpha = (1/V)(\partial V/\partial T)_P$ y $\kappa_T = -(1/V)(\partial V/\partial P)_T$. Para el gas ideal: $C_P - C_V = Nk_B$.
+
+## Conexión con fluctuaciones de energía
+
+En el ensamble canónico, $C_V$ es proporcional a la varianza de la energía:
 
 $$
-\begin{aligned}
-\beta E&=\frac{E}{k_BT},\\
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-\frac{\delta A}{\langle A\rangle}&\sim N^{-1/2}
-\end{aligned}
+C_V = \frac{\langle(\Delta E)^2\rangle}{k_BT^2}.
 $$
 
-## Donde suele fallar
+Un $C_V$ grande indica que el sistema absorbe energía con poco cambio de $T$: sus grados de libertad almacenan energía eficientemente. Un $C_V$ divergente señala un punto crítico donde fluctuaciones de energía a todas las escalas coexisten.
+
+## Ley de Dulong-Petit
+
+Para sólidos clásicos, cada átomo contribuye con tres osciladores armónicos (dos grados cuadráticos cada uno):
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+\langle E\rangle = 3Nk_BT \implies C_V = 3Nk_B \approx 25\ \text{J/(mol·K)}.
 $$
 
-## Ejemplos y aplicaciones simples
+Esta predicción es válida para muchos metales a temperatura ambiente: Al ($24.4$), Cu ($24.5$), Ag ($25.4$), Pb ($26.4$) J/(mol·K).
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Capacidad calorifica** sin introducir un modelo mas complicado que el necesario.
+## Anomalía de Schottky
 
-1. **Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\left(\frac{\partial F}{\partial T}\right)_{V,N}.$$ La aplicacion simple de Capacidad calorifica es identificar que variable se mantiene fija antes de derivar.
-2. **Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.
-3. **Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar respuesta de la energia ante cambios de temperatura, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+Sistemas con espectro discreto muestran un máximo de $C_V$ cuando $k_BT \sim \epsilon$ (separación entre niveles). Para un sistema de dos niveles:
 
 $$
-C_V=\left(\frac{\partial \langle E\rangle}{\partial T}\right)_{V,N}
+C_V = k_B\!\left(\frac{\epsilon}{k_BT}\right)^2 \frac{e^{\epsilon/k_BT}}{(e^{\epsilon/k_BT}+1)^2},
 $$
+
+con pico en $k_BT^* \approx 0.42\,\epsilon$. Aparece en sales paramagnéticas, defectos en cristales y espines nucleares.
+
+## Congelamiento cuántico
+
+A bajas temperaturas ($k_BT \ll \hbar\omega$), los modos cuánticos se congelan y su contribución a $C_V$ decae exponencialmente. Esto explica:
+
+- La ley $C_V \propto T^3$ a muy bajas temperaturas (sólido de Debye: fonones acústicos con $\omega\to 0$).
+- El decaimiento exponencial predicho por el sólido de Einstein ($C_V \propto e^{-T_E/T}$).
+- El congelamiento de modos vibracionales en diatómicas: a 300 K, $C_V \approx \frac{5}{2}Nk_B$ (solo traslación+rotación), no $\frac{7}{2}Nk_B$ (incluye vibración).
+
+## Divergencia en transiciones de fase
+
+Cerca de una transición continua, $C_V$ diverge como
+
+$$
+C_V \sim |T - T_c|^{-\alpha_c}.
+$$
+
+Para el modelo de Ising 3D: $\alpha_c \approx 0.11$. La divergencia refleja fluctuaciones de energía a todas las escalas de longitud en el punto crítico.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Schroeder, *An Introduction to Thermal Physics*, cap. 3: $C_V$ del sólido de Einstein, dos niveles, gas ideal.
+- Kardar, *Statistical Physics of Particles*, cap. 4: $C_V$ desde la función de partición y relación con fluctuaciones.
+- Kittel & Kroemer, *Thermal Physics*, cap. 4: equipartición, congelamiento cuántico y comparación $C_P$-$C_V$.
 
-La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Capacidad calorifica** queda reservado para la idea precisa de respuesta de la energia ante cambios de temperatura. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{potencial}\longrightarrow \text{variables naturales}\longrightarrow \text{respuestas}
-$$
-
-Una ampliacion futura deberia partir de respuesta de la energia ante cambios de temperatura y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Termodinamica estadistica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
-- [Potencial quimico](#/potencial-quimico)
-- [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+- [Ensamble canónico](#/ensamble-canonico)
+- [Fluctuaciones](#/fluctuaciones)
+- [Teorema de equipartición](#/teorema-de-equiparticion)
+- [Sólido de Einstein](#/solido-de-einstein)
+- [Sólido de Debye](#/solido-de-debye)
+- [Sistema de dos niveles](#/sistema-de-dos-niveles)
+- [Compresibilidad](#/compresibilidad)

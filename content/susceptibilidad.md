@@ -2,102 +2,92 @@
 
 ## Resumen
 
-**Susceptibilidad** es una entrada troncal de termodinamica estadistica dentro de la mecanica estadistica. Su papel principal se resume asi: respuesta de un parametro de orden ante su campo conjugado. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **susceptibilidad** mide la respuesta de un parámetro de orden ante su campo conjugado. En magnetismo, es la respuesta de la magnetización $M$ al campo $h$; en dieléctricos, la de la polarización $P$ al campo eléctrico. Está directamente relacionada con las fluctuaciones del parámetro de orden y diverge en los puntos críticos.
 
-## Definicion operativa
+## Definición general
 
-En mecanica estadistica conviene definir **Susceptibilidad** por su uso operativo: respuesta de un parametro de orden ante su campo conjugado. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+Para un sistema con parámetro de orden $M$ y campo conjugado $h$:
 
 $$
-\chi=\left(\frac{\partial M}{\partial h}\right)_T
+\chi = \left(\frac{\partial M}{\partial h}\right)_T.
 $$
 
-## Estructura matematica
+En magnetismo, si el Hamiltoniano incluye $-hM$, la susceptibilidad magnética es
 
 $$
-\begin{aligned}
-E(S,V,N)&\longleftrightarrow F(T,V,N),\\
-G(T,P,N)&=F+PV,\\
-\Phi(T,V,\mu)&=F-\mu N
-\end{aligned}
+\chi = \beta\langle(\Delta M)^2\rangle = \frac{\langle M^2\rangle - \langle M\rangle^2}{k_BT}.
 $$
 
-$$
-\begin{aligned}
-Z&=e^{-\beta F},\\
-\Xi&=e^{-\beta\Phi},\\
-\Delta&=e^{-\beta G}
-\end{aligned}
-$$
+Esta es una **relación de fluctuación-respuesta**: la susceptibilidad es proporcional a la varianza del parámetro de orden.
 
-## Diccionario de derivadas
+## Susceptibilidad magnética
 
-$$
-\begin{aligned}
-dF&=-S\,dT-P\,dV+\mu\,dN,\\
-dG&=-S\,dT+V\,dP+\mu\,dN,\\
-d\Phi&=-S\,dT-P\,dV-N\,d\mu
-\end{aligned}
-$$
+La susceptibilidad magnética volumétrica se define como $\chi_m = \mu_0\,\partial M/\partial B$ (en SI). Tipos de respuesta magnética:
 
-## Escalas y cantidades sin dimension
+| Material | $\chi_m$ | Origen |
+|---|---|---|
+| Diamagnético | $-10^{-6}$ a $-10^{-5}$ | Corrientes de Lenz inducidas |
+| Paramagnético | $+10^{-6}$ a $+10^{-3}$ | Momentos magnéticos independientes |
+| Ferromagnético | $+10^2$ a $+10^6$ | Momentos alineados colectivamente |
 
-$$
-\begin{aligned}
-\beta E&=\frac{E}{k_BT},\\
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-\frac{\delta A}{\langle A\rangle}&\sim N^{-1/2}
-\end{aligned}
-$$
+**Ley de Curie** (paramagnético ideal): $\chi = C/T$ con $C = N\mu_B^2 g^2 J(J+1)/3k_B$.
 
-## Donde suele fallar
+**Ley de Curie-Weiss**: $\chi = C/(T - T_c)$ con temperatura de Curie $T_c > 0$ para ferromagnéticos.
+
+## Susceptibilidad dieléctrica
+
+Para un dieléctrico lineal, $\mathbf{P} = \epsilon_0\chi_e\mathbf{E}$, con $\chi_e = \epsilon_r - 1$. La susceptibilidad dieléctrica también cumple una relación de fluctuación-respuesta con las fluctuaciones de polarización, relevante en espectroscopía.
+
+## Relación con la longitud de correlación
+
+En sistemas con fluctuaciones espaciales, la susceptibilidad se relaciona con la longitud de correlación $\xi$:
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+\chi \propto \int\!\langle\delta M(\mathbf{r})\,\delta M(\mathbf{0})\rangle\,d^3r \sim \xi^{2-\eta},
 $$
 
-## Ejemplos y aplicaciones simples
+donde $\eta$ es un exponente de anomalía de dimensión. Cerca del punto crítico, $\xi\to\infty$ y $\chi\to\infty$.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Susceptibilidad** sin introducir un modelo mas complicado que el necesario.
+## Divergencia crítica
 
-1. **Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\left(\frac{\partial F}{\partial T}\right)_{V,N}.$$ La aplicacion simple de Susceptibilidad es identificar que variable se mantiene fija antes de derivar.
-2. **Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.
-3. **Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar respuesta de un parametro de orden ante su campo conjugado, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+En una transición de fase continua (punto crítico a $T_c$, $h=0$):
 
 $$
-\chi=\left(\frac{\partial M}{\partial h}\right)_T
+\chi \sim |T - T_c|^{-\gamma_c},
 $$
+
+con exponente crítico $\gamma_c$ universal (depende solo de la clase de universalidad, no de los detalles microscópicos). Valores:
+
+| Clase de universalidad | $\gamma_c$ |
+|---|---|
+| Campo medio | 1 |
+| Ising 2D | 7/4 |
+| Ising 3D | ≈ 1.24 |
+| XY 3D | ≈ 1.32 |
+
+La divergencia de $\chi$ es directamente observable en experimentos de neutrones, rayos X y susceptibilidad AC.
+
+## Suma de regla f y relación de Kramers-Kronig
+
+La susceptibilidad dinámica $\chi(\omega)$ cumple las relaciones de Kramers-Kronig (causalidad) y la suma de regla $f$:
+
+$$
+\int_0^\infty \omega\,\text{Im}\,\chi(\omega)\,d\omega = \text{cte}.
+$$
+
+Estas relaciones conectan la respuesta en frecuencia con las propiedades de equilibrio.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 4: relación fluctuación-susceptibilidad en el ensamble canónico.
+- Chaikin & Lubensky, *Principles of Condensed Matter Physics*, cap. 4: susceptibilidades, correlaciones y puntos críticos.
+- Blundell, *Magnetism in Condensed Matter*, cap. 2: susceptibilidad magnética, Curie, Curie-Weiss y paramagnetismo de Pauli.
 
-La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Susceptibilidad** queda reservado para la idea precisa de respuesta de un parametro de orden ante su campo conjugado. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{potencial}\longrightarrow \text{variables naturales}\longrightarrow \text{respuestas}
-$$
-
-Una ampliacion futura deberia partir de respuesta de un parametro de orden ante su campo conjugado y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Termodinamica estadistica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
-- [Potencial quimico](#/potencial-quimico)
-- [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+- [Fluctuaciones](#/fluctuaciones)
+- [Compresibilidad](#/compresibilidad)
+- [Paramagnetismo](#/paramagnetismo)
+- [Modelo de Ising](#/modelo-de-ising)
+- [Exponentes críticos](#/exponentes-criticos)
+- [Longitud de correlación](#/longitud-de-correlacion)

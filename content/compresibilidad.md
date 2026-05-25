@@ -2,102 +2,97 @@
 
 ## Resumen
 
-**Compresibilidad** es una entrada troncal de termodinamica estadistica dentro de la mecanica estadistica. Su papel principal se resume asi: respuesta relativa del volumen ante cambios de presion. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **compresibilidad** mide la respuesta relativa del volumen de un sistema ante un cambio de presión. Es una cantidad termodinámica de respuesta lineal directamente relacionada con las fluctuaciones del número de partículas en el ensamble gran canónico.
 
-## Definicion operativa
+## Definiciones
 
-En mecanica estadistica conviene definir **Compresibilidad** por su uso operativo: respuesta relativa del volumen ante cambios de presion. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+**Compresibilidad isotérmica** (a $T$ constante):
 
 $$
-\kappa_T=-\frac{1}{V}\left(\frac{\partial V}{\partial P}\right)_T
+\kappa_T = -\frac{1}{V}\left(\frac{\partial V}{\partial P}\right)_{T,N} \geq 0.
 $$
 
-## Estructura matematica
+**Compresibilidad adiabática** (a $S$ constante):
 
 $$
-\begin{aligned}
-E(S,V,N)&\longleftrightarrow F(T,V,N),\\
-G(T,P,N)&=F+PV,\\
-\Phi(T,V,\mu)&=F-\mu N
-\end{aligned}
+\kappa_S = -\frac{1}{V}\left(\frac{\partial V}{\partial P}\right)_{S,N} \geq 0.
 $$
 
-$$
-\begin{aligned}
-Z&=e^{-\beta F},\\
-\Xi&=e^{-\beta\Phi},\\
-\Delta&=e^{-\beta G}
-\end{aligned}
-$$
-
-## Diccionario de derivadas
+La relación entre ambas es
 
 $$
-\begin{aligned}
-dF&=-S\,dT-P\,dV+\mu\,dN,\\
-dG&=-S\,dT+V\,dP+\mu\,dN,\\
-d\Phi&=-S\,dT-P\,dV-N\,d\mu
-\end{aligned}
+\frac{\kappa_T}{\kappa_S} = \frac{C_P}{C_V} \equiv \gamma \geq 1.
 $$
 
-## Escalas y cantidades sin dimension
+En el gas ideal: $\kappa_T = 1/P$ y $\kappa_S = 1/\gamma P$, con $\gamma = C_P/C_V = 5/3$ para gas monoatómico.
+
+## Velocidad del sonido
+
+La velocidad del sonido en un fluido se propaga adiabáticamente:
 
 $$
-\begin{aligned}
-\beta E&=\frac{E}{k_BT},\\
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-\frac{\delta A}{\langle A\rangle}&\sim N^{-1/2}
-\end{aligned}
+v_s = \sqrt{\frac{1}{\rho\,\kappa_S}} = \sqrt{\frac{\gamma k_BT}{m}},
 $$
 
-## Donde suele fallar
+donde $\rho = mn$ es la densidad másica. Para aire a 20°C: $v_s \approx 343\ \text{m/s}$. La compresibilidad isotérmica daría $v_s = \sqrt{k_BT/m}$, un valor incorrecto predicho por Newton (que no conocía la adiabaticidad de las ondas sonoras).
+
+## Relación con fluctuaciones de $N$
+
+En el ensamble gran canónico, las fluctuaciones del número de partículas están relacionadas con $\kappa_T$:
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+\langle(\Delta N)^2\rangle = Nk_BT\kappa_T\,\frac{N}{V}.
 $$
 
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Compresibilidad** sin introducir un modelo mas complicado que el necesario.
-
-1. **Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\left(\frac{\partial F}{\partial T}\right)_{V,N}.$$ La aplicacion simple de Compresibilidad es identificar que variable se mantiene fija antes de derivar.
-2. **Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.
-3. **Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar respuesta relativa del volumen ante cambios de presion, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+O equivalentemente,
 
 $$
-\kappa_T=-\frac{1}{V}\left(\frac{\partial V}{\partial P}\right)_T
+\kappa_T = \frac{v}{k_BT}\frac{\langle(\Delta N)^2\rangle}{N},
 $$
+
+donde $v = V/N$ es el volumen por partícula. Esta relación es una **relación de fluctuación-respuesta**: la susceptibilidad mecánica ($\kappa_T$) es proporcional a las fluctuaciones del observable conjugado ($N$).
+
+## Módulo de compresibilidad
+
+El inverso de la compresibilidad es el **módulo de compresibilidad** (bulk modulus):
+
+$$
+K = \frac{1}{\kappa_T} = -V\left(\frac{\partial P}{\partial V}\right)_{T,N}.
+$$
+
+Para sólidos, $K$ es del orden de GPa ($K_{\text{acero}} \approx 160\ \text{GPa}$, $K_{\text{agua}} \approx 2.2\ \text{GPa}$). Para gases a presión atmosférica, $K = \gamma P \approx 1.4 \times 10^5\ \text{Pa}$.
+
+## Condición de estabilidad
+
+La estabilidad mecánica requiere $\kappa_T \geq 0$: si la presión disminuyera al comprimir el sistema, cualquier fluctuación de densidad crecería exponencialmente (inestabilidad espinodal). La condición equivalente es
+
+$$
+\left(\frac{\partial^2 F}{\partial V^2}\right)_{T,N} = \frac{1}{V\kappa_T} \geq 0,
+$$
+
+es decir, $F$ es convexo en $V$.
+
+## Divergencia en el punto crítico
+
+En el punto crítico de un fluido, $\kappa_T$ diverge:
+
+$$
+\kappa_T \sim |T - T_c|^{-\gamma_c},
+$$
+
+con el exponente crítico $\gamma_c \approx 1.24$ (clase de universalidad de Ising 3D). Esta divergencia refleja la aparición de fluctuaciones de densidad a todas las escalas (dispersión de luz → opacidad crítica).
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Callen, *Thermodynamics and an Introduction to Thermostatistics*, cap. 8: estabilidad y compresibilidad.
+- Kardar, *Statistical Physics of Particles*, cap. 4: relación fluctuación-respuesta para $N$.
+- Landau & Lifshitz, *Statistical Physics I*, cap. 4: fluctuaciones termodinámicas y susceptibilidades.
 
-La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Compresibilidad** queda reservado para la idea precisa de respuesta relativa del volumen ante cambios de presion. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{potencial}\longrightarrow \text{variables naturales}\longrightarrow \text{respuestas}
-$$
-
-Una ampliacion futura deberia partir de respuesta relativa del volumen ante cambios de presion y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Termodinamica estadistica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
-- [Potencial quimico](#/potencial-quimico)
-- [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+- [Fluctuaciones](#/fluctuaciones)
+- [Potencial gran canónico](#/potencial-gran-canonico)
+- [Estabilidad termodinámica](#/estabilidad-termodinamica)
+- [Susceptibilidad](#/susceptibilidad)
+- [Ecuación de estado](#/ecuacion-de-estado)
+- [Capacidad calorífica](#/capacidad-calorifica)

@@ -1,103 +1,81 @@
-# Entalpia
+# Entalpía
 
 ## Resumen
 
-**Entalpia** es una entrada troncal de termodinamica estadistica dentro de la mecanica estadistica. Su papel principal se resume asi: potencial natural para procesos a entropia, presion y numero fijos. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **entalpía** $H$ es el potencial termodinámico natural para procesos a entropía $S$, presión $P$ y número de partículas $N$ fijos. Aparece naturalmente en procesos a presión constante —los más comunes en laboratorio— y es la cantidad que mide la calorimetría.
 
-## Definicion operativa
-
-En mecanica estadistica conviene definir **Entalpia** por su uso operativo: potencial natural para procesos a entropia, presion y numero fijos. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+## Definición y variables naturales
 
 $$
-H=E+PV
+H = E + PV,
 $$
 
-## Estructura matematica
+con diferencial
 
 $$
-\begin{aligned}
-E(S,V,N)&\longleftrightarrow F(T,V,N),\\
-G(T,P,N)&=F+PV,\\
-\Phi(T,V,\mu)&=F-\mu N
-\end{aligned}
+dH = T\,dS + V\,dP + \mu\,dN.
 $$
 
-$$
-\begin{aligned}
-Z&=e^{-\beta F},\\
-\Xi&=e^{-\beta\Phi},\\
-\Delta&=e^{-\beta G}
-\end{aligned}
-$$
-
-## Diccionario de derivadas
+Las variables naturales son $\boxed{S,\,P,\,N}$. Las derivadas dan
 
 $$
-\begin{aligned}
-dF&=-S\,dT-P\,dV+\mu\,dN,\\
-dG&=-S\,dT+V\,dP+\mu\,dN,\\
-d\Phi&=-S\,dT-P\,dV-N\,d\mu
-\end{aligned}
+T = \left(\frac{\partial H}{\partial S}\right)_{P,N}, \quad V = \left(\frac{\partial H}{\partial P}\right)_{S,N}, \quad \mu = \left(\frac{\partial H}{\partial N}\right)_{S,P}.
 $$
 
-## Escalas y cantidades sin dimension
+## Por qué aparece en procesos a presión constante
+
+A presión constante ($dP = 0$) y sin trabajo no mecánico, $dH = T\,dS = \delta Q_{\text{rev}}$. El calor absorbido en un proceso a $P$ constante es exactamente $\Delta H$. Esto es lo que mide un calorímetro de bomba abierta: no la energía interna, sino la entalpía.
+
+La diferencia entre $H$ y $E$ es el término de trabajo de expansión $PV$: si el sistema se expande al reaccionar, una parte de la energía interna se invierte en empujar la atmósfera y no está disponible como calor.
+
+## Calor de reacción y ley de Hess
+
+El **calor de reacción** a $P$ constante es $\Delta_r H = H_\text{productos} - H_\text{reactivos}$:
+
+- $\Delta_r H < 0$: reacción exotérmica.
+- $\Delta_r H > 0$: reacción endotérmica.
+
+La **ley de Hess**: $\Delta H$ de una reacción es la suma de los $\Delta H$ de sus etapas, independientemente del camino. Permite calcular entalpías inaccesibles a partir de entalpías de formación estándar $\Delta_f H^\circ$ tabuladas.
+
+Ejemplo: combustión del metano ($\Delta_c H^\circ = -890\ \text{kJ/mol}$) se puede calcular combinando las entalpías de formación de $\text{CO}_2$ ($-393\ \text{kJ/mol}$), $\text{H}_2\text{O}$ ($-242\ \text{kJ/mol}$) y $\text{CH}_4$ ($-75\ \text{kJ/mol}$).
+
+## Relación entre $C_P$ y $C_V$
+
+La capacidad calorífica a presión constante:
 
 $$
-\begin{aligned}
-\beta E&=\frac{E}{k_BT},\\
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-\frac{\delta A}{\langle A\rangle}&\sim N^{-1/2}
-\end{aligned}
+C_P = \left(\frac{\partial H}{\partial T}\right)_{P,N}.
 $$
 
-## Donde suele fallar
+Para cualquier sistema (usando relaciones de Maxwell):
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+C_P - C_V = \frac{TV\alpha^2}{\kappa_T},
 $$
 
-## Ejemplos y aplicaciones simples
+donde $\alpha = (1/V)(\partial V/\partial T)_P$ y $\kappa_T = -(1/V)(\partial V/\partial P)_T$. Para el gas ideal: $C_P - C_V = Nk_B$.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Entalpia** sin introducir un modelo mas complicado que el necesario.
+## Efecto Joule-Thomson
 
-1. **Derivada de un potencial.** Si $F(T,V,N)$ es conocido, la entropia se obtiene de $$S=-\left(\frac{\partial F}{\partial T}\right)_{V,N}.$$ La aplicacion simple de Entalpia es identificar que variable se mantiene fija antes de derivar.
-2. **Respuesta de un sistema pequeno.** Si una energia media cambia al variar $T$, la capacidad calorifica mide esa sensibilidad. El ejemplo minimo es una particula de dos niveles, donde la respuesta tiene un maximo cuando $k_BT$ es comparable con la separacion energetica.
-3. **Control de estabilidad.** Una compresibilidad negativa o una varianza negativa no son resultados fisicos aceptables. Al aplicar potencial natural para procesos a entropia, presion y numero fijos, esos signos sirven como diagnostico inmediato de una derivada mal tomada o de un regimen inestable.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+En una expansión a través de una válvula, la entalpía se conserva ($\Delta H = 0$). El **coeficiente Joule-Thomson** mide cómo cambia la temperatura con la presión a $H$ constante:
 
 $$
-H=E+PV
+\mu_{JT} = \left(\frac{\partial T}{\partial P}\right)_H = \frac{1}{C_P}\left[T\!\left(\frac{\partial V}{\partial T}\right)_P - V\right].
 $$
+
+Para el gas ideal, $\mu_{JT} = 0$. Para gases reales, $\mu_{JT}$ puede ser positivo (enfriamiento, base de la licuefacción del nitrógeno y helio) o negativo (calentamiento). La **temperatura de inversión** $T_{\text{inv}}$ separa los dos regímenes y depende de la presión.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Callen, *Thermodynamics and an Introduction to Thermostatistics*, cap. 5: entalpía como función característica, relación $C_P - C_V$.
+- Atkins & de Paula, *Physical Chemistry*, cap. 2: entalpía de reacción, ley de Hess, calorimetría.
+- Zemansky & Dittman, *Heat and Thermodynamics*, cap. 10: efecto Joule-Thomson, temperatura de inversión y licuefacción de gases.
 
-La fuente comun entre estos capitulos es la idea de potencial termodinamico como transformada que cambia las variables naturales del problema. En esta entrada conviene preguntar siempre que se mantiene fijo, que se deriva y que respuesta medible se obtiene; sin esas tres piezas, una identidad termodinamica queda desanclada del sistema fisico.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, cap. 1: para formular potenciales, estabilidad, respuestas y condiciones de equilibrio con variables conjugadas.
-- Schroeder, *An Introduction to Thermal Physics*, cap. 5: para usar energia libre, potencial quimico, estabilidad y transformaciones de fase como herramientas de calculo.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Entalpia** queda reservado para la idea precisa de potencial natural para procesos a entropia, presion y numero fijos. Su papel local es traducir promedios microscopicos en potenciales, derivadas y criterios de estabilidad. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\text{potencial}\longrightarrow \text{variables naturales}\longrightarrow \text{respuestas}
-$$
-
-Una ampliacion futura deberia partir de potencial natural para procesos a entropia, presion y numero fijos y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Termodinamica estadistica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Energia libre de Helmholtz](#/energia-libre-de-helmholtz)
-- [Potencial quimico](#/potencial-quimico)
-- [Equivalencia de ensambles](#/equivalencia-de-ensambles)
+- [Energía libre de Gibbs](#/energia-libre-de-gibbs)
+- [Energía libre de Helmholtz](#/energia-libre-de-helmholtz)
+- [Transformadas de Legendre](#/transformadas-de-legendre)
+- [Capacidad calorífica](#/capacidad-calorifica)
+- [Relaciones de Maxwell](#/relaciones-de-maxwell)
+- [Ecuación de estado](#/ecuacion-de-estado)

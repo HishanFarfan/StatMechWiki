@@ -2,102 +2,83 @@
 
 ## Resumen
 
-**Gas de Fermi** es una entrada troncal de cuantica dentro de la mecanica estadistica. Su papel principal se resume asi: gas de fermiones no interactuantes gobernado por el principio de Pauli. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+El **gas de Fermi libre** es un sistema de $N$ fermiones idénticos no interactuantes confinados en un volumen $V$. A pesar de la ausencia de interacciones, su comportamiento a bajas temperaturas difiere radicalmente del gas clásico: la energía cinética, la presión y el calor específico están dominados por el principio de exclusión de Pauli.
 
-## Definicion operativa
+## Estructura a $T = 0$: esfera de Fermi
 
-En mecanica estadistica conviene definir **Gas de Fermi** por su uso operativo: gas de fermiones no interactuantes gobernado por el principio de Pauli. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+Los estados de una partícula en una caja son planos de onda $\mathbf{k}$. Con degeneración de espín $g_s = 2s+1$, el número de estados con $|\mathbf{k}| < k$ es $g_s V k^3/(6\pi^2)$. La condición $N = g_s V k_F^3/(6\pi^2)$ da el **vector de onda de Fermi**:
 
 $$
-k_F=(3\pi^2 n)^{1/3}
+k_F = \left(\frac{6\pi^2 n}{g_s}\right)^{1/3}.
 $$
 
-## Estructura matematica
+Para electrones ($g_s = 2$): $k_F = (3\pi^2 n)^{1/3}$. La **energía de Fermi** es
 
 $$
-\begin{aligned}
-Z&=\operatorname{Tr}e^{-\beta \hat H},\\
-\Xi&=\operatorname{Tr}e^{-\beta(\hat H-\mu\hat N)},\\
-\langle \hat A\rangle&=\operatorname{Tr}(\hat\rho\hat A)
-\end{aligned}
+\epsilon_F = \frac{\hbar^2 k_F^2}{2m} = \frac{\hbar^2}{2m}(3\pi^2 n)^{2/3}.
 $$
 
-$$
-\begin{aligned}
-\hat\rho&=\frac{e^{-\beta \hat H}}{Z},\\
-\operatorname{Tr}\hat\rho&=1,\\
-\langle n_\alpha\rangle&=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp1}
-\end{aligned}
-$$
+## Densidad de estados y propiedades a $T = 0$
 
-## Diccionario de derivadas
+La densidad de estados para $\epsilon < \epsilon_F$ es
 
 $$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
+g(\epsilon) = \frac{3N}{2\epsilon_F^{3/2}}\,\epsilon^{1/2}.
 $$
 
-## Escalas y cantidades sin dimension
-
+**Energía total**:
 $$
-\begin{aligned}
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-n\lambda_T^3&\gtrsim 1\quad \text{degeneracion},\\
-T_F&=\frac{E_F}{k_B}
-\end{aligned}
+E_0 = \int_0^{\epsilon_F}\epsilon\,g(\epsilon)\,d\epsilon = \frac{3}{5}N\epsilon_F.
 $$
 
-## Donde suele fallar
-
+**Presión de degeneración**:
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+P_0 = \frac{2}{3}\frac{E_0}{V} = \frac{2}{5}n\epsilon_F = \frac{\hbar^2}{5m}(3\pi^2)^{2/3}n^{5/3}.
 $$
 
-## Ejemplos y aplicaciones simples
+## Propiedades a temperatura finita: expansión de Sommerfeld
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Gas de Fermi** sin introducir un modelo mas complicado que el necesario.
-
-1. **Modo de dos ocupaciones.** Para un nivel de energia $\epsilon$, compara ocupacion bosonica y fermionica. La diferencia aparece en $$\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}\mp1},$$ que permite o prohibe acumulacion multiple segun el signo.
-2. **Limite clasico.** Si $e^{\beta(\epsilon-\mu)}\gg1$, Bose-Einstein y Fermi-Dirac se aproximan a Maxwell-Boltzmann. Este caso simple muestra cuando Gas de Fermi puede reemplazarse por una descripcion clasica.
-3. **Escala de degeneracion.** En un gas diluido, $n\lambda_T^3\ll1$ indica comportamiento casi clasico. Cuando esa cantidad se acerca a uno, gas de fermiones no interactuantes gobernado por el principio de Pauli deja de ser una correccion menor y cambia las ocupaciones observables.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+Para $T \ll T_F$, la corrección térmica más importante a la energía es
 
 $$
-k_F=(3\pi^2 n)^{1/3}
+E(T) = E_0\left[1 + \frac{5\pi^2}{12}\left(\frac{T}{T_F}\right)^2 + \ldots\right],
 $$
+
+y el calor específico electrónico es
+
+$$
+C_V = \frac{\pi^2}{2}Nk_B\frac{T}{T_F} = \gamma\,T,
+$$
+
+con $\gamma = \pi^2 Nk_B/(2T_F)$ el **coeficiente de Sommerfeld**. A muy bajas temperaturas ($T \lesssim 10\ \text{K}$ en metales), $C_V = \gamma T + AT^3$ donde $\gamma T$ es la contribución electrónica y $AT^3$ la de fonones (Debye).
+
+## Comparación: clásico vs. cuántico
+
+| Propiedad | Gas ideal clásico | Gas de Fermi ($T \ll T_F$) |
+|---|---|---|
+| Energía | $\frac{3}{2}Nk_BT$ | $\frac{3}{5}N\epsilon_F$ |
+| Presión | $Nk_BT/V$ | $\frac{2}{5}n\epsilon_F$ |
+| $C_V$ | $\frac{3}{2}Nk_B$ | $\frac{\pi^2}{2}Nk_B(T/T_F)$ |
+| $\mu$ | $k_BT\ln(n\lambda_T^3) < 0$ | $\epsilon_F > 0$ |
+
+## Aplicaciones
+
+- **Electrones en metales**: $T_F \sim 10^4$–$10^5$ K → completamente degenerados a temperatura ambiente. El calor específico electrónico $C_V = \gamma T$ es observable a $T < 10$ K (debajo de la contribución de fonones).
+- **Helio-3** ($^3\text{He}$): fermión con $T_F \approx 2.7$ K → observable la degeneración a temperaturas del helio líquido.
+- **Enanas blancas**: la presión de degeneración electrónica soporta la estrella contra el colapso gravitacional.
+- **Estrellas de neutrones**: la presión de degeneración neutrónica.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 7: gas de Fermi libre, esfera de Fermi y expansión de Sommerfeld.
+- Kittel, *Introduction to Solid State Physics*, cap. 6: modelo de Sommerfeld para electrones en metales.
+- Ashcroft & Mermin, *Solid State Physics*, caps. 2-3: gas de Fermi libre, superficie de Fermi y calor específico electrónico.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Gas de Fermi** queda reservado para la idea precisa de gas de fermiones no interactuantes gobernado por el principio de Pauli. Su papel local es incorporar indistinguibilidad, niveles discretos y ocupaciones de modos. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\hat H,\ \hat N\longrightarrow \hat\rho\longrightarrow \langle \hat A\rangle
-$$
-
-Una ampliacion futura deberia partir de gas de fermiones no interactuantes gobernado por el principio de Pauli y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Cuantica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Estadisticas cuanticas](#/estadisticas-cuanticas)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-- [Potencial quimico](#/potencial-quimico)
+- [Energía de Fermi](#/energia-de-fermi)
+- [Distribución de Fermi-Dirac](#/distribucion-fermi-dirac)
+- [Presión de degeneración](#/presion-de-degeneracion)
+- [Densidad de estados](#/densidad-de-estados)
+- [Gas ideal cuántico](#/gas-ideal-cuantico)
+- [Estadísticas cuánticas](#/estadisticas-cuanticas)

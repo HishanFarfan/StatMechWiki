@@ -1,103 +1,67 @@
-# Presion de degeneracion
+# Presión de degeneración
 
 ## Resumen
 
-**Presion de degeneracion** es una entrada troncal de cuantica dentro de la mecanica estadistica. Su papel principal se resume asi: presion de origen cuantico debida al llenado de estados fermionicos. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **presión de degeneración** es la presión que ejerce un gas de fermiones a temperatura cero, originada exclusivamente por el principio de exclusión de Pauli. No depende de la temperatura y escala como $n^{5/3}$ con la densidad. Es la fuerza que sostiene enanas blancas y estrellas de neutrones contra el colapso gravitacional.
 
-## Definicion operativa
+## Origen cuántico
 
-En mecanica estadistica conviene definir **Presion de degeneracion** por su uso operativo: presion de origen cuantico debida al llenado de estados fermionicos. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
+A $T = 0$, los fermiones llenan todos los estados de mínima energía hasta $\epsilon_F$. Aun sin interacciones y sin temperatura, los fermiones tienen energía cinética media $\langle\epsilon\rangle = (3/5)\epsilon_F > 0$, y esta energía crea presión. Es una consecuencia directa del principio de incertidumbre: comprimir el sistema en un volumen $V$ confinó los momentos a valores $p \gtrsim \hbar/V^{1/3}$.
 
-## Ecuacion clave
-
-$$
-P\propto n^{5/3}
-$$
-
-## Estructura matematica
+## Fórmula
 
 $$
-\begin{aligned}
-Z&=\operatorname{Tr}e^{-\beta \hat H},\\
-\Xi&=\operatorname{Tr}e^{-\beta(\hat H-\mu\hat N)},\\
-\langle \hat A\rangle&=\operatorname{Tr}(\hat\rho\hat A)
-\end{aligned}
+P_0 = \frac{2}{3}\frac{E_0}{V} = \frac{2}{5}\,n\epsilon_F = \frac{\hbar^2}{5m}\left(3\pi^2\right)^{2/3}n^{5/3}.
 $$
 
-$$
-\begin{aligned}
-\hat\rho&=\frac{e^{-\beta \hat H}}{Z},\\
-\operatorname{Tr}\hat\rho&=1,\\
-\langle n_\alpha\rangle&=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp1}
-\end{aligned}
-$$
+El resultado clave es $P_0 \propto n^{5/3}$: la presión de degeneración crece más rápido que la presión clásica $P = nk_BT \propto n$.
 
-## Diccionario de derivadas
+## Escala relativista
+
+A densidades muy altas, los fermiones se vuelven relativistas ($p_F \gg mc$). En el límite ultra-relativista ($\epsilon_F \gg mc^2$):
 
 $$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
+P_0^{\text{rel}} = \frac{\hbar c}{4}(3\pi^2)^{1/3}n^{4/3} \propto n^{4/3}.
 $$
 
-## Escalas y cantidades sin dimension
+El cambio de exponente de $5/3$ a $4/3$ es crucial: si la presión escala más lento que la gravedad ($M \propto n$ → energía gravitacional $\propto M^{5/3}$), el equilibrio se vuelve inestable para masas grandes.
+
+## Enanas blancas y límite de Chandrasekhar
+
+Una enana blanca es una estrella colapsada donde la presión de degeneración electrónica equilibra la gravedad. El equilibrio $P_0 \sim P_{\text{grav}}$ da un radio típico de $\sim 10^4$ km y una densidad de $\rho \sim 10^6\ \text{g/cm}^3$.
+
+Para el régimen relativista, el límite de estabilidad (masa máxima) se obtiene de $P \propto n^{4/3}$:
 
 $$
-\begin{aligned}
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-n\lambda_T^3&\gtrsim 1\quad \text{degeneracion},\\
-T_F&=\frac{E_F}{k_B}
-\end{aligned}
+M_{\text{Ch}} = \frac{5.83}{\mu_e^2}\,M_\odot \approx 1.4\,M_\odot,
 $$
 
-## Donde suele fallar
+donde $\mu_e$ es el número másico por electrón ($\mu_e = 2$ para helio/carbono/oxígeno). Por encima de $M_{\text{Ch}}$, la presión de degeneración relativista no puede sostener la estrella → colapso en estrella de neutrones o agujero negro.
 
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
+## Estrellas de neutrones
 
-## Ejemplos y aplicaciones simples
+En las estrellas de neutrones, la densidad es $\rho \sim 10^{14}\ \text{g/cm}^3$ (similar al núcleo atómico). La presión de degeneración es ahora neutrónica (y protónica). La masa máxima (límite de Tolman-Oppenheimer-Volkoff) es $\sim 2$–$3\,M_\odot$; sobre ella, el colapso a agujero negro es inevitable.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Presion de degeneracion** sin introducir un modelo mas complicado que el necesario.
+## Comparación con presión térmica
 
-1. **Modo de dos ocupaciones.** Para un nivel de energia $\epsilon$, compara ocupacion bosonica y fermionica. La diferencia aparece en $$\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}\mp1},$$ que permite o prohibe acumulacion multiple segun el signo.
-2. **Limite clasico.** Si $e^{\beta(\epsilon-\mu)}\gg1$, Bose-Einstein y Fermi-Dirac se aproximan a Maxwell-Boltzmann. Este caso simple muestra cuando Presion de degeneracion puede reemplazarse por una descripcion clasica.
-3. **Escala de degeneracion.** En un gas diluido, $n\lambda_T^3\ll1$ indica comportamiento casi clasico. Cuando esa cantidad se acerca a uno, presion de origen cuantico debida al llenado de estados fermionicos deja de ser una correccion menor y cambia las ocupaciones observables.
+| Régimen | Presión | Escala |
+|---|---|---|
+| Gas clásico | $P = nk_BT$ | $\propto n$ |
+| Fermiones NR degenerados | $P_0 = \frac{2}{5}n\epsilon_F$ | $\propto n^{5/3}$ |
+| Fermiones UR degenerados | $P_0^{\text{rel}} \propto n^{4/3}$ | $\propto n^{4/3}$ |
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
-
-$$
-P\propto n^{5/3}
-$$
+Para los electrones en el núcleo de una enana blanca, la presión de degeneración supera en millones de veces la presión térmica.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 7: gas de Fermi libre, $P_0=(2/5)n\epsilon_F$, límite relativista.
+- Chandrasekhar, *An Introduction to the Study of Stellar Structure* (1939): derivación del límite de masa para enanas blancas.
+- Shapiro & Teukolsky, *Black Holes, White Dwarfs and Neutron Stars*, cap. 3: estructura de enanas blancas y el límite de Chandrasekhar.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Presion de degeneracion** queda reservado para la idea precisa de presion de origen cuantico debida al llenado de estados fermionicos. Su papel local es incorporar indistinguibilidad, niveles discretos y ocupaciones de modos. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\hat H,\ \hat N\longrightarrow \hat\rho\longrightarrow \langle \hat A\rangle
-$$
-
-Una ampliacion futura deberia partir de presion de origen cuantico debida al llenado de estados fermionicos y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Cuantica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Estadisticas cuanticas](#/estadisticas-cuanticas)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-- [Potencial quimico](#/potencial-quimico)
+- [Gas de Fermi](#/gas-de-fermi)
+- [Energía de Fermi](#/energia-de-fermi)
+- [Distribución de Fermi-Dirac](#/distribucion-fermi-dirac)
+- [Estadísticas cuánticas](#/estadisticas-cuanticas)
+- [Ecuación de estado](#/ecuacion-de-estado)

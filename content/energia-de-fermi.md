@@ -1,103 +1,71 @@
-# Energia de Fermi
+# Energía de Fermi
 
 ## Resumen
 
-**Energia de Fermi** es una entrada troncal de cuantica dentro de la mecanica estadistica. Su papel principal se resume asi: energia del nivel ocupado mas alto a temperatura cero. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **energía de Fermi** $\epsilon_F$ es la energía del estado ocupado más alto en un gas de Fermi libre a temperatura cero. Define la escala de energía que separa el régimen degenerado ($k_BT \ll \epsilon_F$) del clásico ($k_BT \gg \epsilon_F$).
 
-## Definicion operativa
+## Definición y derivación
 
-En mecanica estadistica conviene definir **Energia de Fermi** por su uso operativo: energia del nivel ocupado mas alto a temperatura cero. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+A $T = 0$, la distribución de Fermi-Dirac es una función escalón: todos los estados con $\epsilon < \epsilon_F$ están llenos y los demás vacíos. La condición de normalización $N = \int_0^{\epsilon_F} g(\epsilon)\,d\epsilon$ con la densidad de estados 3D $g(\epsilon) = (3N/2\epsilon_F^{3/2})\sqrt{\epsilon}$ da
 
 $$
-E_F=\frac{\hbar^2 k_F^2}{2m}
+\epsilon_F = \frac{\hbar^2}{2m}\left(3\pi^2 n\right)^{2/3},
 $$
 
-## Estructura matematica
+donde $n = N/V$ es la densidad numérica y el factor $3\pi^2$ incluye la degeneración de espín $g_s = 2$ para electrones ($s = 1/2$).
+
+El **vector de onda de Fermi** $k_F = (3\pi^2 n)^{1/3}$ define la esfera de Fermi en el espacio $\mathbf{k}$.
+
+## Valores numéricos para metales
+
+| Metal | $n$ ($10^{28}\ \text{m}^{-3}$) | $\epsilon_F$ (eV) | $T_F$ ($10^4$ K) |
+|---|---|---|---|
+| Li | 4.7 | 4.7 | 5.5 |
+| Na | 2.65 | 3.2 | 3.7 |
+| Cu | 8.5 | 7.0 | 8.2 |
+| Al | 18.1 | 11.7 | 13.6 |
+| Fe | 17.0 | 11.1 | 13.0 |
+
+A temperatura ambiente ($k_BT \approx 0.025\ \text{eV}$), la razón $k_BT/\epsilon_F \sim 10^{-3}$: los electrones en metales están completamente degenerados.
+
+## Temperatura de Fermi
 
 $$
-\begin{aligned}
-Z&=\operatorname{Tr}e^{-\beta \hat H},\\
-\Xi&=\operatorname{Tr}e^{-\beta(\hat H-\mu\hat N)},\\
-\langle \hat A\rangle&=\operatorname{Tr}(\hat\rho\hat A)
-\end{aligned}
+T_F = \frac{\epsilon_F}{k_B} \approx (10^4\text{–}10^5)\ \text{K para metales}.
 $$
 
-$$
-\begin{aligned}
-\hat\rho&=\frac{e^{-\beta \hat H}}{Z},\\
-\operatorname{Tr}\hat\rho&=1,\\
-\langle n_\alpha\rangle&=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp1}
-\end{aligned}
-$$
+El gas de electrones en metales está degenerado a temperatura ambiente porque $T \ll T_F$. Solo una fracción $\sim T/T_F$ de los electrones, aquellos en la capa de grosor $k_BT$ alrededor de $\epsilon_F$, participa en los procesos térmicos.
 
-## Diccionario de derivadas
+## Dependencia con la temperatura
+
+La corrección de Sommerfeld al potencial químico es
 
 $$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
+\mu(T) = \epsilon_F\left[1 - \frac{\pi^2}{12}\left(\frac{T}{T_F}\right)^2 - \frac{\pi^4}{80}\left(\frac{T}{T_F}\right)^4 + \ldots\right].
 $$
 
-## Escalas y cantidades sin dimension
+A $T = 0$, $\mu = \epsilon_F$. Al aumentar $T$, $\mu$ disminuye ligeramente (los estados de alta energía se pueblan a expensas de los de baja energía).
+
+## Energía total a $T = 0$
+
+Integrando sobre todos los estados llenos:
 
 $$
-\begin{aligned}
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-n\lambda_T^3&\gtrsim 1\quad \text{degeneracion},\\
-T_F&=\frac{E_F}{k_B}
-\end{aligned}
+E_0 = \int_0^{\epsilon_F}\epsilon\,g(\epsilon)\,d\epsilon = \frac{3}{5}N\epsilon_F.
 $$
 
-## Donde suele fallar
-
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
-
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Energia de Fermi** sin introducir un modelo mas complicado que el necesario.
-
-1. **Modo de dos ocupaciones.** Para un nivel de energia $\epsilon$, compara ocupacion bosonica y fermionica. La diferencia aparece en $$\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}\mp1},$$ que permite o prohibe acumulacion multiple segun el signo.
-2. **Limite clasico.** Si $e^{\beta(\epsilon-\mu)}\gg1$, Bose-Einstein y Fermi-Dirac se aproximan a Maxwell-Boltzmann. Este caso simple muestra cuando Energia de Fermi puede reemplazarse por una descripcion clasica.
-3. **Escala de degeneracion.** En un gas diluido, $n\lambda_T^3\ll1$ indica comportamiento casi clasico. Cuando esa cantidad se acerca a uno, energia del nivel ocupado mas alto a temperatura cero deja de ser una correccion menor y cambia las ocupaciones observables.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
-
-$$
-E_F=\frac{\hbar^2 k_F^2}{2m}
-$$
+Cada uno de los $N$ fermiones tiene, en promedio, $\frac{3}{5}\epsilon_F$ de energía cinética, incluso a $T = 0$.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kittel, *Introduction to Solid State Physics*, cap. 6: energía de Fermi, temperatura de Fermi y propiedades electrónicas de metales.
+- Kardar, *Statistical Physics of Particles*, cap. 7: derivación de $\epsilon_F$ y la expansión de Sommerfeld.
+- Ashcroft & Mermin, *Solid State Physics*, cap. 2: propiedades del gas de Fermi libre, teoría de Drude y Sommerfeld.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Energia de Fermi** queda reservado para la idea precisa de energia del nivel ocupado mas alto a temperatura cero. Su papel local es incorporar indistinguibilidad, niveles discretos y ocupaciones de modos. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\hat H,\ \hat N\longrightarrow \hat\rho\longrightarrow \langle \hat A\rangle
-$$
-
-Una ampliacion futura deberia partir de energia del nivel ocupado mas alto a temperatura cero y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Cuantica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Estadisticas cuanticas](#/estadisticas-cuanticas)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-- [Potencial quimico](#/potencial-quimico)
+- [Gas de Fermi](#/gas-de-fermi)
+- [Distribución de Fermi-Dirac](#/distribucion-fermi-dirac)
+- [Presión de degeneración](#/presion-de-degeneracion)
+- [Densidad de estados](#/densidad-de-estados)
+- [Estadísticas cuánticas](#/estadisticas-cuanticas)

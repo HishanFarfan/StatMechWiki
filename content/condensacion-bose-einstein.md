@@ -1,103 +1,79 @@
-# Condensacion de Bose-Einstein
+# Condensación de Bose-Einstein
 
 ## Resumen
 
-**Condensacion de Bose-Einstein** es una entrada troncal de cuantica dentro de la mecanica estadistica. Su papel principal se resume asi: ocupacion macroscopica del estado fundamental por bosones. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **condensación de Bose-Einstein** (BEC) es una transición de fase en la que una fracción macroscópica de bosones ocupa el estado de mínima energía por debajo de una temperatura crítica $T_c$. Es una consecuencia directa de la estadística de Bose-Einstein y no requiere interacciones.
 
-## Definicion operativa
+## Mecanismo: saturación de los estados excitados
 
-En mecanica estadistica conviene definir **Condensacion de Bose-Einstein** por su uso operativo: ocupacion macroscopica del estado fundamental por bosones. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+A temperatura fija, el número de bosones que puede alojarse en los estados excitados ($\epsilon > 0$) tiene un máximo, alcanzado cuando $\mu \to 0^-$:
 
 $$
-N_0/N=1-(T/T_c)^{3/2}
+N_{\text{exc}}^{\max}(T) = \int_0^\infty \frac{g(\epsilon)}{e^{\beta\epsilon}-1}\,d\epsilon.
 $$
 
-## Estructura matematica
+Para el gas libre en 3D, con $g(\epsilon) = \frac{2\pi(2m)^{3/2}}{h^3}V\sqrt{\epsilon}$:
 
 $$
-\begin{aligned}
-Z&=\operatorname{Tr}e^{-\beta \hat H},\\
-\Xi&=\operatorname{Tr}e^{-\beta(\hat H-\mu\hat N)},\\
-\langle \hat A\rangle&=\operatorname{Tr}(\hat\rho\hat A)
-\end{aligned}
+N_{\text{exc}}^{\max}(T) = \frac{V}{\lambda_T^3}\,\zeta\!\left(\tfrac{3}{2}\right), \qquad \zeta\!\left(\tfrac{3}{2}\right) \approx 2.612,
 $$
 
-$$
-\begin{aligned}
-\hat\rho&=\frac{e^{-\beta \hat H}}{Z},\\
-\operatorname{Tr}\hat\rho&=1,\\
-\langle n_\alpha\rangle&=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp1}
-\end{aligned}
-$$
+donde $\lambda_T = h/\sqrt{2\pi mk_BT}$ es la longitud de onda térmica.
 
-## Diccionario de derivadas
+Cuando $N > N_{\text{exc}}^{\max}(T)$, el exceso de partículas **no cabe** en los estados excitados y se acumula en el estado fundamental: comienza la BEC.
+
+## Temperatura crítica
+
+La condición $N = N_{\text{exc}}^{\max}(T_c)$ da
 
 $$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
+T_c = \frac{2\pi\hbar^2}{mk_B}\left(\frac{n}{\zeta(3/2)}\right)^{2/3} \approx \frac{3.31\hbar^2 n^{2/3}}{mk_B}.
 $$
 
-## Escalas y cantidades sin dimension
+Equivalentemente, la condensación ocurre cuando $n\lambda_T^3 = \zeta(3/2) \approx 2.612$: los paquetes de onda se superponen.
+
+## Fracción condensada
+
+Para $T < T_c$, con $\mu = 0$ exactamente:
 
 $$
-\begin{aligned}
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-n\lambda_T^3&\gtrsim 1\quad \text{degeneracion},\\
-T_F&=\frac{E_F}{k_B}
-\end{aligned}
+\frac{N_0}{N} = 1 - \left(\frac{T}{T_c}\right)^{3/2}.
 $$
 
-## Donde suele fallar
+A $T = 0$: todos los bosones están en el estado fundamental ($N_0 = N$). En $T = T_c$: $N_0 = 0$, comienza la condensación al bajar la temperatura.
+
+## Termodinámica del condensado
+
+Por debajo de $T_c$, $\mu = 0$ y toda la termodinámica proviene de los modos excitados. La energía es
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+\langle E\rangle = \frac{3}{2}k_BT\frac{V}{\lambda_T^3}\zeta\!\left(\tfrac{5}{2}\right), \qquad \zeta\!\left(\tfrac{5}{2}\right) \approx 1.342,
 $$
 
-## Ejemplos y aplicaciones simples
+y el calor específico $C_V \propto T^{3/2}$ para $T < T_c$ (en 3D).
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Condensacion de Bose-Einstein** sin introducir un modelo mas complicado que el necesario.
+La transición es de **segundo orden** (continua): $N_0/N$ va a cero continuamente en $T_c$. No hay calor latente, pero hay una discontinuidad en $C_V$.
 
-1. **Modo de dos ocupaciones.** Para un nivel de energia $\epsilon$, compara ocupacion bosonica y fermionica. La diferencia aparece en $$\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}\mp1},$$ que permite o prohibe acumulacion multiple segun el signo.
-2. **Limite clasico.** Si $e^{\beta(\epsilon-\mu)}\gg1$, Bose-Einstein y Fermi-Dirac se aproximan a Maxwell-Boltzmann. Este caso simple muestra cuando Condensacion de Bose-Einstein puede reemplazarse por una descripcion clasica.
-3. **Escala de degeneracion.** En un gas diluido, $n\lambda_T^3\ll1$ indica comportamiento casi clasico. Cuando esa cantidad se acerca a uno, ocupacion macroscopica del estado fundamental por bosones deja de ser una correccion menor y cambia las ocupaciones observables.
+## Realización experimental
 
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+- **$^4$He líquido**: transición λ a $T_\lambda = 2.17$ K a presión atmosférica. Debajo, el helio se vuelve superfluido (viscosidad cero). La BEC es parcial (~10%) por las interacciones fuertes.
+- **Gases ultrafríos** (1995): Cornell & Wieman (rubidio $^{87}$Rb) y Ketterle (sodio $^{23}$Na) lograron BEC en gases atómicos diluidos con $T_c \sim 100$ nK. Las interacciones son pequeñas y la teoría de gas ideal aplica bien. Premio Nobel 2001.
 
-$$
-N_0/N=1-(T/T_c)^{3/2}
-$$
+## BEC en 2D y 1D
+
+En 2D, la densidad de estados es constante: $N_{\text{exc}}^{\max}$ diverge para cualquier $T > 0$ (integral $\int d\epsilon/(e^\epsilon-1)$ diverge en 2D). No hay verdadera BEC en 2D en el límite termodinámico; en cambio hay una **transición de Berezinskii-Kosterlitz-Thouless** (BKT) con suprafluido de cuasi-orden de largo alcance.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 7: saturación de estados excitados, temperatura crítica, termodinámica del condensado.
+- Pitaevskii & Stringari, *Bose-Einstein Condensation* (2003): tratamiento teórico completo incluyendo interacciones.
+- Ketterle, Nobel Lecture (2001): descripción experimental de la BEC en gases atómicos ultrafríos.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Condensacion de Bose-Einstein** queda reservado para la idea precisa de ocupacion macroscopica del estado fundamental por bosones. Su papel local es incorporar indistinguibilidad, niveles discretos y ocupaciones de modos. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\hat H,\ \hat N\longrightarrow \hat\rho\longrightarrow \langle \hat A\rangle
-$$
-
-Una ampliacion futura deberia partir de ocupacion macroscopica del estado fundamental por bosones y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Cuantica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Estadisticas cuanticas](#/estadisticas-cuanticas)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-- [Potencial quimico](#/potencial-quimico)
+- [Distribución de Bose-Einstein](#/distribucion-bose-einstein)
+- [Estadísticas cuánticas](#/estadisticas-cuanticas)
+- [Gas ideal cuántico](#/gas-ideal-cuantico)
+- [Densidad de estados](#/densidad-de-estados)
+- [Potencial químico](#/potencial-quimico)
+- [Gas de Fermi](#/gas-de-fermi)

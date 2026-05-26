@@ -1,103 +1,76 @@
-# Distribucion de Bose-Einstein
+# Distribución de Bose-Einstein
 
 ## Resumen
 
-**Distribucion de Bose-Einstein** es una entrada troncal de cuantica dentro de la mecanica estadistica. Su papel principal se resume asi: ocupacion media de bosones indistinguibles. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **distribución de Bose-Einstein** da el número medio de partículas que ocupan un modo de energía $\epsilon$ en un gas de bosones idénticos en equilibrio a temperatura $T$ y potencial químico $\mu$. Permite ocupaciones arbitrariamente altas por estado, en contraste con la distribución de Fermi-Dirac.
 
-## Definicion operativa
+## Derivación desde el ensamble gran canónico
 
-En mecanica estadistica conviene definir **Distribucion de Bose-Einstein** por su uso operativo: ocupacion media de bosones indistinguibles. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+Para un modo bosónico con energía $\epsilon_\alpha$, los estados posibles son $n_\alpha = 0, 1, 2, \ldots$ La función de gran partición del modo es una serie geométrica:
 
 $$
-\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}-1}
+\Xi_\alpha = \sum_{n=0}^\infty e^{-\beta(\epsilon_\alpha-\mu)n} = \frac{1}{1 - e^{-\beta(\epsilon_\alpha-\mu)}},
 $$
 
-## Estructura matematica
+convergente si $\epsilon_\alpha > \mu$. El número medio de ocupación es
 
 $$
-\begin{aligned}
-Z&=\operatorname{Tr}e^{-\beta \hat H},\\
-\Xi&=\operatorname{Tr}e^{-\beta(\hat H-\mu\hat N)},\\
-\langle \hat A\rangle&=\operatorname{Tr}(\hat\rho\hat A)
-\end{aligned}
+\langle n_\alpha\rangle = -\frac{1}{\beta}\frac{\partial\ln\Xi_\alpha}{\partial\epsilon_\alpha} = \frac{1}{e^{\beta(\epsilon_\alpha-\mu)} - 1}.
 $$
 
-$$
-\begin{aligned}
-\hat\rho&=\frac{e^{-\beta \hat H}}{Z},\\
-\operatorname{Tr}\hat\rho&=1,\\
-\langle n_\alpha\rangle&=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp1}
-\end{aligned}
-$$
+## Propiedades y límites
 
-## Diccionario de derivadas
+**Restricción sobre $\mu$**: para que $\langle n_\alpha\rangle > 0$, se necesita $\epsilon_\alpha > \mu$ para todo $\alpha$. Si el estado fundamental tiene energía $\epsilon_0 = 0$ (referencia), entonces $\mu \leq 0$.
 
-$$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
-$$
+**Límite clásico** ($e^{\beta(\epsilon-\mu)} \gg 1$): $\langle n\rangle \approx e^{-\beta(\epsilon-\mu)}$ → Maxwell-Boltzmann.
 
-## Escalas y cantidades sin dimension
+**Alta ocupación** ($\epsilon \to \mu^+$): $\langle n\rangle \to \infty$ → base de la condensación de Bose-Einstein.
+
+**Alta temperatura** (a densidad fija): $\mu \to -\infty$, todas las ocupaciones son pequeñas → régimen clásico.
+
+## Dispersión de ocupación
+
+La varianza de la ocupación en el modo $\alpha$ es
 
 $$
-\begin{aligned}
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-n\lambda_T^3&\gtrsim 1\quad \text{degeneracion},\\
-T_F&=\frac{E_F}{k_B}
-\end{aligned}
+\langle(\Delta n_\alpha)^2\rangle = \langle n_\alpha\rangle(\langle n_\alpha\rangle + 1).
 $$
 
-## Donde suele fallar
+Para bosones, la fluctuación relativa es $\sqrt{\langle n\rangle + 1}/\sqrt{\langle n\rangle} \approx 1$ cuando $\langle n\rangle \gg 1$: las fluctuaciones son del mismo orden que la ocupación media (bunching bosónico).
+
+## Casos con $\mu = 0$: fotones y fonones
+
+Las partículas que no se conservan (se crean y destruyen libremente) tienen $\mu = 0$ en equilibrio. La distribución se simplifica a
 
 $$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
+\langle n(\epsilon)\rangle = \frac{1}{e^{\beta\epsilon} - 1}.
 $$
 
-## Ejemplos y aplicaciones simples
+- **Fotones**: $\epsilon = \hbar\omega$, lleva a la distribución de Planck para la radiación de cuerpo negro.
+- **Fonones**: $\epsilon = \hbar\omega_k$, lleva al sólido de Einstein/Debye.
+- **Magnones** (cuantos de ondas de espín en ferromagnéticos): igual forma.
 
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Distribucion de Bose-Einstein** sin introducir un modelo mas complicado que el necesario.
+## Condensación y divergencia de $\langle n_0 \rangle$
 
-1. **Modo de dos ocupaciones.** Para un nivel de energia $\epsilon$, compara ocupacion bosonica y fermionica. La diferencia aparece en $$\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}\mp1},$$ que permite o prohibe acumulacion multiple segun el signo.
-2. **Limite clasico.** Si $e^{\beta(\epsilon-\mu)}\gg1$, Bose-Einstein y Fermi-Dirac se aproximan a Maxwell-Boltzmann. Este caso simple muestra cuando Distribucion de Bose-Einstein puede reemplazarse por una descripcion clasica.
-3. **Escala de degeneracion.** En un gas diluido, $n\lambda_T^3\ll1$ indica comportamiento casi clasico. Cuando esa cantidad se acerca a uno, ocupacion media de bosones indistinguibles deja de ser una correccion menor y cambia las ocupaciones observables.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
+Cuando $\mu \to 0^-$ a temperatura fija, la ocupación del estado fundamental $\epsilon_0 = 0$ diverge:
 
 $$
-\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}-1}
+\langle n_0\rangle = \frac{1}{e^{-\beta\mu} - 1} \approx \frac{k_BT}{|\mu|} \to \infty.
 $$
+
+Esto marca el inicio de la condensación de Bose-Einstein: una fracción macroscópica de las partículas ocupa el estado de mínima energía.
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 7: distribución de Bose-Einstein, gas ideal de Bose y condensación.
+- Pathria & Beale, *Statistical Mechanics*, cap. 7: gas de Bose, propiedades termodinámicas y BEC.
+- Blundell & Blundell, *Concepts in Thermal Physics*, cap. 26: distribución de Bose-Einstein con énfasis en fotones y fonones.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Distribucion de Bose-Einstein** queda reservado para la idea precisa de ocupacion media de bosones indistinguibles. Su papel local es incorporar indistinguibilidad, niveles discretos y ocupaciones de modos. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\hat H,\ \hat N\longrightarrow \hat\rho\longrightarrow \langle \hat A\rangle
-$$
-
-Una ampliacion futura deberia partir de ocupacion media de bosones indistinguibles y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Cuantica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Estadisticas cuanticas](#/estadisticas-cuanticas)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-- [Potencial quimico](#/potencial-quimico)
+- [Estadísticas cuánticas](#/estadisticas-cuanticas)
+- [Números de ocupación](#/numeros-de-ocupacion)
+- [Condensación de Bose-Einstein](#/condensacion-bose-einstein)
+- [Ley de Planck](#/ley-de-planck)
+- [Distribución de Fermi-Dirac](#/distribucion-fermi-dirac)
+- [Gas ideal cuántico](#/gas-ideal-cuantico)

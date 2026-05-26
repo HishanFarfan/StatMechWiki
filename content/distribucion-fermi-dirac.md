@@ -1,103 +1,80 @@
-# Distribucion de Fermi-Dirac
+# Distribución de Fermi-Dirac
 
 ## Resumen
 
-**Distribucion de Fermi-Dirac** es una entrada troncal de cuantica dentro de la mecanica estadistica. Su papel principal se resume asi: ocupacion media de fermiones indistinguibles. La idea no debe verse como una formula aislada: sirve para conectar grados de libertad microscopicos, restricciones macroscopicas y cantidades observables.
+La **distribución de Fermi-Dirac** da el número medio de partículas que ocupan un modo de energía $\epsilon$ en un gas de fermiones idénticos en equilibrio a temperatura $T$ y potencial químico $\mu$. La ocupación está acotada entre 0 y 1 por el principio de exclusión de Pauli.
 
-## Definicion operativa
+## Derivación desde el ensamble gran canónico
 
-En mecanica estadistica conviene definir **Distribucion de Fermi-Dirac** por su uso operativo: ocupacion media de fermiones indistinguibles. Esto significa que la definicion no se agota en el simbolo matematico, sino en el procedimiento que permite calcular probabilidades, funciones de particion, respuestas o escalas caracteristicas.
-
-## Ecuacion clave
+Para un modo fermiónico con energía $\epsilon_\alpha$, los estados posibles son $n_\alpha = 0$ o $1$. La función de gran partición es
 
 $$
-\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}+1}
+\Xi_\alpha = 1 + e^{-\beta(\epsilon_\alpha-\mu)}.
 $$
 
-## Estructura matematica
+El número medio de ocupación es
 
 $$
-\begin{aligned}
-Z&=\operatorname{Tr}e^{-\beta \hat H},\\
-\Xi&=\operatorname{Tr}e^{-\beta(\hat H-\mu\hat N)},\\
-\langle \hat A\rangle&=\operatorname{Tr}(\hat\rho\hat A)
-\end{aligned}
+\langle n_\alpha\rangle = \frac{e^{-\beta(\epsilon_\alpha-\mu)}}{1 + e^{-\beta(\epsilon_\alpha-\mu)}} = \frac{1}{e^{\beta(\epsilon_\alpha-\mu)} + 1}.
+$$
+
+## Propiedades
+
+**Valor en $\epsilon = \mu$**: $\langle n(\mu)\rangle = 1/2$ siempre, independientemente de $T$.
+
+**Límite $T \to 0$** (función escalón de Heaviside):
+
+$$
+\langle n(\epsilon)\rangle \xrightarrow{T\to 0}
+\begin{cases}
+1 & \epsilon < \mu = \epsilon_F\\
+0 & \epsilon > \mu = \epsilon_F
+\end{cases}
+$$
+
+Todos los estados por debajo de la energía de Fermi $\epsilon_F$ están llenos; todos los estados por encima, vacíos.
+
+**Anchura de la transición**: la distribución pasa de ~0.9 a ~0.1 en una franja de anchura $\sim 4k_BT$ centrada en $\epsilon_F$.
+
+**Límite clásico** ($e^{\beta(\epsilon-\mu)} \gg 1$): $\langle n\rangle \approx e^{-\beta(\epsilon-\mu)}$ → Maxwell-Boltzmann.
+
+## Varianza de la ocupación
+
+$$
+\langle(\Delta n_\alpha)^2\rangle = \langle n_\alpha\rangle(1 - \langle n_\alpha\rangle).
+$$
+
+Máxima en $\epsilon = \mu$ (valor $1/4$), nula en los extremos ($\langle n\rangle = 0$ o $1$). Las fluctuaciones de fermiones son **antibunching** (menores que las bosónicas).
+
+## Expansión de Sommerfeld
+
+Para $k_BT \ll \epsilon_F$, las integrales sobre la distribución de Fermi-Dirac se expanden en potencias de $(k_BT/\epsilon_F)^2$. Para una integral de la forma $I = \int_0^\infty \phi(\epsilon)\langle n(\epsilon)\rangle\,d\epsilon$:
+
+$$
+I = \int_0^{\epsilon_F}\phi(\epsilon)\,d\epsilon + \frac{\pi^2}{6}(k_BT)^2\phi'(\epsilon_F) + \frac{7\pi^4}{360}(k_BT)^4\phi'''(\epsilon_F) + \ldots
+$$
+
+Esta expansión da, para el gas de Fermi libre:
+
+$$
+\mu(T) \approx \epsilon_F\left[1 - \frac{\pi^2}{12}\left(\frac{k_BT}{\epsilon_F}\right)^2 + \ldots\right],
 $$
 
 $$
-\begin{aligned}
-\hat\rho&=\frac{e^{-\beta \hat H}}{Z},\\
-\operatorname{Tr}\hat\rho&=1,\\
-\langle n_\alpha\rangle&=\frac{1}{e^{\beta(\epsilon_\alpha-\mu)}\mp1}
-\end{aligned}
-$$
-
-## Diccionario de derivadas
-
-$$
-\begin{aligned}
-F&=-k_BT\ln Z,\\
-\langle E\rangle&=-\frac{\partial \ln Z}{\partial \beta},\\
-\frac{\partial^2 \ln Z}{\partial \beta^2}&=\langle E^2\rangle-\langle E\rangle^2
-\end{aligned}
-$$
-
-## Escalas y cantidades sin dimension
-
-$$
-\begin{aligned}
-\lambda_T&=\frac{h}{\sqrt{2\pi m k_BT}},\\
-n\lambda_T^3&\gtrsim 1\quad \text{degeneracion},\\
-T_F&=\frac{E_F}{k_B}
-\end{aligned}
-$$
-
-## Donde suele fallar
-
-$$
-\begin{aligned}
-\xi&\sim L \quad \Rightarrow \quad \text{efectos de tamano finito},\\
-\tau_{rel}&\gg \tau_{obs} \quad \Rightarrow \quad \text{no equilibrado},\\
-\frac{\Delta A}{\langle A\rangle}&\not\ll 1 \quad \Rightarrow \quad \text{fluctuaciones relevantes}
-\end{aligned}
-$$
-
-## Ejemplos y aplicaciones simples
-
-Estos ejemplos son deliberadamente pequenos: muestran como usar **Distribucion de Fermi-Dirac** sin introducir un modelo mas complicado que el necesario.
-
-1. **Modo de dos ocupaciones.** Para un nivel de energia $\epsilon$, compara ocupacion bosonica y fermionica. La diferencia aparece en $$\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}\mp1},$$ que permite o prohibe acumulacion multiple segun el signo.
-2. **Limite clasico.** Si $e^{\beta(\epsilon-\mu)}\gg1$, Bose-Einstein y Fermi-Dirac se aproximan a Maxwell-Boltzmann. Este caso simple muestra cuando Distribucion de Fermi-Dirac puede reemplazarse por una descripcion clasica.
-3. **Escala de degeneracion.** En un gas diluido, $n\lambda_T^3\ll1$ indica comportamiento casi clasico. Cuando esa cantidad se acerca a uno, ocupacion media de fermiones indistinguibles deja de ser una correccion menor y cambia las ocupaciones observables.
-
-Como referencia local, la ecuacion que debe mantenerse consistente con estos casos es
-
-$$
-\langle n\rangle=\frac{1}{e^{\beta(\epsilon-\mu)}+1}
+C_V \approx \frac{\pi^2}{2}Nk_B\frac{k_BT}{\epsilon_F} \propto T \qquad (T \ll T_F).
 $$
 
 ## Fuentes para profundizar
 
-Estas lecturas se usan como guia conceptual y de verificacion; la entrada sintetiza el material con redaccion propia y sin reproducir pasajes extensos de los libros.
+- Kardar, *Statistical Physics of Particles*, cap. 7: distribución de Fermi-Dirac, expansión de Sommerfeld y gas de Fermi libre.
+- Kittel, *Introduction to Solid State Physics*, cap. 6: distribución de Fermi-Dirac para electrones en metales, energía de Fermi y calor específico electrónico.
+- Pathria & Beale, *Statistical Mechanics*, cap. 8: gas de Fermi libre, propiedades termodinámicas y correcciones de temperatura finita.
 
-En los capitulos cuanticos, el enriquecimiento central es reemplazar particulas etiquetadas por ocupaciones de modos. Esta entrada debe conservar esa idea: identificar niveles, degeneraciones y restricciones de ocupacion antes de aplicar formulas de Bose-Einstein, Fermi-Dirac o Maxwell-Boltzmann como limites.
+## Páginas relacionadas
 
-- Kardar, *Statistical Physics of Particles*, caps. 6-7: para microestados cuanticos, solidos vibracionales, radiacion de cuerpo negro, gases Bose/Fermi y degeneracion cuantica.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 23-30: para fotones, fonones, gases reales, distribuciones Bose-Einstein y Fermi-Dirac, gases cuanticos y condensados.
-- Blundell y Blundell, *Concepts in Thermal Physics*, caps. 19-22: para conectar equiparticion, funcion de particion, gas ideal, potencial quimico y gran particion.
-
-## Coherencia dentro de la wiki
-
-Dentro del mapa general, **Distribucion de Fermi-Dirac** queda reservado para la idea precisa de ocupacion media de fermiones indistinguibles. Su papel local es incorporar indistinguibilidad, niveles discretos y ocupaciones de modos. Esta funcion editorial evita repetir el mismo formalismo en todas las entradas: aqui se conserva solo la parte necesaria para reconocer el objeto, aplicar su ecuacion principal y decidir con que paginas conviene compararlo.
-
-$$
-\hat H,\ \hat N\longrightarrow \hat\rho\longrightarrow \langle \hat A\rangle
-$$
-
-Una ampliacion futura deberia partir de ocupacion media de fermiones indistinguibles y mostrar un caso donde esa idea cambie el calculo, la interpretacion o el diagnostico. Si el material nuevo solo repite el resumen general de **Cuantica**, conviene moverlo a una pagina troncal.
-
-## Paginas relacionadas
-
-- [Estadisticas cuanticas](#/estadisticas-cuanticas)
-- [Ensamble gran canonico](#/ensamble-gran-canonico)
-- [Potencial quimico](#/potencial-quimico)
+- [Estadísticas cuánticas](#/estadisticas-cuanticas)
+- [Números de ocupación](#/numeros-de-ocupacion)
+- [Energía de Fermi](#/energia-de-fermi)
+- [Gas de Fermi](#/gas-de-fermi)
+- [Distribución de Bose-Einstein](#/distribucion-bose-einstein)
+- [Presión de degeneración](#/presion-de-degeneracion)
